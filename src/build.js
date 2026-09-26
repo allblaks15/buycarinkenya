@@ -146,7 +146,7 @@ ${body}
   </div>
   <div class="foot-legal"><span>© ${YEAR} ${site.name}. All rights reserved.</span><span>Prices are indicative landed estimates and are confirmed in your written quote.</span></div>
 </div></footer>
-${bar === 'global' ? `<div class="action-bar global"><a class="btn btn-wa" href="${waGeneral}" target="_blank" rel="noopener">${I.wa} WhatsApp</a><a class="btn btn-primary" href="/import-request/">Request a Car</a></div>` : ''}
+${bar === 'global' ? `<div class="action-bar global"><a class="btn btn-primary" href="/import-request/">${I.car} Import with Us</a></div>` : ''}
 <a class="import-float" href="/import-request/">${I.car} Import with Us</a>
 <script>window.EM=${JSON.stringify({ wa: site.whatsapp, name: site.name, url: site.url })}</script>
 <script src="/assets/js/app.js?v=${BUILD}" defer></script>
