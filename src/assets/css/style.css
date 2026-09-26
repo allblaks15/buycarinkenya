@@ -87,7 +87,7 @@ nav.main a:hover, nav.main a[aria-current="page"] { color: var(--ink); backgroun
 .action-bar .price-mini b { font-size: 1rem; white-space: nowrap; }
 .action-bar .price-mini span { font-size: .72rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 42vw; }
 body.has-bar { --bar-h: 72px; }
-.wa-float { display: none; }
+.import-float { display: none; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; color: #fff; background: var(--deep); overflow: hidden; }
@@ -347,9 +347,9 @@ footer.site a:hover { text-decoration: underline; }
   .header-cta { display: inline-flex; min-height: 42px; padding: .5em 1.1em; }
   .action-bar.global { display: none; }
   body.has-bar.bar-global-only { --bar-h: 0px; }
-  .wa-float { display: grid; place-items: center; position: fixed; right: 22px; bottom: 22px; z-index: 44; width: 58px; height: 58px; border-radius: 50%; background: var(--wa); color: #fff; box-shadow: 0 8px 24px rgba(31, 168, 85, .4); transition: transform .15s; }
-  .wa-float:hover { transform: scale(1.06); }
-  .wa-float svg { width: 30px; height: 30px; }
+  .import-float { display: inline-flex; align-items: center; gap: 8px; position: fixed; right: 22px; bottom: 22px; z-index: 44; min-height: 52px; padding: 0 22px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 8px 24px rgba(200, 65, 11, .35); transition: transform .15s, background .15s; }
+  .import-float:hover { transform: translateY(-2px); background: var(--accent-ink); }
+  .import-float svg { width: 22px; height: 22px; }
   .hero .wrap { padding-top: 88px; padding-bottom: 64px; }
   .car-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .countries { grid-template-columns: repeat(3, 1fr); }
