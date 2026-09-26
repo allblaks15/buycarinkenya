@@ -1,0 +1,6 @@
+{
+  "buildCommand": "node src/build.js",
+  "outputDirectory": "dist",
+  "installCommand": "",
+  "cleanUrls": true
+}

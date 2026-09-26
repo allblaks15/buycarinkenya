@@ -1,0 +1,14 @@
+{
+  "name": "elisamotors",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Elisa Motors \u00e2\u20ac\u201c car import website for Kenya (static site generator)",
+  "scripts": {
+    "images": "python scripts/fetch_images.py",
+    "build": "python scripts/watermark.py && node src/build.js",
+    "serve": "node scripts/serve.js",
+    "audit": "node scripts/seo-audit.js",
+    "watermark": "python scripts/watermark.py"
+  }
+}
