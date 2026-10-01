@@ -28,7 +28,7 @@ export function blogPosts({ cars, site, YEAR, MIN_YEAR, M, range, esc }) {
     T: (slug) => M(car(slug).priceTo),
     // link helpers
     c: (slug, text) => `<a href="/cars/${slug}/">${text || car(slug).name}</a>`,
-    v: (slug, id, text) => `<a href="/cars/${slug}/${id}/">${text || `${car(slug).name} ${ver(slug, id).name}`}</a>`,
+    v: (slug, id, text) => ver(slug, id) && `<a href="/cars/${slug}/${car(slug).variants.length > 1 ? id + '/' : ''}">${text || `${car(slug).name} ${ver(slug, id).name}`}</a>`,
     a: (href, text) => `<a href="${href}">${text}</a>`,
     waA: (text, label = site.phone) => `<a href="${wa(text)}" target="_blank" rel="noopener">${label}</a>`,
     telA: () => `<a href="tel:${tel}">${site.phone}</a>`,
