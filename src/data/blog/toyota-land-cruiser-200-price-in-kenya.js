@@ -115,7 +115,7 @@ ${cta('LC200 or LC300?', 'We can quote both side by side.', 'Hi Elisa Motors, pl
 <p>Hard-used cars may need suspension bushes, shock absorbers and steering parts. Similarly, check the radiator and cooling system on cars used in hot regions. A careful inspection catches all of these before purchase.</p>
 
 <h2>Popular LC200 accessories</h2>
-<p>Accessories are a big part of V8 ownership in Kenya, and the right ones add comfort and safety. Kenyan owners often add side steps, bull bars, roof racks and all-terrain tyres. Android head units and reverse cameras are also popular on older cars. Moreover, many owners fit trackers and alarms for insurance.</p>
+<p>Accessories are a big part of V8 ownership in Kenya, and the right ones add real comfort and safety. Kenyan owners often add side steps, bull bars, roof racks and all-terrain tyres. Android head units and reverse cameras are also popular on older cars. Moreover, many owners fit trackers and alarms for insurance.</p>
 
 <h2>LC200 prices in Nairobi vs Mombasa</h2>
 <p>Direct import prices are the same across Kenya. KRA duty, clearing and registration do not depend on your county. Only the delivery from Mombasa differs, which is small compared with the car's value.</p>
