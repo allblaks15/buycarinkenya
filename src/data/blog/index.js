@@ -1,13 +1,16 @@
 // Blog posts. Each post file exports (h) => ({ ...post }) and receives the helpers below,
 // so prices, years and links always match the live catalogue.
-import rangeRover from './range-rover-price-in-kenya.js';
-import landCruiserV8 from './toyota-land-cruiser-v8-price-in-kenya.js';
-import gWagon from './g-wagon-price-in-kenya.js';
-import ukImports from './import-cars-from-uk-to-kenya.js';
-import japanImports from './import-cars-from-japan-to-kenya.js';
-import crossovers from './harrier-cx5-prado-tx-price-in-kenya.js';
+import { readdirSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+import { join } from 'node:path';
 
-const POSTS = [rangeRover, landCruiserV8, gWagon, ukImports, japanImports, crossovers];
+// Every other .js file in this folder is a post; drop a new file in and it is published.
+const DIR = import.meta.dirname;
+const POSTS = await Promise.all(readdirSync(DIR).filter((f) => f.endsWith('.js') && f !== 'index.js').sort()
+  .map(async (f) => (await import(pathToFileURL(join(DIR, f)))).default));
+
+// Topic clusters, in the order they appear on /blog/
+export const CLUSTERS = ['Range Rover & Land Rover', 'Toyota Land Cruiser', 'Mercedes-Benz & G-Wagon', 'SUVs & crossovers', 'Import from Japan', 'Import from the UK', 'Import costs, duty & clearing'];
 
 export function blogPosts({ cars, site, YEAR, MIN_YEAR, M, range, esc }) {
   const bySlug = Object.fromEntries(cars.map((c) => [c.slug, c]));
@@ -31,12 +34,29 @@ export function blogPosts({ cars, site, YEAR, MIN_YEAR, M, range, esc }) {
     telA: () => `<a href="tel:${tel}">${site.phone}</a>`,
     // inline call-to-action box
     cta: (title, text, waText) => `<div class="note post-cta"><b>${title}</b> ${text} <a href="#order">Use the order form</a>, call ${h.telA()} or WhatsApp ${h.waA(waText || `Hi ${site.name}, ${title}`)}.</div>`,
+    // "specifications by version" section written from catalogue data
+    specs: (slug, heading) => {
+      const m = car(slug);
+      const lc = (t) => /^[A-Z][a-z]/.test(t) ? t.charAt(0).toLowerCase() + t.slice(1) : t;
+      const eng = (x) => x.cc ? `${(x.cc / 1000).toFixed(1)}-litre ${x.fuel.toLowerCase()} engine` : 'electric motor';
+      return `<h2>${heading || `${m.name} specifications by version`}</h2>
+<p>Here is how each ${m.name} version we import compares. All of them seat ${m.seats}, and you can import them from ${m.origin.join(m.origin.length > 2 ? ', ' : ' or ').replace(/, (?=[^,]*$)/, ' or ')}.</p>
+${m.variants.map((x) => `<p><b><a href="/cars/${slug}/${m.variants.length > 1 ? x.id + '/' : ''}">${m.name} ${trimV(m, x.name)}</a>.</b> This version uses a ${eng(x)} with ${x.hp} hp, a ${x.trans.toLowerCase()} gearbox and ${x.drive === '2WD' ? 'two-wheel drive' : x.drive === '4WD' ? 'four-wheel drive' : x.drive}. It returns about ${x.economy} and lands in Kenya at roughly <b>${range(...x.price)}</b>.${x.note ? ` Compared with lower trims, it adds ${lc(x.note)}.` : ''}</p>`).join('\n')}
+${m.features.length ? `<p>Every ${m.name} we import includes these key features: ${m.features.map((f) => lc(f)).join(', ').replace(/, (?=[^,]*$)/, ' and ')}.</p>` : ''}`;
+    },
     // price table for every version of the given models
     table: (slugs, caption) => `<div class="spec-table-wrap"><table class="spec post-table"><caption class="sr-only">${caption}</caption><thead><tr><th>Model & version</th><th>Engine</th><th>Est. landed price (KES)</th></tr></thead><tbody>${slugs.flatMap((s) => car(s).variants.map((v) => `<tr><th scope="row"><a href="/cars/${s}/${car(s).variants.length > 1 ? v.id + '/' : ''}">${car(s).name} ${trimV(car(s), v.name)}</a></th><td>${v.cc ? (v.cc / 1000).toFixed(1) + 'L ' : ''}${v.fuel}, ${v.hp} hp</td><td class="num nowrap"><b>${range(...v.price)}</b></td></tr>`)).join('')}</tbody></table></div>`,
   };
-  return POSTS.map((fn) => {
+  const posts = POSTS.map((fn) => {
     const p = fn(h);
     p.cars.forEach(car);
+    if (!CLUSTERS.includes(p.cluster)) throw new Error(`Blog: ${p.slug} has unknown cluster ${p.cluster}`);
     return p;
   });
+  // Links to guides that are not published yet render as plain text until the post exists.
+  const live = new Set(posts.map((p) => p.slug));
+  const pending = new Set();
+  for (const p of posts) p.html = p.html.replace(/<a href="\/blog\/([^"/]+)\/">(.*?)<\/a>/g, (m, slug, text) => live.has(slug) ? m : (pending.add(slug), text));
+  if (pending.size) console.log(`Blog: ${pending.size} linked guides not written yet: ${[...pending].join(', ')}`);
+  return posts;
 }

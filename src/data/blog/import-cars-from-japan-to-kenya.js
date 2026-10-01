@@ -4,6 +4,7 @@ export default (h) => {
     slug: 'import-cars-from-japan-to-kenya',
     keyword: 'import cars from Japan to Kenya',
     tag: 'Import guide',
+    cluster: 'Import from Japan',
     crumb: 'Import cars from Japan to Kenya',
     title: `Import Cars from Japan to Kenya (${YEAR}): Cost, Duty & Auctions`,
     description: `How to import a car from Japan to Kenya in ${YEAR}: auction sheets, QISJ inspection, KRA duty, shipping to Mombasa, costs and delivery to Nairobi and upcountry.`,

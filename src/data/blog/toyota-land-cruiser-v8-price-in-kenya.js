@@ -5,6 +5,7 @@ export default (h) => {
     slug: 'toyota-land-cruiser-v8-price-in-kenya',
     keyword: 'Toyota Land Cruiser V8 price in Kenya',
     tag: 'Price guide',
+    cluster: 'Toyota Land Cruiser',
     crumb: 'Toyota V8 price in Kenya',
     title: `Toyota Land Cruiser V8 Price in Kenya (${YEAR}): LC200 & LC300`,
     description: `Toyota V8 price in Kenya for ${YEAR}: Land Cruiser 200 and LC300 ZX, VX, GX and GR Sport landed costs, duty, fuel and upkeep. Order from Nairobi or Mombasa.`,

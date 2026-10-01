@@ -5,6 +5,7 @@ export default (h) => {
     slug: 'g-wagon-price-in-kenya',
     keyword: 'G-Wagon price in Kenya',
     tag: 'Price guide',
+    cluster: 'Mercedes-Benz & G-Wagon',
     crumb: 'G-Wagon price in Kenya',
     title: `G-Wagon Price in Kenya (${YEAR}): G63 AMG, G400d & G500`,
     description: `Mercedes G-Wagon price in Kenya for ${YEAR}: G63 AMG, G400d and G550 landed costs in KES, KRA duty, CRSP, upkeep and how to import one to Nairobi or Mombasa.`,

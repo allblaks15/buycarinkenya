@@ -5,6 +5,7 @@ export default (h) => {
     slug: 'harrier-cx5-prado-tx-price-in-kenya',
     keyword: 'Toyota Harrier, Mazda CX-5 and Prado TX price in Kenya',
     tag: 'Price guide',
+    cluster: 'SUVs & crossovers',
     crumb: 'Harrier, CX-5 & Prado TX prices',
     title: `Harrier, CX-5 & Prado TX Price in Kenya (${YEAR}) Compared`,
     description: `Toyota Harrier, Mazda CX-5 and Prado TX price in Kenya for ${YEAR}: landed costs, fuel use, upkeep and resale compared. Import from Japan, delivered across Kenya.`,

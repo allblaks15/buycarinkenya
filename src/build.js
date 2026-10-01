@@ -5,7 +5,7 @@ import { join, dirname } from 'node:path';
 import { site } from './config.js';
 import { cars, slugify } from './data/cars.js';
 import { makeRenderCar } from './render-car.js';
-import { blogPosts } from './data/blog/index.js';
+import { blogPosts, CLUSTERS } from './data/blog/index.js';
 import { readdir, rename } from 'node:fs/promises';
 
 const SRC = import.meta.dirname;
@@ -565,7 +565,8 @@ const blogOrderForm = (p) => {
   const cr = crumbs([['Home', '/'], ['Blog', '/blog/']]);
   const body = `<div class="wrap">${cr.html}
 <header class="page-head"><h1>Car prices & import guides for Kenya</h1><p>Up-to-date landed prices for the cars Kenyans import most, plus clear guides to importing from Japan and the UK. Every guide links to the exact cars and versions, so you can order the spec you want.</p></header>
-${postGrid(posts)}
+<nav class="chips" aria-label="Blog topics" style="margin-bottom:8px">${CLUSTERS.map((cl) => `<a class="chip" href="#${slugify(cl)}">${esc(cl)} <span class="count">${posts.filter((p) => p.cluster === cl).length}</span></a>`).join('')}</nav>
+${CLUSTERS.map((cl) => `<section class="block" id="${slugify(cl)}" style="padding-bottom:0"><h2>${esc(cl)}</h2>${postGrid(posts.filter((p) => p.cluster === cl))}</section>`).join('')}
 </div>${ctaBand()}`;
   const itemList = { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: posts.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/blog/${p.slug}/`), name: p.h1 })) };
   add('/blog/', layout({ path: '/blog/', title: `Car Prices & Import Guides Kenya (${YEAR}) | ${site.name} Blog`, description: `Range Rover, Land Cruiser V8, G-Wagon, Harrier, CX-5 and Prado prices in Kenya, plus guides to importing cars from Japan and the UK to Nairobi and Mombasa.`, body, jsonld: [cr.ld, itemList], priority: 0.8 }));
@@ -575,7 +576,7 @@ for (const p of posts) {
   const cr = crumbs([['Home', '/'], ['Blog', '/blog/'], [p.crumb, path]]);
   const hero = mainImg(p.cars[0]);
   const featured = p.cars.map((s) => cars.find((c) => c.slug === s));
-  const more = posts.filter((x) => x !== p);
+  const more = [...posts.filter((x) => x !== p && x.cluster === p.cluster), ...posts.filter((x) => x.cluster !== p.cluster)];
   const body = `<div class="wrap">${cr.html}
 <header class="page-head post-head"><span class="eyebrow">${esc(p.tag)}</span><h1>${esc(p.h1)}</h1><p>${esc(p.excerpt)}</p>
   <p class="post-meta">By the ${site.name} import team · Updated <time datetime="${p.updated}">${fmtDate(p.updated)}</time> · ${readMin(p)} min read</p></header>
@@ -592,7 +593,7 @@ for (const p of posts) {
   </aside>
 </div>
 <section class="block"><div class="section-head"><div><h2>Cars in this guide</h2><p>Open any car to compare versions, see full specs and order the exact spec.</p></div><a class="link-arrow" href="/cars/">All cars →</a></div>${grid(featured)}</section>
-<section class="block" style="padding-top:0"><div class="section-head"><div><h2>More car guides</h2></div><a class="link-arrow" href="/blog/">All guides →</a></div>${postGrid(more.slice(0, 3))}</section>
+<section class="block" style="padding-top:0"><div class="section-head"><div><h2>More car guides</h2></div><a class="link-arrow" href="/blog/">All guides →</a></div>${postGrid(more.slice(0, 6))}</section>
 </div>${ctaBand()}`;
   const article = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.h1.slice(0, 110), name: p.title, description: p.description, image: [abs(hero)], datePublished: p.published, dateModified: p.updated, inLanguage: 'en-KE', keywords: p.keyword, wordCount: wordCount(p.html),
     author: { '@type': 'Organization', name: site.name, url: site.url }, publisher: { '@id': abs('/#dealer') }, mainEntityOfPage: abs(path),

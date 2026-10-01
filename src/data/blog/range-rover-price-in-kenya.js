@@ -4,6 +4,7 @@ export default (h) => {
     slug: 'range-rover-price-in-kenya',
     keyword: 'Range Rover price in Kenya',
     tag: 'Price guide',
+    cluster: 'Range Rover & Land Rover',
     crumb: 'Range Rover price in Kenya',
     title: `Range Rover Price in Kenya (${YEAR}): Sport, Vogue, Velar, Evoque`,
     description: `Range Rover price in Kenya for ${YEAR}: Sport, Vogue, Velar and Evoque landed costs in KES, ex UK vs ex Japan, duty, fuel and upkeep. Order in Nairobi or Mombasa.`,

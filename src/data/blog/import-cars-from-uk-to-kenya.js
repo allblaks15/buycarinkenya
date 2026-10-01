@@ -4,6 +4,7 @@ export default (h) => {
     slug: 'import-cars-from-uk-to-kenya',
     keyword: 'import cars from UK to Kenya',
     tag: 'Import guide',
+    cluster: 'Import from the UK',
     crumb: 'Import cars from UK to Kenya',
     title: `Import Cars from UK to Kenya (${YEAR}): Cost, Duty & Shipping`,
     description: `How to import a car from the UK to Kenya in ${YEAR}: costs, KRA duty, 8-year rule, RoRo vs container shipping to Mombasa, documents and delivery to Nairobi.`,
