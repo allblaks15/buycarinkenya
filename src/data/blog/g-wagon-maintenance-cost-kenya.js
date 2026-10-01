@@ -138,7 +138,7 @@ ${cta('Want a G-Wagon with full history?', 'We will shortlist cars with verified
 
 <h2>Questions to ask your garage</h2>
 <p>Before any major repair, ask a few clear questions. First, what exactly is wrong and how was it diagnosed? Second, are the parts genuine, OEM or aftermarket? Third, how long is the warranty on parts and labour? Moreover, can you see the old parts afterwards?</p>
-<p>A good garage answers each question clearly and in writing. In contrast, vague answers are a warning sign. Similarly, ask for a second opinion on very expensive jobs. Many owners in Nairobi do this for suspension and engine work, and it often saves money. As a result, you stay in control of your G-Wagon's costs.</p>
+<p>A good garage answers each question clearly and in writing. In contrast, vague answers are a warning sign. Similarly, ask for a second opinion on very expensive jobs. Many owners in Nairobi do this for suspension and engine work, and it often saves a lot of money. As a result, you stay in control of your G-Wagon's costs.</p>
 
 <h2>Living with a G-Wagon day to day</h2>
 <p>The G-Class is tall and narrow, so parking in older Nairobi buildings can be tight. Moreover, its doors close with a heavy "clack" and need a firm push. Many owners love these quirks. However, they matter if the car will be your only vehicle.</p>
