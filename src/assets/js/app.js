@@ -277,4 +277,40 @@
     });
     show(0);
   }
+
+  // ---------- blog order forms ----------
+  $$('[data-blog-order]').forEach((box) => {
+    const form = $('form', box);
+    const cars = JSON.parse($('script[type="application/json"]', box).textContent);
+    const carSel = form.elements.car, varSel = form.elements.variant;
+    const other = $('[data-other-car]', form);
+    const err = $('[data-form-error]', form);
+    const fill = () => {
+      const c = cars.find((x) => x.slug === carSel.value);
+      varSel.innerHTML = '<option value="">Not sure / any</option>' + (c ? c.variants.map((v) => `<option>${v.name} (${v.price})</option>`).join('') : '');
+      varSel.closest('.field').hidden = !c;
+      other.hidden = carSel.value !== 'other';
+    };
+    carSel.addEventListener('change', fill);
+    fill();
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      err.hidden = true;
+      const need = other.hidden ? ['name', 'phone'] : ['other_car', 'name', 'phone'];
+      if (!validate(form, need)) { err.textContent = other.hidden ? 'Please enter your name and a valid phone number.' : 'Please type the car you want, your name and phone.'; err.hidden = false; return; }
+      const d = fd(form); const r = ref();
+      const c = cars.find((x) => x.slug === d.car);
+      const car = c ? c.name : d.other_car;
+      const link = c ? `${EM.url}/cars/${c.slug}/` : '';
+      const payload = { ...d, type: 'Blog Car Order', ref: r, car, variant_name: d.variant, page: location.href };
+      const text = `Hi, I am interested in importing the *${car}${d.variant ? ' ' + d.variant : ''}* with ${EM.name}.\n\n` +
+        `🚗 *Car:* ${car}\n🔧 *Version:* ${d.variant || 'Not sure / any'}\n🌍 Import from: ${d.origin}\n📅 Year from: ${d.year}\n💰 Budget: ${d.budget}${d.notes ? `\n📝 ${d.notes}` : ''}\n\n` +
+        `👤 *Name:* ${d.name}\n📞 *Phone:* ${d.phone}${d.email ? `\n✉️ *Email:* ${d.email}` : ''}${d.town ? `\n📍 *Town:* ${d.town}` : ''}\n\n` +
+        `${link ? `🔗 *Car link:* ${link}\n` : ''}📰 Read: ${location.href}\n🧾 Ref: ${r}`;
+      const url = send(payload, text);
+      form.hidden = true;
+      const s = $('[data-success]', box); s.hidden = false;
+      s.innerHTML = successHtml(r, url, 'Order sent!');
+    });
+  });
 })();

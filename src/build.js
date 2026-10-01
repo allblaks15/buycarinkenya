@@ -5,6 +5,7 @@ import { join, dirname } from 'node:path';
 import { site } from './config.js';
 import { cars, slugify } from './data/cars.js';
 import { makeRenderCar } from './render-car.js';
+import { blogPosts } from './data/blog/index.js';
 import { readdir, rename } from 'node:fs/promises';
 
 const SRC = import.meta.dirname;
@@ -61,6 +62,7 @@ const ORIGINS = {
     points: ['Fastest shipping to Mombasa of all our source markets', 'African-spec vehicles with suspension and fuel systems suited to local conditions', 'Excellent source for Hilux, Ranger, Fortuner, D-Max and Amarok', 'Right-hand drive', 'Pre-shipment inspection before loading'] },
 };
 const MAKES = [...new Set(cars.map((c) => c.make))];
+const posts = blogPosts({ cars, site, YEAR, MIN_YEAR, M, range, esc }).sort((a, b) => b.published.localeCompare(a.published));
 
 // ---------------------------------------------------------------- icons
 const I = {
@@ -81,7 +83,7 @@ const bodyIcon = (b) => `<svg viewBox="0 0 64 30" fill="none" stroke="currentCol
 
 // ---------------------------------------------------------------- layout
 const sitemap = [];
-const navLinks = [['/cars/', 'Browse Cars'], ['/import-from/japan/', 'From Japan'], ['/import-from/uk/', 'From UK'], ['/import-from/south-africa/', 'From South Africa'], ['/how-to-import-a-car-to-kenya/', 'How It Works']];
+const navLinks = [['/cars/', 'Browse Cars'], ['/import-from/japan/', 'From Japan'], ['/import-from/uk/', 'From UK'], ['/import-from/south-africa/', 'From South Africa'], ['/how-to-import-a-car-to-kenya/', 'How It Works'], ['/blog/', 'Blog']];
 
 function layout({ path, title, description, body, jsonld = [], image, bar = 'global', noindex = false, priority = 0.6, preload, images = [] }) {
   if (!noindex) sitemap.push({ path, priority, images });
@@ -126,7 +128,7 @@ ${ld}
 </div></header>
 <div class="drawer" id="drawer" aria-hidden="true"><div class="drawer-bg" data-close-drawer></div><nav class="drawer-panel" aria-label="Mobile">
   <button class="icon-btn drawer-close" type="button" aria-label="Close menu" data-close-drawer>${I.close}</button>
-  <a href="/">Home</a><a href="/cars/">Browse All Cars</a><a href="/import-request/">Request a Car Import</a><a href="/how-to-import-a-car-to-kenya/">How Importing Works</a>
+  <a href="/">Home</a><a href="/cars/">Browse All Cars</a><a href="/import-request/">Request a Car Import</a><a href="/how-to-import-a-car-to-kenya/">How Importing Works</a><a href="/blog/">Blog & Price Guides</a>
   <div class="label">Import from</div>${Object.entries(ORIGINS).map(([n, o]) => `<a href="/import-from/${o.slug}/">${n}</a>`).join('')}
   <div class="label">Body type</div>${Object.entries(BODIES).map(([, b]) => `<a href="/body-type/${b.slug}/">${b.plural}</a>`).join('')}
   <div class="label">Help</div><a href="/contact/">Contact Us</a><a href="/about/">About Elisa Motors</a>
@@ -142,7 +144,7 @@ ${body}
       <p>📞 <a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br>✉️ <a href="mailto:${site.email}">${site.email}</a><br>📍 ${site.address}<br>🕘 ${site.hours}</p></div>
     <div><h4>Popular imports</h4><ul>${cars.filter((c) => c.popular).slice(0, 8).map((c) => `<li><a href="/cars/${c.slug}/">${c.name}</a></li>`).join('')}</ul></div>
     <div><h4>Browse</h4><ul>${Object.values(BODIES).map((b) => `<li><a href="/body-type/${b.slug}/">${b.plural}</a></li>`).join('')}${Object.values(FUELS).map((f) => `<li><a href="/fuel/${f.slug}/">${f.slug[0].toUpperCase() + f.slug.slice(1)} cars</a></li>`).join('')}</ul></div>
-    <div><h4>Elisa Motors</h4><ul><li><a href="/import-request/">Request a car</a></li><li><a href="/how-to-import-a-car-to-kenya/">How to import a car to Kenya</a></li>${Object.entries(ORIGINS).map(([n, o]) => `<li><a href="/import-from/${o.slug}/">Import from ${n}</a></li>`).join('')}<li><a href="/about/">About us</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/credits/">Image credits</a></li><li><a href="/sitemap/">Sitemap</a></li></ul></div>
+    <div><h4>Elisa Motors</h4><ul><li><a href="/import-request/">Request a car</a></li><li><a href="/how-to-import-a-car-to-kenya/">How to import a car to Kenya</a></li><li><a href="/blog/">Blog & price guides</a></li>${Object.entries(ORIGINS).map(([n, o]) => `<li><a href="/import-from/${o.slug}/">Import from ${n}</a></li>`).join('')}<li><a href="/about/">About us</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/credits/">Image credits</a></li><li><a href="/sitemap/">Sitemap</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>© ${YEAR} ${site.name}. All rights reserved.</span><span>Prices are indicative landed estimates and are confirmed in your written quote.</span></div>
 </div></footer>
@@ -178,6 +180,14 @@ function card(c, { eager = false } = {}) {
 </article>`;
 }
 const grid = (list, opts) => `<div class="car-grid">${list.map((c, i) => card(c, { eager: opts?.eager && i < 2 })).join('')}</div>`;
+const wordCount = (html) => html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+const readMin = (p) => Math.ceil(wordCount(p.html) / 220);
+const fmtDate = (d) => new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const postCard = (p) => `<article class="car-card post-card">
+  <div class="ph"><img src="${mainImg(p.cars[0], true)}" alt="${esc(p.crumb)}: ${esc(site.name)} guide" title="${esc(p.title)}" width="600" height="400" loading="lazy" decoding="async"></div>
+  <div class="body"><span class="make">${esc(p.tag)} · ${readMin(p)} min read</span><h3><a href="/blog/${p.slug}/">${esc(p.crumb)}</a></h3><p class="small muted" style="margin:0">${esc(p.excerpt)}</p></div>
+</article>`;
+const postGrid = (list) => `<div class="car-grid">${list.map(postCard).join('')}</div>`;
 
 const ctaBand = (h = 'Can\'t find the car you want?', p = 'Tell us the make, model, year and budget. We\'ll source it from Japan, the UK or South Africa and send you a free landed-cost quote.') => `
 <section class="block"><div class="wrap"><div class="cta-band"><div><h2>${h}</h2><p>${p}</p></div>
@@ -290,6 +300,11 @@ const add = (path, html) => pages.push({ path, html });
 <section class="block alt"><div class="wrap">
   <div class="section-head"><div><h2>How importing with Elisa Motors works</h2><p>Five simple steps, and we keep you updated on WhatsApp throughout.</p></div><a class="link-arrow" href="/how-to-import-a-car-to-kenya/">Full import guide →</a></div>
   ${stepsHtml}
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="section-head"><div><h2>Car price guides & import tips</h2><p>Honest, up-to-date prices and step-by-step import advice for Kenyan buyers.</p></div><a class="link-arrow" href="/blog/">All guides →</a></div>
+  ${postGrid(posts.slice(0, 3))}
 </div></section>
 
 ${ctaBand()}
@@ -516,6 +531,76 @@ ${stepsHtml}
   add('/how-to-import-a-car-to-kenya/', layout({ path: '/how-to-import-a-car-to-kenya/', title: `How to Import a Car to Kenya (${YEAR} Guide): Duty, 8-Year Rule & Costs`, description: `Step-by-step guide to importing a car to Kenya in ${YEAR}: the 8-year rule, KRA import duty, excise, VAT, inspection, shipping times from Japan, UK and South Africa, and total landed cost.`, body, jsonld: [cr.ld, howTo, faqLd(generalFaq)], priority: 0.9 }));
 }
 
+// BLOG
+const blogOrderForm = (p) => {
+  const list = p.cars.map((s) => cars.find((c) => c.slug === s));
+  const data = list.map((c) => ({ slug: c.slug, name: c.name, variants: c.variants.map((v) => ({ name: v.name, price: range(...v.price) })) }));
+  const opt = (arr) => arr.map((x) => `<option>${x}</option>`).join('');
+  return `<div class="order-box blog-order" id="order" data-blog-order>
+  <div><div class="step-label">Car order form</div><h2 class="blog-order-h">Order your car with ${site.name}</h2><p class="muted small" style="margin:0">Free, all-inclusive landed quote. No payment needed now.</p></div>
+  <form class="stack" novalidate>
+    <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+    <label class="field"><span>Car <b class="req">*</b></span><select name="car">${list.map((c) => `<option value="${c.slug}">${esc(c.name)}</option>`).join('')}<option value="other">Another car…</option></select></label>
+    <label class="field" data-other-car hidden><span>Type the make & model <b class="req">*</b></span><input name="other_car" placeholder="e.g. Toyota Land Cruiser 79"></label>
+    <label class="field"><span>Version / spec</span><select name="variant"></select></label>
+    <div class="grid-2">
+      <label class="field"><span>Import from</span><select name="origin">${opt(['Best price (any)', 'Japan', 'UK', 'South Africa'])}</select></label>
+      <label class="field"><span>Year from</span><select name="year">${opt(Array.from({ length: YEAR - MIN_YEAR + 1 }, (_, i) => MIN_YEAR + i))}</select></label>
+    </div>
+    <label class="field"><span>Budget (landed, KES)</span><select name="budget">${opt(['Not sure yet', 'Under 2M', '2M – 3M', '3M – 5M', '5M – 8M', '8M – 12M', '12M – 20M', 'Above 20M'])}</select></label>
+    <label class="field"><span>Your name <b class="req">*</b></span><input name="name" autocomplete="name" required></label>
+    <label class="field"><span>Phone / WhatsApp <b class="req">*</b></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07XX XXX XXX" required></label>
+    <label class="field"><span>Email <span class="muted small">(optional)</span></span><input name="email" type="email" autocomplete="email"></label>
+    <label class="field"><span>Town / County</span><input name="town" autocomplete="address-level2" placeholder="e.g. Nairobi, Mombasa, Nakuru"></label>
+    <label class="field"><span>Anything else?</span><textarea name="notes" rows="2" placeholder="Colour, mileage, trade-in, finance…"></textarea></label>
+    <p class="error-msg" data-form-error hidden></p>
+    <button class="btn btn-wa btn-block" type="submit">${I.wa} Send order via WhatsApp</button>
+    <p class="hint" style="text-align:center;margin:0">Or call <a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a> · ${site.hours}</p>
+  </form>
+  <div class="success" hidden data-success></div>
+  <script type="application/json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
+</div>`;
+};
+{
+  const cr = crumbs([['Home', '/'], ['Blog', '/blog/']]);
+  const body = `<div class="wrap">${cr.html}
+<header class="page-head"><h1>Car prices & import guides for Kenya</h1><p>Up-to-date landed prices for the cars Kenyans import most, plus clear guides to importing from Japan and the UK. Every guide links to the exact cars and versions, so you can order the spec you want.</p></header>
+${postGrid(posts)}
+</div>${ctaBand()}`;
+  const itemList = { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: posts.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/blog/${p.slug}/`), name: p.h1 })) };
+  add('/blog/', layout({ path: '/blog/', title: `Car Prices & Import Guides Kenya (${YEAR}) | ${site.name} Blog`, description: `Range Rover, Land Cruiser V8, G-Wagon, Harrier, CX-5 and Prado prices in Kenya, plus guides to importing cars from Japan and the UK to Nairobi and Mombasa.`, body, jsonld: [cr.ld, itemList], priority: 0.8 }));
+}
+for (const p of posts) {
+  const path = `/blog/${p.slug}/`;
+  const cr = crumbs([['Home', '/'], ['Blog', '/blog/'], [p.crumb, path]]);
+  const hero = mainImg(p.cars[0]);
+  const featured = p.cars.map((s) => cars.find((c) => c.slug === s));
+  const more = posts.filter((x) => x !== p);
+  const body = `<div class="wrap">${cr.html}
+<header class="page-head post-head"><span class="eyebrow">${esc(p.tag)}</span><h1>${esc(p.h1)}</h1><p>${esc(p.excerpt)}</p>
+  <p class="post-meta">By the ${site.name} import team · Updated <time datetime="${p.updated}">${fmtDate(p.updated)}</time> · ${readMin(p)} min read</p></header>
+<div class="two-col post-layout">
+  <div>
+    <img class="post-hero" src="${hero}" alt="${esc(`${p.keyword}: ${featured[0].name} imported by ${site.name}`)}" title="${esc(p.title)}" width="1200" height="800" fetchpriority="high">
+    <article class="prose post-body">${p.html}
+      <h2>${esc(p.keyword)}: FAQs</h2>${faqHtml(p.faq)}
+    </article>
+  </div>
+  <aside class="post-aside">${blogOrderForm(p)}
+    <div class="order-box"><h3 style="margin:0">Talk to our import team</h3><p class="muted small" style="margin:0">📞 <a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br>✉️ <a href="mailto:${site.email}">${site.email}</a><br>📍 ${site.address}<br>🕘 ${site.hours}</p>
+      <a class="btn btn-wa btn-block" href="${waLink(`Hi ${site.name}, I read your guide "${p.crumb}" and I'd like a quote.`)}" target="_blank" rel="noopener">${I.wa} WhatsApp ${site.phone}</a></div>
+  </aside>
+</div>
+<section class="block"><div class="section-head"><div><h2>Cars in this guide</h2><p>Open any car to compare versions, see full specs and order the exact spec.</p></div><a class="link-arrow" href="/cars/">All cars →</a></div>${grid(featured)}</section>
+<section class="block" style="padding-top:0"><div class="section-head"><div><h2>More car guides</h2></div><a class="link-arrow" href="/blog/">All guides →</a></div>${postGrid(more.slice(0, 3))}</section>
+</div>${ctaBand()}`;
+  const article = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.h1.slice(0, 110), name: p.title, description: p.description, image: [abs(hero)], datePublished: p.published, dateModified: p.updated, inLanguage: 'en-KE', keywords: p.keyword, wordCount: wordCount(p.html),
+    author: { '@type': 'Organization', name: site.name, url: site.url }, publisher: { '@id': abs('/#dealer') }, mainEntityOfPage: abs(path),
+    about: featured.map((c) => ({ '@type': 'Car', name: c.name, url: abs(`/cars/${c.slug}/`) })), areaServed: { '@type': 'Country', name: 'Kenya' } };
+  add(path, layout({ path, title: p.title, description: p.description, body, image: hero, preload: hero, priority: 0.8,
+    images: [{ loc: abs(hero), title: p.title, caption: p.keyword }], jsonld: [cr.ld, article, faqLd(p.faq)] }));
+}
+
 // Simple content pages
 function simplePage(path, h1, title, description, html, priority = 0.5, noindex = false) {
   const cr = crumbs([['Home', '/'], [h1, path]]);
@@ -543,6 +628,7 @@ simplePage('/privacy/', 'Privacy policy', `Privacy Policy | ${site.name}`, `How 
 {
   const sec = (h, links) => `<h2>${h}</h2><ul class="sitemap-list">${links.map(([t, u]) => `<li><a href="${u}">${esc(t)}</a></li>`).join('')}</ul>`;
   const html = sec('Main pages', [['Home', '/'], ['All cars', '/cars/'], ['Request a car import', '/import-request/'], ['How to import a car to Kenya', '/how-to-import-a-car-to-kenya/'], ['About', '/about/'], ['Contact', '/contact/']])
+    + sec('Blog & price guides', [['All guides', '/blog/'], ...posts.map((p) => [p.crumb, `/blog/${p.slug}/`])])
     + sec('Import from', Object.entries(ORIGINS).map(([n, o]) => [`Import cars from ${n}`, `/import-from/${o.slug}/`]))
     + sec('Body types', Object.values(BODIES).map((b) => [b.plural, `/body-type/${b.slug}/`]))
     + sec('Fuel types', Object.entries(FUELS).map(([f, o]) => [`${f} cars`, `/fuel/${o.slug}/`]))

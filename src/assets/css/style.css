@@ -385,3 +385,20 @@ table.spec th a { color: inherit; }
 .sitemap-list { columns: 1; padding-left: 1.1em; }
 @media (min-width: 640px) { .feature-list { grid-template-columns: 1fr 1fr; } .sitemap-list { columns: 2; } }
 @media (min-width: 960px) { .tiles { grid-template-columns: repeat(5, 1fr); } .sitemap-list { columns: 3; } }
+
+/* ---------- Blog ---------- */
+.eyebrow { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.post-head h1 { font-size: clamp(1.7rem, 4.6vw, 2.6rem); }
+.post-meta { font-size: .9rem !important; color: var(--muted) !important; margin: 0; }
+.post-hero { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); margin-bottom: 24px; background: #e9e5dc; }
+.post-body { max-width: none; overflow-wrap: break-word; }
+.post-body h2 { margin-top: 1.6em; }
+.post-body table caption { caption-side: top; }
+.post-body .spec-table-wrap { margin: 0 0 1em; }
+.post-cta { margin: 1.4em 0; }
+.post-cta a { font-weight: 600; }
+.post-aside { display: grid; gap: 16px; align-content: start; }
+.blog-order-h { font-size: 1.25rem; margin: 0 0 4px; }
+.post-card .body p { overflow-wrap: break-word; }
+table.spec.post-table { width: 100%; min-width: 520px; }
+table.spec.post-table th[scope="row"] { font-weight: 600; }
