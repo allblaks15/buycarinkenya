@@ -110,7 +110,7 @@ ${h.specs('mazda-cx-3')}
 
 ${h.specs('toyota-rush')}
 
-<p>The Rush is rare among compact SUVs because it offers a third row. However, the third row suits children best. Moreover, it uses a rear-wheel-drive layout that is simple and tough. Therefore, it appeals to families in smaller towns who want space and durability on a modest budget.</p>
+<p>The Rush is rare among compact SUVs because it offers a third row. However, the third row suits children best. Moreover, it uses a rear-wheel-drive layout that is simple and tough. Therefore, it appeals to families in smaller towns who want space and durability on a modest, sensible budget and want proven Toyota reliability.</p>
 
 <h2>Where we deliver</h2>
 <p>We serve buyers across Nairobi, including Kilimani, South B, South C, Syokimau, Kitengela, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Machakos, Meru, Kakamega and Kericho. At the coast, we serve Mombasa, Nyali and Diani.</p>
