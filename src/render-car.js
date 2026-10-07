@@ -85,7 +85,6 @@ export function makeRenderCar(h) {
       </tbody></table>
       <div class="sel"><div class="price-from"><small>Est. landed price</small><b class="num" data-spec="price">${range(...sel.price)}</b></div></div>
       <button class="btn btn-primary btn-block" type="button" data-open-order>Order this spec</button>
-      <a class="btn btn-wa btn-block" data-quick-wa href="${waLink(`Hi, I am interested in importing the ${full} with ${site.name}.\n\nMake: ${c.make}\nModel: ${c.model}\nVersion: ${sel.name}\nEst. landed price: ${range(...sel.price)}\n\n${abs(path)}\n\nPlease send me a quote.`)}" target="_blank" rel="noopener">${I.wa} Ask on WhatsApp</a>
       <a class="btn btn-ghost btn-block" href="/import-request/?car=${c.slug}" data-request-link>Request a different year / spec</a>
       <p class="disclaimer">Indicative price for a ${MIN_YEAR}+ unit, including shipping, KRA taxes, clearing and registration. Final price is confirmed in your free written quote.</p>
     </div>

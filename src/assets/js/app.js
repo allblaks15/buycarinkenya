@@ -144,7 +144,6 @@
     const byId = Object.fromEntries(carData.variants.map((v) => [v.id, v]));
     // Link to the exact version page (or the model page when there is only one version)
     const carLink = (v) => carData.variants.length > 1 ? `${carData.base}${v.id}/` : carData.base;
-    const quickWa = $('[data-quick-wa]');
     let current = byId[carData.defaultId] || carData.variants[0];
     const orderSelect = $('#order-variant');
     const reqLink = $('[data-request-link]');
@@ -160,8 +159,6 @@
       if (orderSelect) orderSelect.value = v.id;
       const r = $(`input[name="pick-variant"][value="${v.id}"]`); if (r) r.checked = true;
       if (reqLink) reqLink.href = `/import-request/?car=${carData.slug}&variant=${encodeURIComponent(v.name)}`;
-      if (quickWa) quickWa.href = waUrl(`Hi, I am interested in importing the *${carData.name} ${v.name}* with ${EM.name}.\n\n` +
-        `🏷️ *Make:* ${carData.make}\n📋 *Model:* ${carData.model}\n🔧 *Version:* ${v.name}\n💰 *Est. landed price:* ${v.price}\n\n🔗 ${carLink(v)}\n\nPlease send me a quote.`);
     };
     $$('input[name="pick-variant"]').forEach((r) => r.addEventListener('change', () => setVariant(r.value)));
     orderSelect?.addEventListener('change', () => setVariant(orderSelect.value));
