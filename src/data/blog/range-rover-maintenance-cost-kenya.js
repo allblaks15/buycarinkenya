@@ -15,9 +15,9 @@ export default (h) => {
     cars: ['land-rover-range-rover-sport', 'land-rover-range-rover-vogue', 'land-rover-range-rover-velar', 'land-rover-range-rover-evoque', 'land-rover-discovery', 'land-rover-defender'],
     html: `
 <p>The <b>Range Rover maintenance cost in Kenya</b> is the question every buyer should ask before the purchase price. A Range Rover is a superb car to drive. However, it rewards owners who maintain it properly and punishes those who do not. Therefore, understanding the real running costs helps you buy the right car and keep it healthy.</p>
-<p>This guide covers servicing, spare parts, air suspension, common problems, fuel consumption, tyres, insurance and security. It applies to the Range Rover Sport, full-size Range Rover, Velar, Evoque, Discovery and Defender. Furthermore, it explains how buying the right import from Elisa Motors keeps those costs down from day one.</p>
+<p>This guide covers servicing, spare parts, air suspension, common problems, fuel consumption, tyres, insurance and security. It applies to the Range Rover Sport, full-size Range Rover, Velar, Evoque, Discovery and Defender. Furthermore, it explains how buying the right import from Buy Car in Kenya keeps those costs down from day one.</p>
 <p>We do not quote fixed repair prices here, because they change with parts supply and exchange rates. Instead, we explain what to expect and how to plan. For a current estimate on a specific job, ask a Land Rover specialist for a written quote.</p>
-${cta('Thinking about a Range Rover?', 'We can recommend the most reliable versions for your budget.', 'Hi Elisa Motors, which Range Rover is cheapest to maintain?')}
+${cta('Thinking about a Range Rover?', 'We can recommend the most reliable versions for your budget.', 'Hi Buy Car in Kenya, which Range Rover is cheapest to maintain?')}
 
 <h2>Is a Range Rover expensive to maintain in Kenya?</h2>
 <p>Compared with a Toyota, yes. Parts cost more, labour takes longer and some jobs need diagnostic software. However, the gap is often exaggerated. In fact, many high repair bills in Kenya come from buying old, neglected cars rather than from the cars themselves.</p>
@@ -71,7 +71,7 @@ ${cta('Thinking about a Range Rover?', 'We can recommend the most reliable versi
 <p>The new ${c('land-rover-defender', 'Defender')} is complex but well built. Later model years have proven more reliable than early ones.</p>
 
 <h2>Our services: buying a Range Rover that is cheaper to own</h2>
-<p>The best way to cut maintenance costs is to buy the right car. Here is how Elisa Motors helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>The best way to cut maintenance costs is to buy the right car. Here is how Buy Car in Kenya helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Sourcing younger, low-mileage cars</h3>
 <p>We source ${MIN_YEAR}-or-newer cars from the UK and Japan with verified mileage. Younger cars have fresher suspension, cooling and electronics. As a result, they need far less work in the first years.</p>
@@ -101,7 +101,7 @@ ${cta('Thinking about a Range Rover?', 'We can recommend the most reliable versi
 <p>After delivery, we stay in touch. We recommend trusted specialists, parts suppliers and insurers. Moreover, we answer questions on WhatsApp whenever you need help.</p>
 <p>Many clients come back for their next car, which is the best measure of our service.</p>
 
-${cta('Want a low-maintenance Range Rover?', 'We will shortlist cars with full history and verified mileage.', 'Hi Elisa Motors, I want a Range Rover with full service history.')}
+${cta('Want a low-maintenance Range Rover?', 'We will shortlist cars with full history and verified mileage.', 'Hi Buy Car in Kenya, I want a Range Rover with full service history.')}
 
 <h2>Range Rover reliability: honest verdict</h2>
 <p>Range Rovers have a mixed reliability reputation. However, newer models are noticeably better than those from ten years ago. Moreover, most problems come from neglect, poor fuel and wrong oil.</p>
@@ -137,8 +137,8 @@ ${cta('Want a low-maintenance Range Rover?', 'We will shortlist cars with full h
 <h2>Other Land Rover and Range Rover guides</h2>
 <p>Compare models in our <a href="/blog/range-rover-price-in-kenya/">Range Rover price guide</a>, <a href="/blog/range-rover-sport-price-in-kenya/">Range Rover Sport guide</a>, <a href="/blog/range-rover-vogue-price-in-kenya/">Range Rover Vogue guide</a>, <a href="/blog/range-rover-velar-price-in-kenya/">Velar guide</a>, <a href="/blog/range-rover-evoque-price-in-kenya/">Evoque guide</a>, <a href="/blog/land-rover-defender-price-in-kenya/">Defender guide</a> and <a href="/blog/land-rover-discovery-price-in-kenya/">Discovery guide</a>.</p>
 
-<h2>Talk to Elisa Motors</h2>
-<p>Want a Range Rover that is easier to own? Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I want advice on Range Rover running costs.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">import guide</a>, browse <a href="/cars/">all cars</a> or <a href="/contact/">contact us</a>.</p>
+<h2>Talk to Buy Car in Kenya</h2>
+<p>Want a Range Rover that is easier to own? Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I want advice on Range Rover running costs.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">import guide</a>, browse <a href="/cars/">all cars</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['Is a Range Rover expensive to maintain in Kenya?', 'It costs more than a Japanese SUV, mainly because of parts prices, air suspension and diagnostic needs. However, a younger, well-maintained car with full history usually needs only routine servicing for several years.'],

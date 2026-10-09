@@ -16,8 +16,8 @@ export default (h) => {
     html: `
 <p><b>Mercedes-Benz SUV prices in Kenya</b> range from about <b>${F('mercedes-benz-gla')}</b> for a compact GLA to over <b>${T('mercedes-benz-gls')}</b> for a Maybach GLS. In between sit the GLB, GLC, GLE and the iconic G-Class. As a result, there is a Mercedes SUV for young professionals, growing families and senior executives alike.</p>
 <p>However, the range can be confusing. Names change, engines vary and each model has coupe or AMG versions. Therefore, this guide explains every Mercedes SUV you can import in ${YEAR}, with landed prices, strengths and the type of buyer each suits.</p>
-<p>Furthermore, we explain running costs and how Elisa Motors imports any Mercedes SUV from the UK or Japan with one fixed price in Kenya shillings.</p>
-${cta('Want a Mercedes SUV quote?', 'Tell us the model, engine and budget.', 'Hi Elisa Motors, I want a quote for a Mercedes-Benz SUV.')}
+<p>Furthermore, we explain running costs and how Buy Car in Kenya imports any Mercedes SUV from the UK or Japan with one fixed price in Kenya shillings.</p>
+${cta('Want a Mercedes SUV quote?', 'Tell us the model, engine and budget.', 'Hi Buy Car in Kenya, I want a quote for a Mercedes-Benz SUV.')}
 
 <h2>Mercedes-Benz SUV price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer cars, including shipping, duty, clearing and registration.</p>
@@ -54,7 +54,7 @@ ${h.specs('mercedes-benz-gle')}
 <p>Diesel versions such as the 220d, 300d and 400d are economical on long trips. In contrast, petrol versions are smoother in town. Meanwhile, plug-in hybrids such as the GLC 300e and GLE 350de suit owners with home charging. Browse <a href="/fuel/diesel/">diesel cars</a> and <a href="/fuel/hybrid/">hybrid cars</a>.</p>
 
 <h2>Our services: Mercedes SUV imports across Kenya</h2>
-<p>Elisa Motors handles every step of your Mercedes import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
+<p>Buy Car in Kenya handles every step of your Mercedes import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
 
 <h3>1. UK sourcing with dealer history</h3>
 <p>The UK offers right-hand-drive Mercedes SUVs with full dealer history. Many are approved-used cars with warranties. We search for your model, engine, trim and colour.</p>
@@ -84,7 +84,7 @@ ${h.specs('mercedes-benz-gle')}
 <p>We provide documents for bank asset finance and connect you with insurers. Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">finance and insurance guide</a>.</p>
 <p>Moreover, we advise on trackers and security.</p>
 
-${cta('Comparing a GLC and a GLE?', 'We can quote both on one page.', 'Hi Elisa Motors, please compare GLC and GLE prices.')}
+${cta('Comparing a GLC and a GLE?', 'We can quote both on one page.', 'Hi Buy Car in Kenya, please compare GLC and GLE prices.')}
 
 <h2>Mercedes SUVs vs BMW, Audi and Range Rover</h2>
 <p>The ${c('bmw-x5', 'BMW X5')} drives more sharply than the GLE. The ${c('audi-q7', 'Audi Q7')} offers seven seats and quattro grip. Meanwhile, the ${c('land-rover-range-rover-sport', 'Range Rover Sport')} offers more off-road ability and badge appeal.</p>
@@ -134,7 +134,7 @@ ${h.specs('mercedes-benz-gls')}
 <p>We serve buyers across Nairobi, including Westlands, Kilimani, Lavington, Karen, Runda, Kileleshwa and Syokimau. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali, Kilifi and Diani.</p>
 
 <h2>How to order a Mercedes SUV</h2>
-<p>Open any model page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about Mercedes SUV prices.')}. You can also browse <a href="/make/mercedes-benz/">all Mercedes-Benz models</a> or <a href="/body-type/suv/">all SUVs</a>.</p>
+<p>Open any model page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about Mercedes SUV prices.')}. You can also browse <a href="/make/mercedes-benz/">all Mercedes-Benz models</a> or <a href="/body-type/suv/">all SUVs</a>.</p>
 `,
     faq: [
       ['What is the cheapest Mercedes SUV in Kenya?', `The Mercedes GLA is the cheapest, landing from about ${F('mercedes-benz-gla')}.`],

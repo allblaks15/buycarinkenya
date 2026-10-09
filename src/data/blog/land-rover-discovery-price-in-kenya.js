@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Land Rover Discovery price in Kenya</b> starts at about <b>${F(d)}</b> for a compliant Discovery 5 SD4 and reaches <b>${T(d)}</b> for a TD6 HSE. Meanwhile, the smaller Discovery Sport starts at about <b>${F(ds)}</b>. Both offer seven seats, which makes them popular with families in Karen, Kiambu and Nakuru.</p>
 <p>The Discovery has always been Land Rover's family 4x4. It combines real off-road ability with a practical cabin. However, the Discovery 5 and Discovery Sport are very different cars. Therefore, this guide explains both, so you can choose the right one.</p>
-<p>We cover landed prices, engines, trims, running costs and buying tips. Furthermore, we explain how Elisa Motors imports a Discovery from the UK or Japan with one fixed price in Kenya shillings.</p>
-${cta('Want a Discovery quote?', 'Tell us which Discovery, engine and colour you want.', 'Hi Elisa Motors, I want a quote for a Land Rover Discovery.')}
+<p>We cover landed prices, engines, trims, running costs and buying tips. Furthermore, we explain how Buy Car in Kenya imports a Discovery from the UK or Japan with one fixed price in Kenya shillings.</p>
+${cta('Want a Discovery quote?', 'Tell us which Discovery, engine and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Land Rover Discovery.')}
 
 <h2>Land Rover Discovery price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer units. They include shipping, KRA duty, clearing and registration.</p>
@@ -46,7 +46,7 @@ ${h.specs(d)}
 ${h.specs(ds)}
 
 <h2>Our services: Discovery imports across Kenya</h2>
-<p>Elisa Motors manages your whole Discovery import. Here is what we do for families and businesses in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya manages your whole Discovery import. Here is what we do for families and businesses in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Discovery sourcing from the UK</h3>
 <p>The UK has the widest choice of Discovery 5 and Discovery Sport models. Approved-used cars come with warranties and full service records. We search for your engine, trim, colour and budget.</p>
@@ -76,7 +76,7 @@ ${h.specs(ds)}
 <p>We provide pro-forma invoices and documents for bank asset finance. In addition, we connect you with insurers and tracking providers.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance and insurance guide</a>.</p>
 
-${cta('Comparing a Discovery and a Prado?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare Discovery 5 and Prado prices.')}
+${cta('Comparing a Discovery and a Prado?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare Discovery 5 and Prado prices.')}
 
 <h2>Discovery vs Prado vs Volvo XC90</h2>
 <p>The ${c('toyota-land-cruiser-prado', 'Toyota Prado')} wins on reliability, parts supply and resale value. It is also simpler to maintain upcountry. However, the Discovery 5 is more comfortable on tarmac and has a roomier third row.</p>
@@ -136,7 +136,7 @@ ${cta('Comparing a Discovery and a Prado?', 'We can quote both side by side.', '
 
 <h2>How to order a Land Rover Discovery</h2>
 <p>Open the ${c(d, 'Discovery')} or ${c(ds, 'Discovery Sport')} page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Land Rover Discovery.')}. You can also browse <a href="/make/land-rover/">Land Rover models</a>, see our <a href="/body-type/suv/">SUV range</a> or <a href="/contact/">contact us</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Land Rover Discovery.')}. You can also browse <a href="/make/land-rover/">Land Rover models</a>, see our <a href="/body-type/suv/">SUV range</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much is a Land Rover Discovery 5 in Kenya?', `A compliant Discovery 5 lands in Kenya from about ${F(d)} for the SD4 HSE. The TD6 HSE costs about ${P(d, 'td6-hse-3-0')}.`],

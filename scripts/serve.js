@@ -22,5 +22,5 @@ http.createServer(async (req, res) => {
     return;
   }
   const notFound = await read(join(root, '404.html'));
-  res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' }).end(notFound || '<p style="font:18px sans-serif;padding:40px">Elisa Motors is being built… refresh in a minute.</p>');
+  res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' }).end(notFound || '<p style="font:18px sans-serif;padding:40px">Buy Car in Kenya is being built… refresh in a minute.</p>');
 }).listen(port, () => console.log(`Preview: http://localhost:${port}`));

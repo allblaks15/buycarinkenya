@@ -15,9 +15,9 @@ export default (h) => {
     cars: ['toyota-aqua', 'toyota-harrier', 'toyota-land-cruiser-prado', 'mazda-cx-5', 'toyota-hiace', 'toyota-probox'],
     html: `
 <p><b>NTSA registration of an imported car in Kenya</b> is the final official step before you can drive legally. After your car clears customs at Mombasa, it must be registered with the National Transport and Safety Authority (NTSA). Registration gives the car Kenyan number plates and a logbook in the owner's name. Therefore, it turns an imported vehicle into a Kenyan vehicle.</p>
-<p>This guide explains the documents needed, how plates and logbooks work, typical timelines, transfer of ownership and common problems. Moreover, it explains how Elisa Motors registers every car we import.</p>
+<p>This guide explains the documents needed, how plates and logbooks work, typical timelines, transfer of ownership and common problems. Moreover, it explains how Buy Car in Kenya registers every car we import.</p>
 <p>NTSA procedures and fees change from time to time and are handled through its online systems. As a result, always check the current requirements on official channels or with your importer.</p>
-${cta('Need a car registered?', 'We handle NTSA registration after clearing.', 'Hi Elisa Motors, can you register my imported car with NTSA?')}
+${cta('Need a car registered?', 'We handle NTSA registration after clearing.', 'Hi Buy Car in Kenya, can you register my imported car with NTSA?')}
 
 <h2>When does registration happen?</h2>
 <p>Registration follows customs clearance. Once KRA has assessed and received duty and the car is released, the customs data is used for registration. In practice, registration and plate allocation often happen soon after release. Read our <a href="/blog/mombasa-port-car-clearing-guide/">Mombasa clearing guide</a>.</p>
@@ -53,7 +53,7 @@ ${cta('Need a car registered?', 'We handle NTSA registration after clearing.', '
 ${h.specs('toyota-aqua', 'Example: Toyota Aqua landed prices including registration')}
 
 <h2>Our services: registration handled for you</h2>
-<p>Elisa Motors registers cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya registers cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Correct owner details from the start</h3>
 <p>We confirm your name and KRA PIN before shipping. As a result, customs and NTSA records match.</p>
@@ -83,7 +83,7 @@ ${h.specs('toyota-aqua', 'Example: Toyota Aqua landed prices including registrat
 <p>We help with transfer questions when you later sell. Moreover, we advise on insurance and tracking.</p>
 <p>WhatsApp us anytime.</p>
 
-${cta('Buying a car to import?', 'We handle everything up to registration.', 'Hi Elisa Motors, I want an import with registration included.')}
+${cta('Buying a car to import?', 'We handle everything up to registration.', 'Hi Buy Car in Kenya, I want an import with registration included.')}
 
 <h2>Step by step: from release to plates</h2>
 <p>Here is how registration usually flows. First, customs release confirms duty is paid and the car is cleared. Next, the vehicle and owner details are captured for registration. Then a registration number is allocated from the current series. After that, plates are produced and fitted. Finally, the logbook record is created in the owner's name.</p>
@@ -127,7 +127,7 @@ ${h.specs('toyota-land-cruiser-prado', 'Example: Toyota Prado landed prices incl
 <p>We serve buyers across Nairobi, including Westlands, Kilimani, Karen, South C, Syokimau and Ruaka. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali, Kilifi and Malindi.</p>
 
 <h2>Talk to us</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about NTSA registration.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about NTSA registration.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
 `,
     faq: [
       ['When is an imported car registered with NTSA?', 'After customs clearance and release at Mombasa. Registration uses the customs data and owner details.'],

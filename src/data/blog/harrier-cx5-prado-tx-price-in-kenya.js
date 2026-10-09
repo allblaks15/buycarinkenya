@@ -16,8 +16,8 @@ export default (h) => {
     cars: [har, cx5, pr, 'subaru-forester', 'nissan-x-trail', 'toyota-rav4', 'mazda-cx-8', 'toyota-fortuner'],
     html: `
 <p>The <b>Toyota Harrier, Mazda CX-5 and Prado TX price in Kenya</b> covers a wide range. A compliant Mazda CX-5 lands from about <b>${F(cx5)}</b>. A Toyota Harrier starts near <b>${F(har)}</b>. Meanwhile, a Land Cruiser Prado TX begins around <b>${F(pr)}</b>. These three SUVs dominate driveways from Kileleshwa to Kisumu, so choosing between them matters.</p>
-<p>This guide compares all three on price, fuel, running costs, comfort and resale value. Furthermore, it lists every version with its landed price. Finally, it explains how Elisa Motors imports your choice from Japan with one fixed KES quote.</p>
-${cta('Want quotes for all three?', 'We can price a Harrier, CX-5 and Prado TX side by side.', 'Hi Elisa Motors, please compare Harrier, CX-5 and Prado TX prices for me.')}
+<p>This guide compares all three on price, fuel, running costs, comfort and resale value. Furthermore, it lists every version with its landed price. Finally, it explains how Buy Car in Kenya imports your choice from Japan with one fixed KES quote.</p>
+${cta('Want quotes for all three?', 'We can price a Harrier, CX-5 and Prado TX side by side.', 'Hi Buy Car in Kenya, please compare Harrier, CX-5 and Prado TX prices for me.')}
 
 <h2>Harrier, CX-5 and Prado TX price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer units. They include shipping, KRA duty, clearing and registration. Each row links to a full specs page.</p>
@@ -45,7 +45,7 @@ ${table([cx5, har, pr], 'Mazda CX-5, Toyota Harrier and Prado landed prices in K
 <p>KDSS is Toyota's Kinetic Dynamic Suspension System. It improves wheel travel off-road and body control on tarmac. However, it adds cost if repairs are needed. Non-KDSS Prados are simpler and slightly cheaper to maintain.</p>
 
 <h2>Our services: Harrier, CX-5 and Prado imports across Kenya</h2>
-<p>Elisa Motors handles every step from the Japanese auction to your door. Here is what we do for SUV buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya handles every step from the Japanese auction to your door. Here is what we do for SUV buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Japan auction sourcing for Nairobi SUV buyers</h3>
 <p>We bid for Harriers, CX-5s and Prados at major Japanese auctions. You choose the grade, colour, mileage and budget. Then we send you real cars every week.</p>
@@ -75,7 +75,7 @@ ${table([cx5, har, pr], 'Mazda CX-5, Toyota Harrier and Prado landed prices in K
 <p>Many buyers use bank asset finance or a logbook loan. We provide pro-forma invoices and documents your bank needs. Furthermore, we can connect you with insurers.</p>
 <p>Trading in your current car? Tell us what you drive. Meanwhile, we advise on its value so you can plan. Start with the <a href="/import-request/">import request form</a> or the order form on this page.</p>
 
-${cta('Not sure which SUV fits your budget?', 'Tell us how you drive, and we will recommend one.', 'Hi Elisa Motors, which SUV should I import: Harrier, CX-5 or Prado TX?')}
+${cta('Not sure which SUV fits your budget?', 'Tell us how you drive, and we will recommend one.', 'Hi Buy Car in Kenya, which SUV should I import: Harrier, CX-5 or Prado TX?')}
 
 <h2>Fuel consumption compared</h2>
 <p>The Harrier Hybrid is the clear winner at over 20 km/L. The CX-5 2.0 petrol returns about 14 km/L, while the CX-5 diesel manages about 17 km/L. By comparison, the Prado 2.7 petrol returns about 8–9 km/L, and the 2.8 diesel about 11 km/L.</p>
@@ -124,9 +124,9 @@ ${cta('Not sure which SUV fits your budget?', 'Tell us how you drive, and we wil
 <p>Choose the <b>CX-5</b> if you want the best drive and value. Choose the <b>Harrier</b> if you want comfort, style and hybrid economy. Choose the <b>Prado TX</b> if you need seven seats, murram roads or safari trips to the Mara and Samburu.</p>
 <p>On a tighter budget? Consider the ${c('subaru-forester')}, ${c('nissan-x-trail')} or ${c('toyota-rav4')}. Need seven seats on tarmac? Look at the ${c('mazda-cx-8')}. Want Prado toughness for less? Try the ${c('toyota-fortuner')}. You can also browse all <a href="/body-type/suv/">SUVs</a> or the <a href="/make/mazda/">Mazda range</a>.</p>
 
-<h2>How to order with Elisa Motors</h2>
+<h2>How to order with Buy Car in Kenya</h2>
 <p>Open the ${c(har, 'Harrier')}, ${c(cx5, 'CX-5')} or ${c(pr, 'Prado')} page, pick a version and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free quote.</p>
-<p>Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about Harrier, CX-5 or Prado prices.')} anytime during business hours. You can also <a href="/contact/">contact us</a> or read our <a href="/how-to-import-a-car-to-kenya/">import guide</a>. Ready for a bigger SUV? See our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Land Cruiser V8 price guide</a>.</p>
+<p>Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about Harrier, CX-5 or Prado prices.')} anytime during business hours. You can also <a href="/contact/">contact us</a> or read our <a href="/how-to-import-a-car-to-kenya/">import guide</a>. Ready for a bigger SUV? See our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Land Cruiser V8 price guide</a>.</p>
 `,
     faq: [
       ['How much is a Toyota Harrier in Kenya?', `A compliant Toyota Harrier lands in Kenya from about ${F(har)} for the Premium 2.0, up to ${T(har)} for the Hybrid Z E-Four. Prices include shipping, duty, clearing and registration.`],

@@ -17,7 +17,7 @@ export default (h) => {
 <p><b>QISJ inspection for cars imported to Kenya</b> is a compulsory step for most used vehicles shipped from Japan. Before a car can leave the Japanese port for Mombasa, it must pass a pre-shipment roadworthiness inspection by the agent appointed by the Kenya Bureau of Standards (KEBS). At the time of writing, that agent for Japan is QISJ (Quality Inspection Services Inc. Japan).</p>
 <p>The inspection protects Kenyan buyers and road users. It confirms the car is safe, roadworthy, within the age limit and free of dangerous radiation. However, many buyers do not understand what is checked or what happens if a car fails. Therefore, this guide explains the whole process in plain language.</p>
 <p>Inspection agents and rules can change. KEBS publishes the current appointed agents and requirements. As a result, always confirm the latest position before shipping, or work with an importer who does.</p>
-${cta('Need a car inspected and shipped?', 'We book the inspection and handle every step.', 'Hi Elisa Motors, can you handle inspection and shipping for my car?')}
+${cta('Need a car inspected and shipped?', 'We book the inspection and handle every step.', 'Hi Buy Car in Kenya, can you handle inspection and shipping for my car?')}
 
 <h2>Why Kenya requires pre-shipment inspection</h2>
 <p>Kenya's standard for used motor vehicles, KS 1515, sets rules for imported used cars. They include the age limit, right-hand drive and roadworthiness. Pre-shipment inspection checks that each car meets the standard before it is shipped. Consequently, unsafe or non-compliant vehicles are stopped in the export country rather than at Mombasa.</p>
@@ -64,7 +64,7 @@ ${cta('Need a car inspected and shipped?', 'We book the inspection and handle ev
 <p>Finally, work with an exporter or importer who pre-checks cars. As a result, you avoid delays, re-inspection fees and missed sailings.</p>
 
 <h2>Our services: inspection handled for you</h2>
-<p>Elisa Motors manages inspection for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya manages inspection for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Pre-inspection checks</h3>
 <p>We check every car against common failure points before booking. Moreover, we fix minor issues such as tyres and bulbs.</p>
@@ -94,7 +94,7 @@ ${cta('Need a car inspected and shipped?', 'We book the inspection and handle ev
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Want a car that passes first time?', 'We pre-check every unit before inspection.', 'Hi Elisa Motors, I want a pre-checked car from Japan.')}
+${cta('Want a car that passes first time?', 'We pre-check every unit before inspection.', 'Hi Buy Car in Kenya, I want a pre-checked car from Japan.')}
 
 <h2>Inspection timeline</h2>
 <p>Inspection usually happens within a few days of the car reaching the port area. Results are quick. If a re-inspection is needed, it may add several days. Therefore, plan for inspection to take about one week within the overall shipping timeline.</p>
@@ -154,7 +154,7 @@ ${h.specs('nissan-note')}
 <p>We serve buyers across Nairobi, including Kilimani, Westlands, South B, South C, Syokimau, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kakamega. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Start your Japan import</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about QISJ inspection.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a> or the <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about QISJ inspection.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a> or the <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
 `,
     faq: [
       ['What is QISJ inspection?', 'QISJ is the KEBS-appointed pre-shipment inspection agent for used vehicles from Japan at the time of writing. It checks age, roadworthiness, right-hand drive and radiation before export to Kenya.'],

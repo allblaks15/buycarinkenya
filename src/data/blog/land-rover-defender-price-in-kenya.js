@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Land Rover Defender price in Kenya</b> starts at about <b>${F(d)}</b> for a three-door Defender 90 diesel and reaches <b>${T(d)}</b> for the supercharged V8. In between sit the five-door 110, the eight-seat 130 and a range of diesel, petrol and hybrid engines. As a result, there is a Defender for city drivers in Westlands, safari operators in Narok and ranch owners in Laikipia.</p>
 <p>The new Defender arrived in 2020. It replaced the legendary old Defender that worked Kenyan farms and parks for decades. However, the new car is very different. It is a modern, comfortable luxury 4x4 with serious off-road ability. Therefore, buyers need to understand which version fits their life and budget.</p>
-<p>This guide covers every Defender you can import in ${YEAR}, landed prices in Kenya shillings, running costs, rivals and practical buying advice. Furthermore, it explains how Elisa Motors imports a Defender from the UK with one fixed price.</p>
-${cta('Want a Defender quote?', 'Tell us the body style, engine and colour you want.', 'Hi Elisa Motors, I want a quote for a Land Rover Defender.')}
+<p>This guide covers every Defender you can import in ${YEAR}, landed prices in Kenya shillings, running costs, rivals and practical buying advice. Furthermore, it explains how Buy Car in Kenya imports a Defender from the UK with one fixed price.</p>
+${cta('Want a Defender quote?', 'Tell us the body style, engine and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Land Rover Defender.')}
 
 <h2>Land Rover Defender price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer units. In practice, that means the new-generation Defender from 2020 onwards. Prices include shipping, KRA duty, clearing and NTSA registration.</p>
@@ -54,7 +54,7 @@ ${h.specs(d)}
 <p>It handles Mara tracks, Laikipia ranch roads and muddy upcountry routes with ease. However, it is more complex than an old Defender or a Land Cruiser 70. Therefore, remote operators far from a specialist should think carefully about servicing.</p>
 
 <h2>Our services: Defender imports across Kenya</h2>
-<p>Elisa Motors handles every step of your Defender import. Here is what we do for buyers in Nairobi, Nanyuki, Narok, Mombasa, Kisumu and beyond.</p>
+<p>Buy Car in Kenya handles every step of your Defender import. Here is what we do for buyers in Nairobi, Nanyuki, Narok, Mombasa, Kisumu and beyond.</p>
 
 <h3>1. Defender sourcing from the UK</h3>
 <p>The UK is the home market for the Defender and has the deepest supply. Approved-used cars come with warranties and full service histories. We search dealers and auctions for your body style, engine, trim and colour.</p>
@@ -84,7 +84,7 @@ ${h.specs(d)}
 <p>Safari operators, conservancies and NGOs often order several Defenders. We source matching units and coordinate shipping. In addition, we provide documents for bank asset finance.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance and insurance guide</a> for more.</p>
 
-${cta('Comparing a Defender and a Land Cruiser?', 'We can quote both on one page.', 'Hi Elisa Motors, please compare Defender and Land Cruiser 300 prices.')}
+${cta('Comparing a Defender and a Land Cruiser?', 'We can quote both on one page.', 'Hi Buy Car in Kenya, please compare Defender and Land Cruiser 300 prices.')}
 
 <h2>Defender vs Land Cruiser 300 vs G-Class</h2>
 <p>The ${c('toyota-land-cruiser-300', 'Land Cruiser 300')} wins on reliability, parts supply and resale value. It is the safer choice for remote areas. However, it is less comfortable on tarmac and less stylish inside.</p>
@@ -126,7 +126,7 @@ ${cta('Comparing a Defender and a Land Cruiser?', 'We can quote both on one page
 
 <h2>How to order a Land Rover Defender</h2>
 <p>Open the ${c(d, 'Land Rover Defender')} page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Land Rover Defender.')}. You can also browse <a href="/make/land-rover/">Land Rover models</a>, read our <a href="/blog/range-rover-price-in-kenya/">Range Rover price guide</a> or send an <a href="/import-request/">import request</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Land Rover Defender.')}. You can also browse <a href="/make/land-rover/">Land Rover models</a>, read our <a href="/blog/range-rover-price-in-kenya/">Range Rover price guide</a> or send an <a href="/import-request/">import request</a>.</p>
 `,
     faq: [
       ['How much is a new Land Rover Defender in Kenya?', `A compliant new-generation Defender lands in Kenya from about ${F(d)} for a Defender 90 D250. The popular 110 D250 SE costs about ${P(d, '110-d250-se')}, and the 130 D300 costs about ${P(d, '130-d300-x-dynamic-8-seat')}.`],

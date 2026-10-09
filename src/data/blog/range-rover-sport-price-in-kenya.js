@@ -16,8 +16,8 @@ export default (h) => {
     cars: [s, 'land-rover-range-rover-velar', 'land-rover-range-rover-vogue', 'bmw-x5', 'porsche-cayenne', 'mercedes-benz-gle'],
     html: `
 <p>The <b>Range Rover Sport price in Kenya</b> starts at about <b>${F(s)}</b> for a compliant HSE diesel and reaches <b>${T(s)}</b> for a new-shape Autobiography. In between sit HSE Dynamic petrols, plug-in hybrids and the fire-breathing SVR. As a result, two Range Rover Sports in the same Westlands car park can differ in value by over ten million shillings.</p>
-<p>This guide explains exactly why. It covers every engine, trim and model year you can import in ${YEAR}. Furthermore, it compares fresh imports with locally used cars in Nairobi and Mombasa. Finally, it shows how Elisa Motors brings a Range Rover Sport from the UK or Japan with one fixed price in Kenya shillings.</p>
-${cta('Want a Range Rover Sport quote?', 'Tell us the year, engine and colour you want.', 'Hi Elisa Motors, I want a quote for a Range Rover Sport.')}
+<p>This guide explains exactly why. It covers every engine, trim and model year you can import in ${YEAR}. Furthermore, it compares fresh imports with locally used cars in Nairobi and Mombasa. Finally, it shows how Buy Car in Kenya brings a Range Rover Sport from the UK or Japan with one fixed price in Kenya shillings.</p>
+${cta('Want a Range Rover Sport quote?', 'Tell us the year, engine and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Range Rover Sport.')}
 
 <h2>Range Rover Sport price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer units. They include shipping, KRA duty, clearing and NTSA registration. Each row opens a full specification page.</p>
@@ -54,7 +54,7 @@ ${table([s], 'Range Rover Sport landed prices in Kenya')}
 ${h.specs(s)}
 
 <h2>Our services: Range Rover Sport imports across Kenya</h2>
-<p>Elisa Motors handles every step of your Range Rover Sport import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya handles every step of your Range Rover Sport import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Range Rover Sport sourcing from the UK</h3>
 <p>The UK has the largest supply of right-hand-drive Range Rover Sports anywhere. We search Land Rover approved-used dealers, main-dealer part exchanges and trade auctions. Then we shortlist cars that match your year, engine, trim and colour.</p>
@@ -84,7 +84,7 @@ ${h.specs(s)}
 <p>We provide pro-forma invoices and documents for bank asset finance. In addition, we connect you with insurers and tracking providers. Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance and insurance guide</a> for details.</p>
 <p>After delivery, we recommend trusted Land Rover specialists in Nairobi. As a result, your Sport stays healthy long after the import.</p>
 
-${cta('Comparing a diesel and a hybrid Sport?', 'We can quote both on one page.', 'Hi Elisa Motors, please compare Range Rover Sport diesel and hybrid prices.')}
+${cta('Comparing a diesel and a hybrid Sport?', 'We can quote both on one page.', 'Hi Buy Car in Kenya, please compare Range Rover Sport diesel and hybrid prices.')}
 
 <h2>Range Rover Sport vs its rivals</h2>
 <p>The ${c('bmw-x5', 'BMW X5')} drives more sharply and costs less, from about ${F('bmw-x5')}. The ${c('porsche-cayenne', 'Porsche Cayenne')} is the sportiest but costs more to run. Meanwhile, the ${c('mercedes-benz-gle', 'Mercedes GLE')} offers comfort and technology at a similar price.</p>
@@ -123,7 +123,7 @@ ${cta('Comparing a diesel and a hybrid Sport?', 'We can quote both on one page.'
 
 <h2>How to order a Range Rover Sport</h2>
 <p>Open the ${c(s, 'Range Rover Sport')} page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Range Rover Sport.')}. You can also browse all <a href="/make/land-rover/">Land Rover models</a>, read our <a href="/how-to-import-a-car-to-kenya/">import guide</a> or send an <a href="/import-request/">import request</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Range Rover Sport.')}. You can also browse all <a href="/make/land-rover/">Land Rover models</a>, read our <a href="/how-to-import-a-car-to-kenya/">import guide</a> or send an <a href="/import-request/">import request</a>.</p>
 `,
     faq: [
       ['How much is a Range Rover Sport in Kenya?', `In ${YEAR}, a compliant Range Rover Sport lands from about ${F(s)} for an HSE diesel. The HSE Dynamic P400 costs about ${P(s, 'hse-dynamic-p400')}, and the new-shape Autobiography D350 costs about ${P(s, 'autobiography-d350-l461')}.`],

@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Mercedes G63 AMG price in Kenya</b> sits at about <b>${P(g, 'g63-amg')}</b> for a compliant, landed car. That figure covers shipping, KRA duty, clearing and registration. However, options, special editions and conversions can push it much higher. Therefore, two G63s on the same Westlands street can differ in value by millions of shillings.</p>
 <p>The G63 is the most famous version of the Mercedes G-Class. Its 4.0-litre biturbo V8 makes 585 hp, and its side-exit exhausts are unmistakable. In fact, few cars draw as much attention on the Nairobi Expressway or outside Villa Rosa Kempinski.</p>
-<p>This guide explains G63 prices by year, special editions, Brabus builds, armoured options and running costs. Furthermore, it shows how Elisa Motors imports a G63 from the UK or Japan with one fixed price in Kenya shillings.</p>
-${cta('Want a G63 quote?', 'Tell us the year, colour and options you want.', 'Hi Elisa Motors, I want a quote for a Mercedes G63 AMG.')}
+<p>This guide explains G63 prices by year, special editions, Brabus builds, armoured options and running costs. Furthermore, it shows how Buy Car in Kenya imports a G63 from the UK or Japan with one fixed price in Kenya shillings.</p>
+${cta('Want a G63 quote?', 'Tell us the year, colour and options you want.', 'Hi Buy Car in Kenya, I want a quote for a Mercedes G63 AMG.')}
 
 <h2>G-Class price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer cars. That means the new-shape W463A G-Class launched in 2018.</p>
@@ -60,7 +60,7 @@ ${h.specs(g)}
 <p>Always check the VIN, logbook and engine details before buying a local "G63". Read our <a href="/blog/g-wagon-maintenance-cost-kenya/">G-Wagon maintenance guide</a> for common issues on older cars.</p>
 
 <h2>Our services: G63 imports across Kenya</h2>
-<p>Elisa Motors handles every step of your G63 import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
+<p>Buy Car in Kenya handles every step of your G63 import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
 
 <h3>1. G63 sourcing from the UK</h3>
 <p>The UK offers right-hand-drive G63s with full Mercedes dealer history. Many are certified pre-owned cars with warranties. We search for your year, colour and options.</p>
@@ -90,7 +90,7 @@ ${h.specs(g)}
 <p>We provide documents for bank asset finance and connect you with insurers. Moreover, we advise on trackers, steering locks and secure parking.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance and insurance guide</a>.</p>
 
-${cta('Comparing a G63 and a G400d?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare G63 and G400d prices.')}
+${cta('Comparing a G63 and a G400d?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare G63 and G400d prices.')}
 
 <h2>G63 fuel consumption and running costs</h2>
 <p>The G63 returns roughly 5–7 km/L on the highway and less in Nairobi traffic. Therefore, fuel is a major running cost. Brakes and tyres are also expensive, especially on 22-inch wheels.</p>
@@ -144,7 +144,7 @@ ${h.specs('mercedes-benz-gle-coupe', 'The AMG alternative: GLE Coupe versions')}
 
 <h2>How to order a G63</h2>
 <p>Open the ${c(g, 'Mercedes G-Class')} page, choose the G63 and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the G63 AMG.')}. You can also browse <a href="/make/mercedes-benz/">Mercedes-Benz models</a> or read our <a href="/blog/mercedes-benz-suv-prices-kenya/">Mercedes SUV price guide</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the G63 AMG.')}. You can also browse <a href="/make/mercedes-benz/">Mercedes-Benz models</a> or read our <a href="/blog/mercedes-benz-suv-prices-kenya/">Mercedes SUV price guide</a>.</p>
 `,
     faq: [
       ['How much is a Mercedes G63 AMG in Kenya?', `A compliant Mercedes-AMG G63 lands in Kenya at about ${P(g, 'g63-amg')}, including shipping, KRA duty, clearing and registration. Special editions and options cost more.`],

@@ -16,8 +16,8 @@ export default (h) => {
     cars: [p, 'toyota-land-cruiser-250', 'toyota-fortuner', 'toyota-hilux', 'toyota-land-cruiser-200', 'lexus-gx'],
     html: `
 <p>The Toyota Prado is one of the most reliable SUVs in Kenya. However, no car is perfect. Knowing the <b>Toyota Prado TX common problems in Kenya</b> helps you buy a good one, spot trouble early and keep repair bills low. In fact, most serious Prado problems come from poor fuel, skipped services or hard off-road use, not from weak design.</p>
-<p>This guide covers the faults Kenyan owners and mechanics see most often. It explains the 2.8 D-4D diesel, the 2.7 petrol, the KDSS suspension, bushes and shocks, the gearbox and electrical items. Moreover, it lists warning signs and prevention tips. Finally, it shows how Elisa Motors helps you import a Prado that avoids these problems.</p>
-${cta('Want a healthy, verified Prado?', 'We check every known weak point before we buy.', 'Hi Elisa Motors, I want a Prado with verified history.')}
+<p>This guide covers the faults Kenyan owners and mechanics see most often. It explains the 2.8 D-4D diesel, the 2.7 petrol, the KDSS suspension, bushes and shocks, the gearbox and electrical items. Moreover, it lists warning signs and prevention tips. Finally, it shows how Buy Car in Kenya helps you import a Prado that avoids these problems.</p>
+${cta('Want a healthy, verified Prado?', 'We check every known weak point before we buy.', 'Hi Buy Car in Kenya, I want a Prado with verified history.')}
 
 <h2>2.8 D-4D diesel (1GD-FTV) problems</h2>
 <h3>Injector wear</h3>
@@ -64,7 +64,7 @@ ${h.specs(p)}
 <p>Inspect suspension at every service. In addition, change gearbox and differential oils on schedule. Finally, fix small problems early. As a result, your Prado will last for many years.</p>
 
 <h2>Our services: importing a problem-free Prado</h2>
-<p>The best way to avoid Prado problems is to buy the right car. Here is how Elisa Motors helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>The best way to avoid Prado problems is to buy the right car. Here is how Buy Car in Kenya helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Low-mileage, verified Prados</h3>
 <p>We source ${MIN_YEAR}-or-newer Prados with verified mileage from Japan, the UK and South Africa. Younger cars have fresher injectors, turbos and suspension.</p>
@@ -94,7 +94,7 @@ ${h.specs(p)}
 <p>We deliver to Nairobi, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Nanyuki, Meru, Mombasa and Malindi. Moreover, we recommend trusted Toyota garages.</p>
 <p>Ask us anything on WhatsApp after delivery.</p>
 
-${cta('Worried about buying a problem Prado?', 'Let us inspect or source one for you.', 'Hi Elisa Motors, can you check a Prado for me?')}
+${cta('Worried about buying a problem Prado?', 'Let us inspect or source one for you.', 'Hi Buy Car in Kenya, can you check a Prado for me?')}
 
 <h2>Prado vs Land Cruiser 250 reliability</h2>
 <p>The new ${c('toyota-land-cruiser-250', 'Land Cruiser 250')} uses an updated 2.8 diesel and a modern platform. It is too new for long-term reliability data in Kenya. However, Toyota's track record suggests it will be very durable. Read our <a href="/blog/toyota-prado-price-in-kenya/">Prado price guide</a> for its prices.</p>
@@ -123,7 +123,7 @@ ${h.specs('toyota-land-cruiser-250', 'Land Cruiser 250: the new Prado')}
 <p>We serve buyers across Nairobi, including Karen, Langata, Runda, Kileleshwa, South C and Syokimau. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Meru, Machakos, Kericho and Kitale. At the coast, we serve Mombasa, Nyali, Kilifi and Malindi.</p>
 
 <h2>Talk to us</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about Prado problems.')}. You can also read our <a href="/blog/toyota-v8-fuel-consumption-maintenance-kenya/">Land Cruiser maintenance guide</a> or browse <a href="/make/toyota/">Toyota models</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about Prado problems.')}. You can also read our <a href="/blog/toyota-v8-fuel-consumption-maintenance-kenya/">Land Cruiser maintenance guide</a> or browse <a href="/make/toyota/">Toyota models</a>.</p>
 `,
     faq: [
       ['What are the most common Prado TX problems in Kenya?', 'Injector wear and DPF blockage on the 2.8 diesel, KDSS leaks, worn suspension bushes and shocks, and gearbox issues from neglected fluid are the most common.'],

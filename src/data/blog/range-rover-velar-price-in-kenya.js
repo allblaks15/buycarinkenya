@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Range Rover Velar price in Kenya</b> starts at about <b>${F(r)}</b> for a D200 R-Dynamic diesel and reaches <b>${T(r)}</b> for a P400 HSE. That places the Velar neatly between the Evoque and the Range Rover Sport. In fact, many buyers in Kilimani, Lavington and Karen choose it as the most stylish Range Rover for the money.</p>
 <p>The Velar launched in 2017 with a minimalist cabin and flush door handles. It still looks modern today. However, it is a different car from the Sport, with a lower roof and a more road-focused setup. Therefore, it pays to understand what you are buying.</p>
-<p>This guide covers every Velar version you can import in ${YEAR}, landed prices, running costs and buying tips. Furthermore, it explains how Elisa Motors imports a Velar with one fixed price in Kenya shillings.</p>
-${cta('Want a Velar quote?', 'Tell us the engine, year and colour you want.', 'Hi Elisa Motors, I want a quote for a Range Rover Velar.')}
+<p>This guide covers every Velar version you can import in ${YEAR}, landed prices, running costs and buying tips. Furthermore, it explains how Buy Car in Kenya imports a Velar with one fixed price in Kenya shillings.</p>
+${cta('Want a Velar quote?', 'Tell us the engine, year and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Range Rover Velar.')}
 
 <h2>Range Rover Velar price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer units. They include shipping, KRA duty, clearing and registration.</p>
@@ -46,7 +46,7 @@ ${table([r], 'Range Rover Velar landed prices in Kenya')}
 ${h.specs(r)}
 
 <h2>Our services: Range Rover Velar imports across Kenya</h2>
-<p>Elisa Motors handles the full Velar import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya handles the full Velar import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Velar sourcing from the UK</h3>
 <p>The UK has hundreds of Velars for sale at any time. Many are Land Rover approved-used cars with warranties and full service history. We shortlist cars that match your engine, trim, colour and budget.</p>
@@ -76,7 +76,7 @@ ${h.specs(r)}
 <p>We provide the pro-forma invoice and documents your bank needs for asset finance. In addition, we connect you with insurers and tracking firms.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance and insurance guide</a> for more.</p>
 
-${cta('Comparing a Velar and an Evoque?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare Range Rover Velar and Evoque prices.')}
+${cta('Comparing a Velar and an Evoque?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare Range Rover Velar and Evoque prices.')}
 
 <h2>Velar vs Evoque vs Range Rover Sport</h2>
 <p>The ${c('land-rover-range-rover-evoque', 'Evoque')} is smaller and cheaper, from about ${F('land-rover-range-rover-evoque')}. It suits town driving and smaller families. The Velar offers more space, a bigger boot and a more premium feel.</p>
@@ -135,7 +135,7 @@ ${cta('Comparing a Velar and an Evoque?', 'We can quote both side by side.', 'Hi
 
 <h2>How to order a Range Rover Velar</h2>
 <p>Open the ${c(r, 'Range Rover Velar')} page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Range Rover Velar.')}. You can also browse <a href="/make/land-rover/">Land Rover models</a>, read the <a href="/blog/range-rover-price-in-kenya/">Range Rover price guide</a> or <a href="/contact/">contact us</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Range Rover Velar.')}. You can also browse <a href="/make/land-rover/">Land Rover models</a>, read the <a href="/blog/range-rover-price-in-kenya/">Range Rover price guide</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much is a Range Rover Velar in Kenya?', `A compliant Range Rover Velar lands from about ${F(r)} for the D200 R-Dynamic SE. The P250 R-Dynamic HSE costs about ${P(r, 'p250-r-dynamic-hse')} and the P400 HSE about ${P(r, 'p400-hse')}.`],

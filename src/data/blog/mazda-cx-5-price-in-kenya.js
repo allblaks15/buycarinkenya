@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Mazda CX-5 price in Kenya</b> starts at about <b>${F(m)}</b> for a compliant 20S petrol and reaches <b>${T(m)}</b> for an XD diesel 4WD. That makes it one of the best-value premium-feeling SUVs on Kenyan roads. In fact, the CX-5 has become a favourite of young professionals and families from Kileleshwa to Kisumu.</p>
 <p>Mazda's KODO design, quality cabin and sharp handling make the CX-5 feel more expensive than it is. Moreover, its SkyActiv engines are efficient. However, the diesel version needs the right kind of driving. Therefore, choosing the right engine matters as much as the price.</p>
-<p>This guide covers every importable CX-5 grade, petrol vs diesel, the KF and KE generations, running costs, common issues and resale value. Furthermore, it explains how Elisa Motors imports a CX-5 from Japan with one fixed price in Kenya shillings.</p>
-${cta('Want a CX-5 quote?', 'Tell us the engine, grade and colour you want.', 'Hi Elisa Motors, I want a quote for a Mazda CX-5.')}
+<p>This guide covers every importable CX-5 grade, petrol vs diesel, the KF and KE generations, running costs, common issues and resale value. Furthermore, it explains how Buy Car in Kenya imports a CX-5 from Japan with one fixed price in Kenya shillings.</p>
+${cta('Want a CX-5 quote?', 'Tell us the engine, grade and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Mazda CX-5.')}
 
 <h2>Mazda CX-5 price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -46,7 +46,7 @@ ${h.specs(m)}
 <p>However, the diesel has a particulate filter that needs highway runs to clean itself. Short town trips can clog it and cause carbon build-up. In contrast, the petrol versions avoid these issues. Read our <a href="/blog/mazda-cx-5-diesel-problems-kenya/">CX-5 diesel problems guide</a> for detail.</p>
 
 <h2>Our services: Mazda CX-5 imports across Kenya</h2>
-<p>Elisa Motors handles every step of your CX-5 import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya handles every step of your CX-5 import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Japan auction sourcing</h3>
 <p>We bid for CX-5s at Japanese auctions within your budget. You choose the grade, engine, colour and mileage. Moreover, we explain each auction sheet.</p>
@@ -76,7 +76,7 @@ ${h.specs(m)}
 <p>We deliver to Nairobi areas including Kilimani, Kileleshwa, Westlands, South C, Syokimau and Ruaka. We also deliver to Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Nanyuki, Meru, Mombasa and Diani.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Petrol or diesel CX-5?', 'Tell us how you drive and we will advise.', 'Hi Elisa Motors, should I buy a petrol or diesel CX-5?')}
+${cta('Petrol or diesel CX-5?', 'Tell us how you drive and we will advise.', 'Hi Buy Car in Kenya, should I buy a petrol or diesel CX-5?')}
 
 <h2>CX-5 fuel consumption</h2>
 <p>The 20S returns about 14 km/L in mixed driving. The 25S returns slightly less. Meanwhile, the XD diesel returns about 16–18 km/L on the highway. Therefore, the diesel is the most economical for long trips.</p>
@@ -139,7 +139,7 @@ ${h.specs('subaru-forester', 'Subaru Forester: the all-weather rival')}
 <p>We serve buyers across Nairobi, including Kilimani, Kileleshwa, Westlands, Lavington, South B, South C, Syokimau, Ruaka and Karen. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kericho. At the coast, we serve Mombasa, Nyali and Diani.</p>
 
 <h2>How to order a Mazda CX-5</h2>
-<p>Open the ${c(m, 'Mazda CX-5')} page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Mazda CX-5.')}. You can also read our <a href="/blog/harrier-cx5-prado-tx-price-in-kenya/">Harrier, CX-5 and Prado guide</a> or browse <a href="/make/mazda/">Mazda models</a>.</p>
+<p>Open the ${c(m, 'Mazda CX-5')} page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Mazda CX-5.')}. You can also read our <a href="/blog/harrier-cx5-prado-tx-price-in-kenya/">Harrier, CX-5 and Prado guide</a> or browse <a href="/make/mazda/">Mazda models</a>.</p>
 `,
     faq: [
       ['How much is a Mazda CX-5 in Kenya?', `A compliant Mazda CX-5 lands in Kenya from about ${F(m)} for the 20S petrol. The 25S L Package 4WD costs about ${P(m, '25s-l-package-4wd')}, and the XD diesel about ${P(m, 'xd-2-2-diesel-4wd')}.`],

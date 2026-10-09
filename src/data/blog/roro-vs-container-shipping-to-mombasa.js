@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['land-rover-range-rover-sport', 'mercedes-benz-g-class', 'toyota-land-cruiser-prado', 'toyota-harrier', 'toyota-aqua', 'porsche-911'],
     html: `
 <p>Choosing between <b>RoRo vs container car shipping to Mombasa</b> affects your cost, timeline and the protection your car gets at sea. Most cars imported to Kenya travel by roll-on/roll-off (RoRo). However, container shipping is the better choice for some cars and some buyers. Therefore, understanding both helps you make the right decision.</p>
-<p>This guide explains how each method works, typical transit times from the UK and Japan, shipping lines, shared containers, marine insurance and how to track your car. Furthermore, it explains how Elisa Motors chooses and books the right shipping method for every client.</p>
-${cta('Not sure which shipping method to choose?', 'We quote both RoRo and container for your car.', 'Hi Elisa Motors, please quote RoRo and container shipping for my car.')}
+<p>This guide explains how each method works, typical transit times from the UK and Japan, shipping lines, shared containers, marine insurance and how to track your car. Furthermore, it explains how Buy Car in Kenya chooses and books the right shipping method for every client.</p>
+${cta('Not sure which shipping method to choose?', 'We quote both RoRo and container for your car.', 'Hi Buy Car in Kenya, please quote RoRo and container shipping for my car.')}
 
 <h2>What is RoRo shipping?</h2>
 <p>RoRo stands for roll-on/roll-off. The car is driven onto a specialised vessel, often called a car carrier, and secured on one of many decks. At Mombasa, it is driven off. RoRo ships carry thousands of vehicles at once.</p>
@@ -60,7 +60,7 @@ ${cta('Not sure which shipping method to choose?', 'We quote both RoRo and conta
 <p>Once your car sails, you can track the vessel using its name and online tracking tools. Your importer should share the vessel name, estimated arrival date and updates. We send WhatsApp updates at key milestones.</p>
 
 <h2>Our services: shipping handled for you</h2>
-<p>Elisa Motors ships cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya ships cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Choosing the right method</h3>
 <p>We recommend RoRo or container based on your car's value, size and timing. As a result, you get the right balance of cost and protection.</p>
@@ -90,7 +90,7 @@ ${cta('Not sure which shipping method to choose?', 'We quote both RoRo and conta
 <p>We deliver to Nairobi, Nakuru, Eldoret, Kisumu, Nyeri, Meru and other towns. Read our <a href="/blog/mombasa-to-nairobi-car-transport/">Mombasa to Nairobi transport guide</a>.</p>
 <p>You collect a ready-to-drive car.</p>
 
-${cta('Shipping a high-value car?', 'Ask us about container shipping.', 'Hi Elisa Motors, I want to ship a high-value car in a container.')}
+${cta('Shipping a high-value car?', 'Ask us about container shipping.', 'Hi Buy Car in Kenya, I want to ship a high-value car in a container.')}
 
 <h2>Step by step: a RoRo shipment from Japan</h2>
 <p>Here is how a typical RoRo shipment works. First, the car is bought at auction and moved by truck to a port yard. Next, it passes the KEBS-appointed inspection. Then the exporter books space on the next suitable vessel. On loading day, port staff drive the car onto the ship and lash it to the deck.</p>
@@ -130,7 +130,7 @@ ${h.specs('toyota-land-cruiser-prado', 'Example: Toyota Prado shipping costs in 
 <p>We serve buyers across Nairobi, including Westlands, Karen, Runda, Kilimani, Lavington, South C and Syokimau. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali, Kilifi and Malindi.</p>
 
 <h2>Start your import</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about car shipping.')}. You can also read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> and <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about car shipping.')}. You can also read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> and <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
 `,
     faq: [
       ['Is RoRo or container cheaper for shipping a car to Mombasa?', 'RoRo is usually cheaper for a single car. Shared containers can be competitive for small cars.'],

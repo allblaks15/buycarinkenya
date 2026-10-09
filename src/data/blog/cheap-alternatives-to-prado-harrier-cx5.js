@@ -16,8 +16,8 @@ export default (h) => {
     html: `
 <p>Looking for <b>cheap alternatives to the Prado, Harrier and CX-5 in Kenya</b>? You are not alone. These three are Kenya's favourite SUVs, but their prices have climbed. A compliant Prado lands from about ${F('toyota-land-cruiser-prado')}, a Harrier from ${F('toyota-harrier')} and a CX-5 from ${F('mazda-cx-5')}. Therefore, many buyers look for something that delivers most of the benefits for less money.</p>
 <p>The good news is that Japan and South Africa offer excellent alternatives. Some match the Prado's seven seats. Others match the Harrier's comfort or the CX-5's style. Moreover, several cost far less to buy and run.</p>
-<p>This guide lists the best alternatives for each car, with landed prices, strengths and weaknesses. Furthermore, it explains how Elisa Motors imports any of them with one fixed price in Kenya shillings.</p>
-${cta('Want a cheaper SUV quote?', 'Tell us your budget and must-haves.', 'Hi Elisa Motors, I want a cheaper alternative to a Prado, Harrier or CX-5.')}
+<p>This guide lists the best alternatives for each car, with landed prices, strengths and weaknesses. Furthermore, it explains how Buy Car in Kenya imports any of them with one fixed price in Kenya shillings.</p>
+${cta('Want a cheaper SUV quote?', 'Tell us your budget and must-haves.', 'Hi Buy Car in Kenya, I want a cheaper alternative to a Prado, Harrier or CX-5.')}
 
 <h2>Price list: cheaper SUV alternatives (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -62,7 +62,7 @@ ${h.specs('toyota-fortuner')}
 <p>Therefore, list your must-haves first: seats, ground clearance, fuel economy and resale. Then choose the alternative that meets them.</p>
 
 <h2>Our services: import a cheaper SUV</h2>
-<p>Elisa Motors imports all of these SUVs. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya imports all of these SUVs. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Budget-based shortlists</h3>
 <p>Tell us your budget and needs, and we shortlist the best options. For example, we can compare an X-Trail, Forester and Fortuner side by side.</p>
@@ -92,7 +92,7 @@ ${h.specs('toyota-fortuner')}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Nanyuki, Meru, Mombasa and Diani.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Not sure which alternative fits?', 'Tell us your budget and roads.', 'Hi Elisa Motors, which affordable SUV should I import?')}
+${cta('Not sure which alternative fits?', 'Tell us your budget and roads.', 'Hi Buy Car in Kenya, which affordable SUV should I import?')}
 
 <h2>Best alternative by need</h2>
 <p><b>Need seven seats and toughness?</b> Choose the Fortuner. <b>Need seven seats on a tight budget?</b> Choose the X-Trail 7-seater or Outlander. <b>Want Harrier comfort for less?</b> Choose the RAV4 or Corolla Cross. <b>Want CX-5 style for less?</b> Choose the CX-30. <b>Need rough-road ability?</b> Choose the Forester.</p>
@@ -119,7 +119,7 @@ ${h.specs('mitsubishi-outlander')}
 <p>We serve buyers across Nairobi, including Kilimani, South B, South C, Syokimau, Kitengela, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kakamega. At the coast, we serve Mombasa, Nyali and Diani.</p>
 
 <h2>Order your SUV</h2>
-<p>Use the order form on this page or browse <a href="/body-type/suv/">all SUVs</a>. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about affordable SUVs.')}. You can also read our <a href="/blog/best-suv-under-5-million-kenya/">best SUVs under 5 million guide</a>.</p>
+<p>Use the order form on this page or browse <a href="/body-type/suv/">all SUVs</a>. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about affordable SUVs.')}. You can also read our <a href="/blog/best-suv-under-5-million-kenya/">best SUVs under 5 million guide</a>.</p>
 `,
     faq: [
       ['What is a cheaper alternative to the Toyota Prado?', `The Toyota Fortuner, from about ${F('toyota-fortuner')}, is the closest alternative. The Nissan X-Trail 7-seater and Mitsubishi Outlander are cheaper still but less tough.`],

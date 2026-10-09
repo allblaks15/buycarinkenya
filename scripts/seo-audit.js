@@ -3,7 +3,7 @@ import { readdirSync, statSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = join(import.meta.dirname, '..', 'dist');
-const SITE = 'https://elisamotors.co.ke';
+const SITE = 'https://buycarinkenya.co.ke';
 const pages = [];
 const walk = (d) => readdirSync(d).forEach((f) => { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : p.endsWith('.html') && pages.push(p); });
 walk(root);

@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Toyota Prado price in Kenya</b> starts at about <b>${F(p)}</b> for a compliant TX 2.7 petrol and reaches <b>${T(p)}</b> for a TZ-G diesel. Meanwhile, the all-new Land Cruiser 250, the Prado's successor, starts near <b>${F(n)}</b>. That range covers everything from a practical family 4x4 to a luxury expedition vehicle.</p>
 <p>The Prado is often called "the king of Kenyan roads". It combines real off-road ability, seven seats and outstanding resale value. As a result, it is the default choice for families, NGOs, government officers and business owners from Nairobi to Lodwar.</p>
-<p>This guide covers every importable Prado grade, the 2.7 petrol vs 2.8 diesel debate, KDSS, the new Land Cruiser 250, running costs and buying tips. Furthermore, it explains how Elisa Motors imports a Prado from Japan, the UK or South Africa with one fixed price in Kenya shillings.</p>
-${cta('Want a Prado quote?', 'Tell us the grade, engine and colour you want.', 'Hi Elisa Motors, I want a quote for a Toyota Prado.')}
+<p>This guide covers every importable Prado grade, the 2.7 petrol vs 2.8 diesel debate, KDSS, the new Land Cruiser 250, running costs and buying tips. Furthermore, it explains how Buy Car in Kenya imports a Prado from Japan, the UK or South Africa with one fixed price in Kenya shillings.</p>
+${cta('Want a Prado quote?', 'Tell us the grade, engine and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Toyota Prado.')}
 
 <h2>Toyota Prado price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -55,7 +55,7 @@ ${h.specs(n)}
 <p>Older 2015–2018 Prados trade locally at lower prices. However, they cannot be imported again, and mileage can be hard to verify. Read our <a href="/blog/check-mileage-japanese-cars-kenya/">mileage check guide</a>.</p>
 
 <h2>Our services: Prado imports across Kenya</h2>
-<p>Elisa Motors handles every step of your Prado import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya handles every step of your Prado import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Japan auction sourcing</h3>
 <p>Japan has a large supply of TX, TX-L and TZ-G Prados with low mileage. We bid within your budget and explain every auction sheet. Read our <a href="/blog/japanese-car-auction-sheet-guide/">auction sheet guide</a>.</p>
@@ -85,7 +85,7 @@ ${h.specs(n)}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Naivasha, Eldoret, Kitale, Kisumu, Kakamega, Kericho, Nyeri, Nanyuki, Meru, Embu, Mombasa, Kilifi and Malindi. In addition, we serve Garissa, Isiolo and Lodwar for NGO fleets.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Petrol or diesel Prado?', 'Tell us how you drive and we will advise.', 'Hi Elisa Motors, should I buy a petrol or diesel Prado?')}
+${cta('Petrol or diesel Prado?', 'Tell us how you drive and we will advise.', 'Hi Buy Car in Kenya, should I buy a petrol or diesel Prado?')}
 
 <h2>Prado running costs</h2>
 <p>Toyota parts are everywhere in Kenya. Service every 5,000–10,000 km depending on use. Moreover, change the diesel fuel filter on time to protect the injectors. Tyres and suspension parts wear faster on rough roads.</p>
@@ -113,7 +113,7 @@ ${cta('Petrol or diesel Prado?', 'Tell us how you drive and we will advise.', 'H
 <p>We serve buyers across Nairobi, including Karen, Runda, Lavington, Kileleshwa, South C, Syokimau and Ruaka. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Meru, Machakos, Kericho and Kitale. At the coast, we serve Mombasa, Nyali, Kilifi and Malindi.</p>
 
 <h2>How to order a Prado</h2>
-<p>Open the ${c(p, 'Toyota Prado')} or ${c(n, 'Land Cruiser 250')} page, choose a grade and tap "Order this spec". Alternatively, use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Toyota Prado.')}. You can also browse <a href="/make/toyota/">Toyota models</a> or <a href="/contact/">contact us</a>.</p>
+<p>Open the ${c(p, 'Toyota Prado')} or ${c(n, 'Land Cruiser 250')} page, choose a grade and tap "Order this spec". Alternatively, use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Toyota Prado.')}. You can also browse <a href="/make/toyota/">Toyota models</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much is a Toyota Prado in Kenya?', `A compliant Toyota Prado lands in Kenya from about ${F(p)} for the TX 2.7 petrol. The TX 2.8 diesel costs about ${P(p, 'tx-2-8-diesel')}, and the TZ-G about ${P(p, 'tz-g-2-8-diesel')}.`],

@@ -1,4 +1,4 @@
-// Elisa Motors vehicle catalogue.
+// Buy Car in Kenya vehicle catalogue.
 // Prices are indicative landed estimates in KES millions (CIF + KRA duty + clearing, 2019+ units).
 // V(name, engineCC, fuel, horsepower, transmission, drive, economy, priceLow, priceHigh)
 import { V, J, U, JU, UJ, SA, ALL, SU, JSA, slugify } from './helpers.js';

@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Toyota Harrier price in Kenya</b> starts at about <b>${F(t)}</b> for a compliant new-shape Premium and reaches <b>${T(t)}</b> for the Hybrid Z E-Four. That makes the Harrier one of the most popular premium crossovers in Kenya. In fact, you see it everywhere from Kilimani parking lots to Kisumu's Oginga Odinga Street.</p>
 <p>The Harrier offers Lexus-like comfort at Toyota running costs. It is quiet, stylish and reliable. Moreover, its hybrid version delivers excellent fuel economy in Nairobi traffic. As a result, it appeals to professionals, families and ride-hailing drivers who want something more upmarket.</p>
-<p>This guide covers every importable Harrier grade, the old and new shapes, petrol vs hybrid, running costs, resale value and buying tips. Furthermore, it shows how Elisa Motors imports a Harrier from Japan with one fixed price in Kenya shillings.</p>
-${cta('Want a Harrier quote?', 'Tell us the grade, year and colour you want.', 'Hi Elisa Motors, I want a quote for a Toyota Harrier.')}
+<p>This guide covers every importable Harrier grade, the old and new shapes, petrol vs hybrid, running costs, resale value and buying tips. Furthermore, it shows how Buy Car in Kenya imports a Harrier from Japan with one fixed price in Kenya shillings.</p>
+${cta('Want a Harrier quote?', 'Tell us the grade, year and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Toyota Harrier.')}
 
 <h2>Toyota Harrier price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -49,7 +49,7 @@ ${h.specs(t)}
 <p>The hybrid costs more upfront but saves a lot of fuel. For example, a buyer commuting daily from Ruiru or Kitengela to the CBD will recover the extra cost over time. Moreover, the hybrid is smoother and quieter in traffic. Browse all <a href="/fuel/hybrid/">hybrid cars</a>.</p>
 
 <h2>Our services: Toyota Harrier imports across Kenya</h2>
-<p>Elisa Motors handles every step of your Harrier import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya handles every step of your Harrier import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Japan auction sourcing</h3>
 <p>Japan has thousands of Harriers at auction every month. We bid within your budget for the grade, colour and mileage you want. Moreover, we explain each auction sheet in plain English.</p>
@@ -79,7 +79,7 @@ ${h.specs(t)}
 <p>We deliver to Nairobi areas including Kilimani, Westlands, Kileleshwa, South B, Syokimau and Ruaka. We also deliver to Thika, Ruiru, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Nanyuki, Meru, Mombasa and Diani.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Comparing Harrier petrol and hybrid?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare Harrier petrol and hybrid prices.')}
+${cta('Comparing Harrier petrol and hybrid?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare Harrier petrol and hybrid prices.')}
 
 <h2>Harrier fuel consumption</h2>
 <p>The 2.0 petrol returns about 13–15 km/L in mixed driving. The hybrid returns over 20 km/L, and even more in slow Nairobi traffic. Therefore, the hybrid is the clear winner for daily commuters.</p>
@@ -140,7 +140,7 @@ ${h.specs('toyota-rav4', 'Toyota RAV4: the Harrier\'s practical sibling')}
 <p>We serve buyers across Nairobi, including Kilimani, Westlands, Lavington, Kileleshwa, South B, South C, Syokimau, Ruaka and Karen. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru, Kericho and Kakamega. At the coast, we serve Mombasa, Nyali, Kilifi and Diani.</p>
 
 <h2>How to order a Toyota Harrier</h2>
-<p>Open the ${c(t, 'Toyota Harrier')} page, choose a grade and tap "Order this spec". Alternatively, use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Toyota Harrier.')}. You can also read our <a href="/blog/harrier-cx5-prado-tx-price-in-kenya/">Harrier, CX-5 and Prado guide</a> or browse <a href="/make/toyota/">Toyota models</a>.</p>
+<p>Open the ${c(t, 'Toyota Harrier')} page, choose a grade and tap "Order this spec". Alternatively, use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Toyota Harrier.')}. You can also read our <a href="/blog/harrier-cx5-prado-tx-price-in-kenya/">Harrier, CX-5 and Prado guide</a> or browse <a href="/make/toyota/">Toyota models</a>.</p>
 `,
     faq: [
       ['How much is a Toyota Harrier in Kenya?', `A compliant Toyota Harrier lands in Kenya from about ${F(t)} for the Premium 2.0. The Z Leather Package costs about ${P(t, 'z-2-0-leather-package')}, and the Hybrid Z E-Four about ${P(t, 'hybrid-z-2-5-e-four')}.`],

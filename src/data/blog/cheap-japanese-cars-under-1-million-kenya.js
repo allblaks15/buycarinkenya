@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['nissan-march', 'toyota-passo', 'toyota-vitz', 'nissan-note', 'mazda-demio', 'honda-fit', 'toyota-aqua', 'suzuki-swift'],
     html: `
 <p>Looking for <b>cheap Japanese cars under 1 million in Kenya</b>? You still have real options, even with the 8-year rule. Several small, economical cars land in Kenya close to or under KES 1 million. Moreover, many more land under KES 1.5 million. As a result, a first car, a family runabout or a ride-hailing vehicle is within reach.</p>
-<p>However, cheap prices online often exclude duty and clearing. Therefore, this guide uses fully landed prices. It lists the best cheap Japanese cars, their strengths and weaknesses, running costs and buying tips. Furthermore, it explains how Elisa Motors imports them with one fixed price.</p>
-${cta('Have a tight budget?', 'Tell us your maximum and we will shortlist cars.', 'Hi Elisa Motors, I want a car under KES ')}
+<p>However, cheap prices online often exclude duty and clearing. Therefore, this guide uses fully landed prices. It lists the best cheap Japanese cars, their strengths and weaknesses, running costs and buying tips. Furthermore, it explains how Buy Car in Kenya imports them with one fixed price.</p>
+${cta('Have a tight budget?', 'Tell us your maximum and we will shortlist cars.', 'Hi Buy Car in Kenya, I want a car under KES ')}
 
 <h2>Cheapest Japanese cars landed in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -63,7 +63,7 @@ ${h.specs('honda-fit')}
 <p>First, verify mileage. Many small cars worked as taxis in Japan. Read our <a href="/blog/check-mileage-japanese-cars-kenya/">mileage check guide</a>. Second, check the auction grade and interior wear. Third, for hybrids, check the hybrid system. Finally, compare landed prices, not website prices.</p>
 
 <h2>Our services: cheap Japanese car imports</h2>
-<p>Elisa Motors helps budget buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya helps budget buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Budget shortlists</h3>
 <p>Tell us your maximum, and we shortlist cars that land within it. As a result, you never overspend.</p>
@@ -93,7 +93,7 @@ ${h.specs('honda-fit')}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kakamega, Kericho, Nyeri, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Ready for your first car?', 'Tell us your budget and we will find it.', 'Hi Elisa Motors, I want my first car. My budget is KES ')}
+${cta('Ready for your first car?', 'Tell us your budget and we will find it.', 'Hi Buy Car in Kenya, I want my first car. My budget is KES ')}
 
 <h2>Cheap car vs locally used car</h2>
 <p>Local yards sell older small cars for less. However, they are often outside the 8-year window, with high or unverified mileage. In contrast, a fresh import gives verified history and a known registration date. Consequently, a fresh import is often better value over a few years.</p>
@@ -118,7 +118,7 @@ ${h.specs('suzuki-swift')}
 <p>We serve buyers across Nairobi, including South B, South C, Embakasi, Kasarani, Rongai, Kitengela, Ruaka and Kikuyu. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Machakos, Meru, Kakamega and Bungoma. At the coast, we serve Mombasa, Kilifi and Malindi.</p>
 
 <h2>Order your car</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I want a cheap Japanese car.')}. You can also browse <a href="/cars/">all cars</a> or read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I want a cheap Japanese car.')}. You can also browse <a href="/cars/">all cars</a> or read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
 `,
     faq: [
       ['What is the cheapest car to import from Japan to Kenya?', `Small cars like the Nissan March and Toyota Passo are among the cheapest. The March lands from about ${F('nissan-march')}.`],

@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['land-rover-range-rover-sport', 'land-rover-range-rover-vogue', 'land-rover-range-rover-velar', 'land-rover-range-rover-evoque', 'land-rover-defender', 'land-rover-discovery'],
     html: `
 <p>If you want to <b>import a Range Rover from the UK to Kenya</b>, you are buying from the best market in the world for these cars. The UK is Land Rover's home. It has thousands of right-hand-drive Range Rovers with full dealer history at any time. As a result, Kenyan buyers get more choice, better specs and more transparency than any local yard can offer.</p>
-<p>However, a UK import has rules and risks. You must meet the KEBS 8-year rule, check for rust, verify history, pay KRA duty and clear the car at Mombasa. This guide explains every step. Furthermore, it shows how Elisa Motors handles the full process with one fixed price in Kenya shillings.</p>
-${cta('Found a Range Rover on a UK website?', 'Send us the link for a free landed-cost check.', 'Hi Elisa Motors, can you check this UK Range Rover for me? ')}
+<p>However, a UK import has rules and risks. You must meet the KEBS 8-year rule, check for rust, verify history, pay KRA duty and clear the car at Mombasa. This guide explains every step. Furthermore, it shows how Buy Car in Kenya handles the full process with one fixed price in Kenya shillings.</p>
+${cta('Found a Range Rover on a UK website?', 'Send us the link for a free landed-cost check.', 'Hi Buy Car in Kenya, can you check this UK Range Rover for me? ')}
 
 <h2>What does it cost to import a Range Rover from the UK?</h2>
 <p>Here are indicative landed prices for popular ${MIN_YEAR}-or-newer Range Rovers. They include the UK price, shipping, insurance, KRA duty, clearing and registration.</p>
@@ -59,7 +59,7 @@ ${table(['land-rover-range-rover-evoque', 'land-rover-range-rover-velar', 'land-
 <p>For most Kenyan buyers, the UK is the better source for Range Rovers. However, if a low-mileage Japanese unit appears at the right price, it can be excellent. Read our <a href="/blog/uk-vs-japan-car-imports-kenya/">UK vs Japan imports guide</a> for a full comparison.</p>
 
 <h2>Our services: Range Rover imports from the UK</h2>
-<p>Elisa Motors runs the whole UK import for you. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya runs the whole UK import for you. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. UK dealer and auction sourcing</h3>
 <p>We search approved-used dealers, independent specialists and trade auctions across the UK. You give us your model, engine, year, colour and budget. Then we shortlist real cars that match.</p>
@@ -89,7 +89,7 @@ ${table(['land-rover-range-rover-evoque', 'land-rover-range-rover-velar', 'land-
 <p>You receive one figure in Kenya shillings covering everything. No surprise top-ups at the port. Furthermore, payment terms are agreed in writing before we buy.</p>
 <p>That protects you from the most common UK import pitfalls. Read our <a href="/blog/car-import-scams-kenya/">guide to avoiding car import scams</a>.</p>
 
-${cta('Ready to import a Range Rover from the UK?', 'Tell us the model and budget for a free quote.', 'Hi Elisa Motors, I want to import a Range Rover from the UK.')}
+${cta('Ready to import a Range Rover from the UK?', 'Tell us the model and budget for a free quote.', 'Hi Buy Car in Kenya, I want to import a Range Rover from the UK.')}
 
 <h2>Importing other Land Rovers from the UK</h2>
 <p>The same process applies to the ${c('land-rover-defender', 'Land Rover Defender')}, which lands from about ${F('land-rover-defender')}, and the ${c('land-rover-discovery', 'Discovery 5')}, from about ${F('land-rover-discovery')}. In fact, the UK is the best source for every Land Rover model.</p>
@@ -129,7 +129,7 @@ ${h.specs('land-rover-range-rover-sport', 'Range Rover Sport: the most popular U
 <p>We serve buyers across Nairobi, including Westlands, Karen, Runda, Muthaiga, Lavington, Kilimani, Kileleshwa, Upper Hill and Syokimau. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Kericho and Kitale. At the coast, we serve Mombasa, Nyali, Bamburi, Kilifi, Diani and Malindi.</p>
 
 <h2>Start your UK Range Rover import</h2>
-<p>Use the order form on this page or browse <a href="/make/land-rover/">all Land Rover models</a>. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about importing a Range Rover from the UK.')}. You can also read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> and <a href="/import-from/uk/">import from UK page</a>.</p>
+<p>Use the order form on this page or browse <a href="/make/land-rover/">all Land Rover models</a>. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about importing a Range Rover from the UK.')}. You can also read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> and <a href="/import-from/uk/">import from UK page</a>.</p>
 `,
     faq: [
       ['How much does it cost to import a Range Rover from the UK to Kenya?', `It depends on the model and year. For example, a Range Rover Sport HSE SDV6 lands at about ${P('land-rover-range-rover-sport', 'hse-3-0-sdv6')}, and an Evoque D180 SE at about ${P('land-rover-range-rover-evoque', 'd180-se')}. These include shipping, KRA duty, clearing and registration.`],

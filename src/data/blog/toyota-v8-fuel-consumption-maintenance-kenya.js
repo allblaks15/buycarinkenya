@@ -16,8 +16,8 @@ export default (h) => {
     html: `
 <p><b>Toyota V8 fuel consumption and maintenance cost in Kenya</b> decide whether a Land Cruiser is a joy or a burden to own. The purchase price is only the start. Fuel, servicing, tyres, insurance and the occasional repair add up every month. Therefore, smart buyers plan for these costs before they buy.</p>
 <p>The good news is that the Land Cruiser is one of the toughest vehicles ever made. With the right care, a V8 can run hundreds of thousands of kilometres. Moreover, parts and skilled mechanics are available in every Kenyan county.</p>
-<p>This guide covers the Land Cruiser 200 V8, the newer LC300 and related models. We explain real fuel use, service schedules, common repairs, tyres, garages and practical tips. Furthermore, we show how buying the right import from Elisa Motors cuts your running costs from day one.</p>
-${cta('Thinking about a Land Cruiser?', 'We can recommend the most economical version for your driving.', 'Hi Elisa Motors, which Land Cruiser is cheapest to run?')}
+<p>This guide covers the Land Cruiser 200 V8, the newer LC300 and related models. We explain real fuel use, service schedules, common repairs, tyres, garages and practical tips. Furthermore, we show how buying the right import from Buy Car in Kenya cuts your running costs from day one.</p>
+${cta('Thinking about a Land Cruiser?', 'We can recommend the most economical version for your driving.', 'Hi Buy Car in Kenya, which Land Cruiser is cheapest to run?')}
 
 <h2>Toyota V8 fuel consumption per km</h2>
 <h3>Land Cruiser 200 4.5 V8 diesel (1VD-FTV)</h3>
@@ -64,7 +64,7 @@ ${cta('Thinking about a Land Cruiser?', 'We can recommend the most economical ve
 <p>Toyota dealers offer genuine parts and the latest software. Independent Land Cruiser specialists in Industrial Area, Ngong Road and Mombasa Road often cost less. Many owners use both, depending on the job.</p>
 
 <h2>Our services: buying a V8 that costs less to run</h2>
-<p>The best way to reduce running costs is to start with the right car. Here is how Elisa Motors helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>The best way to reduce running costs is to start with the right car. Here is how Buy Car in Kenya helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Sourcing low-mileage, well-kept units</h3>
 <p>We source Land Cruisers with verified mileage from Japan, the UK and South Africa. Younger, low-mileage cars need far fewer repairs. As a result, your first years of ownership are cheaper.</p>
@@ -94,7 +94,7 @@ ${cta('Thinking about a Land Cruiser?', 'We can recommend the most economical ve
 <p>We recommend trusted garages, parts suppliers and insurers. Moreover, we answer questions on WhatsApp whenever you need help.</p>
 <p>Many fleet clients return to us for every new vehicle.</p>
 
-${cta('Want a Land Cruiser with full history?', 'We will shortlist verified-mileage cars for you.', 'Hi Elisa Motors, I want a Land Cruiser with verified mileage.')}
+${cta('Want a Land Cruiser with full history?', 'We will shortlist verified-mileage cars for you.', 'Hi Buy Car in Kenya, I want a Land Cruiser with verified mileage.')}
 
 <h2>V8 vs Prado vs LC300 running costs</h2>
 <p>The ${c('toyota-land-cruiser-prado', 'Prado')} is the cheapest to run of the three. Its 2.8 diesel returns about 11 km/L, and parts are cheaper. The ${c('toyota-land-cruiser-300', 'LC300')} is more economical than the old V8. Meanwhile, the ${c('toyota-land-cruiser-200', 'LC200')} V8 costs the most in fuel but has very cheap, plentiful parts.</p>
@@ -138,8 +138,8 @@ ${h.specs('toyota-land-cruiser-200', 'Land Cruiser 200 versions, power and econo
 <h2>Other Land Cruiser guides</h2>
 <p>Compare models in our <a href="/blog/land-cruiser-v8-import-duty-kenya/">Land Cruiser import duty guide</a>, <a href="/blog/land-cruiser-70-series-price-in-kenya/">Land Cruiser 70 guide</a> and <a href="/blog/land-cruiser-v8-vs-nissan-patrol-vs-range-rover/">luxury 4x4 comparison</a>.</p>
 
-<h2>Talk to Elisa Motors</h2>
-<p>Want a Land Cruiser that is cheaper to own? Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I want advice on Land Cruiser running costs.')}. You can also browse <a href="/make/toyota/">Toyota models</a>, read our <a href="/how-to-import-a-car-to-kenya/">import guide</a> or <a href="/contact/">contact us</a>.</p>
+<h2>Talk to Buy Car in Kenya</h2>
+<p>Want a Land Cruiser that is cheaper to own? Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I want advice on Land Cruiser running costs.')}. You can also browse <a href="/make/toyota/">Toyota models</a>, read our <a href="/how-to-import-a-car-to-kenya/">import guide</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['What is the fuel consumption of a Toyota V8 per km in Kenya?', 'The Land Cruiser 200 4.5 V8 diesel returns about 8–10 km/L on the highway and 6–7 km/L in town. The LC300 3.3 diesel returns about 10–11 km/L on the highway.'],

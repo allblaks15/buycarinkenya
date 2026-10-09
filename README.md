@@ -1,4 +1,4 @@
-# Elisa Motors – elisamotors.co.ke
+# Buy Car in Kenya – buycarinkenya.co.ke
 
 Car import website for Kenya (Japan · UK · South Africa). It is a static site generator with no framework and no dependencies. Node builds plain HTML that any shared host (Hostinger, cPanel, Truehost, etc.) can serve.
 
@@ -7,7 +7,7 @@ Edit **`src/config.js`**:
 - `whatsapp`: your WhatsApp number, digits only, e.g. `254712345678`. Every order goes here.
 - `phone`, `email`, `address`, `hours`
 - `email` is where orders are emailed. Create this mailbox in your hosting panel.
-- `mailFrom` must be an address on **your own domain** (e.g. `orders@elisamotors.co.ke`) or hosts will reject the mail.
+- `mailFrom` must be an address on **your own domain** (e.g. `orders@buycarinkenya.co.ke`) or hosts will reject the mail.
 
 ## 2. Build
 ```bash
@@ -20,14 +20,14 @@ Upload the **contents** of `dist/` (including the hidden `.htaccess`) into `publ
 PHP must be enabled (it is on all normal shared hosting), because `send-order.php` emails the orders.
 
 After going live:
-1. Open https://elisamotors.co.ke, place a test order, and confirm the email arrives (check spam).
+1. Open https://buycarinkenya.co.ke, place a test order, and confirm the email arrives (check spam).
 2. **Google Search Console** (https://search.google.com/search-console):
-   - Add property → *URL prefix* → `https://elisamotors.co.ke/`
+   - Add property → *URL prefix* → `https://buycarinkenya.co.ke/`
    - Choose *HTML tag* verification, copy only the `content="…"` value into `googleVerification` in `src/config.js`, rebuild, re-upload, click *Verify*
    - Sitemaps → submit `sitemap.xml` (it lists all ~800 pages plus every car photo)
    - Use *URL Inspection → Request indexing* for the home page and your top 10 car pages to speed things up
 3. Optional: add the site to **Bing Webmaster Tools** (it can import from Search Console; `bingVerification` in config).
-4. Create a **Google Business Profile** for Elisa Motors. This matters a lot for "car importers Nairobi" searches.
+4. Create a **Google Business Profile** for Buy Car in Kenya. This matters a lot for "car importers Nairobi" searches.
 
 Run `npm run audit` after any change. It checks every page for canonical URL, index/follow, sitemap presence, inbound links (no orphans), unique titles and descriptions, a single H1, image alt/title text and broken links.
 

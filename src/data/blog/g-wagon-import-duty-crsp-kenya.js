@@ -16,9 +16,9 @@ export default (h) => {
     cars: [g, 'mercedes-benz-gle', 'mercedes-benz-gls', 'land-rover-range-rover-vogue', 'toyota-land-cruiser-300'],
     html: `
 <p><b>G-Wagon import duty in Kenya</b> is a large share of the price you pay for a Mercedes G-Class. Because the G-Class has one of the highest KRA valuations of any SUV, taxes can add millions of shillings. Therefore, understanding how duty works helps you budget, compare quotes and choose the right version.</p>
-<p>This guide explains KRA's CRSP valuation, each tax, why the G63 pays more than the G400d and what importing from the UK, Japan or Dubai involves. Moreover, it covers clearing at Mombasa and registration. Finally, it explains how Elisa Motors gives you one all-inclusive price.</p>
+<p>This guide explains KRA's CRSP valuation, each tax, why the G63 pays more than the G400d and what importing from the UK, Japan or Dubai involves. Moreover, it covers clearing at Mombasa and registration. Finally, it explains how Buy Car in Kenya gives you one all-inclusive price.</p>
 <p>KRA updates its values and rates from time to time. Therefore, we explain the method rather than quote fixed duty figures. For an exact number on a specific car, ask us for a written quote.</p>
-${cta('Want an exact G-Wagon duty figure?', 'Send us the version and year.', 'Hi Elisa Motors, how much duty is payable on a G-Wagon?')}
+${cta('Want an exact G-Wagon duty figure?', 'Send us the version and year.', 'Hi Buy Car in Kenya, how much duty is payable on a G-Wagon?')}
 
 <h2>G-Wagon landed prices including duty</h2>
 <p>These indicative landed prices include every KRA tax, shipping, clearing and registration for ${MIN_YEAR}-or-newer cars.</p>
@@ -64,7 +64,7 @@ ${table([g], 'Mercedes G-Class landed prices including duty in Kenya')}
 <p>After clearing, the car is registered with NTSA and receives a logbook and plates. Read our <a href="/blog/ntsa-registration-imported-car-kenya/">NTSA registration guide</a>.</p>
 
 <h2>Our services: G-Wagon imports with duty included</h2>
-<p>Elisa Motors handles every tax and every step. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
+<p>Buy Car in Kenya handles every tax and every step. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
 
 <h3>1. Exact duty before purchase</h3>
 <p>We calculate duty for the exact version and year using KRA's current CRSP schedule. As a result, you know the tax before we buy.</p>
@@ -94,7 +94,7 @@ ${table([g], 'Mercedes G-Class landed prices including duty in Kenya')}
 <p>We deliver to Karen, Runda, Muthaiga, Gigiri, Lavington and other Nairobi areas. We also deliver to Nakuru, Nanyuki, Eldoret, Kisumu, Mombasa, Nyali, Vipingo and Diani.</p>
 <p>Covered carriers protect the paint and wheels.</p>
 
-${cta('Want a duty-paid G-Wagon quote?', 'We will price the exact version you want.', 'Hi Elisa Motors, please send a duty-paid G-Wagon quote.')}
+${cta('Want a duty-paid G-Wagon quote?', 'We will price the exact version you want.', 'Hi Buy Car in Kenya, please send a duty-paid G-Wagon quote.')}
 
 ${h.specs(g, 'G-Class versions and landed prices')}
 
@@ -142,7 +142,7 @@ ${h.specs('mercedes-benz-gls', 'Mercedes GLS: a lower-duty luxury alternative')}
 <p>We serve buyers across Nairobi, including Westlands, Karen, Runda, Muthaiga, Gigiri, Lavington and Kileleshwa. We also serve Nakuru, Naivasha, Nanyuki, Eldoret and Kisumu. At the coast, we serve Mombasa, Nyali, Vipingo, Kilifi and Diani.</p>
 
 <h2>Get your G-Wagon duty quote</h2>
-<p>Use the order form on this page or open the ${c(g, 'G-Class')} page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about G-Wagon import duty.')}. You can also read our <a href="/blog/mercedes-g63-amg-price-in-kenya/">G63 price guide</a> or <a href="/contact/">contact us</a>.</p>
+<p>Use the order form on this page or open the ${c(g, 'G-Class')} page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about G-Wagon import duty.')}. You can also read our <a href="/blog/mercedes-g63-amg-price-in-kenya/">G63 price guide</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much duty is paid on a G-Wagon in Kenya?', 'Duty depends on KRA\'s CRSP value for the exact version and year, plus engine size. Taxes include import duty, excise duty, 16% VAT, IDF and RDL. We include every tax in our landed quote.'],

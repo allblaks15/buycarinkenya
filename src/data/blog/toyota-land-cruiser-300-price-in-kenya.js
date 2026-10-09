@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Toyota Land Cruiser 300 price in Kenya</b> starts at about <b>${F(l)}</b> for a GX petrol and reaches <b>${T(l)}</b> for a GR Sport diesel. That makes the LC300 one of the most expensive mainstream SUVs on Kenyan roads. However, it also holds its value better than almost any other car. As a result, it remains the first choice for executives, county governments, NGOs and safari operators.</p>
 <p>Kenyans still call it "the new V8", even though it uses twin-turbo V6 engines. The name stuck because the LC300 replaced the legendary V8 Land Cruiser 200 in 2021. In fact, it is more powerful, more efficient and more capable than the car it replaced.</p>
-<p>This guide explains every LC300 grade, engine and option. It also covers running costs, rivals and buying tips. Furthermore, it shows how Elisa Motors imports a Land Cruiser 300 from Japan, the UK or South Africa with one fixed price in Kenya shillings.</p>
-${cta('Want an LC300 quote?', 'Tell us the grade, engine and colour you want.', 'Hi Elisa Motors, I want a quote for a Toyota Land Cruiser 300.')}
+<p>This guide explains every LC300 grade, engine and option. It also covers running costs, rivals and buying tips. Furthermore, it shows how Buy Car in Kenya imports a Land Cruiser 300 from Japan, the UK or South Africa with one fixed price in Kenya shillings.</p>
+${cta('Want an LC300 quote?', 'Tell us the grade, engine and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Toyota Land Cruiser 300.')}
 
 <h2>Land Cruiser 300 price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and NTSA registration. Every LC300 built so far falls within the 8-year rule.</p>
@@ -52,7 +52,7 @@ ${h.specs(l)}
 <p>Third, resale value. Because the LC300 loses value slowly, sellers rarely discount. Read our <a href="/blog/land-cruiser-v8-import-duty-kenya/">Land Cruiser import duty guide</a> to see how taxes add up.</p>
 
 <h2>Our services: LC300 imports across Kenya</h2>
-<p>Elisa Motors handles every step of your Land Cruiser 300 import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya handles every step of your Land Cruiser 300 import. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Japan auction sourcing</h3>
 <p>Japan has the largest supply of low-mileage LC300 ZX and GR Sport units. We bid through trusted auction partners within your budget. Moreover, we explain each auction sheet in plain English.</p>
@@ -82,7 +82,7 @@ ${h.specs(l)}
 <p>We handle fleet orders for companies, NGOs and county governments. Moreover, we provide documents for bank asset finance. For security-sensitive clients, we source armoured units on special order.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance guide</a>.</p>
 
-${cta('Comparing VX, ZX and GR Sport?', 'We can quote all three on one page.', 'Hi Elisa Motors, please compare LC300 VX, ZX and GR Sport prices.')}
+${cta('Comparing VX, ZX and GR Sport?', 'We can quote all three on one page.', 'Hi Buy Car in Kenya, please compare LC300 VX, ZX and GR Sport prices.')}
 
 <h2>LC300 running costs in Kenya</h2>
 <h3>Fuel consumption</h3>
@@ -130,7 +130,7 @@ ${cta('Comparing VX, ZX and GR Sport?', 'We can quote all three on one page.', '
 
 <h2>How to order a Land Cruiser 300</h2>
 <p>Open the ${c(l, 'Land Cruiser 300')} page, choose a grade and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Land Cruiser 300.')}. You can also read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota V8 price guide</a>, browse <a href="/make/toyota/">Toyota models</a> or <a href="/contact/">contact us</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Land Cruiser 300.')}. You can also read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota V8 price guide</a>, browse <a href="/make/toyota/">Toyota models</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much is a Land Cruiser 300 in Kenya?', `A Toyota Land Cruiser 300 lands in Kenya from about ${F(l)} for the GX petrol. The VX diesel costs about ${P(l, 'vx-3-3-twin-turbo-diesel')}, and the GR Sport about ${P(l, 'gr-sport-3-3-twin-turbo-diesel')}.`],

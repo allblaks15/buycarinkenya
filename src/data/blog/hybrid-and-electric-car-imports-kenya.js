@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['toyota-aqua', 'toyota-prius', 'honda-vezel', 'nissan-note', 'nissan-leaf', 'toyota-corolla-cross', 'toyota-harrier', 'toyota-yaris-cross'],
     html: `
 <p>More Kenyans than ever want to <b>import hybrid and electric cars from Japan to Kenya</b>. Fuel prices are high, and Nairobi traffic punishes thirsty engines. Hybrids return 25–35 km/L in town. Meanwhile, electric cars can cut fuel costs to almost nothing. As a result, both are smart choices for many drivers.</p>
-<p>Japan leads the world in hybrids and has a growing supply of used EVs. However, batteries, charging and duty need careful thought. Therefore, this guide explains the best models, how duty works, battery checks, charging at home and running costs. Furthermore, it shows how Elisa Motors imports them with one fixed price.</p>
-${cta('Thinking of going hybrid or electric?', 'We will recommend the right model for your driving.', 'Hi Elisa Motors, I want to import a hybrid or electric car.')}
+<p>Japan leads the world in hybrids and has a growing supply of used EVs. However, batteries, charging and duty need careful thought. Therefore, this guide explains the best models, how duty works, battery checks, charging at home and running costs. Furthermore, it shows how Buy Car in Kenya imports them with one fixed price.</p>
+${cta('Thinking of going hybrid or electric?', 'We will recommend the right model for your driving.', 'Hi Buy Car in Kenya, I want to import a hybrid or electric car.')}
 
 <h2>Popular hybrids and EVs landed in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -63,7 +63,7 @@ ${h.specs('toyota-prius')}
 <p>Hybrids cut fuel costs sharply, especially in traffic. Servicing is similar to petrol cars, with fewer brake replacements thanks to regenerative braking. EVs cost even less to run, with no oil changes and minimal servicing. However, tyres can wear faster due to the extra weight.</p>
 
 <h2>Our services: hybrid and EV imports</h2>
-<p>Elisa Motors imports hybrids and EVs for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya imports hybrids and EVs for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Model recommendations</h3>
 <p>We recommend a hybrid, e-Power, PHEV or EV based on your driving. As a result, you choose the technology that saves you most.</p>
@@ -93,7 +93,7 @@ ${h.specs('toyota-prius')}
 <p>We deliver to Nairobi, Kiambu, Thika, Nakuru, Eldoret, Kisumu, Nyeri, Meru and Mombasa. Moreover, we advise EV buyers on home charging.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Want to cut your fuel bill?', 'We will compare hybrid and petrol costs for you.', 'Hi Elisa Motors, please compare hybrid and petrol costs for me.')}
+${cta('Want to cut your fuel bill?', 'We will compare hybrid and petrol costs for you.', 'Hi Buy Car in Kenya, please compare hybrid and petrol costs for me.')}
 
 <h2>Is a hybrid worth it for you?</h2>
 <p>Hybrids save the most money in slow, stop-start traffic. For example, a driver commuting daily from Rongai, Kitengela or Ruiru into the CBD can save a lot each month. In contrast, a driver who mostly cruises on open highways saves less, because petrol engines are already efficient at steady speeds.</p>
@@ -117,7 +117,7 @@ ${h.specs('toyota-corolla-cross')}
 <p>We serve buyers across Nairobi, including Kilimani, Westlands, South B, South C, Syokimau, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kakamega. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Order your hybrid or EV</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about hybrid and electric cars.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about hybrid and electric cars.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
 `,
     faq: [
       ['What is the best hybrid to import to Kenya?', `The Toyota Aqua is the best-value hybrid, landing from about ${F('toyota-aqua')}. The Prius, Vezel Hybrid and Corolla Cross Hybrid are also excellent.`],

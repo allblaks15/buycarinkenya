@@ -15,9 +15,9 @@ export default (h) => {
     cars: ['toyota-harrier', 'toyota-land-cruiser-prado', 'toyota-aqua', 'mazda-cx-5', 'land-rover-range-rover-sport', 'toyota-hiace'],
     html: `
 <p><b>Clearing a car at Mombasa port</b> is the step that turns an overseas purchase into a car you can drive in Kenya. Almost every imported car arrives at Kilindini Harbour, Kenya's main port. There, documents are checked, duty is paid, the car is verified and finally released. However, delays or mistakes at this stage add storage charges quickly. Therefore, understanding the process saves time and money.</p>
-<p>This guide explains each step, the documents needed, the main charges, typical timelines and how to avoid delays. Moreover, it explains whether you can clear a car yourself and how Elisa Motors clears cars for our clients.</p>
+<p>This guide explains each step, the documents needed, the main charges, typical timelines and how to avoid delays. Moreover, it explains whether you can clear a car yourself and how Buy Car in Kenya clears cars for our clients.</p>
 <p>Procedures and systems are updated from time to time. As a result, always confirm current requirements with a licensed clearing agent.</p>
-${cta('Need a car cleared at Mombasa?', 'Our clearing team handles every step.', 'Hi Elisa Motors, I need help clearing a car at Mombasa.')}
+${cta('Need a car cleared at Mombasa?', 'Our clearing team handles every step.', 'Hi Buy Car in Kenya, I need help clearing a car at Mombasa.')}
 
 <h2>Before the ship arrives</h2>
 <h3>Import Declaration Form (IDF)</h3>
@@ -64,7 +64,7 @@ ${cta('Need a car cleared at Mombasa?', 'Our clearing team handles every step.',
 ${h.specs('toyota-harrier', 'Example: Toyota Harrier landed prices including clearing')}
 
 <h2>Our services: clearing handled end to end</h2>
-<p>Elisa Motors clears cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya clears cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Documents prepared before arrival</h3>
 <p>We check every document before the ship arrives. As a result, clearing starts immediately.</p>
@@ -94,7 +94,7 @@ ${h.specs('toyota-harrier', 'Example: Toyota Harrier landed prices including cle
 <p>We deliver to Nairobi, Nakuru, Eldoret, Kisumu, Nyeri, Meru and other towns. Alternatively, collect in Mombasa.</p>
 <p>WhatsApp updates throughout.</p>
 
-${cta('Already shipped a car?', 'We can clear it for you at Mombasa.', 'Hi Elisa Motors, I already shipped a car and need clearing.')}
+${cta('Already shipped a car?', 'We can clear it for you at Mombasa.', 'Hi Buy Car in Kenya, I already shipped a car and need clearing.')}
 
 <h2>A timeline example</h2>
 <p>Here is how a smooth clearing might look for a Japanese RoRo car. On day one, the vessel berths and the car is discharged. Meanwhile, the agent confirms the manifest and lodges the customs entry. On day two, KRA assesses duty and the importer pays. On day three, the shipping line releases the delivery order after its charges are paid.</p>
@@ -130,7 +130,7 @@ ${h.specs('toyota-aqua', 'Example: Toyota Aqua landed prices including clearing'
 <p>We serve buyers across Nairobi, including Westlands, Kilimani, Karen, South C, Syokimau and Ruaka. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali, Kilifi and Malindi.</p>
 
 <h2>Talk to us</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about clearing at Mombasa.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about clearing at Mombasa.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
 `,
     faq: [
       ['How long does it take to clear a car at Mombasa?', 'With correct documents and prompt payment, often several working days to about a week after discharge. Problems can extend it.'],

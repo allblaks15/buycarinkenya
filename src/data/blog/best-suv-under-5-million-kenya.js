@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['honda-vezel', 'nissan-x-trail', 'subaru-forester', 'mazda-cx-5', 'toyota-rav4', 'toyota-harrier', 'suzuki-escudo-vitara', 'toyota-yaris-cross'],
     html: `
 <p>Finding the <b>best SUV under 5 million in Kenya</b>, or even under 3 million, is easier than you might think. Japan offers a huge choice of compliant ${MIN_YEAR}-or-newer SUVs at these budgets. However, prices you see online often exclude duty and clearing. Therefore, this guide uses fully landed prices, so you compare real numbers.</p>
-<p>We split the guide into two budgets: under KES 3 million and KES 3–5 million. For each, we list the best options, with honest pros and cons for Kenyan roads. Furthermore, we explain how Elisa Motors imports any of them with one fixed price.</p>
-${cta('Have a budget in mind?', 'Tell us your budget and we will shortlist cars.', 'Hi Elisa Motors, my SUV budget is KES ')}
+<p>We split the guide into two budgets: under KES 3 million and KES 3–5 million. For each, we list the best options, with honest pros and cons for Kenyan roads. Furthermore, we explain how Buy Car in Kenya imports any of them with one fixed price.</p>
+${cta('Have a budget in mind?', 'Tell us your budget and we will shortlist cars.', 'Hi Buy Car in Kenya, my SUV budget is KES ')}
 
 <h2>Best SUVs under KES 3 million</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration.</p>
@@ -58,7 +58,7 @@ ${h.specs('toyota-corolla-cross')}
 <p>Finally, think about resale. Toyotas hold value best in Kenya. Therefore, a slightly older Toyota can be a better buy than a newer car from a less popular brand.</p>
 
 <h2>Our services: import your budget SUV</h2>
-<p>Elisa Motors imports every SUV in this guide. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya imports every SUV in this guide. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Budget-first shortlists</h3>
 <p>Tell us your budget and must-haves. We shortlist the best options with real landed prices. As a result, you never overspend.</p>
@@ -88,7 +88,7 @@ ${h.specs('toyota-corolla-cross')}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Meru, Mombasa and Diani. Moreover, we provide documents for bank and SACCO financing.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance guide</a>.</p>
 
-${cta('Want a shortlist for your budget?', 'Send us your budget and needs.', 'Hi Elisa Motors, please shortlist SUVs for my budget.')}
+${cta('Want a shortlist for your budget?', 'Send us your budget and needs.', 'Hi Buy Car in Kenya, please shortlist SUVs for my budget.')}
 
 <h2>Hidden costs to budget for</h2>
 <p>The landed price is only part of the story. In addition, plan for comprehensive insurance, a tracker, the first service and a set of floor mats or seat covers. Moreover, budget for annual insurance renewals and regular servicing. As a result, your SUV stays reliable and insured from day one.</p>
@@ -118,7 +118,7 @@ ${h.specs('honda-vezel')}
 <p>We serve buyers across Nairobi, including Kilimani, South B, South C, Syokimau, Kitengela, Ruaka, Rongai and Embakasi. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kakamega. At the coast, we serve Mombasa, Nyali and Diani.</p>
 
 <h2>Order your SUV</h2>
-<p>Use the order form on this page or browse <a href="/body-type/suv/">all SUVs</a>. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about SUVs under 5 million.')}. You can also read our <a href="/blog/cheap-alternatives-to-prado-harrier-cx5/">cheap alternatives guide</a>.</p>
+<p>Use the order form on this page or browse <a href="/body-type/suv/">all SUVs</a>. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about SUVs under 5 million.')}. You can also read our <a href="/blog/cheap-alternatives-to-prado-harrier-cx5/">cheap alternatives guide</a>.</p>
 `,
     faq: [
       ['What is the best SUV under 3 million in Kenya?', `The Honda Vezel, Nissan X-Trail, Toyota Yaris Cross and Suzuki Vitara are top choices. For example, the Vezel lands from about ${F('honda-vezel')}.`],

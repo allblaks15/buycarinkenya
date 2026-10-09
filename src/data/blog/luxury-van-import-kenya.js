@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['mercedes-benz-v-class', 'toyota-alphard', 'toyota-vellfire', 'toyota-noah', 'nissan-serena', 'toyota-hiace'],
     html: `
 <p>Luxury vans are booming in Kenya. If you want to <b>import a luxury van to Kenya</b>, three models dominate: the Mercedes-Benz V-Class from the UK and the Toyota Alphard and Vellfire from Japan. They offer business-class comfort for families, hotels, churches, tour operators and VIP transport companies. As a result, they are increasingly common on Nairobi roads and at airport arrivals.</p>
-<p>This guide compares the three, with landed prices, seating, features and running costs. Moreover, it covers alternatives such as the Noah and Serena. Finally, it explains how Elisa Motors imports luxury vans with one fixed price.</p>
-${cta('Want a luxury van quote?', 'Tell us the model, seats and use.', 'Hi Elisa Motors, I want to import a luxury van.')}
+<p>This guide compares the three, with landed prices, seating, features and running costs. Moreover, it covers alternatives such as the Noah and Serena. Finally, it explains how Buy Car in Kenya imports luxury vans with one fixed price.</p>
+${cta('Want a luxury van quote?', 'Tell us the model, seats and use.', 'Hi Buy Car in Kenya, I want to import a luxury van.')}
 
 <h2>Luxury van landed prices in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -53,7 +53,7 @@ ${h.specs('toyota-vellfire')}
 <p>The V-Class diesel is efficient on highways. Alphard and Vellfire hybrids are economical in town. Petrol V6 versions use more fuel. In addition, servicing costs are moderate for Toyota models and higher for Mercedes.</p>
 
 <h2>Our services: luxury van imports</h2>
-<p>Elisa Motors imports luxury vans for clients in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya imports luxury vans for clients in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. UK and Japan sourcing</h3>
 <p>We source V-Class vans from UK dealers and Alphards and Vellfires from Japanese auctions. Moreover, we compare both for your needs.</p>
@@ -83,7 +83,7 @@ ${h.specs('toyota-vellfire')}
 <p>We convert Japanese screens to English and deliver to your door. Read our <a href="/blog/japanese-car-english-conversion-nairobi/">English conversion guide</a>.</p>
 <p>We deliver across Kenya.</p>
 
-${cta('V-Class or Alphard?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare V-Class and Alphard prices.')}
+${cta('V-Class or Alphard?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare V-Class and Alphard prices.')}
 
 <h2>Seat layouts explained</h2>
 <p>Luxury vans come in several layouts. The V-Class often has two rear rows that can face each other, which suits meetings. In contrast, the Alphard and Vellfire usually have two large captain's chairs in the second row and a bench in the third. Moreover, Executive Lounge versions add reclining seats with leg rests.</p>
@@ -122,7 +122,7 @@ ${h.specs('nissan-serena')}
 <p>We serve clients across Nairobi, including Westlands, Gigiri, Karen, Runda, Upper Hill and JKIA area hotels. We also serve Naivasha, Nakuru, Eldoret, Kisumu, Nanyuki and Machakos. At the coast, we serve Mombasa, Nyali, Diani, Watamu and Malindi.</p>
 
 <h2>Order your luxury van</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about luxury vans.')}. You can also browse <a href="/body-type/mpv/">all MPVs and 7–8 seaters</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about luxury vans.')}. You can also browse <a href="/body-type/mpv/">all MPVs and 7–8 seaters</a>.</p>
 `,
     faq: [
       ['How much is a Toyota Alphard in Kenya?', `A compliant Toyota Alphard lands from about ${F('toyota-alphard')}. The Executive Lounge Hybrid costs more.`],

@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['toyota-land-cruiser-300', 'toyota-land-cruiser-200', 'nissan-patrol', 'land-rover-range-rover-sport', 'lexus-lx', 'mercedes-benz-g-class'],
     html: `
 <p>Choosing between a <b>Land Cruiser V8, a Nissan Patrol and a Range Rover Sport</b> is one of the biggest car decisions a Kenyan buyer can make. All three are powerful, comfortable and capable. However, they differ sharply in reliability, running costs, comfort and resale value. Therefore, the right choice depends on how and where you drive.</p>
-<p>This guide compares them head to head. It covers landed prices, engines, comfort, off-road ability, fuel, maintenance and resale. Moreover, it adds the Lexus LX and Mercedes G-Class, which many buyers also consider. Finally, it explains how Elisa Motors can quote all of them side by side.</p>
-${cta('Want quotes for all three?', 'We can compare a V8, Patrol and Range Rover Sport on one page.', 'Hi Elisa Motors, please compare Land Cruiser, Patrol and Range Rover Sport prices.')}
+<p>This guide compares them head to head. It covers landed prices, engines, comfort, off-road ability, fuel, maintenance and resale. Moreover, it adds the Lexus LX and Mercedes G-Class, which many buyers also consider. Finally, it explains how Buy Car in Kenya can quote all of them side by side.</p>
+${cta('Want quotes for all three?', 'We can compare a V8, Patrol and Range Rover Sport on one page.', 'Hi Buy Car in Kenya, please compare Land Cruiser, Patrol and Range Rover Sport prices.')}
 
 <h2>Price comparison in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer units, including shipping, duty, clearing and registration.</p>
@@ -60,7 +60,7 @@ ${table(['toyota-land-cruiser-200', 'toyota-land-cruiser-300', 'nissan-patrol', 
 <p>Choose the <b>Lexus LX</b> if you want Land Cruiser toughness with more luxury. Finally, choose the <b>G-Class</b> if you want the ultimate statement and can afford the running costs.</p>
 
 <h2>Our services: compare and import any luxury 4x4</h2>
-<p>Elisa Motors imports all of these vehicles. Here is how we help buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya imports all of these vehicles. Here is how we help buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Side-by-side landed quotes</h3>
 <p>We price two or three vehicles on one page, including every tax and fee. As a result, you compare real numbers, not guesses.</p>
@@ -90,7 +90,7 @@ ${table(['toyota-land-cruiser-200', 'toyota-land-cruiser-300', 'nissan-patrol', 
 <p>We provide documents for bank asset finance and connect you with insurers. Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance and insurance guide</a>.</p>
 <p>Moreover, we advise on trackers and security.</p>
 
-${cta('Still undecided?', 'Tell us how you drive and we will recommend one.', 'Hi Elisa Motors, which luxury 4x4 should I import?')}
+${cta('Still undecided?', 'Tell us how you drive and we will recommend one.', 'Hi Buy Car in Kenya, which luxury 4x4 should I import?')}
 
 <h2>Best choice for common Kenyan scenarios</h2>
 <h3>Daily Nairobi commute plus weekend trips</h3>
@@ -137,7 +137,7 @@ ${h.specs('toyota-land-cruiser-200', 'Land Cruiser 200 V8 at a glance')}
 <p>We serve buyers across Nairobi, including Karen, Runda, Muthaiga, Gigiri, Lavington and Upper Hill. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Meru, Kericho and Kitale. At the coast, we serve Mombasa, Nyali, Kilifi, Malindi and Diani.</p>
 
 <h2>Get your comparison quote</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, please compare luxury 4x4 prices for me.')}. You can also read our <a href="/blog/toyota-land-cruiser-300-price-in-kenya/">LC300 guide</a>, <a href="/blog/range-rover-sport-price-in-kenya/">Range Rover Sport guide</a> or browse <a href="/body-type/suv/">all SUVs</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, please compare luxury 4x4 prices for me.')}. You can also read our <a href="/blog/toyota-land-cruiser-300-price-in-kenya/">LC300 guide</a>, <a href="/blog/range-rover-sport-price-in-kenya/">Range Rover Sport guide</a> or browse <a href="/body-type/suv/">all SUVs</a>.</p>
 `,
     faq: [
       ['Which is better in Kenya: Land Cruiser V8 or Range Rover Sport?', 'The Land Cruiser is more reliable in remote areas and holds its value better. The Range Rover Sport is more luxurious and refined on tarmac but needs specialist servicing.'],

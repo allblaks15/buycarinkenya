@@ -16,9 +16,9 @@ export default (h) => {
     cars: [g, 'mercedes-benz-gle', 'mercedes-benz-gls', 'land-rover-defender', 'toyota-land-cruiser-300', 'lexus-lx'],
     html: `
 <p>The <b>G-Wagon maintenance cost in Kenya</b> surprises many first-time owners. The purchase price gets the attention. However, fuel, servicing, tyres, brakes and insurance decide whether owning a G-Class is a pleasure or a strain. Therefore, smart buyers plan these costs before they buy.</p>
-<p>This guide covers the new-shape W463A G-Class, including the G400d, G550 and G63. It also covers older W463 cars that still trade locally. We explain fuel use, service schedules, spare parts in Nairobi, common faults, tyres, brakes and insurance. Furthermore, we show how buying the right import from Elisa Motors reduces your running costs.</p>
+<p>This guide covers the new-shape W463A G-Class, including the G400d, G550 and G63. It also covers older W463 cars that still trade locally. We explain fuel use, service schedules, spare parts in Nairobi, common faults, tyres, brakes and insurance. Furthermore, we show how buying the right import from Buy Car in Kenya reduces your running costs.</p>
 <p>Repair prices change with exchange rates and parts supply. Therefore, we explain what to expect rather than quote fixed figures. For a specific job, ask a Mercedes specialist for a written estimate.</p>
-${cta('Thinking about a G-Wagon?', 'We can recommend the most sensible version for your budget.', 'Hi Elisa Motors, which G-Wagon is cheapest to run?')}
+${cta('Thinking about a G-Wagon?', 'We can recommend the most sensible version for your budget.', 'Hi Buy Car in Kenya, which G-Wagon is cheapest to run?')}
 
 <h2>G-Wagon fuel consumption</h2>
 <h3>G63 AMG</h3>
@@ -68,7 +68,7 @@ ${cta('Thinking about a G-Wagon?', 'We can recommend the most sensible version f
 ${h.specs(g)}
 
 <h2>Our services: buying a G-Wagon that costs less to run</h2>
-<p>The best way to control running costs is to buy the right car. Here is how Elisa Motors helps buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
+<p>The best way to control running costs is to buy the right car. Here is how Buy Car in Kenya helps buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
 
 <h3>1. Sourcing younger, low-mileage cars</h3>
 <p>We source ${MIN_YEAR}-or-newer G-Classes with verified mileage. Younger cars have fresher suspension, brakes and electronics. As a result, early ownership costs are lower.</p>
@@ -98,7 +98,7 @@ ${h.specs(g)}
 <p>We recommend trusted Mercedes specialists, parts suppliers and insurers. Moreover, we answer questions on WhatsApp whenever you need help.</p>
 <p>Many clients return for their next car.</p>
 
-${cta('Want a G-Wagon with full history?', 'We will shortlist cars with verified records.', 'Hi Elisa Motors, I want a G-Wagon with full service history.')}
+${cta('Want a G-Wagon with full history?', 'We will shortlist cars with verified records.', 'Hi Buy Car in Kenya, I want a G-Wagon with full service history.')}
 
 <h2>G-Wagon vs other luxury SUVs on running costs</h2>
 <p>The ${c('toyota-land-cruiser-300', 'Land Cruiser 300')} and ${c('lexus-lx', 'Lexus LX')} cost less to maintain thanks to Toyota parts and simpler servicing. The ${c('mercedes-benz-gle', 'Mercedes GLE')} and ${c('mercedes-benz-gls', 'GLS')} are cheaper to fuel and service than a G63. Meanwhile, the ${c('land-rover-defender', 'Defender')} sits close to the G400d.</p>
@@ -152,8 +152,8 @@ ${cta('Want a G-Wagon with full history?', 'We will shortlist cars with verified
 <h2>Where we deliver</h2>
 <p>We serve buyers across Nairobi, including Karen, Runda, Muthaiga, Gigiri, Lavington, Kilimani and Westlands. We also serve Nakuru, Naivasha, Nanyuki, Eldoret and Kisumu. At the coast, we serve Mombasa, Nyali, Vipingo, Kilifi and Diani.</p>
 
-<h2>Talk to Elisa Motors</h2>
-<p>Want a G-Wagon that is easier to own? Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I want advice on G-Wagon running costs.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">import guide</a> or <a href="/contact/">contact us</a>.</p>
+<h2>Talk to Buy Car in Kenya</h2>
+<p>Want a G-Wagon that is easier to own? Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I want advice on G-Wagon running costs.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">import guide</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much fuel does a G-Wagon use in Kenya?', 'The G63 returns roughly 5–7 km/L on the highway and less in town. The G400d diesel returns about 9–11 km/L on the highway.'],

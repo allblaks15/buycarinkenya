@@ -17,7 +17,7 @@ export default (h) => {
 <p>Searching for a <b>KRA car import duty calculator for Kenya</b>? You are not alone. Duty is the largest cost after the car itself, and it surprises many first-time importers. Understanding how KRA calculates it helps you budget accurately, compare quotes fairly and choose the right car and year.</p>
 <p>This guide explains the method step by step: the CRSP value, age depreciation, import duty, excise duty, VAT, the Import Declaration Fee and the Railway Development Levy. Moreover, it explains why your purchase invoice does not change the tax, and how hybrids and engine sizes affect it.</p>
 <p>KRA updates its CRSP schedule and tax rates from time to time. Therefore, we explain the method rather than publish fixed figures that may go out of date. For an exact amount on a specific car, ask us for a written quote.</p>
-${cta('Want an exact duty figure?', 'Send us the model, engine and year.', 'Hi Elisa Motors, please calculate duty for this car: ')}
+${cta('Want an exact duty figure?', 'Send us the model, engine and year.', 'Hi Buy Car in Kenya, please calculate duty for this car: ')}
 
 <h2>Landed prices already include duty</h2>
 <p>Every price on our website is an indicative landed price that already includes KRA taxes, shipping, clearing and registration. Here are examples:</p>
@@ -65,7 +65,7 @@ ${table(['toyota-aqua', 'toyota-corolla-fielder', 'mazda-cx-5', 'toyota-harrier'
 ${h.specs('toyota-harrier', 'Example: how engine choice changes the landed price (Toyota Harrier)')}
 
 <h2>Our services: exact duty, no surprises</h2>
-<p>Elisa Motors calculates duty for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya calculates duty for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Exact CRSP lookup</h3>
 <p>We look up the current CRSP value for your exact model and engine. As a result, our duty estimate is accurate.</p>
@@ -95,7 +95,7 @@ ${h.specs('toyota-harrier', 'Example: how engine choice changes the landed price
 <p>We deliver to Nairobi, Nakuru, Eldoret, Kisumu, Nyeri, Meru, Mombasa and other towns. Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 <p>You collect a registered car.</p>
 
-${cta('Want duty compared on two cars?', 'Send us both models.', 'Hi Elisa Motors, please compare duty on these two cars: ')}
+${cta('Want duty compared on two cars?', 'Send us both models.', 'Hi Buy Car in Kenya, please compare duty on these two cars: ')}
 
 <h2>Duty on commercial vehicles</h2>
 <p>Vans, trucks and buses are classified differently from passenger cars. As a result, duty and excise treatment can differ. For example, a goods van may be taxed differently from a passenger MPV of similar size. Therefore, correct classification matters. Read our <a href="/blog/commercial-vehicle-imports-from-japan-kenya/">commercial vehicle import guide</a>.</p>
@@ -125,7 +125,7 @@ ${h.specs('mazda-cx-5', 'Example: Mazda CX-5 petrol vs diesel landed prices')}
 <p>We serve buyers across Nairobi, including Westlands, Kilimani, Karen, South C, Syokimau and Ruaka. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Get your duty quote</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about KRA duty.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about KRA duty.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
 `,
     faq: [
       ['How does KRA calculate duty on imported cars?', 'KRA starts with the CRSP value, applies age depreciation to get the customs value, then adds import duty, excise duty, 16% VAT, IDF and RDL in sequence.'],

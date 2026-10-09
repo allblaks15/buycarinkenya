@@ -16,8 +16,8 @@ export default (h) => {
     html: `
 <p>Learning <b>how to read a Japanese car auction sheet</b> is the single most useful skill for anyone importing a car to Kenya. Every car sold at a major Japanese auction is inspected by an independent inspector. The results go on the auction sheet. As a result, the sheet tells you far more about a car's condition than any advert or seller ever will.</p>
 <p>However, auction sheets are written in Japanese shorthand. They use grades, letters and numbers that confuse most buyers. Therefore, this guide explains every part of a typical sheet in plain English. Moreover, it shows how to verify that a sheet is genuine, which protects you from mileage and damage fraud.</p>
-<p>Finally, it explains how Elisa Motors reads and translates every sheet for you before you buy.</p>
-${cta('Have an auction sheet you want checked?', 'Send it to us on WhatsApp for a free explanation.', 'Hi Elisa Motors, can you explain this auction sheet for me? ')}
+<p>Finally, it explains how Buy Car in Kenya reads and translates every sheet for you before you buy.</p>
+${cta('Have an auction sheet you want checked?', 'Send it to us on WhatsApp for a free explanation.', 'Hi Buy Car in Kenya, can you explain this auction sheet for me? ')}
 
 <h2>What is a Japanese auction sheet?</h2>
 <p>Japan sells hundreds of thousands of used cars every month through dealer auctions. Large auction groups such as USS, TAA, JU, CAA and HAA run sites across the country. Before each sale, inspectors check every car and record the findings on a standard sheet.</p>
@@ -66,7 +66,7 @@ ${cta('Have an auction sheet you want checked?', 'Send it to us on WhatsApp for 
 <p>Similarly, a ${c('mazda-cx-5', 'CX-5')} diesel with a comment about warning lights should be avoided. Read our <a href="/blog/mazda-cx-5-diesel-problems-kenya/">CX-5 diesel problems guide</a>.</p>
 
 <h2>Our services: auction sheet reading and verification</h2>
-<p>Elisa Motors reads, translates and verifies every auction sheet. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya reads, translates and verifies every auction sheet. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Full English translation</h3>
 <p>We translate the grade, damage map, equipment and handwritten comments into plain English. As a result, you understand exactly what you are buying.</p>
@@ -96,7 +96,7 @@ ${cta('Have an auction sheet you want checked?', 'Send it to us on WhatsApp for 
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Want help reading a sheet?', 'Send it on WhatsApp and we will explain it free.', 'Hi Elisa Motors, please explain this auction sheet: ')}
+${cta('Want help reading a sheet?', 'Send it on WhatsApp and we will explain it free.', 'Hi Buy Car in Kenya, please explain this auction sheet: ')}
 
 <h2>Auction sheet FAQs from Kenyan buyers</h2>
 <p>Many buyers ask whether grade 3.5 cars are safe. Often they are, if the damage is cosmetic. However, check the body map and comments. Others ask whether grade R cars pass Kenyan inspection. Some do, but they may be harder to resell.</p>
@@ -133,7 +133,7 @@ ${h.specs('toyota-corolla-fielder')}
 <p>We serve buyers across Nairobi, including Kilimani, Westlands, South B, South C, Syokimau, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kakamega. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Start your Japan import</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I want to import a car from Japan.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a> or browse <a href="/import-from/japan/">cars from Japan</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I want to import a car from Japan.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a> or browse <a href="/import-from/japan/">cars from Japan</a>.</p>
 `,
     faq: [
       ['What does auction grade 4.5 mean?', 'Grade 4.5 means very good condition with only small marks or minor wear. It is a sweet spot for quality and value.'],

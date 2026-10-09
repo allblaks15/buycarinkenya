@@ -15,9 +15,9 @@ export default (h) => {
     cars: ['toyota-corolla-fielder', 'toyota-aqua', 'toyota-probox', 'toyota-harrier', 'mazda-demio', 'honda-fit'],
     html: `
 <p>Many entrepreneurs ask <b>how to start a car import business in Kenya</b>. The market is large, demand is steady and Kenyans buy tens of thousands of imported used cars every year. However, the business needs capital, knowledge and careful risk management. Therefore, this guide gives a realistic picture of what it takes.</p>
-<p>We cover business registration, capital, sourcing from Japan and the UK, duty, cash flow, profitability, marketing and common pitfalls. Moreover, we explain how small dealers can work with an established importer like Elisa Motors to reduce risk while they grow.</p>
+<p>We cover business registration, capital, sourcing from Japan and the UK, duty, cash flow, profitability, marketing and common pitfalls. Moreover, we explain how small dealers can work with an established importer like Buy Car in Kenya to reduce risk while they grow.</p>
 <p>This is general guidance, not legal or financial advice. Rules change, so confirm licensing and tax requirements with the relevant authorities and a qualified accountant.</p>
-${cta('Thinking of starting a car business?', 'Talk to us about sourcing for dealers.', 'Hi Elisa Motors, I want to start a car import business. Can we talk?')}
+${cta('Thinking of starting a car business?', 'Talk to us about sourcing for dealers.', 'Hi Buy Car in Kenya, I want to start a car import business. Can we talk?')}
 
 <h2>Is car importing profitable in Kenya?</h2>
 <p>It can be. Margins depend on buying well, clearing efficiently and selling quickly. However, costs are high and capital is tied up for weeks while cars ship. Moreover, exchange rates and duty changes can squeeze margins. Therefore, successful importers focus on fast-selling models and tight cost control.</p>
@@ -60,7 +60,7 @@ ${h.specs('toyota-corolla-fielder')}
 ${h.specs('toyota-probox')}
 
 <h2>Our services: sourcing support for dealers</h2>
-<p>Elisa Motors works with individual buyers and small dealers across Kenya. Here is how we help new importers.</p>
+<p>Buy Car in Kenya works with individual buyers and small dealers across Kenya. Here is how we help new importers.</p>
 
 <h3>1. Sourcing in Japan and the UK</h3>
 <p>We source cars for dealers through Japanese auctions and UK dealers. As a result, you access good stock without setting up overseas.</p>
@@ -90,7 +90,7 @@ ${h.specs('toyota-probox')}
 <p>We share which models and specs are selling well. Moreover, we advise on timing and pricing trends.</p>
 <p>Good information leads to better buying.</p>
 
-${cta('Want sourcing support?', 'Tell us your budget and target models.', 'Hi Elisa Motors, I am a dealer looking for sourcing support.')}
+${cta('Want sourcing support?', 'Tell us your budget and target models.', 'Hi Buy Car in Kenya, I am a dealer looking for sourcing support.')}
 
 <h2>Understanding your margin</h2>
 <p>Your margin is the selling price minus the full landed cost and all holding costs. Holding costs include yard rent, insurance, staff, marketing and minor repairs. Moreover, every week a car sits unsold, those costs grow. Therefore, track the true profit on each car, not just the difference between buying and selling prices.</p>
@@ -120,14 +120,14 @@ ${h.specs('honda-fit')}
 <p>We supply dealers and individuals across Nairobi, including Mombasa Road, Ngong Road, Kiambu Road and Thika Road. We also serve Nakuru, Eldoret, Kisumu, Kakamega, Thika, Nyeri, Meru, Machakos and Kitale. At the coast, we serve Mombasa and Malindi.</p>
 
 <h2>Talk to us</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about starting a car import business.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about starting a car import business.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
 `,
     faq: [
       ['Is a car import business profitable in Kenya?', 'It can be, if you buy well, clear efficiently and sell quickly. However, capital needs are high and exchange rates and duty changes can squeeze margins.'],
       ['What licences do I need to import cars for sale?', 'Register your business, obtain a KRA PIN and county business permit, and consult an accountant on VAT and tax. Confirm current requirements with the authorities.'],
       ['Which cars sell fastest in Kenya?', 'Toyota Fielder, Aqua, Probox, Mazda Demio and Honda Fit have steady demand. Premium models sell well but tie up more capital.'],
       ['Should I buy stock or take pre-orders?', 'Pre-orders reduce risk and capital needs. Stock offers higher margins but more risk. Many new importers start with pre-orders.'],
-      ['Can Elisa Motors source cars for dealers?', 'Yes. We source, inspect, ship, clear and register cars for dealers and individuals.'],
+      ['Ca Buy Car in Kenya source cars for dealers?', 'Yes. We source, inspect, ship, clear and register cars for dealers and individuals.'],
     ],
   };
 };

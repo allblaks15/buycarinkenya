@@ -15,9 +15,9 @@ export default (h) => {
     cars: ['toyota-harrier', 'toyota-land-cruiser-prado', 'mazda-cx-5', 'toyota-corolla-fielder', 'land-rover-range-rover-sport', 'toyota-land-cruiser-200'],
     html: `
 <p>The <b>Kenya 8-year rule for car imports</b> decides which used cars you can bring into the country. Under the Kenya Bureau of Standards (KEBS) standard for used vehicles, a car must be less than eight years old from its year of first registration. In ${YEAR}, that means cars first registered in <b>${MIN_YEAR} or later</b>. Older cars cannot be imported for general use.</p>
-<p>The rule sounds simple. However, questions about registration dates, manufacture dates, shipping timing and exceptions cause real problems for buyers. Therefore, this guide explains the rule in detail, with practical tips to stay compliant. Furthermore, it explains how Elisa Motors checks every car before purchase.</p>
+<p>The rule sounds simple. However, questions about registration dates, manufacture dates, shipping timing and exceptions cause real problems for buyers. Therefore, this guide explains the rule in detail, with practical tips to stay compliant. Furthermore, it explains how Buy Car in Kenya checks every car before purchase.</p>
 <p>Rules can change. KEBS and KRA publish the current requirements. As a result, always confirm the latest position before buying, or work with an importer who does.</p>
-${cta('Not sure if a car qualifies?', 'Send us the chassis number and we will check.', 'Hi Elisa Motors, does this car meet the 8-year rule? Chassis number: ')}
+${cta('Not sure if a car qualifies?', 'Send us the chassis number and we will check.', 'Hi Buy Car in Kenya, does this car meet the 8-year rule? Chassis number: ')}
 
 <h2>What exactly is the 8-year rule?</h2>
 <p>KEBS standard KS 1515 sets requirements for imported used road vehicles. One requirement is the age limit: used vehicles must be less than eight years old from the year of first registration. Moreover, vehicles must be right-hand drive and pass pre-shipment inspection.</p>
@@ -52,7 +52,7 @@ ${table(['toyota-corolla-fielder', 'mazda-cx-5', 'toyota-harrier', 'toyota-land-
 <p>For instance, the last ${c('toyota-land-cruiser-200', 'Land Cruiser 200')} V8s from ${MIN_YEAR} to 2021 are still importable this year. Similarly, the new-shape ${c('land-rover-range-rover-sport', 'Range Rover Sport')} L461 has many years of eligibility ahead.</p>
 
 <h2>Our services: compliant cars only</h2>
-<p>Elisa Motors only imports compliant cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya only imports compliant cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Registration date verification</h3>
 <p>We check the export certificate or V5C for the first registration date. As a result, every car meets the rule.</p>
@@ -82,7 +82,7 @@ ${table(['toyota-corolla-fielder', 'mazda-cx-5', 'toyota-harrier', 'toyota-land-
 <p>We deliver to Nairobi, Nakuru, Eldoret, Kisumu, Nyeri, Meru, Mombasa and Malindi. Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 <p>Your compliant car arrives ready to drive.</p>
 
-${cta('Buying a car near the cut-off?', 'Talk to us before you pay.', 'Hi Elisa Motors, I want to buy a car near the 8-year cut-off.')}
+${cta('Buying a car near the cut-off?', 'Talk to us before you pay.', 'Hi Buy Car in Kenya, I want to buy a car near the 8-year cut-off.')}
 
 <h2>A short history of the rule</h2>
 <p>Kenya has limited the age of imported used vehicles for many years. The current eight-year limit is part of the KEBS standard for used vehicles. Over time, authorities have tightened enforcement, especially around manufacture dates and documentation. As a result, today's importers must be more careful than ever about dates and paperwork.</p>
@@ -116,7 +116,7 @@ ${h.specs('toyota-corolla-fielder', 'Example: Corolla Fielder versions within th
 <p>We serve buyers across Nairobi, including Westlands, Kilimani, South B, South C, Syokimau and Ruaka. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Start your import</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the 8-year rule.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the 8-year rule.')}. You can also read our <a href="/how-to-import-a-car-to-kenya/">full import guide</a>.</p>
 `,
     faq: [
       ['What is the 8-year rule for importing cars to Kenya?', 'KEBS rules require used vehicles to be less than eight years old from the year of first registration, as well as right-hand drive and inspected before shipping.'],

@@ -1,4 +1,4 @@
-"""Stamp "Import car with Elisa Motors" onto every car photo.
+"""Stamp "Buy Car in Kenya" onto every car photo.
 
 Originals stay in src/assets/img/cars/ (untouched); watermarked copies go to src/assets/img/cars-wm/,
 which the build publishes. Only new or changed photos are processed.
@@ -11,8 +11,8 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'src' / 'assets' / 'img' / 'cars'
 OUT = ROOT / 'src' / 'assets' / 'img' / 'cars-wm'
-TEXT = 'Import car with Elisa Motors'
-SUB = 'elisamotors.co.ke'
+TEXT = 'Buy Car in Kenya'
+SUB = 'buycarinkenya.co.ke'
 NAVY, ORANGE = (14, 42, 58), (224, 86, 26)
 FONT_BOLD = ['C:/Windows/Fonts/segoeuib.ttf', 'C:/Windows/Fonts/arialbd.ttf', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf']
 FONT_REG = ['C:/Windows/Fonts/segoeui.ttf', 'C:/Windows/Fonts/arial.ttf', '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf']
@@ -26,7 +26,7 @@ def font(paths, size):
 
 
 def logo(size):
-    """The Elisa Motors 'E' mark, drawn at `size` px."""
+    """The Buy Car in Kenya 'E' mark, drawn at `size` px."""
     m = Image.new('RGBA', (size, size), (0, 0, 0, 0))
     d = ImageDraw.Draw(m)
     d.rounded_rectangle([0, 0, size - 1, size - 1], radius=size // 4, fill=NAVY + (255,))
@@ -62,9 +62,9 @@ def stamp(path_in, path_out):
     d.text((tx, ty + th + int(8 * s) - sb[1]), SUB, font=small, fill=ORANGE + (255,))
     # subtle diagonal brand mark in the centre to deter re-use
     cf = font(FONT_BOLD, max(16, int(64 * s)))
-    cw = cf.getbbox('ELISA MOTORS')
+    cw = cf.getbbox('BUY CAR IN KENYA')
     tile = Image.new('RGBA', (cw[2] + 20, cw[3] + 20), (0, 0, 0, 0))
-    ImageDraw.Draw(tile).text((10, 10 - cw[1]), 'ELISA MOTORS', font=cf, fill=(255, 255, 255, 38))
+    ImageDraw.Draw(tile).text((10, 10 - cw[1]), 'BUY CAR IN KENYA', font=cf, fill=(255, 255, 255, 38))
     tile = tile.rotate(18, expand=True, resample=Image.BICUBIC)
     layer.alpha_composite(tile, ((W - tile.width) // 2, (H - tile.height) // 2 - int(20 * s)))
 

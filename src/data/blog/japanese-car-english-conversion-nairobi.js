@@ -16,8 +16,8 @@ export default (h) => {
     html: `
 <p><b>Japanese car English conversion in Nairobi</b> is one of the first jobs many new owners face. Cars built for the Japanese market have Japanese-language radios, navigation systems and sometimes dashboard menus. Moreover, their FM radios use a different frequency band from Kenya. As a result, some stations do not tune in at all.</p>
 <p>The good news is that conversion is routine in Nairobi. Specialists convert radios, replace screens, translate menus and supply English manuals. However, the right option depends on your car, budget and the features you want to keep. Therefore, this guide explains each choice.</p>
-<p>Furthermore, it explains how Elisa Motors can arrange conversion before delivery, so your car arrives ready to use.</p>
-${cta('Want your car delivered in English?', 'We arrange conversion before handover.', 'Hi Elisa Motors, can you convert my car to English before delivery?')}
+<p>Furthermore, it explains how Buy Car in Kenya can arrange conversion before delivery, so your car arrives ready to use.</p>
+${cta('Want your car delivered in English?', 'We arrange conversion before handover.', 'Hi Buy Car in Kenya, can you convert my car to English before delivery?')}
 
 <h2>Why Japanese cars need conversion</h2>
 <p>Japanese domestic market cars are designed for Japanese drivers. The navigation system shows Japanese maps and language. The radio covers Japan's FM band, which runs from about 76 to 95 MHz. Kenya's FM stations run from about 88 to 108 MHz. Consequently, many Kenyan stations above 95 MHz are missing.</p>
@@ -61,7 +61,7 @@ ${h.specs('toyota-prius', 'Toyota Prius: hybrid checks after import')}
 <p>If you only need the radio, choose a band expander. If your car's original unit supports English, enable it and keep your factory features. If you want apps, Bluetooth and Kenyan FM in one screen, choose a quality Android unit. Moreover, check what features the factory unit controls before removing it.</p>
 
 <h2>Our services: cars delivered ready in English</h2>
-<p>Elisa Motors helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Conversion advice before you buy</h3>
 <p>We tell you what conversion your chosen model needs. As a result, you can budget for it upfront.</p>
@@ -91,7 +91,7 @@ ${h.specs('toyota-prius', 'Toyota Prius: hybrid checks after import')}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Already own an ex-Japan car?', 'Ask us for a trusted installer.', 'Hi Elisa Motors, can you recommend an installer for English conversion?')}
+${cta('Already own an ex-Japan car?', 'Ask us for a trusted installer.', 'Hi Buy Car in Kenya, can you recommend an installer for English conversion?')}
 
 <h2>Common conversion mistakes</h2>
 <p>First, buying the cheapest Android unit, which often fails quickly. Second, removing a factory unit that controls cameras or climate settings. Third, poor wiring that drains the battery or causes electrical faults. Moreover, forgetting to keep the original unit, which helps resale. Therefore, choose a reputable installer and keep the original parts.</p>
@@ -133,7 +133,7 @@ ${h.specs('honda-vezel', 'Honda Vezel: conversion notes and prices')}
 <p>We serve buyers across Nairobi, including Kilimani, Westlands, South B, South C, Syokimau, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kakamega. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Talk to us</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about English conversion.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a> or browse <a href="/import-from/japan/">cars from Japan</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about English conversion.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a> or browse <a href="/import-from/japan/">cars from Japan</a>.</p>
 `,
     faq: [
       ['Why does my ex-Japan car radio miss Kenyan FM stations?', 'Japanese radios cover the Japanese FM band of about 76–95 MHz. Kenyan stations run up to about 108 MHz. A band expander or new head unit fixes this.'],

@@ -15,9 +15,9 @@ export default (h) => {
     cars: ['toyota-land-cruiser-200', 'toyota-land-cruiser-300', 'toyota-land-cruiser-prado', 'lexus-lx', 'toyota-land-cruiser-70'],
     html: `
 <p><b>Toyota V8 import duty in Kenya</b> is one of the biggest parts of the price you pay for a Land Cruiser. In fact, taxes can make up a large share of the landed cost. Therefore, understanding how KRA calculates duty helps you compare quotes, avoid surprises and choose the right model and year.</p>
-<p>This guide explains how KRA values a Land Cruiser, which taxes apply, what clearing at Mombasa involves and how to compare a direct import with a car from a local yard. It covers the Land Cruiser 200 V8, the LC300 and related models. Furthermore, it explains how Elisa Motors gives you one all-inclusive price with every tax included.</p>
+<p>This guide explains how KRA values a Land Cruiser, which taxes apply, what clearing at Mombasa involves and how to compare a direct import with a car from a local yard. It covers the Land Cruiser 200 V8, the LC300 and related models. Furthermore, it explains how Buy Car in Kenya gives you one all-inclusive price with every tax included.</p>
 <p>We do not publish a fixed duty figure for each car, because KRA updates its values and rates. Instead, we explain the method and show landed prices that already include duty. For an exact figure on a specific car, ask us for a written quote.</p>
-${cta('Want an exact V8 duty figure?', 'Send us the model, grade and year.', 'Hi Elisa Motors, how much duty is payable on a Land Cruiser V8?')}
+${cta('Want an exact V8 duty figure?', 'Send us the model, grade and year.', 'Hi Buy Car in Kenya, how much duty is payable on a Land Cruiser V8?')}
 
 <h2>Landed prices including duty</h2>
 <p>These indicative landed prices include KRA taxes, shipping, clearing and registration. They apply to ${MIN_YEAR}-or-newer units.</p>
@@ -60,7 +60,7 @@ ${table(['toyota-land-cruiser-200', 'toyota-land-cruiser-300'], 'Land Cruiser la
 <p>Individuals can clear their own car with a licensed clearing agent. However, the process involves KRA, KPA, the shipping line, KEBS and NTSA. Mistakes or delays lead to storage charges. Consequently, most buyers find it cheaper and easier to use an experienced importer.</p>
 
 <h2>Our services: Land Cruiser imports with duty included</h2>
-<p>Elisa Motors handles every step and every tax. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya handles every step and every tax. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Exact duty calculation before you buy</h3>
 <p>We calculate duty for the exact model, grade and year using KRA's current CRSP schedule. As a result, you know the tax before we bid.</p>
@@ -90,7 +90,7 @@ ${table(['toyota-land-cruiser-200', 'toyota-land-cruiser-300'], 'Land Cruiser la
 <p>We handle multi-unit orders for companies, NGOs and county governments. Moreover, we provide documents for procurement and bank financing.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance guide</a>.</p>
 
-${cta('Want a duty-paid V8 quote?', 'We will price the exact car you want.', 'Hi Elisa Motors, please send a duty-paid quote for a Land Cruiser.')}
+${cta('Want a duty-paid V8 quote?', 'We will price the exact car you want.', 'Hi Buy Car in Kenya, please send a duty-paid quote for a Land Cruiser.')}
 
 ${h.specs('toyota-land-cruiser-300', 'Land Cruiser 300 versions and landed prices')}
 
@@ -128,7 +128,7 @@ ${h.specs('toyota-land-cruiser-300', 'Land Cruiser 300 versions and landed price
 <p>We serve buyers across Nairobi, including Karen, Runda, Muthaiga, Lavington and Upper Hill. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Meru, Kericho and Kitale. At the coast, we serve Mombasa, Nyali, Kilifi and Malindi.</p>
 
 <h2>Get your V8 duty quote</h2>
-<p>Use the order form on this page or open the ${c('toyota-land-cruiser-300', 'LC300')} or ${c('toyota-land-cruiser-200', 'LC200')} page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about Land Cruiser import duty.')}. You can also read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota V8 price guide</a> or <a href="/contact/">contact us</a>.</p>
+<p>Use the order form on this page or open the ${c('toyota-land-cruiser-300', 'LC300')} or ${c('toyota-land-cruiser-200', 'LC200')} page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about Land Cruiser import duty.')}. You can also read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota V8 price guide</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much is import duty on a Toyota V8 in Kenya?', 'Duty depends on KRA\'s CRSP value for the exact model, grade and year, plus engine size. Taxes include import duty, excise duty, 16% VAT, IDF and RDL. We include every tax in our landed quote.'],

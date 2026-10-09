@@ -16,8 +16,8 @@ export default (h) => {
     cars: [m, 'mazda-cx-8', 'mazda-cx-30', 'toyota-harrier', 'subaru-forester', 'nissan-x-trail'],
     html: `
 <p>The Mazda CX-5 diesel is a superb engine on the open road. However, <b>Mazda CX-5 diesel problems in Kenya</b> are a real topic in owners' groups. Most of them share one cause: the SkyActiv-D engine dislikes short, slow trips. As a result, a CX-5 diesel used only in Nairobi traffic can develop expensive issues.</p>
-<p>This guide explains the most common problems, why they happen, the warning signs and how to prevent them. Moreover, it explains when a petrol CX-5 is the smarter choice. Finally, it shows how Elisa Motors helps you import a healthy CX-5, diesel or petrol.</p>
-${cta('Not sure about diesel?', 'Tell us how you drive and we will advise.', 'Hi Elisa Motors, should I buy a petrol or diesel CX-5?')}
+<p>This guide explains the most common problems, why they happen, the warning signs and how to prevent them. Moreover, it explains when a petrol CX-5 is the smarter choice. Finally, it shows how Buy Car in Kenya helps you import a healthy CX-5, diesel or petrol.</p>
+${cta('Not sure about diesel?', 'Tell us how you drive and we will advise.', 'Hi Buy Car in Kenya, should I buy a petrol or diesel CX-5?')}
 
 <h2>Why the SkyActiv-D diesel is special</h2>
 <p>Mazda's 2.2 SkyActiv-D uses an unusually low compression ratio. This makes it efficient, smooth and strong. In fact, it returns about 16–18 km/L on the highway. However, its emissions systems rely on regular hot running to stay clean.</p>
@@ -62,7 +62,7 @@ ${h.specs(m)}
 <p>Finally, ask how the car was used. A diesel used on highways is usually healthier than one used only in town. Auction sheets and service records help.</p>
 
 <h2>Our services: importing a healthy CX-5</h2>
-<p>Elisa Motors helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond avoid problem diesels. Here is what we do.</p>
+<p>Buy Car in Kenya helps buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond avoid problem diesels. Here is what we do.</p>
 
 <h3>1. Engine recommendation</h3>
 <p>We ask how you drive, then recommend petrol or diesel. As a result, you avoid buying the wrong engine.</p>
@@ -92,7 +92,7 @@ ${h.specs(m)}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Nyeri, Meru, Mombasa and Diani. Moreover, we recommend Mazda-experienced garages.</p>
 <p>Ask us anything on WhatsApp.</p>
 
-${cta('Want a CX-5 that suits your driving?', 'We will recommend the right engine.', 'Hi Elisa Motors, please recommend a CX-5 for my driving.')}
+${cta('Want a CX-5 that suits your driving?', 'We will recommend the right engine.', 'Hi Buy Car in Kenya, please recommend a CX-5 for my driving.')}
 
 <h2>Alternatives if you drive mostly in town</h2>
 <p>If you want an SUV for Nairobi traffic, consider a hybrid. The ${c('toyota-harrier', 'Harrier Hybrid')} is excellent in stop-start conditions. Similarly, the ${c('subaru-forester', 'Forester')} petrol and ${c('nissan-x-trail', 'X-Trail')} hybrid avoid diesel issues. Read our <a href="/blog/mazda-cx-5-vs-toyota-harrier/">CX-5 vs Harrier comparison</a>.</p>
@@ -138,7 +138,7 @@ ${h.specs('mazda-cx-30', 'Mazda CX-30: petrol and diesel options')}
 <p>We serve buyers across Nairobi, including Kilimani, Kileleshwa, Westlands, South B, South C, Syokimau and Ruaka. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kericho. At the coast, we serve Mombasa, Nyali and Diani.</p>
 
 <h2>Talk to us</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the CX-5 diesel.')}. You can also browse <a href="/make/mazda/">Mazda models</a> or <a href="/fuel/diesel/">diesel cars</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the CX-5 diesel.')}. You can also browse <a href="/make/mazda/">Mazda models</a> or <a href="/fuel/diesel/">diesel cars</a>.</p>
 `,
     faq: [
       ['What are common Mazda CX-5 diesel problems in Kenya?', 'DPF blockage, intake carbon build-up, oil dilution, i-stop battery failure and occasional coolant leaks are the most common, usually linked to short-trip driving.'],

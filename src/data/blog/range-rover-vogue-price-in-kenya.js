@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Range Rover Vogue price in Kenya</b> starts at about <b>${F(r)}</b> for a compliant plug-in hybrid and climbs to <b>${T(r)}</b> for a new-shape P530 Autobiography. That spread reflects two generations, several engines and very different trim levels. Therefore, the right choice depends on how you will use the car.</p>
 <p>The full-size Range Rover is the flagship of Land Rover. In Kenya it is the car of boardrooms, embassies and Karen estates. However, it is also a complex machine, so buying the right unit matters more than with most cars.</p>
-<p>This guide explains every version you can import in ${YEAR}, what each costs landed in Kenya and what it costs to run. Furthermore, it shows how Elisa Motors imports a Range Rover Vogue from the UK or Japan with one fixed price.</p>
-${cta('Want a Range Rover Vogue quote?', 'Tell us the year, engine and wheelbase you want.', 'Hi Elisa Motors, I want a quote for a Range Rover Vogue.')}
+<p>This guide explains every version you can import in ${YEAR}, what each costs landed in Kenya and what it costs to run. Furthermore, it shows how Buy Car in Kenya imports a Range Rover Vogue from the UK or Japan with one fixed price.</p>
+${cta('Want a Range Rover Vogue quote?', 'Tell us the year, engine and wheelbase you want.', 'Hi Buy Car in Kenya, I want a quote for a Range Rover Vogue.')}
 
 <h2>Range Rover Vogue price list in Kenya (${YEAR})</h2>
 <p>These are indicative landed prices for ${MIN_YEAR}-or-newer units, including shipping, duty, clearing and registration.</p>
@@ -51,7 +51,7 @@ ${table([r], 'Range Rover Vogue landed prices in Kenya')}
 ${h.specs(r)}
 
 <h2>Our services: Range Rover Vogue imports across Kenya</h2>
-<p>We manage the whole import, from UK or Japanese seller to your gate. Here is what Elisa Motors does for full-size Range Rover buyers.</p>
+<p>We manage the whole import, from UK or Japanese seller to your gate. Here is what Buy Car in Kenya does for full-size Range Rover buyers.</p>
 
 <h3>1. Range Rover Vogue sourcing from the UK</h3>
 <p>The UK is the best market for full-size Range Rovers. Approved-used cars come with warranties, full histories and high specs. We search dealers and auctions for your exact year, engine and trim.</p>
@@ -81,7 +81,7 @@ ${h.specs(r)}
 <p>We handle orders for companies, embassies and chauffeur services. Multiple cars can share the same spec and service plan. In addition, we prepare the paperwork that corporate buyers and banks need.</p>
 <p>Diplomatic buyers follow special rules. Read our <a href="/blog/returning-residents-car-import-kenya/">guide to duty exemptions</a> for an overview.</p>
 
-${cta('Comparing an L405 and an L460?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare Range Rover L405 and L460 prices for me.')}
+${cta('Comparing an L405 and an L460?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare Range Rover L405 and L460 prices for me.')}
 
 <h2>Range Rover Vogue running costs in Kenya</h2>
 <h3>Fuel</h3>
@@ -131,7 +131,7 @@ ${cta('Comparing an L405 and an L460?', 'We can quote both side by side.', 'Hi E
 
 <h2>How to order a Range Rover Vogue</h2>
 <p>Open the ${c(r, 'Range Rover Vogue')} page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Range Rover Vogue.')}. You can also browse <a href="/make/land-rover/">all Land Rover models</a>, see our <a href="/body-type/suv/">SUV range</a> or <a href="/contact/">contact us</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Range Rover Vogue.')}. You can also browse <a href="/make/land-rover/">all Land Rover models</a>, see our <a href="/body-type/suv/">SUV range</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much is a Range Rover Vogue in Kenya?', `A compliant Range Rover Vogue lands in Kenya from about ${F(r)}. The 4.4 SDV8 costs about ${P(r, 'vogue-4-4-sdv8')}, while the new-shape L460 D350 HSE costs about ${P(r, 'range-rover-d350-hse-l460-2022')}.`],

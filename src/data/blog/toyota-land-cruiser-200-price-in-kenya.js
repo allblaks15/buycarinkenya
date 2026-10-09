@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Toyota Land Cruiser 200 price in Kenya</b> starts at about <b>${F(l)}</b> for a compliant GX-R diesel and reaches <b>${T(l)}</b> for a low-mileage ZX petrol. That is for units first registered in ${MIN_YEAR} or later, the only ones you can import in ${YEAR}. Older V8s from 2012 to 2018 still trade locally at lower prices. Therefore, understanding both markets helps you buy well.</p>
 <p>The LC200 is the car Kenyans simply call "the V8". It served ministers, NGOs, safari operators and private owners for over a decade. Moreover, its 4.5 V8 diesel earned a reputation for near-indestructible toughness.</p>
-<p>This guide covers importable LC200 grades, locally used values, facelift years, running costs and buying advice. Furthermore, it explains how Elisa Motors imports a Land Cruiser 200 with one fixed price in Kenya shillings.</p>
-${cta('Want a V8 quote?', 'Tell us the grade, year and colour you want.', 'Hi Elisa Motors, I want a quote for a Toyota Land Cruiser 200 V8.')}
+<p>This guide covers importable LC200 grades, locally used values, facelift years, running costs and buying advice. Furthermore, it explains how Buy Car in Kenya imports a Land Cruiser 200 with one fixed price in Kenya shillings.</p>
+${cta('Want a V8 quote?', 'Tell us the grade, year and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Toyota Land Cruiser 200 V8.')}
 
 <h2>Land Cruiser 200 price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}–2021 units, including shipping, duty, clearing and registration.</p>
@@ -52,7 +52,7 @@ ${h.specs(l)}
 <p>Many Kenyan owners upgrade 2008–2015 V8s with facelift kits. The kit changes the look but not the engine, chassis or safety systems. It can be a good cosmetic refresh. However, buyers should never pay a late-model price for an upgraded early car.</p>
 
 <h2>Our services: Land Cruiser 200 imports across Kenya</h2>
-<p>We handle every step of your V8 import. Here is what Elisa Motors does for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>We handle every step of your V8 import. Here is what Buy Car in Kenya does for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Sourcing the last LC200s from Japan</h3>
 <p>Japan offers clean ${MIN_YEAR}–2021 LC200 ZX and AX units with verified auction sheets. We bid within your limit and explain every sheet. Moreover, we alert you when a matching car appears.</p>
@@ -82,7 +82,7 @@ ${h.specs(l)}
 <p>We handle fleet orders and provide documents for bank asset finance. Moreover, we connect you with insurers and tracking providers.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance and insurance guide</a>.</p>
 
-${cta('LC200 or LC300?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare Land Cruiser 200 and 300 prices.')}
+${cta('LC200 or LC300?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare Land Cruiser 200 and 300 prices.')}
 
 <h2>LC200 vs LC300</h2>
 <p>The LC200 costs less and has the proven V8. In contrast, the ${c('toyota-land-cruiser-300', 'LC300')} is lighter, more efficient and more modern. It also has a longer import window ahead. Read our <a href="/blog/toyota-land-cruiser-300-price-in-kenya/">LC300 price guide</a> for its full price list.</p>
@@ -136,7 +136,7 @@ ${cta('LC200 or LC300?', 'We can quote both side by side.', 'Hi Elisa Motors, pl
 
 <h2>How to order a Land Cruiser 200</h2>
 <p>Open the ${c(l, 'Land Cruiser 200')} page, choose a grade and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Land Cruiser 200 V8.')}. You can also read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota V8 price guide</a>, browse <a href="/make/toyota/">Toyota models</a> or <a href="/contact/">contact us</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Land Cruiser 200 V8.')}. You can also read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota V8 price guide</a>, browse <a href="/make/toyota/">Toyota models</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much is a Toyota V8 Land Cruiser 200 in Kenya?', `A compliant ${MIN_YEAR}–2021 Land Cruiser 200 lands in Kenya from about ${F(l)} for a GX-R diesel. The VX costs about ${P(l, 'vx-4-5-v8-diesel')}, and the ZX petrol about ${P(l, 'zx-4-6-v8-petrol')}.`],

@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['land-rover-range-rover-sport', 'mercedes-benz-c-class', 'bmw-x5', 'audi-q7', 'land-rover-defender', 'volkswagen-golf'],
     html: `
 <p>Getting the <b>UK car export documents for Kenya</b> right is essential. Missing or incorrect paperwork causes delays at the UK port, at Mombasa and at NTSA registration. Moreover, documents prove the car's age, ownership and history. Therefore, every UK import needs a clear, complete paper trail.</p>
-<p>This guide explains each document, from the V5C logbook to the bill of lading. It also covers history and MOT checks, VAT on export and what KRA checks at Mombasa. Furthermore, it explains how Elisa Motors prepares every document for you.</p>
-${cta('Buying a car in the UK?', 'We prepare every export document for you.', 'Hi Elisa Motors, can you handle UK export documents for my car?')}
+<p>This guide explains each document, from the V5C logbook to the bill of lading. It also covers history and MOT checks, VAT on export and what KRA checks at Mombasa. Furthermore, it explains how Buy Car in Kenya prepares every document for you.</p>
+${cta('Buying a car in the UK?', 'We prepare every export document for you.', 'Hi Buy Car in Kenya, can you handle UK export documents for my car?')}
 
 <h2>The V5C logbook</h2>
 <p>The V5C, often called the logbook, is the UK registration document. It shows the registered keeper, the vehicle details and the date of first registration. That date matters for Kenya's 8-year rule. Read our <a href="/blog/kenya-8-year-rule-car-import/">8-year rule guide</a>.</p>
@@ -59,7 +59,7 @@ ${cta('Buying a car in the UK?', 'We prepare every export document for you.', 'H
 <p>First, mismatched names between the invoice, bill of lading and KRA PIN. Second, wrong chassis numbers on documents. Third, missing inspection certificates. Fourth, buying a car with outstanding finance. Finally, misunderstanding the first registration date. Each mistake causes delays or worse.</p>
 
 <h2>Our services: UK export paperwork handled</h2>
-<p>Elisa Motors handles UK paperwork for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya handles UK paperwork for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. History and MOT checks</h3>
 <p>We run full history and MOT checks before purchase. Cars with finance, write-offs or mileage issues are rejected.</p>
@@ -89,7 +89,7 @@ ${cta('Buying a car in the UK?', 'We prepare every export document for you.', 'H
 <p>We deliver to Nairobi, Nakuru, Eldoret, Kisumu, Nyeri, Nanyuki, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Found a car in the UK?', 'Send us the registration for a free history check.', 'Hi Elisa Motors, please check this UK car: ')}
+${cta('Found a car in the UK?', 'Send us the registration for a free history check.', 'Hi Buy Car in Kenya, please check this UK car: ')}
 
 <h2>Popular UK imports</h2>
 <p>Popular UK imports include the ${c('land-rover-range-rover-sport', 'Range Rover Sport')}, ${c('land-rover-defender', 'Defender')}, ${c('mercedes-benz-c-class', 'Mercedes C-Class')}, ${c('bmw-x5', 'BMW X5')}, ${c('audi-q7', 'Audi Q7')} and ${c('volkswagen-golf', 'VW Golf')}. Read our <a href="/blog/import-german-cars-from-uk-to-kenya/">German cars from the UK guide</a> and <a href="/blog/import-range-rover-from-uk-to-kenya/">Range Rover from the UK guide</a>.</p>
@@ -130,7 +130,7 @@ ${h.specs('land-rover-defender', 'Example: Land Rover Defender from the UK')}
 <p>We serve buyers across Nairobi, including Westlands, Karen, Runda, Kilimani, Lavington and Upper Hill. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali, Kilifi and Malindi.</p>
 
 <h2>Start your UK import</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about UK export documents.')}. You can also browse <a href="/import-from/uk/">cars from the UK</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about UK export documents.')}. You can also browse <a href="/import-from/uk/">cars from the UK</a>.</p>
 `,
     faq: [
       ['What documents are needed to export a car from the UK to Kenya?', 'The V5C details, proof of export, purchase invoice, bill of lading and a KEBS-appointed pre-shipment inspection certificate are the main documents.'],

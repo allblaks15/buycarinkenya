@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['subaru-forester', 'subaru-outback', 'subaru-xv', 'subaru-impreza', 'subaru-levorg', 'mazda-cx-5'],
     html: `
 <p>Subarus have a loyal following in Kenya. When you <b>import a Subaru from Japan to Kenya</b>, you get symmetrical all-wheel drive, good ground clearance on many models and excellent safety. As a result, Subarus are popular with families, professionals and adventurers who drive upcountry roads in Nyeri, Nanyuki, Kericho and beyond.</p>
-<p>However, Subarus need the right care. Their boxer engines and CVTs reward owners who service them properly. Therefore, this guide covers popular models, landed prices, engine care, common issues and buying tips. Furthermore, it explains how Elisa Motors imports a Subaru with one fixed price.</p>
-${cta('Want a Subaru quote?', 'Tell us the model, grade and colour you want.', 'Hi Elisa Motors, I want to import a Subaru from Japan.')}
+<p>However, Subarus need the right care. Their boxer engines and CVTs reward owners who service them properly. Therefore, this guide covers popular models, landed prices, engine care, common issues and buying tips. Furthermore, it explains how Buy Car in Kenya imports a Subaru with one fixed price.</p>
+${cta('Want a Subaru quote?', 'Tell us the model, grade and colour you want.', 'Hi Buy Car in Kenya, I want to import a Subaru from Japan.')}
 
 <h2>Subaru landed prices in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -58,7 +58,7 @@ ${h.specs('subaru-xv')}
 <p>Subaru parts are available in Nairobi through the dealer and independent specialists. Several garages specialise in Subarus. Moreover, many parts are shared across models. Upcountry, parts may take longer to arrive, so plan servicing ahead.</p>
 
 <h2>Our services: Subaru imports</h2>
-<p>Elisa Motors imports Subarus for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya imports Subarus for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Japan auction sourcing</h3>
 <p>We bid for Subarus at Japanese auctions within your budget. Read our <a href="/blog/buy-cars-from-japanese-auctions-kenya/">Japanese auctions guide</a>.</p>
@@ -88,7 +88,7 @@ ${h.specs('subaru-xv')}
 <p>We deliver to Nairobi, Kiambu, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Nanyuki, Meru, Embu, Mombasa and Diani.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Forester or Outback?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare Forester and Outback prices.')}
+${cta('Forester or Outback?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare Forester and Outback prices.')}
 
 <h2>Subaru vs rivals</h2>
 <p>The Forester competes with the ${c('mazda-cx-5', 'Mazda CX-5')}, Toyota RAV4 and Nissan X-Trail. It wins on ground clearance and standard AWD. However, the CX-5 has a more premium cabin. Read our <a href="/blog/mazda-cx-5-price-in-kenya/">CX-5 price guide</a> and <a href="/blog/best-suv-under-5-million-kenya/">best SUVs under 5 million guide</a>.</p>
@@ -127,7 +127,7 @@ ${h.specs('subaru-impreza')}
 <p>We serve buyers across Nairobi, including Karen, Langata, Kileleshwa, South C, Syokimau and Ruaka. We also serve Nakuru, Eldoret, Kisumu, Nyeri, Nanyuki, Meru, Embu, Kericho and Kitale. At the coast, we serve Mombasa, Nyali and Diani.</p>
 
 <h2>Order your Subaru</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about Subaru imports.')}. You can also browse <a href="/make/subaru/">all Subaru models</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about Subaru imports.')}. You can also browse <a href="/make/subaru/">all Subaru models</a>.</p>
 `,
     faq: [
       ['How much is a Subaru Forester in Kenya?', `A compliant Subaru Forester lands from about ${F('subaru-forester')}, depending on grade and year.`],

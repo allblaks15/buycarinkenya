@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Land Cruiser 70 series price in Kenya</b> starts at about <b>${F(l)}</b> for a compliant 76 wagon with the 2.8 turbo-diesel. That price places it between a top Hilux and a Prado. However, the 70 series is a different kind of vehicle altogether. It is a simple, tough workhorse built for the worst roads in Africa.</p>
 <p>In Kenya, the 70 series carries tourists across the Mara, supplies remote clinics in Turkana and works on ranches in Laikipia. Moreover, many private buyers now want one for overlanding and weekend adventures. As a result, demand has grown well beyond fleets.</p>
-<p>This guide covers the 76 wagon, the 79 single and double cab pickups, engines, safari builds, running costs and buying tips. Furthermore, it explains how Elisa Motors imports a Land Cruiser 70 series with one fixed price in Kenya shillings.</p>
-${cta('Want a Land Cruiser 70 quote?', 'Tell us the body style, engine and use.', 'Hi Elisa Motors, I want a quote for a Toyota Land Cruiser 70 series.')}
+<p>This guide covers the 76 wagon, the 79 single and double cab pickups, engines, safari builds, running costs and buying tips. Furthermore, it explains how Buy Car in Kenya imports a Land Cruiser 70 series with one fixed price in Kenya shillings.</p>
+${cta('Want a Land Cruiser 70 quote?', 'Tell us the body style, engine and use.', 'Hi Buy Car in Kenya, I want a quote for a Toyota Land Cruiser 70 series.')}
 
 <h2>Land Cruiser 70 price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -46,7 +46,7 @@ ${h.specs(l)}
 <p>Repairs are simple. Many jobs can be done by a skilled mechanic in a small town with basic tools. Therefore, operators in remote areas trust the 70 series above almost anything else.</p>
 
 <h2>Our services: Land Cruiser 70 imports across Kenya</h2>
-<p>Elisa Motors handles every step of your 70 series import. Here is what we do for buyers in Nairobi, Nanyuki, Narok, Kisumu, Lodwar and beyond.</p>
+<p>Buy Car in Kenya handles every step of your 70 series import. Here is what we do for buyers in Nairobi, Nanyuki, Narok, Kisumu, Lodwar and beyond.</p>
 
 <h3>1. Sourcing from Japan and other markets</h3>
 <p>We source the new 76 wagon from Japan and pickups from markets that build right-hand-drive versions. Moreover, we compare options for your budget and use.</p>
@@ -76,7 +76,7 @@ ${h.specs(l)}
 <p>We deliver to Nairobi, Nanyuki, Nyeri, Meru, Isiolo, Narok, Naivasha, Nakuru, Eldoret, Kitale, Kisumu and Lodwar. On the coast, we serve Mombasa, Kilifi and Malindi.</p>
 <p>Delivery to lodges and conservancies can be arranged by agreement.</p>
 
-${cta('Planning a safari or overland build?', 'We can source the right base vehicle.', 'Hi Elisa Motors, I want a Land Cruiser 70 for a safari build.')}
+${cta('Planning a safari or overland build?', 'We can source the right base vehicle.', 'Hi Buy Car in Kenya, I want a Land Cruiser 70 for a safari build.')}
 
 <h2>Land Cruiser 70 for safari operators</h2>
 <p>The 70 series is the classic Kenyan safari vehicle. Operators convert wagons and troop carriers with pop-up roofs, extra seating and charging points. Its toughness keeps vehicles running through long seasons in the Mara, Amboseli and Samburu.</p>
@@ -139,7 +139,7 @@ ${h.specs('toyota-hilux', 'Toyota Hilux: the lighter-duty alternative')}
 
 <h2>How to order a Land Cruiser 70</h2>
 <p>Open the ${c(l, 'Land Cruiser 70')} page or use the order form on this page. We reply with real vehicles and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Land Cruiser 70 series.')}. You can also read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota V8 price guide</a>, browse <a href="/body-type/pickup/">pickups</a> or <a href="/contact/">contact us</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Land Cruiser 70 series.')}. You can also read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota V8 price guide</a>, browse <a href="/body-type/pickup/">pickups</a> or <a href="/contact/">contact us</a>.</p>
 `,
     faq: [
       ['How much is a Land Cruiser 70 in Kenya?', `A compliant Land Cruiser 76 wagon with the 2.8 diesel lands in Kenya from about ${F(l)}. Pickup versions vary by market and spec, so ask for an exact quote.`],

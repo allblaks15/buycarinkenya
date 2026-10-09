@@ -16,8 +16,8 @@ export default (h) => {
     cars: [r, 'land-rover-discovery-sport', 'land-rover-range-rover-velar', 'bmw-x3', 'mercedes-benz-glc', 'audi-q3'],
     html: `
 <p>The <b>Range Rover Evoque price in Kenya</b> starts at about <b>${F(r)}</b> and tops out near <b>${T(r)}</b> for a compliant P250 R-Dynamic. That makes the Evoque the most affordable way to own a Range Rover. As a result, it is popular with young professionals in Kilimani, couples in Syokimau and families in Kiambu.</p>
-<p>However, "affordable" is relative. An Evoque still costs more to run than a Japanese crossover. Therefore, this guide covers both the purchase price and the real ownership costs. Furthermore, it explains which Evoque to buy and how Elisa Motors imports one with a fixed price in Kenya shillings.</p>
-${cta('Want an Evoque quote?', 'Tell us the engine, year and colour you want.', 'Hi Elisa Motors, I want a quote for a Range Rover Evoque.')}
+<p>However, "affordable" is relative. An Evoque still costs more to run than a Japanese crossover. Therefore, this guide covers both the purchase price and the real ownership costs. Furthermore, it explains which Evoque to buy and how Buy Car in Kenya imports one with a fixed price in Kenya shillings.</p>
+${cta('Want an Evoque quote?', 'Tell us the engine, year and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Range Rover Evoque.')}
 
 <h2>Range Rover Evoque price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer units. They include shipping, KRA duty, clearing and registration.</p>
@@ -48,7 +48,7 @@ ${table([r], 'Range Rover Evoque landed prices in Kenya')}
 ${h.specs(r)}
 
 <h2>Our services: Range Rover Evoque imports across Kenya</h2>
-<p>We handle every step of your Evoque import. Here is what Elisa Motors does for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>We handle every step of your Evoque import. Here is what Buy Car in Kenya does for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Evoque sourcing from the UK</h3>
 <p>The UK has a large supply of new-shape Evoques. Many are approved-used cars with warranties and full service histories. We shortlist cars by engine, trim, colour and budget.</p>
@@ -78,7 +78,7 @@ ${h.specs(r)}
 <p>We supply the documents your bank needs for asset finance. In addition, we connect you with insurers and tracking providers.</p>
 <p>See our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance and insurance guide</a>.</p>
 
-${cta('Comparing an Evoque and a Discovery Sport?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare Evoque and Discovery Sport prices.')}
+${cta('Comparing an Evoque and a Discovery Sport?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare Evoque and Discovery Sport prices.')}
 
 <h2>Evoque running costs in Kenya</h2>
 <h3>Fuel</h3>
@@ -141,7 +141,7 @@ ${cta('Comparing an Evoque and a Discovery Sport?', 'We can quote both side by s
 
 <h2>How to order a Range Rover Evoque</h2>
 <p>Open the ${c(r, 'Range Rover Evoque')} page, choose a version and tap "Order this spec". Alternatively, use the order form on this page. We reply with real cars and a free, all-inclusive quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the Range Rover Evoque.')}. You can also read our <a href="/blog/range-rover-price-in-kenya/">Range Rover price guide</a>, browse <a href="/make/land-rover/">Land Rover models</a> or send an <a href="/import-request/">import request</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the Range Rover Evoque.')}. You can also read our <a href="/blog/range-rover-price-in-kenya/">Range Rover price guide</a>, browse <a href="/make/land-rover/">Land Rover models</a> or send an <a href="/import-request/">import request</a>.</p>
 `,
     faq: [
       ['How much is a Range Rover Evoque in Kenya?', `A compliant Range Rover Evoque lands in Kenya from about ${F(r)} for the D180 SE. The P250 R-Dynamic costs about ${P(r, 'p250-r-dynamic')}.`],

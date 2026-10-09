@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Toyota Land Cruiser V8 price in Kenya</b> starts at about <b>${F(lc2)}</b> for a compliant Land Cruiser 200 and reaches <b>${T(lc3)}</b> for a top LC300 GR Sport. Those are landed, all-inclusive figures. However, prices you see online often leave out duty, clearing or registration. Therefore, this guide shows the full cost of every popular V8 version.</p>
 <p>In Kenya, "V8" means more than an engine. It signals status in Karen and Runda, reliability on safari to the Maasai Mara, and a resale value few cars can match. As a result, demand stays high in Nairobi, Mombasa, Nakuru and Eldoret all year round.</p>
-<p>Elisa Motors imports Land Cruisers to order from Japan, the UK and South Africa. We give you one price in Kenya shillings, then handle sourcing, inspection, shipping, KRA clearing and NTSA registration. Furthermore, you choose the exact grade, colour and mileage.</p>
-${cta('Need a Land Cruiser V8 quote?', 'Tell us the series, grade and budget.', 'Hi Elisa Motors, I want a quote for a Toyota Land Cruiser V8.')}
+<p>Buy Car in Kenya imports Land Cruisers to order from Japan, the UK and South Africa. We give you one price in Kenya shillings, then handle sourcing, inspection, shipping, KRA clearing and NTSA registration. Furthermore, you choose the exact grade, colour and mileage.</p>
+${cta('Need a Land Cruiser V8 quote?', 'Tell us the series, grade and budget.', 'Hi Buy Car in Kenya, I want a quote for a Toyota Land Cruiser V8.')}
 
 <h2>Toyota V8 price list in Kenya (${YEAR})</h2>
 <p>The table shows indicative landed prices for ${MIN_YEAR}-or-newer units. Each version links to its own specs page. Note that the LC300 uses a twin-turbo V6, yet most Kenyans still call it "the new V8".</p>
@@ -43,7 +43,7 @@ ${table([lc2, lc3], 'Toyota Land Cruiser V8 landed prices in Kenya')}
 <p>Third, <b>resale value</b>. A well-kept V8 loses value slowly. Therefore, sellers in Nairobi rarely discount. That same strength works for you when you sell. For the full tax breakdown, read our <a href="/how-to-import-a-car-to-kenya/">car import guide</a>.</p>
 
 <h2>Our services: Toyota Land Cruiser V8 imports across Kenya</h2>
-<p>We handle the entire import, from auction or dealer to your gate. Here is what Elisa Motors does for V8 buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
+<p>We handle the entire import, from auction or dealer to your gate. Here is what Buy Car in Kenya does for V8 buyers in Nairobi, Mombasa, Nakuru, Kisumu and beyond.</p>
 
 <h3>1. Land Cruiser V8 import from Japan</h3>
 <p>Japan supplies the cleanest ZX and AX grades. Cars are graded at auction, and the auction sheet records every scratch. For example, a grade 4.5 LC300 ZX with 20,000 km is a common find.</p>
@@ -73,7 +73,7 @@ ${table([lc2, lc3], 'Toyota Land Cruiser V8 landed prices in Kenya')}
 <p>We handle single cars and fleet orders for companies, NGOs and county governments. Furthermore, we provide pro-forma invoices for bank asset finance and logbook loans.</p>
 <p>For security-sensitive clients, we can source factory or certified armoured Land Cruisers. These are specialist orders with longer lead times. Talk to us through the <a href="/import-request/">import request form</a> to start.</p>
 
-${cta('Comparing LC200 and LC300?', 'We can quote both on one page.', 'Hi Elisa Motors, please compare Land Cruiser 200 and 300 prices for me.')}
+${cta('Comparing LC200 and LC300?', 'We can quote both on one page.', 'Hi Buy Car in Kenya, please compare Land Cruiser 200 and 300 prices for me.')}
 
 <h2>Toyota V8 fuel consumption and running costs</h2>
 <h3>Fuel consumption per km</h3>
@@ -118,9 +118,9 @@ ${cta('Comparing LC200 and LC300?', 'We can quote both on one page.', 'Hi Elisa 
 <p>Companies with steady needs often save money by owning instead. For example, a safari operator in Nanyuki or Narok can recover the cost through bookings, while keeping full control of maintenance. Moreover, the Land Cruiser's resale value protects the investment.</p>
 <p>If you run a hire or tour business, we can source several units at once. As a result, your fleet shares the same spec, parts and service plan.</p>
 
-<h2>How to order a Toyota V8 with Elisa Motors</h2>
+<h2>How to order a Toyota V8 with Buy Car in Kenya</h2>
 <p>Start on the ${c(lc3, 'Land Cruiser 300')} or ${c(lc2, 'Land Cruiser 200')} page. Pick a grade and tap "Order this spec". Alternatively, use the order form on this page. We reply with matching cars and a free quote.</p>
-<p>Once you approve a unit, we buy it, inspect it, ship it and clear it. Then we register it and deliver it to your town. Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about Toyota V8 prices.')} with any question. You can also <a href="/contact/">contact us</a> or browse <a href="/cars/">all cars</a>.</p>
+<p>Once you approve a unit, we buy it, inspect it, ship it and clear it. Then we register it and deliver it to your town. Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about Toyota V8 prices.')} with any question. You can also <a href="/contact/">contact us</a> or browse <a href="/cars/">all cars</a>.</p>
 <p>Prefer a European badge? See our <a href="/blog/g-wagon-price-in-kenya/">G-Wagon price guide</a>. On a smaller budget? Read our <a href="/blog/harrier-cx5-prado-tx-price-in-kenya/">Harrier, CX-5 and Prado TX price guide</a>.</p>
 `,
     faq: [

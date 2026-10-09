@@ -1,4 +1,4 @@
-// Elisa Motors static site generator.  Run: npm run build  →  outputs ./dist (upload its contents to public_html)
+// Buy Car in Kenya static site generator.  Run: npm run build  →  outputs ./dist (upload its contents to public_html)
 import { mkdir, writeFile, readFile, cp, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -131,7 +131,7 @@ ${ld}
   <a href="/">Home</a><a href="/cars/">Browse All Cars</a><a href="/import-request/">Request a Car Import</a><a href="/how-to-import-a-car-to-kenya/">How Importing Works</a><a href="/blog/">Blog & Price Guides</a>
   <div class="label">Import from</div>${Object.entries(ORIGINS).map(([n, o]) => `<a href="/import-from/${o.slug}/">${n}</a>`).join('')}
   <div class="label">Body type</div>${Object.entries(BODIES).map(([, b]) => `<a href="/body-type/${b.slug}/">${b.plural}</a>`).join('')}
-  <div class="label">Help</div><a href="/contact/">Contact Us</a><a href="/about/">About Elisa Motors</a>
+  <div class="label">Help</div><a href="/contact/">Contact Us</a><a href="/about/">About Buy Car in Kenya</a>
   <a class="btn btn-wa" href="${waGeneral}" target="_blank" rel="noopener" style="margin-top:14px">${I.wa} Chat on WhatsApp</a>
 </nav></div>
 <main id="main">
@@ -144,7 +144,7 @@ ${body}
       <p>📞 <a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br>✉️ <a href="mailto:${site.email}">${site.email}</a><br>📍 ${site.address}<br>🕘 ${site.hours}</p></div>
     <div><h4>Popular imports</h4><ul>${cars.filter((c) => c.popular).slice(0, 8).map((c) => `<li><a href="/cars/${c.slug}/">${c.name}</a></li>`).join('')}</ul></div>
     <div><h4>Browse</h4><ul>${Object.values(BODIES).map((b) => `<li><a href="/body-type/${b.slug}/">${b.plural}</a></li>`).join('')}${Object.values(FUELS).map((f) => `<li><a href="/fuel/${f.slug}/">${f.slug[0].toUpperCase() + f.slug.slice(1)} cars</a></li>`).join('')}</ul></div>
-    <div><h4>Elisa Motors</h4><ul><li><a href="/import-request/">Request a car</a></li><li><a href="/how-to-import-a-car-to-kenya/">How to import a car to Kenya</a></li><li><a href="/blog/">Blog & price guides</a></li>${Object.entries(ORIGINS).map(([n, o]) => `<li><a href="/import-from/${o.slug}/">Import from ${n}</a></li>`).join('')}<li><a href="/about/">About us</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/credits/">Image credits</a></li><li><a href="/sitemap/">Sitemap</a></li></ul></div>
+    <div><h4>Buy Car in Kenya</h4><ul><li><a href="/import-request/">Request a car</a></li><li><a href="/how-to-import-a-car-to-kenya/">How to import a car to Kenya</a></li><li><a href="/blog/">Blog & price guides</a></li>${Object.entries(ORIGINS).map(([n, o]) => `<li><a href="/import-from/${o.slug}/">Import from ${n}</a></li>`).join('')}<li><a href="/about/">About us</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/credits/">Image credits</a></li><li><a href="/sitemap/">Sitemap</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>© ${YEAR} ${site.name}. All rights reserved.</span><span>Prices are indicative landed estimates and are confirmed in your written quote.</span></div>
 </div></footer>
@@ -298,7 +298,7 @@ const add = (path, html) => pages.push({ path, html });
 </div></section>
 
 <section class="block alt"><div class="wrap">
-  <div class="section-head"><div><h2>How importing with Elisa Motors works</h2><p>Five simple steps, and we keep you updated on WhatsApp throughout.</p></div><a class="link-arrow" href="/how-to-import-a-car-to-kenya/">Full import guide →</a></div>
+  <div class="section-head"><div><h2>How importing with Buy Car in Kenya works</h2><p>Five simple steps, and we keep you updated on WhatsApp throughout.</p></div><a class="link-arrow" href="/how-to-import-a-car-to-kenya/">Full import guide →</a></div>
   ${stepsHtml}
 </div></section>
 
@@ -624,7 +624,7 @@ simplePage('/privacy/', 'Privacy policy', `Privacy Policy | ${site.name}`, `How 
 {
   const rows = cars.flatMap((c) => imgs(c.slug).map((g) => `<li><b>${esc(c.name)}</b>: <a href="${esc(g.source)}" target="_blank" rel="noopener nofollow">${esc(g.title)}</a> by ${esc(g.artist)}, ${esc(g.license)}</li>`)).join('');
   simplePage('/credits/', 'Image credits', `Image Credits | ${site.name}`, 'Credits and licences for vehicle photographs used on this website.',
-    `<p>Vehicle photographs on this site are representative images sourced from <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a> under the free licences listed below. They were cropped, resized and watermarked ("Import car with Elisa Motors") for this website; the watermark does not claim authorship of the original photographs. Actual imported vehicles will differ.</p><ul class="credits-list">${rows}</ul>`, 0.1);
+    `<p>Vehicle photographs on this site are representative images sourced from <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a> under the free licences listed below. They were cropped, resized and watermarked ("Buy Car in Kenya") for this website; the watermark does not claim authorship of the original photographs. Actual imported vehicles will differ.</p><ul class="credits-list">${rows}</ul>`, 0.1);
 }
 {
   const sec = (h, links) => `<h2>${h}</h2><ul class="sitemap-list">${links.map(([t, u]) => `<li><a href="${u}">${esc(t)}</a></li>`).join('')}</ul>`;
@@ -658,7 +658,7 @@ const uniq = [...new Map(sitemap.map((s) => [s.path, s])).values()];
 const xmlEsc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 await writeFile(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${uniq.map((s) => `<url><loc>${abs(s.path)}</loc><lastmod>${today}</lastmod><priority>${s.priority.toFixed(1)}</priority>${(s.images || []).map((i) => `<image:image><image:loc>${xmlEsc(i.loc)}</image:loc><image:title>${xmlEsc(i.title)}</image:title><image:caption>${xmlEsc(i.caption)}</image:caption></image:image>`).join('')}</url>`).join('\n')}\n</urlset>\n`);
 await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /send-order.php\n\nSitemap: ${abs('/sitemap.xml')}\n`);
-await writeFile(join(OUT, 'site.webmanifest'), JSON.stringify({ name: site.name, short_name: 'Elisa Motors', start_url: '/', display: 'standalone', background_color: '#faf8f4', theme_color: '#0e2a3a', icons: [{ src: '/assets/img/logo.png', sizes: '512x512', type: 'image/png' }] }));
+await writeFile(join(OUT, 'site.webmanifest'), JSON.stringify({ name: site.name, short_name: 'Buy Car in Kenya', start_url: '/', display: 'standalone', background_color: '#faf8f4', theme_color: '#0e2a3a', icons: [{ src: '/assets/img/logo.png', sizes: '512x512', type: 'image/png' }] }));
 await writeFile(join(OUT, 'favicon.svg'), I.logo.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" '));
 const php = (await readFile(join(SRC, 'send-order.php'), 'utf8')).replace('{{TO}}', site.email).replace('{{FROM}}', site.mailFrom).replace(/{{NAME}}/g, site.name).replace('{{WA}}', site.whatsapp).replace('{{PHONE}}', site.phone);
 await writeFile(join(OUT, 'send-order.php'), php);

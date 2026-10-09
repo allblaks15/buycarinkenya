@@ -9,14 +9,14 @@ export default (h) => {
     title: `Import Cars from UK to Kenya (${YEAR}): Cost, Duty & Shipping`,
     description: `How to import a car from the UK to Kenya in ${YEAR}: costs, KRA duty, 8-year rule, RoRo vs container shipping to Mombasa, documents and delivery to Nairobi.`,
     h1: `How to Import Cars from the UK to Kenya (${YEAR}): Costs, Duty, Shipping & Delivery to Nairobi and Mombasa`,
-    excerpt: `A complete guide to UK car imports for Kenyan buyers: what it costs, how KRA duty works, RoRo vs container shipping, the paperwork, and how Elisa Motors handles it end to end.`,
+    excerpt: `A complete guide to UK car imports for Kenyan buyers: what it costs, how KRA duty works, RoRo vs container shipping, the paperwork, and how Buy Car in Kenya handles it end to end.`,
     published: '2026-10-01',
     updated: '2026-10-01',
     cars: ['land-rover-range-rover-sport', 'land-rover-defender', 'mercedes-benz-c-class', 'bmw-x5', 'audi-q7', 'mercedes-benz-v-class', 'jaguar-f-pace', 'volkswagen-golf'],
     html: `
 <p>If you want to <b>import cars from the UK to Kenya</b>, you are in good company. The UK is the top source for right-hand-drive Range Rovers, Mercedes-Benz, BMW, Audi and Jaguar models. Moreover, British cars usually come with full service history and verifiable mileage. That makes them a smart choice for buyers in Nairobi, Mombasa and across Kenya.</p>
-<p>However, a UK import involves more than buying a car online. You must meet the KEBS 8-year rule, pay KRA duty, ship to Mombasa and register with NTSA. This guide walks you through every step and every cost. Furthermore, it explains how Elisa Motors handles the whole process for you.</p>
-${cta('Want a UK import quote?', 'Send us the car you want, or a link to a UK listing.', 'Hi Elisa Motors, I want to import a car from the UK.')}
+<p>However, a UK import involves more than buying a car online. You must meet the KEBS 8-year rule, pay KRA duty, ship to Mombasa and register with NTSA. This guide walks you through every step and every cost. Furthermore, it explains how Buy Car in Kenya handles the whole process for you.</p>
+${cta('Want a UK import quote?', 'Send us the car you want, or a link to a UK listing.', 'Hi Buy Car in Kenya, I want to import a car from the UK.')}
 
 <h2>Why import a car from the UK to Kenya?</h2>
 <p>First, the UK drives on the left. As a result, every car is right-hand drive, which Kenya requires. Second, UK cars have <b>MOT history</b> that anyone can check online. That record shows mileage at every annual test, so tampering is easy to spot.</p>
@@ -46,7 +46,7 @@ ${table(['land-rover-range-rover-sport', 'land-rover-defender', 'bmw-x5', 'audi-
 <p>Finally, NTSA registration, number plates and the logbook. Our <a href="/how-to-import-a-car-to-kenya/">car import guide</a> explains each tax in more detail.</p>
 
 <h2>Our services: UK car imports across Kenya</h2>
-<p>Elisa Motors runs the full UK import for you. Here is what we do for buyers in Nairobi, Mombasa, Kisumu, Nakuru, Eldoret and beyond.</p>
+<p>Buy Car in Kenya runs the full UK import for you. Here is what we do for buyers in Nairobi, Mombasa, Kisumu, Nakuru, Eldoret and beyond.</p>
 
 <h3>1. UK car sourcing for Nairobi and Mombasa buyers</h3>
 <p>We search UK main dealers, approved-used programmes and trusted trade auctions. You tell us the make, model, year, colour and budget. Then we shortlist real cars that match.</p>
@@ -76,7 +76,7 @@ ${table(['land-rover-range-rover-sport', 'land-rover-defender', 'bmw-x5', 'audi-
 <p>We deliver by covered car carrier to Nairobi, Kiambu, Thika, Machakos and Kajiado. We also deliver to Nakuru, Naivasha, Eldoret, Kitale, Kisumu, Kakamega and Kericho.</p>
 <p>In central Kenya, we serve Nyeri, Nanyuki, Meru and Embu. On the coast, we serve Mombasa, Nyali, Kilifi, Malindi and Diani. Alternatively, you can collect at Mombasa.</p>
 
-${cta('Found a car on a UK website?', 'Send us the link for a free landed-cost check.', 'Hi Elisa Motors, can you check this UK car for me? ')}
+${cta('Found a car on a UK website?', 'Send us the link for a free landed-cost check.', 'Hi Buy Car in Kenya, can you check this UK car for me? ')}
 
 <h2>Documents you need for a UK car import</h2>
 <p>Kenya's customs process needs a clear paper trail. The main documents are:</p>
@@ -97,7 +97,7 @@ ${cta('Found a car on a UK website?', 'Send us the link for a free landed-cost c
 <p>Third, do not ignore duty. A cheap UK price can still land expensive once KRA applies its CRSP value. Finally, avoid cars with gaps in MOT history. Those gaps often hide problems.</p>
 
 <h2>UK car import timeline: from order to keys</h2>
-<p>Here is a typical timeline for a UK import with Elisa Motors. In week one, we agree your spec and budget, then shortlist cars. Next, you approve a car and we complete history checks and the purchase.</p>
+<p>Here is a typical timeline for a UK import with Buy Car in Kenya. In week one, we agree your spec and budget, then shortlist cars. Next, you approve a car and we complete history checks and the purchase.</p>
 <p>In week two, the car goes for KEBS-appointed inspection and is delivered to the UK port. Then it sails to Mombasa, which takes about five to seven weeks. Finally, clearing and registration take about one more week. In total, most UK imports take seven to ten weeks.</p>
 <p>Container shipments can take slightly longer. However, we update you on WhatsApp at every step, so you always know where your car is.</p>
 
@@ -124,9 +124,9 @@ ${cta('Found a car on a UK website?', 'Send us the link for a free landed-cost c
 <p>We serve buyers across Nairobi, including Westlands, Karen, Runda, Kilimani, Lavington, Kileleshwa, Upper Hill, South C, Syokimau and Kitengela. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Meru, Machakos, Kericho and Kitale.</p>
 <p>At the coast, we serve Mombasa, Nyali, Bamburi, Diani and Malindi. The process and pricing are the same wherever you are.</p>
 
-<h2>Start your UK car import with Elisa Motors</h2>
+<h2>Start your UK car import with Buy Car in Kenya</h2>
 <p>Pick a car from our <a href="/cars/">catalogue</a> or <a href="/body-type/suv/">SUV range</a>, or use the order form on this page. We reply with options and a free, all-inclusive quote. For luxury SUVs, see our <a href="/blog/g-wagon-price-in-kenya/">G-Wagon price guide</a> too.</p>
-<p>Prefer to talk? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about importing from the UK.')}. You can also <a href="/contact/">contact our team</a>, read <a href="/about/">about Elisa Motors</a> or send a detailed <a href="/import-request/">import request</a>.</p>
+<p>Prefer to talk? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about importing from the UK.')}. You can also <a href="/contact/">contact our team</a>, read <a href="/about/">about Buy Car in Kenya</a> or send a detailed <a href="/import-request/">import request</a>.</p>
 `,
     faq: [
       ['How much does it cost to import a car from the UK to Kenya?', `The total includes the UK price, shipping and insurance, KRA taxes, port and clearing fees and registration. For example, a Range Rover Sport HSE lands at about ${P('land-rover-range-rover-sport', 'hse-3-0-sdv6')} and a BMW X5 from about ${F('bmw-x5')}. We give one all-inclusive quote in KES.`],

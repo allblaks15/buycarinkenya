@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['toyota-harrier', 'toyota-land-cruiser-prado', 'mazda-cx-5', 'toyota-aqua', 'toyota-corolla-fielder', 'honda-vezel', 'nissan-x-trail', 'subaru-forester', 'toyota-noah', 'toyota-hiace'],
     html: `
 <p>Most cars on Kenyan roads started life in Japan. That is no accident. When you <b>import cars from Japan to Kenya</b>, you get right-hand-drive vehicles, low mileage, honest auction grading and fair prices. As a result, Japan remains the first choice for buyers in Nairobi, Mombasa, Kisumu, Nakuru and Eldoret.</p>
-<p>However, importing from Japan has its own rules. You need to read auction sheets, pass the KEBS-appointed inspection, meet the 8-year rule, pay KRA duty and clear the car at Mombasa. This guide explains each step clearly. Furthermore, it shows how Elisa Motors handles the full process with one fixed price.</p>
-${cta('Want a Japan import quote?', 'Tell us the model, year and budget.', 'Hi Elisa Motors, I want to import a car from Japan.')}
+<p>However, importing from Japan has its own rules. You need to read auction sheets, pass the KEBS-appointed inspection, meet the 8-year rule, pay KRA duty and clear the car at Mombasa. This guide explains each step clearly. Furthermore, it shows how Buy Car in Kenya handles the full process with one fixed price.</p>
+${cta('Want a Japan import quote?', 'Tell us the model, year and budget.', 'Hi Buy Car in Kenya, I want to import a car from Japan.')}
 
 <h2>Why Japanese cars dominate Kenyan roads</h2>
 <p>First, Japan drives on the left, so every car is right-hand drive. Second, Japanese owners drive little and service on time. Third, strict Japanese road-tax and inspection rules push owners to sell cars young. Consequently, the export market is full of clean, low-mileage units.</p>
@@ -40,7 +40,7 @@ ${table(['toyota-aqua', 'toyota-corolla-fielder', 'honda-vezel', 'nissan-x-trail
 <p>Repaired cars can be imported if they pass inspection. However, we rarely recommend them. They can hide weak spots and usually sell for less in Kenya. For most buyers, grade 4 and above is the safe choice.</p>
 
 <h2>Our services: Japan car imports across Kenya</h2>
-<p>Elisa Motors runs the whole import for you. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and every county.</p>
+<p>Buy Car in Kenya runs the whole import for you. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and every county.</p>
 
 <h3>1. Japan auction bidding for Nairobi buyers</h3>
 <p>We bid at major Japanese auctions through trusted partners. You tell us the model, grade, mileage, colour and budget. Then we shortlist real cars every week.</p>
@@ -70,7 +70,7 @@ ${table(['toyota-aqua', 'toyota-corolla-fielder', 'honda-vezel', 'nissan-x-trail
 <p>We deliver by car carrier to Nairobi, Kiambu, Ruiru, Thika, Machakos and Kitengela. We also deliver to Nakuru, Naivasha, Eldoret, Kitale, Kisumu, Kakamega, Bungoma and Kericho.</p>
 <p>In central Kenya, we serve Nyeri, Nanyuki, Meru, Embu and Murang'a. On the coast, we serve Mombasa, Nyali, Kilifi, Malindi and Diani. Alternatively, collect at the port in Mombasa.</p>
 
-${cta('Saw a car on a Japanese export site?', 'Send us the link for a free landed-cost check.', 'Hi Elisa Motors, can you check this car from Japan for me? ')}
+${cta('Saw a car on a Japanese export site?', 'Send us the link for a free landed-cost check.', 'Hi Buy Car in Kenya, can you check this car from Japan for me? ')}
 
 <h2>How much does it cost to import a car from Japan?</h2>
 <p>Your landed cost has five parts. First, the FOB price, which is the car's price at the Japanese port. Second, freight and marine insurance to Mombasa. Together, these give the CIF price.</p>
@@ -79,18 +79,18 @@ ${cta('Saw a car on a Japanese export site?', 'Send us the link for a free lande
 
 <h2>Paying for a car from Japan safely</h2>
 <p>Many buyers pay Japanese exporters by telegraphic transfer from Kenyan banks. That works when the exporter is genuine. However, fake websites copy real listings and disappear with deposits.</p>
-<p>When you import with Elisa Motors, payment terms are agreed in writing first. Moreover, you see the car, its sheet and its inspection before the balance is due. That protects your money.</p>
+<p>When you import with Buy Car in Kenya, payment terms are agreed in writing first. Moreover, you see the car, its sheet and its inspection before the balance is due. That protects your money.</p>
 
 <h2>Self-import vs using an import agent</h2>
 <p>Some buyers order directly from large export portals such as SBT Japan or Be Forward. That can work. Still, you must then manage the port, KRA, clearing and registration yourself, often from Nairobi.</p>
-<p>With an import agent like Elisa Motors, one team handles everything. In addition, we source from auctions, not just one exporter's stock. As a result, you get more choice and one fixed price.</p>
+<p>With an import agent like Buy Car in Kenya, one team handles everything. In addition, we source from auctions, not just one exporter's stock. As a result, you get more choice and one fixed price.</p>
 
 <h2>Popular Japanese cars by budget</h2>
 <p>Under KES 1.5 million, look at the ${c('toyota-vitz', 'Toyota Vitz')}, ${c('toyota-aqua', 'Aqua')} and ${c('nissan-note', 'Nissan Note')}. Between KES 1.5 and 3 million, consider the ${c('toyota-corolla-fielder', 'Fielder')}, ${c('honda-vezel', 'Vezel')} and ${c('nissan-x-trail', 'X-Trail')}.</p>
 <p>Above KES 3 million, the ${c('mazda-cx-5', 'Mazda CX-5')}, ${c('subaru-forester', 'Subaru Forester')} and ${c('toyota-harrier', 'Toyota Harrier')} lead. For serious 4x4 work, the ${c('toyota-land-cruiser-prado', 'Prado')} is the benchmark. Browse more <a href="/fuel/hybrid/">hybrid cars</a> or <a href="/body-type/suv/">SUVs</a>.</p>
 
 <h2>Japan import timeline: from auction to your driveway</h2>
-<p>A typical Japan import with Elisa Motors follows a clear timeline. In week one, we agree your spec, then bid on matching cars. Auctions run every day, so most buyers win a car within one or two weeks.</p>
+<p>A typical Japan import with Buy Car in Kenya follows a clear timeline. In week one, we agree your spec, then bid on matching cars. Auctions run every day, so most buyers win a car within one or two weeks.</p>
 <p>Next, the car moves to the port for inspection and export. Then it sails to Mombasa in about four to six weeks. Finally, clearing and registration take about one week. In total, most Japan imports take six to nine weeks.</p>
 
 <h2>Importing commercial vehicles from Japan</h2>
@@ -118,9 +118,9 @@ ${cta('Saw a car on a Japanese export site?', 'Send us the link for a free lande
 <h2>Japan vs UK vs South Africa</h2>
 <p>Japan wins on price, choice and mileage for Japanese brands. The UK wins for Range Rover, Mercedes, BMW and Audi. Meanwhile, South Africa is fastest for pickups and tough SUVs. Read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> or visit the <a href="/import-from/south-africa/">South Africa page</a> to compare.</p>
 
-<h2>Start your Japan import with Elisa Motors</h2>
+<h2>Start your Japan import with Buy Car in Kenya</h2>
 <p>Choose a car from our <a href="/cars/">catalogue</a> or <a href="/make/toyota/">Toyota range</a>, or use the order form on this page. We reply with matching cars and a free quote.</p>
-<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about importing from Japan.')}. You can also <a href="/contact/">contact us</a>, read <a href="/about/">about Elisa Motors</a> or send a detailed <a href="/import-request/">import request</a>.</p>
+<p>Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about importing from Japan.')}. You can also <a href="/contact/">contact us</a>, read <a href="/about/">about Buy Car in Kenya</a> or send a detailed <a href="/import-request/">import request</a>.</p>
 `,
     faq: [
       ['How much does it cost to import a car from Japan to Kenya?', `It depends on the model, year and engine. For example, a Toyota Aqua lands from about ${F('toyota-aqua')}, a Corolla Fielder from about ${F('toyota-corolla-fielder')} and a Toyota Harrier from about ${F('toyota-harrier')}. Prices include shipping, KRA duty, clearing and registration.`],

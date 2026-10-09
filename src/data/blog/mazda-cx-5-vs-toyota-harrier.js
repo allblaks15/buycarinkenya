@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Mazda CX-5 vs Toyota Harrier</b> debate comes up in almost every Kenyan car group. Both are stylish, well-built crossovers imported from Japan. Both suit Nairobi traffic and weekend trips to Naivasha. However, they differ in price, comfort, fuel economy, running costs and resale value. Therefore, the right choice depends on what you value most.</p>
 <p>The CX-5 lands from about <b>${F(m)}</b>, while the Harrier starts near <b>${F(t)}</b>. That price gap is the first big difference. Yet price alone does not tell the whole story.</p>
-<p>This guide compares the two car by car: engines, fuel, comfort, practicality, ground clearance, maintenance, resale and safety. Furthermore, it explains how Elisa Motors can quote both side by side, so you choose with real numbers.</p>
-${cta('Want quotes for both?', 'We can price a CX-5 and a Harrier on one page.', 'Hi Elisa Motors, please compare CX-5 and Harrier prices for me.')}
+<p>This guide compares the two car by car: engines, fuel, comfort, practicality, ground clearance, maintenance, resale and safety. Furthermore, it explains how Buy Car in Kenya can quote both side by side, so you choose with real numbers.</p>
+${cta('Want quotes for both?', 'We can price a CX-5 and a Harrier on one page.', 'Hi Buy Car in Kenya, please compare CX-5 and Harrier prices for me.')}
 
 <h2>Price comparison (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -66,7 +66,7 @@ ${h.specs(t)}
 <p>For long highway commuters, the CX-5 diesel is great. For Nairobi traffic, the Harrier Hybrid is unbeatable.</p>
 
 <h2>Our services: import a CX-5 or Harrier</h2>
-<p>Elisa Motors imports both from Japan. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya imports both from Japan. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Side-by-side quotes</h3>
 <p>We price both cars on one page, with every tax and fee included. As a result, you compare real numbers.</p>
@@ -96,7 +96,7 @@ ${h.specs(t)}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Nanyuki, Meru, Mombasa and Diani.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Still undecided?', 'Tell us how you drive and we will recommend one.', 'Hi Elisa Motors, should I buy a CX-5 or a Harrier?')}
+${cta('Still undecided?', 'Tell us how you drive and we will recommend one.', 'Hi Buy Car in Kenya, should I buy a CX-5 or a Harrier?')}
 
 <h2>Head-to-head scenarios</h2>
 <h3>Daily commute from Ruiru, Syokimau or Kitengela</h3>
@@ -132,7 +132,7 @@ ${h.specs('toyota-rav4', 'The third option: Toyota RAV4')}
 <p>We serve buyers across Nairobi, including Kilimani, Westlands, Kileleshwa, South B, Syokimau and Ruaka. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali and Diani.</p>
 
 <h2>Order your CX-5 or Harrier</h2>
-<p>Use the order form on this page, or open the ${c(m, 'CX-5')} or ${c(t, 'Harrier')} page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about the CX-5 and Harrier.')}. You can also read our <a href="/blog/mazda-cx-5-price-in-kenya/">CX-5 price guide</a> and <a href="/blog/toyota-harrier-price-in-kenya/">Harrier price guide</a>.</p>
+<p>Use the order form on this page, or open the ${c(m, 'CX-5')} or ${c(t, 'Harrier')} page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about the CX-5 and Harrier.')}. You can also read our <a href="/blog/mazda-cx-5-price-in-kenya/">CX-5 price guide</a> and <a href="/blog/toyota-harrier-price-in-kenya/">Harrier price guide</a>.</p>
 `,
     faq: [
       ['Is the Mazda CX-5 cheaper than the Toyota Harrier?', `Yes. The CX-5 lands from about ${F(m)}, while the Harrier starts near ${F(t)}.`],

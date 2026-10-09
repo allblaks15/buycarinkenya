@@ -16,8 +16,8 @@ export default (h) => {
     html: `
 <p>Kenyan businesses run on Japanese commercial vehicles. When you <b>import commercial vehicles from Japan to Kenya</b>, you get tough, reliable vans, minibuses and trucks with parts available in every town. From Probox delivery vans in Nairobi to Isuzu Elf trucks in Eldoret, these vehicles keep goods and people moving.</p>
 <p>However, commercial imports have their own rules. Duty treatment, age limits, body conversions and licensing can differ from private cars. Therefore, this guide explains what businesses need to know before importing. Moreover, it lists popular models with landed prices.</p>
-<p>Finally, it shows how Elisa Motors helps businesses, schools, churches and transport operators import commercial vehicles with one fixed price.</p>
-${cta('Need commercial vehicles?', 'Tell us the type, quantity and use.', 'Hi Elisa Motors, I want to import commercial vehicles from Japan.')}
+<p>Finally, it shows how Buy Car in Kenya helps businesses, schools, churches and transport operators import commercial vehicles with one fixed price.</p>
+${cta('Need commercial vehicles?', 'Tell us the type, quantity and use.', 'Hi Buy Car in Kenya, I want to import commercial vehicles from Japan.')}
 
 <h2>Popular commercial vehicles landed in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -63,7 +63,7 @@ ${h.specs('mitsubishi-fuso-canter')}
 <p>Commercial vehicles may need commercial registration, inspection and licences depending on use. Passenger service vehicles, such as matatus and tour vans, need PSV licensing and specific features. Therefore, check NTSA requirements before you convert or operate. Read our <a href="/blog/ntsa-registration-imported-car-kenya/">NTSA registration guide</a>.</p>
 
 <h2>Our services: commercial vehicle imports</h2>
-<p>Elisa Motors serves businesses in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya serves businesses in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Fleet sourcing</h3>
 <p>We source single vehicles or fleets with matching specs. As a result, your parts, training and servicing stay simple.</p>
@@ -93,7 +93,7 @@ ${h.specs('mitsubishi-fuso-canter')}
 <p>We deliver to Nairobi, Thika, Machakos, Nakuru, Eldoret, Kitale, Kisumu, Kericho, Nyeri, Meru, Mombasa and Malindi. In addition, we provide documents for asset finance.</p>
 <p>Read our <a href="/blog/car-asset-finance-and-insurance-kenya/">car finance guide</a>.</p>
 
-${cta('Building a fleet?', 'We can source matching units.', 'Hi Elisa Motors, I need a fleet of commercial vehicles.')}
+${cta('Building a fleet?', 'We can source matching units.', 'Hi Buy Car in Kenya, I need a fleet of commercial vehicles.')}
 
 ${h.specs('toyota-probox')}
 
@@ -120,7 +120,7 @@ ${h.specs('toyota-coaster')}
 <p>We serve businesses across Nairobi, including Industrial Area, Embakasi, Mlolongo, Ruiru and Kiambu Road. We also serve Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Meru and Kitale. At the coast, we serve Mombasa, Changamwe, Kilifi and Malindi.</p>
 
 <h2>Order your vehicles</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about commercial vehicles.')}. You can also browse <a href="/body-type/van/">vans</a>, <a href="/body-type/truck/">light trucks</a> and <a href="/body-type/bus/">buses</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about commercial vehicles.')}. You can also browse <a href="/body-type/van/">vans</a>, <a href="/body-type/truck/">light trucks</a> and <a href="/body-type/bus/">buses</a>.</p>
 `,
     faq: [
       ['Can I import a Toyota Hiace from Japan to Kenya?', `Yes. The Hiace is one of the most popular commercial imports. The GL 2.8 diesel lands at about ${P('toyota-hiace', 'gl-2-8-diesel')}.`],

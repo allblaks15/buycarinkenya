@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['land-rover-range-rover-sport', 'toyota-harrier', 'mercedes-benz-c-class', 'toyota-land-cruiser-prado', 'bmw-x5', 'toyota-aqua'],
     html: `
 <p>The <b>UK vs Japan car imports to Kenya</b> question has a simple short answer: it depends on the car. Japan is the best source for Japanese brands, hybrids and affordable everyday cars. The UK is the best source for European brands with full service history. However, there is more to it than brand. Therefore, this guide compares both markets in detail.</p>
-<p>We cover choice, price, mileage, history records, rust, specs, shipping time and resale. Moreover, we give clear recommendations by car type. Finally, we explain how Elisa Motors compares both markets for your budget.</p>
-${cta('Not sure which market to buy from?', 'We compare UK and Japan for your car.', 'Hi Elisa Motors, should I import from the UK or Japan?')}
+<p>We cover choice, price, mileage, history records, rust, specs, shipping time and resale. Moreover, we give clear recommendations by car type. Finally, we explain how Buy Car in Kenya compares both markets for your budget.</p>
+${cta('Not sure which market to buy from?', 'We compare UK and Japan for your car.', 'Hi Buy Car in Kenya, should I import from the UK or Japan?')}
 
 <h2>Quick comparison</h2>
 <p><b>Choice:</b> Japan for Japanese brands, UK for European brands. <b>Mileage:</b> Japan usually lower. <b>History:</b> UK records are more detailed. <b>Condition grading:</b> Japan's auction sheets are excellent. <b>Rust:</b> Japan cars usually cleaner underneath. <b>Shipping:</b> Japan slightly faster. <b>Specs:</b> UK often higher for European cars.</p>
@@ -64,7 +64,7 @@ ${h.specs('toyota-harrier', 'Japan example: Toyota Harrier versions')}
 ${h.specs('land-rover-range-rover-sport', 'UK example: Range Rover Sport versions')}
 
 <h2>Our services: we compare both markets</h2>
-<p>Elisa Motors sources from Japan, the UK and South Africa for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya sources from Japan, the UK and South Africa for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Market recommendation</h3>
 <p>We tell you which market suits your car and budget. As a result, you avoid overpaying.</p>
@@ -94,7 +94,7 @@ ${h.specs('land-rover-range-rover-sport', 'UK example: Range Rover Sport version
 <p>We deliver to Nairobi, Nakuru, Eldoret, Kisumu, Nyeri, Nanyuki, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Want quotes from both markets?', 'We will compare UK and Japan for your car.', 'Hi Elisa Motors, please compare UK and Japan prices for my car.')}
+${cta('Want quotes from both markets?', 'We will compare UK and Japan for your car.', 'Hi Buy Car in Kenya, please compare UK and Japan prices for my car.')}
 
 <h2>Real buyer scenarios</h2>
 <h3>A family wanting a Prado</h3>
@@ -123,7 +123,7 @@ ${h.specs('mercedes-benz-c-class', 'UK example: Mercedes-Benz C-Class versions')
 <p>We serve buyers across Nairobi, including Westlands, Kilimani, Karen, Runda, South C and Syokimau. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Start your import</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about UK vs Japan imports.')}. You can also read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> and <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about UK vs Japan imports.')}. You can also read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> and <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
 `,
     faq: [
       ['Is it better to import a car from the UK or Japan?', 'Japan is best for Japanese brands and hybrids. The UK is best for European brands like Range Rover, Mercedes, BMW and Audi.'],

@@ -16,8 +16,8 @@ export default (h) => {
     html: `
 <p>Knowing <b>how to check mileage on ex-Japan cars in Kenya</b> can save you hundreds of thousands of shillings. Odometer tampering, often called "rolling back the clock", is a real problem in used car markets everywhere. A car showing 60,000 km may actually have covered 160,000 km. As a result, the buyer pays too much and inherits hidden wear.</p>
 <p>The good news is that Japanese cars leave a strong paper trail. Auction sheets, export certificates and service records record mileage at different points. Therefore, careful buyers can usually verify the truth. This guide shows how, step by step.</p>
-<p>Furthermore, it explains the physical signs of high mileage and how Elisa Motors verifies every car we import before you pay.</p>
-${cta('Want a car checked?', 'Send us the chassis number for a mileage check.', 'Hi Elisa Motors, can you check the mileage on this car? Chassis number: ')}
+<p>Furthermore, it explains the physical signs of high mileage and how Buy Car in Kenya verifies every car we import before you pay.</p>
+${cta('Want a car checked?', 'Send us the chassis number for a mileage check.', 'Hi Buy Car in Kenya, can you check the mileage on this car? Chassis number: ')}
 
 <h2>Why mileage fraud happens</h2>
 <p>Low-mileage cars sell for much more. Consequently, dishonest sellers have a strong incentive to reduce the odometer reading. Modern digital odometers can be altered with electronic tools. Similarly, instrument clusters can be swapped.</p>
@@ -62,7 +62,7 @@ ${h.specs('toyota-corolla-fielder', 'Corolla Fielder versions')}
 <p>If you have already bought a tampered car, seek advice. Misrepresentation may give you legal options against the seller.</p>
 
 <h2>Our services: verified-mileage imports</h2>
-<p>Elisa Motors verifies mileage for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya verifies mileage for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Auction history checks</h3>
 <p>We retrieve auction records by chassis number. As a result, we see the mileage at every recorded sale.</p>
@@ -92,7 +92,7 @@ ${h.specs('toyota-corolla-fielder', 'Corolla Fielder versions')}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Buying a local ex-Japan car?', 'Send us the chassis number first.', 'Hi Elisa Motors, please check this chassis number: ')}
+${cta('Buying a local ex-Japan car?', 'Send us the chassis number first.', 'Hi Buy Car in Kenya, please check this chassis number: ')}
 
 <h2>Mileage and resale value</h2>
 <p>Verified mileage adds real value when you sell. Kenyan buyers increasingly ask for auction sheets and export certificates. Therefore, keep copies with your logbook. A car with documented, genuine mileage sells faster and for more.</p>
@@ -124,7 +124,7 @@ ${h.specs('toyota-aqua', 'Toyota Aqua: a high-mileage favourite')}
 <p>We serve buyers across Nairobi, including Kilimani, Westlands, South B, South C, Syokimau, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kakamega. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Talk to us</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I want a verified-mileage car.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a> or browse <a href="/import-from/japan/">cars from Japan</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I want a verified-mileage car.')}. You can also read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a> or browse <a href="/import-from/japan/">cars from Japan</a>.</p>
 `,
     faq: [
       ['How can I check the real mileage of an ex-Japan car?', 'Use the chassis number to retrieve auction history and the export certificate. Compare those readings with the current odometer and the car\'s physical wear.'],

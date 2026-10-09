@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>G-Wagon price in Kenya</b> starts at about <b>${F(g)}</b> for a compliant G400d diesel and reaches <b>${T(g)}</b> for a low-mileage G63 AMG. That is the full landed cost, including KRA duty and registration. However, many online listings quote only the car price abroad. Therefore, this guide explains what you will actually pay.</p>
 <p>The Mercedes-Benz G-Class is the most recognisable luxury SUV on Kenyan roads. You see it outside hotels in Westlands, on Riverside Drive and on weekend trips to Nanyuki. In fact, few cars hold attention like a G63 on the Nairobi Expressway.</p>
-<p>Elisa Motors imports G-Wagons to order from the <a href="/import-from/uk/">UK</a> and <a href="/import-from/japan/">Japan</a>. We source, inspect, ship, clear and register the car. Furthermore, you get one fixed price in Kenya shillings before you commit.</p>
-${cta('Want a G-Wagon quote?', 'Tell us the version, year and colour you want.', 'Hi Elisa Motors, I want a quote for a Mercedes G-Wagon.')}
+<p>Buy Car in Kenya imports G-Wagons to order from the <a href="/import-from/uk/">UK</a> and <a href="/import-from/japan/">Japan</a>. We source, inspect, ship, clear and register the car. Furthermore, you get one fixed price in Kenya shillings before you commit.</p>
+${cta('Want a G-Wagon quote?', 'Tell us the version, year and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Mercedes G-Wagon.')}
 
 <h2>Mercedes G-Wagon price list in Kenya (${YEAR})</h2>
 <p>These indicative landed prices apply to ${MIN_YEAR}-or-newer units. That is the W463A "new shape" G-Class, launched in 2018. Each row links to a detailed specs page.</p>
@@ -46,7 +46,7 @@ ${table([g], 'Mercedes-Benz G-Class landed prices in Kenya')}
 <p>The taxes include import duty, excise duty, 16% VAT, the Import Declaration Fee and the Railway Development Levy. Each depends on the CRSP value, engine size and the car's age. We calculate all of it in your quote. Read our <a href="/how-to-import-a-car-to-kenya/">import guide</a> for the full breakdown.</p>
 
 <h2>Our services: G-Wagon imports across Kenya</h2>
-<p>We manage every step from the seller to your gate. Here is what Elisa Motors does for G-Class buyers in Nairobi, Mombasa, Kisumu, Eldoret and every other county.</p>
+<p>We manage every step from the seller to your gate. Here is what Buy Car in Kenya does for G-Class buyers in Nairobi, Mombasa, Kisumu, Eldoret and every other county.</p>
 
 <h3>1. G-Wagon sourcing from the UK for Nairobi buyers</h3>
 <p>The UK has a deep supply of right-hand-drive G-Classes. Many are Mercedes-Benz Certified or approved-used cars with full main-dealer history. In addition, MOT records let us confirm the mileage.</p>
@@ -76,7 +76,7 @@ ${table([g], 'Mercedes-Benz G-Class landed prices in Kenya')}
 <p>Many buyers use bank asset finance for a G-Wagon. We provide pro-forma invoices and supporting documents for your bank. Furthermore, we can connect you with insurers for comprehensive cover and tracking.</p>
 <p>Want to trade in your current car? Tell us what you drive, and we will advise on its value. Start through the <a href="/import-request/">import request form</a> or the order form on this page.</p>
 
-${cta('Comparing a G400d and a G63?', 'We can quote both side by side.', 'Hi Elisa Motors, please compare G400d and G63 AMG prices for me.')}
+${cta('Comparing a G400d and a G63?', 'We can quote both side by side.', 'Hi Buy Car in Kenya, please compare G400d and G63 AMG prices for me.')}
 
 <h2>G-Wagon running costs in Kenya</h2>
 <h3>Fuel consumption</h3>
@@ -131,9 +131,9 @@ ${cta('Comparing a G400d and a G63?', 'We can quote both side by side.', 'Hi Eli
 <p>We serve G-Wagon buyers in every major town. In Nairobi, that includes Westlands, Karen, Runda, Muthaiga, Gigiri, Lavington, Kileleshwa, Upper Hill and Syokimau. Nearby, we cover Kiambu, Ruiru, Thika, Kitengela and Machakos.</p>
 <p>Upcountry, we deliver to Nakuru, Naivasha, Eldoret, Kisumu, Kericho, Nyeri, Nanyuki and Meru. At the coast, we serve Mombasa, Nyali, Bamburi, Diani, Kilifi and Malindi.</p>
 
-<h2>How to order a G-Wagon with Elisa Motors</h2>
+<h2>How to order a G-Wagon with Buy Car in Kenya</h2>
 <p>Open the ${c(g, 'Mercedes-Benz G-Class')} page, pick a version and tap "Order this spec". Alternatively, use the order form on this page. We reply with matching cars and a free, all-inclusive quote.</p>
-<p>After you approve a car, we buy, inspect, ship, clear, register and deliver it. Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about G-Wagon prices.')}. You can also read <a href="/about/">about us</a> or browse <a href="/cars/">all cars</a>.</p>
+<p>After you approve a car, we buy, inspect, ship, clear, register and deliver it. Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about G-Wagon prices.')}. You can also read <a href="/about/">about us</a> or browse <a href="/cars/">all cars</a>.</p>
 <p>Weighing a Toyota instead? Read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Land Cruiser V8 price guide</a>.</p>
 `,
     faq: [

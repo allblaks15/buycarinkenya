@@ -17,8 +17,8 @@ export default (h) => {
     html: `
 <p>The <b>Toyota Prado vs Mitsubishi Pajero</b> question has divided Kenyan 4x4 fans for decades. Both are proper off-roaders with seven seats and real toughness. However, the Prado costs more, while the Pajero offers more metal for the money. Therefore, the right choice depends on your budget, your roads and how long you plan to keep the car.</p>
 <p>A compliant Prado lands from about <b>${F(p)}</b>, while a Pajero starts near <b>${F(j)}</b>. That is a big gap. Yet resale value, parts supply and comfort narrow it over time.</p>
-<p>This guide compares the two in detail. It also gives quick verdicts on other popular match-ups: Pajero Sport vs Fortuner and CX-5 vs Forester. Furthermore, it explains how Elisa Motors can quote any of them side by side.</p>
-${cta('Want Prado and Pajero quotes?', 'We can price both on one page.', 'Hi Elisa Motors, please compare Prado and Pajero prices for me.')}
+<p>This guide compares the two in detail. It also gives quick verdicts on other popular match-ups: Pajero Sport vs Fortuner and CX-5 vs Forester. Furthermore, it explains how Buy Car in Kenya can quote any of them side by side.</p>
+${cta('Want Prado and Pajero quotes?', 'We can price both on one page.', 'Hi Buy Car in Kenya, please compare Prado and Pajero prices for me.')}
 
 <h2>Price comparison (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -65,7 +65,7 @@ ${h.specs('toyota-fortuner')}
 <p>The Nissan Murano is a comfortable crossover with a V6 or hybrid engine. However, it is less common in Kenya, and parts are harder to find. The Harrier offers better resale and easier servicing. Read our <a href="/blog/toyota-harrier-price-in-kenya/">Harrier price guide</a>.</p>
 
 <h2>Our services: import any of these SUVs</h2>
-<p>Elisa Motors imports all of them. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
+<p>Buy Car in Kenya imports all of them. Here is what we do for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond.</p>
 
 <h3>1. Side-by-side quotes</h3>
 <p>We price two or three models on one page with every cost included. As a result, you compare real numbers.</p>
@@ -95,7 +95,7 @@ ${h.specs('toyota-fortuner')}
 <p>We deliver to Nairobi, Nakuru, Eldoret, Kitale, Kisumu, Kericho, Nyeri, Nanyuki, Meru, Embu, Mombasa and Malindi. In addition, we serve Garissa, Isiolo and Lodwar.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Need help choosing a 4x4?', 'Tell us your roads and budget.', 'Hi Elisa Motors, which 4x4 should I import?')}
+${cta('Need help choosing a 4x4?', 'Tell us your roads and budget.', 'Hi Buy Car in Kenya, which 4x4 should I import?')}
 
 <h2>Running costs compared</h2>
 <p>The Prado 2.8 diesel returns about 11 km/L on the highway. The Pajero 3.2 diesel returns about 10 km/L. Meanwhile, the Pajero 3.8 V6 petrol uses noticeably more. Therefore, diesel versions of both are the economical choice for long trips.</p>
@@ -124,7 +124,7 @@ ${h.specs('toyota-land-cruiser-prado', 'Toyota Prado versions at a glance')}
 <p>We serve buyers across Nairobi, including Karen, Langata, Runda, Kileleshwa and Syokimau. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Meru, Machakos, Kericho and Kitale. At the coast, we serve Mombasa, Nyali, Kilifi and Malindi.</p>
 
 <h2>Order your SUV</h2>
-<p>Use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about Prado vs Pajero.')}. You can also read our <a href="/blog/cheap-alternatives-to-prado-harrier-cx5/">cheap alternatives guide</a> or browse <a href="/body-type/suv/">all SUVs</a>.</p>
+<p>Use the order form on this page. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about Prado vs Pajero.')}. You can also read our <a href="/blog/cheap-alternatives-to-prado-harrier-cx5/">cheap alternatives guide</a> or browse <a href="/body-type/suv/">all SUVs</a>.</p>
 `,
     faq: [
       ['Is the Pajero cheaper than the Prado?', `Yes. A Pajero lands from about ${F(j)}, while a Prado starts near ${F(p)}. However, the Prado holds its value better.`],

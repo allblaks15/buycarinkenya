@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['toyota-raize', 'daihatsu-rocky', 'suzuki-escudo-vitara', 'suzuki-jimny', 'toyota-yaris-cross', 'honda-vezel', 'mazda-cx-3', 'toyota-rush'],
     html: `
 <p>If you want to <b>import a compact SUV from Japan to Kenya</b>, you have more choice than ever. Small SUVs give you a high driving position, more ground clearance than a hatchback and easy parking. Moreover, many are very economical. As a result, they suit young professionals, couples and small families across Kenya.</p>
-<p>This guide covers the best compact and mini SUVs from Japan: the Toyota Raize, Daihatsu Rocky, Suzuki Vitara, Suzuki Jimny, Toyota Yaris Cross, Honda Vezel, Mazda CX-3 and Toyota Rush. It includes landed prices, strengths, weaknesses and buying tips. Furthermore, it explains how Elisa Motors imports them with one fixed price.</p>
-${cta('Want a compact SUV?', 'Tell us your budget and how you drive.', 'Hi Elisa Motors, I want a compact SUV from Japan.')}
+<p>This guide covers the best compact and mini SUVs from Japan: the Toyota Raize, Daihatsu Rocky, Suzuki Vitara, Suzuki Jimny, Toyota Yaris Cross, Honda Vezel, Mazda CX-3 and Toyota Rush. It includes landed prices, strengths, weaknesses and buying tips. Furthermore, it explains how Buy Car in Kenya imports them with one fixed price.</p>
+${cta('Want a compact SUV?', 'Tell us your budget and how you drive.', 'Hi Buy Car in Kenya, I want a compact SUV from Japan.')}
 
 <h2>Compact SUV landed prices in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -57,7 +57,7 @@ ${h.specs('toyota-yaris-cross')}
 <p>Most compact SUVs come in 2WD and 4WD versions. 2WD is cheaper and more economical. In contrast, 4WD helps on wet, muddy roads in the long rains or upcountry. For example, buyers in Kericho, Nyeri and Kakamega often choose 4WD.</p>
 
 <h2>Our services: compact SUV imports</h2>
-<p>Elisa Motors imports compact SUVs for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya imports compact SUVs for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Shortlists by budget</h3>
 <p>Tell us your budget and needs. We shortlist compact SUVs that fit. As a result, you compare real options.</p>
@@ -87,7 +87,7 @@ ${h.specs('toyota-yaris-cross')}
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Raize, Vitara or Yaris Cross?', 'We can quote all three side by side.', 'Hi Elisa Motors, please compare compact SUV prices.')}
+${cta('Raize, Vitara or Yaris Cross?', 'We can quote all three side by side.', 'Hi Buy Car in Kenya, please compare compact SUV prices.')}
 
 ${h.specs('daihatsu-rocky')}
 
@@ -116,7 +116,7 @@ ${h.specs('toyota-rush')}
 <p>We serve buyers across Nairobi, including Kilimani, South B, South C, Syokimau, Kitengela, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Machakos, Meru, Kakamega and Kericho. At the coast, we serve Mombasa, Nyali and Diani.</p>
 
 <h2>Order your compact SUV</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about compact SUVs.')}. You can also browse <a href="/body-type/suv/">all SUVs</a> or read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about compact SUVs.')}. You can also browse <a href="/body-type/suv/">all SUVs</a> or read our <a href="/blog/import-cars-from-japan-to-kenya/">Japan import guide</a>.</p>
 `,
     faq: [
       ['What is the cheapest compact SUV to import from Japan?', `The Daihatsu Rocky and Toyota Raize are among the cheapest. The Rocky lands from about ${F('daihatsu-rocky')}.`],

@@ -15,9 +15,9 @@ export default (h) => {
     cars: ['land-rover-range-rover-sport', 'land-rover-range-rover-vogue', 'land-rover-range-rover-velar', 'land-rover-range-rover-evoque', 'land-rover-defender', 'land-rover-discovery'],
     html: `
 <p>The <b>Range Rover price in Kenya</b> starts at about <b>${F('land-rover-range-rover-evoque')}</b> for a compliant Evoque and climbs past <b>${T('land-rover-range-rover-vogue')}</b> for a new-shape Autobiography. That is a wide gap. However, most buyers in Nairobi, Mombasa and Nakuru land somewhere in the middle. Therefore, this guide breaks the cost down model by model, year by year and route by route.</p>
-<p>Elisa Motors imports Range Rovers to order from the <a href="/import-from/uk/">United Kingdom</a> and <a href="/import-from/japan/">Japan</a>. We quote one landed figure in Kenya shillings. That figure covers the car, shipping to Mombasa, KRA taxes, clearing and NTSA registration. As a result, you know the real cost before you commit a single shilling.</p>
+<p>Buy Car in Kenya imports Range Rovers to order from the <a href="/import-from/uk/">United Kingdom</a> and <a href="/import-from/japan/">Japan</a>. We quote one landed figure in Kenya shillings. That figure covers the car, shipping to Mombasa, KRA taxes, clearing and NTSA registration. As a result, you know the real cost before you commit a single shilling.</p>
 <p>Below you will find a live price table, a model-by-model breakdown, our full import services and honest ownership costs. Furthermore, you will learn why a locally used Range Rover in Westlands can cost more over three years than a fresh import.</p>
-${cta('Want a Range Rover quote today?', 'Tell us the model, year and colour you want.', 'Hi Elisa Motors, I want a quote for a Range Rover.')}
+${cta('Want a Range Rover quote today?', 'Tell us the model, year and colour you want.', 'Hi Buy Car in Kenya, I want a quote for a Range Rover.')}
 
 <h2>Range Rover price list in Kenya (${YEAR})</h2>
 <p>These are indicative landed prices for ${MIN_YEAR}-or-newer units, which is what the KEBS 8-year rule allows in ${YEAR}. Prices include shipping, duty, clearing and registration. Each row links to a full specification page.</p>
@@ -48,7 +48,7 @@ ${table(['land-rover-range-rover-evoque', 'land-rover-range-rover-velar', 'land-
 <p>Finally, <b>condition and mileage</b>. A cheap Range Rover with a tired air suspension is not cheap. Consequently, we inspect every unit and share photos and reports before purchase. Read our <a href="/how-to-import-a-car-to-kenya/">step-by-step import guide</a> for the full tax breakdown.</p>
 
 <h2>Our services: Range Rover imports across Kenya</h2>
-<p>Elisa Motors handles every step from the UK or Japanese seller to your driveway. Here is exactly what we do for Range Rover buyers in Nairobi, Mombasa, Kisumu, Eldoret and every other county.</p>
+<p>Buy Car in Kenya handles every step from the UK or Japanese seller to your driveway. Here is exactly what we do for Range Rover buyers in Nairobi, Mombasa, Kisumu, Eldoret and every other county.</p>
 
 <h3>1. Range Rover sourcing from the UK for Nairobi buyers</h3>
 <p>The UK is the home market of Land Rover. As a result, it has the deepest supply of right-hand-drive Range Rovers in the world. We search approved-used dealers, main-dealer part exchanges and trusted trade auctions for your exact spec.</p>
@@ -78,7 +78,7 @@ ${table(['land-rover-range-rover-evoque', 'land-rover-range-rover-velar', 'land-
 <p>Many buyers fund a Range Rover through bank asset finance. We provide the pro-forma invoice, valuation details and documents that Kenyan banks request. In addition, we can connect you with insurers for comprehensive cover from the day the car lands.</p>
 <p>Want to trade in your current car? Tell us what you drive. Meanwhile, we can advise on its value so you plan the balance properly. Ask us through the <a href="/import-request/">import request form</a> or the order form on this page.</p>
 
-${cta('Ready to compare Range Rover quotes?', 'We can price a Sport, Velar and Evoque side by side.', 'Hi Elisa Motors, please compare Range Rover Sport, Velar and Evoque prices for me.')}
+${cta('Ready to compare Range Rover quotes?', 'We can price a Sport, Velar and Evoque side by side.', 'Hi Buy Car in Kenya, please compare Range Rover Sport, Velar and Evoque prices for me.')}
 
 <h2>Ex UK vs ex Japan Range Rover: which is better for Kenya?</h2>
 <p>For most buyers, the UK wins on choice and history. UK cars arrive with higher specs, such as panoramic roofs and Meridian audio. In contrast, Japanese cars win on low mileage and very clean interiors.</p>
@@ -107,9 +107,9 @@ ${cta('Ready to compare Range Rover quotes?', 'We can price a Sport, Velar and E
 <p>We serve Range Rover buyers across Kenya. In Nairobi, that includes Westlands, Karen, Runda, Muthaiga, Lavington, Kilimani, Kileleshwa, Upper Hill, Gigiri, Syokimau and Kitengela. Nearby, we deliver to Kiambu, Ruiru, Thika, Machakos and Kajiado.</p>
 <p>Upcountry, we deliver to Nakuru, Naivasha, Eldoret, Kisumu, Kakamega, Kericho, Kitale, Nyeri, Nanyuki, Meru and Embu. At the coast, we serve Mombasa, Nyali, Bamburi, Diani, Kilifi and Malindi. Wherever you are, the process and price are the same.</p>
 
-<h2>How to order a Range Rover with Elisa Motors</h2>
+<h2>How to order a Range Rover with Buy Car in Kenya</h2>
 <p>Ordering takes minutes. First, pick a model on our ${c('land-rover-range-rover-sport', 'Range Rover Sport')}, ${c('land-rover-range-rover-vogue', 'Range Rover Vogue')}, ${c('land-rover-range-rover-velar', 'Velar')} or ${c('land-rover-range-rover-evoque', 'Evoque')} page. Next, choose the version and tap "Order this spec". Alternatively, fill in the order form on this page.</p>
-<p>We then reply with matching cars and a free, all-inclusive quote. Once you approve a unit, we buy, inspect, ship, clear and register it. Questions? Call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about Range Rover prices.')}. You can also read <a href="/about/">about Elisa Motors</a> or <a href="/contact/">contact our team</a>.</p>
+<p>We then reply with matching cars and a free, all-inclusive quote. Once you approve a unit, we buy, inspect, ship, clear and register it. Questions? Call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about Range Rover prices.')}. You can also read <a href="/about/">about Buy Car in Kenya</a> or <a href="/contact/">contact our team</a>.</p>
 <p>Comparing other luxury SUVs? Read our <a href="/blog/toyota-land-cruiser-v8-price-in-kenya/">Toyota Land Cruiser V8 price guide</a> and our <a href="/blog/g-wagon-price-in-kenya/">G-Wagon price guide</a>.</p>
 `,
     faq: [

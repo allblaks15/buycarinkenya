@@ -15,8 +15,8 @@ export default (h) => {
     cars: ['bmw-x5', 'bmw-3-series', 'mercedes-benz-c-class', 'mercedes-benz-e-class', 'audi-q5', 'audi-a4', 'volkswagen-tiguan', 'jaguar-f-pace'],
     html: `
 <p>If you want to <b>import BMW, Mercedes, Audi and VW from the UK to Kenya</b>, you are choosing the best market in the world for right-hand-drive German cars. The UK has a huge supply of nearly new and used German cars with full dealer histories. Moreover, UK-spec cars often come with high trim levels such as M Sport, AMG Line and S line. As a result, Kenyan buyers get better cars for their money.</p>
-<p>This guide covers popular German models, landed prices, UK spec advantages, diesel vs petrol, running costs and buying tips. Furthermore, it explains how Elisa Motors imports German cars from the UK with one fixed price in Kenya shillings.</p>
-${cta('Want a German car from the UK?', 'Tell us the model, engine and budget.', 'Hi Elisa Motors, I want to import a German car from the UK.')}
+<p>This guide covers popular German models, landed prices, UK spec advantages, diesel vs petrol, running costs and buying tips. Furthermore, it explains how Buy Car in Kenya imports German cars from the UK with one fixed price in Kenya shillings.</p>
+${cta('Want a German car from the UK?', 'Tell us the model, engine and budget.', 'Hi Buy Car in Kenya, I want to import a German car from the UK.')}
 
 <h2>Popular German cars landed in Kenya (${YEAR})</h2>
 <p>These indicative landed prices include shipping, KRA duty, clearing and registration for ${MIN_YEAR}-or-newer units.</p>
@@ -55,7 +55,7 @@ ${h.specs('volkswagen-tiguan')}
 <p>Use the correct oil specification and quality fuel. In addition, keep software up to date. Read our <a href="/blog/g-wagon-maintenance-cost-kenya/">Mercedes maintenance tips</a>.</p>
 
 <h2>Our services: German cars from the UK</h2>
-<p>Elisa Motors imports German cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya imports German cars for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. UK dealer sourcing</h3>
 <p>We search approved-used dealers and trade sources for your model and spec. Moreover, we prefer cars with full dealer history.</p>
@@ -85,7 +85,7 @@ ${h.specs('volkswagen-tiguan')}
 <p>We deliver to Nairobi, Kiambu, Nakuru, Eldoret, Kisumu, Nyeri, Nanyuki, Mombasa and Diani.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('BMW, Mercedes or Audi?', 'We can quote all three side by side.', 'Hi Elisa Motors, please compare BMW, Mercedes and Audi prices.')}
+${cta('BMW, Mercedes or Audi?', 'We can quote all three side by side.', 'Hi Buy Car in Kenya, please compare BMW, Mercedes and Audi prices.')}
 
 ${h.specs('bmw-3-series')}
 
@@ -105,7 +105,7 @@ ${h.specs('mercedes-benz-e-class')}
 <p>We serve buyers across Nairobi, including Westlands, Kilimani, Lavington, Karen, Runda, Kileleshwa and Upper Hill. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos and Meru. At the coast, we serve Mombasa, Nyali and Diani.</p>
 
 <h2>Order your German car</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I have a question about German cars from the UK.')}. You can also read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> or browse <a href="/import-from/uk/">cars from the UK</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I have a question about German cars from the UK.')}. You can also read our <a href="/blog/import-cars-from-uk-to-kenya/">UK import guide</a> or browse <a href="/import-from/uk/">cars from the UK</a>.</p>
 `,
     faq: [
       ['Is it better to import a BMW or Mercedes from the UK or Japan?', 'The UK offers far more choice, higher UK-spec trims and verifiable dealer history. Japan offers lower mileage but a smaller selection.'],

@@ -1,4 +1,4 @@
-/* Elisa Motors – front-end behaviour (no dependencies) */
+/* Buy Car in Kenya – front-end behaviour (no dependencies) */
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];

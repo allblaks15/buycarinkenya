@@ -16,8 +16,8 @@ export default (h) => {
     html: `
 <p>If you want the best choice and the fairest prices, you need to know <b>how to buy cars from Japanese auctions from Kenya</b>. Japanese dealer auctions sell a huge number of used cars every week. Moreover, every car comes with an independent inspection sheet. As a result, auctions are where most good export cars begin their journey to Mombasa.</p>
 <p>However, private buyers cannot bid directly at most Japanese auctions. You need a licensed member, an exporter or an import agent. Therefore, understanding how the system works helps you choose the right partner and avoid costly mistakes.</p>
-<p>This guide explains how the auctions work, how bidding happens, deposits and refunds, fees and how auction cars compare with exporter stock. Furthermore, it shows how Elisa Motors bids for you from Nairobi.</p>
-${cta('Want us to bid for you?', 'Tell us the car, grade and budget.', 'Hi Elisa Motors, I want you to bid on a car at a Japanese auction.')}
+<p>This guide explains how the auctions work, how bidding happens, deposits and refunds, fees and how auction cars compare with exporter stock. Furthermore, it shows how Buy Car in Kenya bids for you from Nairobi.</p>
+${cta('Want us to bid for you?', 'Tell us the car, grade and budget.', 'Hi Buy Car in Kenya, I want you to bid on a car at a Japanese auction.')}
 
 <h2>How Japanese car auctions work</h2>
 <p>Japan's auction groups, such as USS, TAA, JU, CAA, HAA and many others, run sites across the country. Dealers who are members bid in person or online. Sales are fast: a car may sell in under a minute.</p>
@@ -59,7 +59,7 @@ ${table(['toyota-aqua', 'toyota-corolla-fielder', 'nissan-x-trail', 'mazda-cx-5'
 <p>Moreover, avoid end-of-year rushes when many buyers compete. Finally, set a realistic maximum based on recent results. Your agent can show past winning prices for similar cars.</p>
 
 <h2>Our services: Japanese auction buying</h2>
-<p>Elisa Motors bids for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
+<p>Buy Car in Kenya bids for buyers in Nairobi, Mombasa, Nakuru, Kisumu, Eldoret and beyond. Here is what we do.</p>
 
 <h3>1. Auction search and shortlists</h3>
 <p>We search upcoming auctions daily and send matching cars on WhatsApp. As a result, you see real options quickly.</p>
@@ -89,7 +89,7 @@ ${table(['toyota-aqua', 'toyota-corolla-fielder', 'nissan-x-trail', 'mazda-cx-5'
 <p>We deliver to Nairobi, Kiambu, Thika, Machakos, Nakuru, Eldoret, Kisumu, Kericho, Nyeri, Meru, Mombasa and Malindi.</p>
 <p>Read our <a href="/blog/mombasa-to-nairobi-car-transport/">car transport guide</a>.</p>
 
-${cta('Ready to bid?', 'Send us your criteria and budget.', 'Hi Elisa Motors, please find me a car at Japanese auction.')}
+${cta('Ready to bid?', 'Send us your criteria and budget.', 'Hi Buy Car in Kenya, please find me a car at Japanese auction.')}
 
 <h2>Paying safely</h2>
 <p>Pay only into verified company accounts after written terms are agreed. Avoid sending money to personal accounts or unknown brokers. Moreover, keep every receipt and invoice. Read our <a href="/blog/car-import-scams-kenya/">scams guide</a> for warning signs.</p>
@@ -130,7 +130,7 @@ ${h.specs('nissan-x-trail')}
 <p>We serve buyers across Nairobi, including Kilimani, Westlands, South B, South C, Syokimau, Ruaka and Rongai. We also serve Nakuru, Eldoret, Kisumu, Thika, Nyeri, Nanyuki, Machakos, Meru and Kakamega. At the coast, we serve Mombasa, Nyali and Malindi.</p>
 
 <h2>Start bidding</h2>
-<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Elisa Motors, I want to buy at a Japanese auction.')}. You can also browse <a href="/import-from/japan/">cars from Japan</a> or <a href="/cars/">all cars</a>.</p>
+<p>Use the order form on this page, call ${telA()} or WhatsApp ${waA('Hi Buy Car in Kenya, I want to buy at a Japanese auction.')}. You can also browse <a href="/import-from/japan/">cars from Japan</a> or <a href="/cars/">all cars</a>.</p>
 `,
     faq: [
       ['Can I bid at Japanese car auctions from Kenya?', 'Not directly. Only registered members can bid. Kenyan buyers bid through an exporter or import agent who places bids within your limit.'],
