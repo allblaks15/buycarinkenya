@@ -2,5 +2,13 @@
   "buildCommand": "node src/build.js",
   "outputDirectory": "dist",
   "installCommand": "",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.buycarinkenya.co.ke" }],
+      "destination": "https://buycarinkenya.co.ke/:path*",
+      "permanent": true
+    }
+  ]
 }
