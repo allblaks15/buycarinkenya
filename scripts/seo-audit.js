@@ -5,7 +5,7 @@ import { join } from 'node:path';
 const root = join(import.meta.dirname, '..', 'dist');
 const SITE = 'https://buycarinkenya.co.ke';
 const pages = [];
-const walk = (d) => readdirSync(d).forEach((f) => { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : p.endsWith('.html') && pages.push(p); });
+const walk = (d) => readdirSync(d).forEach((f) => { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : p.endsWith('.html') && !/^google[0-9a-f]+\.html$/.test(f) && pages.push(p); }); // skip Search Console verification files
 walk(root);
 
 const urlOf = (file) => '/' + file.slice(root.length + 1).replace(/\\/g, '/').replace(/index\.html$/, '');

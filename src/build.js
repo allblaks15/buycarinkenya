@@ -254,13 +254,14 @@ const add = (path, html) => pages.push({ path, html });
   const popular = cars.filter((c) => c.popular);
   const bodyCounts = Object.keys(BODIES).map((b) => [b, cars.filter((c) => c.body === b).length]);
   const heroImg = mainImg('toyota-land-cruiser-prado');
+  const homeFaq = [[`How do I buy a car in Kenya with ${site.name}?`, `Choose a model on ${site.name}, pick the exact version and send your order on WhatsApp or through the order form. We confirm an all-inclusive landed price in KES, source and inspect the car in Japan, the UK or South Africa, ship it to Mombasa, clear it with KRA and register it with NTSA before handing you the keys.`], ...generalFaq];
   const body = `
 <section class="hero">
-  <img class="hero-img" src="${heroImg}" alt="Toyota Land Cruiser Prado imported to Kenya from Japan by ${site.name}" title="Import cars from Japan to Kenya" width="1200" height="800" fetchpriority="high">
+  <img class="hero-img" src="${heroImg}" alt="Buy Car in Kenya: Toyota Land Cruiser Prado imported from Japan" title="Buy Car in Kenya – import cars from Japan, UK & South Africa" width="1200" height="800" fetchpriority="high">
   <div class="wrap">
     <span class="eyebrow">Japan · United Kingdom · South Africa</span>
-    <h1>Import your next car to Kenya, the easy way</h1>
-    <p class="lede">Pick a model, choose the exact version and order in minutes on WhatsApp. We source, inspect, ship to Mombasa, clear KRA and hand you the keys, with the landed price agreed upfront.</p>
+    <h1>Buy Car in Kenya: import your next car the easy way</h1>
+    <p class="lede">Want to buy a car in Kenya without the guesswork? Pick a model, choose the exact version and order in minutes on WhatsApp. We source, inspect, ship to Mombasa, clear KRA and hand you the keys, with the landed price agreed upfront.</p>
     <form class="search-card" action="/cars/" method="get" role="search">
       <div class="search-row">
         <div><label for="s-make">Make</label><select id="s-make" name="make"><option value="">Any make</option>${MAKES.map((m) => `<option>${m}</option>`).join('')}</select></div>
@@ -307,14 +308,21 @@ const add = (path, html) => pages.push({ path, html });
   ${postGrid(posts.slice(0, 3))}
 </div></section>
 
+<section class="block"><div class="wrap"><div class="prose">
+  <h2>Buy a car in Kenya with confidence</h2>
+  <p><strong>Buy Car in Kenya</strong> helps you buy the exact car you want, imported directly from Japan, the United Kingdom or South Africa. Instead of settling for whatever is on a local yard, you choose the make, model, version, year, colour and mileage, and we source a car that matches.</p>
+  <p>Every quote is an all-inclusive landed price in Kenya shillings, covering the car, shipping to Mombasa, KRA duty, clearing and NTSA registration. All cars are right-hand drive, meet the KEBS 8-year rule (${MIN_YEAR} or newer) and pass a pre-shipment inspection before they leave the export country.</p>
+  <p>Whether you want to buy a fuel-saving hatchback in Nairobi, a family SUV in Mombasa or a double cab in Nakuru, Eldoret or Kisumu, browse <a href="/cars/">all ${cars.length} models</a>, read our <a href="/how-to-import-a-car-to-kenya/">car import guide</a> or <a href="/import-request/">request any car</a>.</p>
+</div></div></section>
+
 ${ctaBand()}
 
 <section class="block"><div class="wrap">
-  <div class="section-head"><div><h2>Car import FAQs</h2></div></div>
-  ${faqHtml(generalFaq)}
+  <div class="section-head"><div><h2>Buy Car in Kenya FAQs</h2></div></div>
+  ${faqHtml(homeFaq)}
 </div></section>`;
-  add('/', layout({ path: '/', title: `Car Import Kenya: Import from Japan, UK & South Africa | ${site.name}`, description: `Import cars to Kenya from Japan, the UK and South Africa. Browse ${cars.length}+ models, compare versions and specs, see landed prices in KES and order on WhatsApp. KEBS compliant.`, body, priority: 1.0, preload: heroImg,
-    jsonld: [faqLd(generalFaq), { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.url, potentialAction: { '@type': 'SearchAction', target: abs('/cars/?q={search_term_string}'), 'query-input': 'required name=search_term_string' } }] }));
+  add('/', layout({ path: '/', title: `${site.name} | Import Cars from Japan, UK & South Africa`, description: `${site.name}: import your next car from Japan, the UK or South Africa. ${cars.length}+ models, all-inclusive landed prices in KES, KEBS inspected.`, body, priority: 1.0, preload: heroImg,
+    jsonld: [faqLd(homeFaq), { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, alternateName: ['BuyCarInKenya', 'buycarinkenya.co.ke'], description: `${site.name} imports cars to Kenya from Japan, the UK and South Africa with all-inclusive landed prices.`, inLanguage: 'en-KE', url: site.url, potentialAction: { '@type': 'SearchAction', target: abs('/cars/?q={search_term_string}'), 'query-input': 'required name=search_term_string' } }] }));
 }
 
 // ALL CARS (filterable)
