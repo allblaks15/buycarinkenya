@@ -4,7 +4,14 @@ import { createHmac, createHash, timingSafeEqual, randomInt } from 'node:crypto'
 import nodemailer from 'nodemailer';
 
 export const SITE = { name: 'Buy Car in Kenya', url: 'https://buycarinkenya.co.ke', domain: 'buycarinkenya.co.ke' };
-export const PAYMENT = { paybill: '880100', account: '747328', amount: 995 };
+export const PAYMENT = { paybill: '880100', account: '747328' };
+// Listing packages: the seller picks one when posting; days = null means listed until sold
+export const PACKAGES = {
+  '2w': { name: '2 weeks', days: 14, price: 450 },
+  '1m': { name: '1 month', days: 30, price: 950 },
+  unlimited: { name: 'Unlimited until sold', days: null, price: 1350 },
+};
+export const pkgOf = (l) => PACKAGES[l.package] || PACKAGES.unlimited;
 export const MAX_PHOTOS = 12;
 
 export const sql = neon(process.env.DATABASE_URL);
@@ -22,6 +29,7 @@ export const db = () => (ready ||= sql.transaction([
     paid_at timestamptz, approved_at timestamptz, sold_at timestamptz)`,
   sql`CREATE INDEX IF NOT EXISTS listings_status_idx ON listings (status, approved_at DESC)`,
   sql`CREATE INDEX IF NOT EXISTS listings_user_idx ON listings (user_email)`,
+  sql`ALTER TABLE listings ADD COLUMN IF NOT EXISTS package text, ADD COLUMN IF NOT EXISTS expires_at timestamptz, ADD COLUMN IF NOT EXISTS accident text, ADD COLUMN IF NOT EXISTS extras jsonb NOT NULL DEFAULT '[]'`,
   sql`CREATE TABLE IF NOT EXISTS editors (email text PRIMARY KEY, added_by text, created_at timestamptz NOT NULL DEFAULT now())`,
 ]).catch((e) => { ready = null; throw e; }));
 
@@ -103,7 +111,10 @@ export async function sendMail({ to, subject, text, html }) {
 export const notifyStaff = async (subject, text) => Promise.all([...admins(), ...(await sql`SELECT email FROM editors`).map((r) => r.email)].map((to) => sendMail({ to, subject, text }).catch((e) => console.error('admin mail', e.message))));
 
 // ---------------------------------------------------------------- listings
-export const STATUSES = ['awaiting_payment', 'pending_review', 'active', 'sold', 'rejected'];
+export const STATUSES = ['awaiting_payment', 'pending_review', 'active', 'expired', 'sold', 'rejected'];
+// A paid listing stays 'active' in the table; once its package runs out it is shown as 'expired'
+export const LIVE = `status = 'active' AND (expires_at IS NULL OR expires_at > now())`;
+export const statusOf = (l) => (l.status === 'active' && l.expires_at && new Date(l.expires_at) <= new Date() ? 'expired' : l.status);
 export const slugify = (s) => String(s).toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 export const listingTitle = (l) => `${l.year} ${l.make} ${l.model}`;
 export const listingUrl = (l) => `${SITE.url}/used-cars/${l.slug}/`;
@@ -121,6 +132,9 @@ export const OPTIONS = {
   transmission: ['Automatic', 'Manual'],
   body: ['SUV', 'Sedan', 'Hatchback', 'Station Wagon', 'MPV', 'Pickup', 'Van', 'Truck', 'Bus', 'Sports Car'],
   condition: ['Locally used', 'Foreign used', 'Brand new'],
+  accident: ['Accident free', 'Has been in an accident'],
+  extras: ['Sunroof', 'Extra tyres', 'Spare wheel', 'Alloy rims', 'Leather seats', 'Electric seats', 'Reverse camera', 'Parking sensors', 'Navigation', 'Bluetooth / Android Auto', 'Push start / keyless', 'Cruise control',
+    'Climate control', 'Tinted windows', 'Roof rails', 'Tow bar', 'Bull bar', 'Car tracker', 'Alarm', 'Dash cam', '4WD / AWD', 'Third row seats', 'New tyres', 'Full service history'],
 };
 const blobHost = (u) => { try { const h = new URL(u).hostname; return h.endsWith('.public.blob.vercel-storage.com'); } catch { return false; } };
 
@@ -134,9 +148,11 @@ export function cleanListing(input) {
     engine_cc: input.engine_cc === '' || input.engine_cc == null ? null : int(input.engine_cc, 50, 10000),
     colour: txt(input.colour, 30) || null, condition: oneOf(input.condition, OPTIONS.condition), location: txt(input.location, 60),
     description: String(input.description ?? '').trim().slice(0, 4000), seller_name: txt(input.seller_name, 60) || null, phone: normPhone(input.phone),
+    accident: oneOf(input.accident, OPTIONS.accident),
+    extras: Array.isArray(input.extras) ? [...new Set(input.extras.filter((x) => OPTIONS.extras.includes(x)))] : [],
     photos: Array.isArray(input.photos) ? input.photos.filter((p) => p && blobHost(p.url) && blobHost(p.thumb)).slice(0, MAX_PHOTOS).map((p) => ({ url: p.url, thumb: p.thumb })) : [],
   };
-  const need = [['make', 'Choose the make'], ['model', 'Enter the model'], ['year', 'Enter a valid year'], ['price', 'Enter a price between KES 50,000 and KES 1 billion'], ['location', 'Enter where the car is (town)'], ['phone', 'Enter a valid Kenyan phone number, e.g. 0712 345 678']];
+  const need = [['make', 'Choose the make'], ['model', 'Enter the model'], ['year', 'Enter a valid year'], ['price', 'Enter a price between KES 50,000 and KES 1 billion'], ['location', 'Enter where the car is (town)'], ['accident', 'Say whether the car has been in an accident'], ['phone', 'Enter a valid Kenyan phone number, e.g. 0712 345 678']];
   for (const [k, msg] of need) if (!l[k]) throw new HttpError(400, msg);
   if (input.mileage && l.mileage == null) throw new HttpError(400, 'Enter mileage in km');
   if (!l.photos.length) throw new HttpError(400, 'Add at least one photo');
@@ -146,8 +162,8 @@ export function cleanListing(input) {
 export const publicListing = (l) => ({
   id: l.id, slug: l.slug, url: `/used-cars/${l.slug}/`, title: listingTitle(l), make: l.make, model: l.model, year: l.year, price: Number(l.price), mileage: l.mileage,
   fuel: l.fuel, transmission: l.transmission, body: l.body, engine_cc: l.engine_cc, colour: l.colour, condition: l.condition, location: l.location,
-  description: l.description, seller_name: l.seller_name, phone: l.status === 'active' ? l.phone : null, photos: l.photos, status: l.status,
-  posted: l.approved_at || l.created_at,
+  description: l.description, seller_name: l.seller_name, accident: l.accident, extras: l.extras || [], photos: l.photos, status: statusOf(l),
+  phone: statusOf(l) === 'active' ? l.phone : null, posted: l.approved_at || l.created_at,
 });
 export const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const kes = (n) => 'KES ' + Number(n).toLocaleString('en-KE');

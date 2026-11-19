@@ -476,3 +476,29 @@ table.spec.post-table th[scope="row"] { font-weight: 600; }
 }
 .editor-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .editor-list li { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--paper); border-radius: 10px; padding: 8px 12px; font-size: .92rem; overflow-wrap: anywhere; }
+.pkg-grid { display: grid; gap: 14px; }
+.pkg-card { position: relative; background: #fff; border: 1.5px solid var(--line); border-radius: 18px; padding: 22px 20px 20px; }
+.pkg-card h3 { margin: 0; font-size: 1.15rem; }
+.pkg-card.pkg-hot { border-color: var(--accent); box-shadow: var(--shadow); }
+.pkg-tag { position: absolute; top: -11px; left: 18px; background: var(--ink); color: #fff; font-size: .7rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+.pkg-hot .pkg-tag { background: var(--accent); }
+.pkg-rows { list-style: none; margin: 6px 0 14px; padding: 0; display: grid; gap: 8px; }
+.pkg-rows li { display: flex; justify-content: space-between; align-items: center; gap: 10px; border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.pkg-rows li.hot { border-color: var(--accent); background: var(--accent-soft); }
+.pkg-rows small, .pkg-name small { display: block; font-size: .72rem; color: var(--accent-ink); font-weight: 700; }
+.pkg-rows b.num { font-size: 1.15rem; }
+.pkg-pick { display: grid; gap: 10px; }
+.pkg-option { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; background: #fff; }
+.pkg-option input { width: 20px; height: 20px; min-height: 0; flex: none; accent-color: var(--accent); appearance: auto; -webkit-appearance: auto; }
+.pkg-option .pkg-name { flex: 1; }
+.pkg-option .pkg-name small.muted { color: var(--muted); font-weight: 500; }
+.pkg-option:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.pkg-option b.num { font-size: 1.1rem; white-space: nowrap; }
+.extras-chips .chip { font-size: .88rem; }
+.check-field { display: flex; align-items: center; gap: 8px; align-self: end; min-height: 48px; }
+.check-field input { width: 20px; height: 20px; min-height: 0; appearance: auto; -webkit-appearance: auto; accent-color: var(--accent); }
+.check-field span { font-size: .9rem !important; }
+.extras-list { grid-template-columns: 1fr 1fr; }
+.car-card .ok-chip { color: var(--ok); }
+@media (min-width: 760px) { .pkg-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 960px) { .market-filters { grid-template-columns: 2fr repeat(6, 1fr); } }

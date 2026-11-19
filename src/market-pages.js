@@ -1,5 +1,16 @@
 // Marketplace pages: owners sell their own cars. Data comes from /api/* at runtime (see api/).
-export const PAYMENT = { paybill: '880100', account: '747328', amount: 995 };
+export const PAYMENT = { paybill: '880100', account: '747328' };
+// Keep in sync with PACKAGES in api/_lib.js
+export const PACKAGES = [
+  { id: '2w', name: '2 weeks', price: 450, blurb: 'Listed for 14 days' },
+  { id: '1m', name: '1 month', price: 950, blurb: 'Listed for 30 days', tag: 'Sell your car faster' },
+  { id: 'unlimited', name: 'Unlimited until sold', price: 1350, blurb: 'Stays live until you mark it sold', tag: 'Best value' },
+];
+const FROM = Math.min(...PACKAGES.map((p) => p.price)).toLocaleString('en');
+const ENGINES = [660, 1000, 1200, 1300, 1490, 1500, 1600, 1800, 2000, 2200, 2400, 2500, 2700, 2800, 3000, 3500, 4000, 4200, 4500, 4600, 5000, 5700];
+const COLOURS = ['White', 'Pearl white', 'Black', 'Silver', 'Grey', 'Blue', 'Dark blue', 'Red', 'Maroon', 'Green', 'Brown', 'Beige', 'Gold', 'Orange', 'Yellow', 'Purple', 'Other'];
+const EXTRAS = ['Sunroof', 'Extra tyres', 'Spare wheel', 'Alloy rims', 'Leather seats', 'Electric seats', 'Reverse camera', 'Parking sensors', 'Navigation', 'Bluetooth / Android Auto', 'Push start / keyless', 'Cruise control',
+  'Climate control', 'Tinted windows', 'Roof rails', 'Tow bar', 'Bull bar', 'Car tracker', 'Alarm', 'Dash cam', '4WD / AWD', 'Third row seats', 'New tyres', 'Full service history'];
 const TOWNS = ['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret', 'Thika', 'Machakos', 'Kiambu', 'Kitengela', 'Ruiru', 'Nyeri', 'Meru', 'Embu', 'Kericho', 'Kakamega', 'Kisii', 'Naivasha', 'Nanyuki', 'Malindi', 'Kitale', 'Bungoma', 'Garissa', 'Narok', 'Kajiado', 'Murang\'a', 'Kilifi', 'Voi', 'Isiolo', 'Homa Bay', 'Migori'];
 const EXTRA_MAKES = ['Isuzu', 'Mitsubishi', 'Suzuki', 'Peugeot', 'Jeep', 'Hyundai', 'Kia', 'Ford', 'Chevrolet', 'Renault', 'Daihatsu', 'Hino', 'FAW', 'Tata', 'Scania', 'Mahindra'];
 
@@ -8,12 +19,16 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
   const opt = (arr, sel) => arr.map((x) => `<option${x === sel ? ' selected' : ''}>${esc(x)}</option>`).join('');
   const script = `<script src="/assets/js/market.js?v=${BUILD}" defer></script>`;
   const pay = PAYMENT;
-  const payHow = `<ol class="pay-steps"><li>Open <b>M-Pesa</b> and choose <b>Lipa na M-Pesa</b></li><li>Choose <b>Paybill</b></li><li>Business number: <b class="num">${pay.paybill}</b></li><li>Account number: <b class="num">${pay.account}</b></li><li>Amount: <b class="num">KSh ${pay.amount.toLocaleString('en')}</b>, then enter your PIN</li></ol>`;
+  const payHow = `<ol class="pay-steps"><li>Open <b>M-Pesa</b> and choose <b>Lipa na M-Pesa</b></li><li>Choose <b>Paybill</b></li><li>Business number: <b class="num">${pay.paybill}</b></li><li>Account number: <b class="num">${pay.account}</b></li><li>Amount: <b class="num" data-pay-amount>your package price</b>, then enter your PIN</li></ol>`;
+  const kshs = (n) => 'KSh ' + n.toLocaleString('en');
+  const pkgCards = (cta) => `<div class="pkg-grid">${PACKAGES.map((p) => `<div class="pkg-card${p.tag === 'Sell your car faster' ? ' pkg-hot' : ''}">${p.tag ? `<span class="pkg-tag">${p.tag}</span>` : ''}<h3>${p.name}</h3><p class="price-big num">${kshs(p.price)}</p><p class="muted small" style="margin:0 0 12px">${p.blurb}</p>${cta ? `<a class="btn ${p.tag === 'Sell your car faster' ? 'btn-primary' : 'btn-ghost'} btn-block" href="/account/#new">Choose ${p.name.toLowerCase()}</a>` : ''}</div>`).join('')}</div>`;
+  const pkgList = PACKAGES.map((p) => `${p.name} for ${kshs(p.price)}`).join(', ');
   const sellFaq = [
-    ['How much does it cost to sell my car?', `A one-off KSh ${pay.amount.toLocaleString('en')} per car. Your listing stays live until the car is sold, with no monthly fees and no commission on the sale price.`],
+    ['How much does it cost to sell my car?', `Choose a package when you post your car: ${pkgList}. You pay once per car, with no commission on the sale price.`],
+    ['What happens when my package ends?', 'Your listing comes off the site automatically. You can renew it from your account at any time by choosing a package and paying again. The unlimited package never ends until you mark the car as sold.'],
     ['How do buyers contact me?', 'Buyers tap WhatsApp or Call on your listing and reach you directly. The WhatsApp message already includes a link to your car, so you know exactly which car they mean.'],
     ['Do I need a password?', 'No. Enter your email and we send you a 6-digit one-time code. Type it in and you are signed in.'],
-    ['How do I pay?', `Pay with M-Pesa: Lipa na M-Pesa → Paybill → Business number ${pay.paybill} → Account number ${pay.account} → KSh ${pay.amount.toLocaleString('en')}. Then enter the M-Pesa code from your confirmation SMS on your account page.`],
+    ['How do I pay?', `Pay with M-Pesa: Lipa na M-Pesa → Paybill → Business number ${pay.paybill} → Account number ${pay.account} → the price of your package. Then enter the M-Pesa code from your confirmation SMS on your account page.`],
     ['When does my car go live?', 'As soon as we confirm your M-Pesa payment, usually within a few hours during business hours. We email you when it is live.'],
     ['Can I change the price or photos later?', 'Yes. Edit the price, photos and description at any time from your account. You set your own price.'],
     ['What happens when I sell the car?', 'Tap “Mark as sold” on your account page. The listing shows as sold and buyers stop contacting you.'],
@@ -27,7 +42,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     const steps = [
       ['Add your car', `Upload up to 12 photos, set your own price and add the details buyers ask about.`],
       ['Confirm your email', 'Add your phone and email, then enter the 6-digit code we email you. No password.'],
-      [`Pay KSh ${pay.amount} by M-Pesa`, `Paybill ${pay.paybill}, account ${pay.account}, then enter the M-Pesa code.`],
+      ['Choose a package and pay', `${pkgList}. Pay by M-Pesa Paybill ${pay.paybill}, account ${pay.account}.`],
       ['Go live and get calls', 'Buyers WhatsApp or call you directly. No broker in the middle.'],
       ['Mark it as sold', 'One tap when the deal is done. That is it.'],
     ];
@@ -36,25 +51,29 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     <div>
       <span class="eyebrow">Sell with us faster</span>
       <h1>Sell your car in Kenya, fast and direct</h1>
-      <p class="lede">No brokers. No commission. Everything at your fingertips. List your car once for <b>KSh ${pay.amount.toLocaleString('en')}</b> and it stays live until it is sold. Buyers contact you directly on WhatsApp or by phone.</p>
+      <p class="lede">No brokers. No commission. Everything at your fingertips. List your car from <b>KSh ${FROM}</b>: 2 weeks, 1 month or unlimited until sold. Buyers contact you directly on WhatsApp or by phone.</p>
       <div class="btns"><a class="btn btn-primary" href="/account/#new">${I.car} Start selling</a><a class="btn btn-light" href="/used-cars/">See cars for sale</a></div>
     </div>
     <div class="price-card">
-      <span class="eyebrow" style="color:var(--accent)">Seller package</span>
-      <p class="price-big num">KSh ${pay.amount.toLocaleString('en')}</p>
-      <p class="muted" style="margin:0 0 12px">per car · listed until sold</p>
-      <ul class="feature-list">${['Unlimited time until your car is sold', 'Up to 12 photos', 'Set your own price', 'Buyers WhatsApp or call you directly', 'Edit or mark as sold anytime', 'No brokers, no commission'].map((t) => `<li>${I.check}<span>${t}</span></li>`).join('')}</ul>
+      <span class="eyebrow" style="color:var(--accent)">Seller packages</span>
+      <ul class="pkg-rows">${PACKAGES.map((p) => `<li${p.tag === 'Sell your car faster' ? ' class="hot"' : ''}><span><b>${p.name}</b>${p.tag ? `<small>${p.tag}</small>` : ''}</span><b class="num">${kshs(p.price)}</b></li>`).join('')}</ul>
+      <ul class="feature-list">${['Up to 12 photos', 'Set your own price', 'Buyers WhatsApp or call you directly', 'No brokers, no commission'].map((t) => `<li>${I.check}<span>${t}</span></li>`).join('')}</ul>
       <a class="btn btn-primary btn-block" href="/account/#new">List my car</a>
     </div>
   </div>
 </div></section>
 
 <section class="block"><div class="wrap">
+  <div class="section-head"><div><h2>Choose your package</h2><p>Pick how long your car stays listed. Every package includes up to 12 photos and direct WhatsApp and calls from buyers.</p></div></div>
+  ${pkgCards(true)}
+</div></section>
+
+<section class="block alt"><div class="wrap">
   <div class="section-head"><div><h2>How selling works</h2><p>Five steps, all from your phone.</p></div></div>
   <ol class="steps">${steps.map(([h, p]) => `<li><h3>${h}</h3><p>${p}</p></li>`).join('')}</ol>
 </div></section>
 
-<section class="block alt"><div class="wrap two-col">
+<section class="block"><div class="wrap two-col">
   <div class="prose">
     <h2>Buyers reach you directly</h2>
     <p>Every listing has a <b>WhatsApp seller</b> and a <b>Call</b> button. When a buyer taps WhatsApp, the message is already written for them:</p>
@@ -62,7 +81,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     <p>So you always know which car they are asking about, even if you sell more than one.</p>
   </div>
   <div class="order-box pay-box">
-    <h2 style="font-size:1.25rem;margin:0">How to pay KSh ${pay.amount.toLocaleString('en')}</h2>
+    <h2 style="font-size:1.25rem;margin:0">How to pay</h2>
     ${payHow}
     <p class="small muted" style="margin:0">Then enter the M-Pesa code from your confirmation SMS on your account page. We confirm it and your car goes live.</p>
   </div>
@@ -73,9 +92,9 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
   ${faqHtml(sellFaq)}
 </div></section>
 
-<section class="block"><div class="wrap"><div class="cta-band"><div><h2>Ready to sell your car?</h2><p>No brokers, no commission. KSh ${pay.amount.toLocaleString('en')} until it's sold.</p></div>
+<section class="block"><div class="wrap"><div class="cta-band"><div><h2>Ready to sell your car?</h2><p>No brokers, no commission. Packages from KSh ${FROM}.</p></div>
 <div class="btns"><a class="btn btn-light" href="/account/#new">Start selling</a></div></div></div></section>`;
-    add(path, layout({ path, title: `Sell Your Car in Kenya: No Brokers, No Commission | ${site.name}`, description: `Sell your car in Kenya directly to buyers. List it for KSh ${pay.amount.toLocaleString('en')} until it's sold, set your own price and get WhatsApp calls. No brokers, no commission.`, body, priority: 0.9, jsonld: [cr.ld, faqLd(sellFaq)] }));
+    add(path, layout({ path, title: `Sell Your Car in Kenya: No Brokers, No Commission | ${site.name}`, description: `Sell your car in Kenya directly to buyers. List it from KSh ${FROM} for 2 weeks, 1 month or until sold. Set your own price and get WhatsApp calls. No brokers.`, body, priority: 0.9, jsonld: [cr.ld, faqLd(sellFaq)] }));
   }
 
   // ---------------------------------------------------------------- Cars for sale (browse)
@@ -91,6 +110,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
   <label class="field"><span>Body type</span><select name="body"><option value="">Any type</option>${opt(Object.keys(BODIES))}</select></label>
   <label class="field"><span>Fuel</span><select name="fuel"><option value="">Any fuel</option>${opt(Object.keys(FUELS))}</select></label>
   <label class="field"><span>Price</span><select name="price"><option value="">Any price</option>${prices.map(([a, b, t]) => `<option value="${a}-${b}">${t}</option>`).join('')}</select></label>
+  <label class="field check-field"><input type="checkbox" name="accident_free" value="1"><span>Accident free only</span></label>
   <label class="field"><span>Sort</span><select name="sort"><option value="">Newest first</option><option value="price_asc">Price: low to high</option><option value="price_desc">Price: high to low</option><option value="year">Year: newest</option></select></label>
 </form>
 <p class="results-bar small muted" data-market-count aria-live="polite">Loading cars…</p>
@@ -98,7 +118,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 <div class="empty" data-market-empty hidden><h2 style="font-size:1.3rem">No cars match yet</h2><p class="muted">Try a different search, or be the first to list one.</p><a class="btn btn-primary" href="/sell-your-car/">Sell your car</a></div>
 <p style="text-align:center;margin:24px 0 8px"><button class="btn btn-ghost" type="button" data-market-more hidden>Load more cars</button></p>
 </div>
-<section class="block"><div class="wrap"><div class="cta-band"><div><h2>Selling a car?</h2><p>List it for KSh ${pay.amount.toLocaleString('en')} until it's sold. Buyers contact you directly.</p></div>
+<section class="block"><div class="wrap"><div class="cta-band"><div><h2>Selling a car?</h2><p>List it from KSh ${FROM}. Buyers contact you directly.</p></div>
 <div class="btns"><a class="btn btn-light" href="/sell-your-car/">Sell with us</a></div></div></div></section>
 <div data-page="browse"></div>${script}`;
     add(path, layout({ path, title: `Cars for Sale in Kenya by Owners: No Brokers | ${site.name}`, description: 'Browse used cars for sale in Kenya directly from owners in Nairobi, Mombasa, Nakuru and beyond. See photos and prices, then WhatsApp or call the seller. No brokers.', body, priority: 0.9, jsonld: [cr.ld] }));
@@ -127,7 +147,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     <button class="btn btn-primary btn-block" type="submit">Sign in</button>
     <p class="small" style="margin-top:12px"><button class="linkish" type="button" data-change-email>Use a different email</button> · <button class="linkish" type="button" data-resend>Resend code</button></p>
   </form>
-  <p class="small muted" style="margin-top:20px">New here? <a href="#new">Sell a car</a>: add your car first, then confirm your email. KSh ${pay.amount.toLocaleString('en')} per car, listed until sold. <a href="/sell-your-car/">How it works</a></p>
+  <p class="small muted" style="margin-top:20px">New here? <a href="#new">Sell a car</a>: add your car first, then confirm your email. Packages from KSh ${FROM}. <a href="/sell-your-car/">How it works</a></p>
 </section>
 
 <section data-view="dashboard" hidden>
@@ -136,9 +156,10 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     <a class="btn btn-primary" href="#new">${I.car} Sell a car</a>
   </div>
   <div data-my-list class="my-list"></div>
-  <div class="empty" data-my-empty hidden><h2 style="font-size:1.3rem">You haven't listed a car yet</h2><p class="muted">Add photos, set your price and reach buyers directly for KSh ${pay.amount.toLocaleString('en')}, listed until sold.</p><a class="btn btn-primary" href="#new">Sell a car</a></div>
+  <div class="empty" data-my-empty hidden><h2 style="font-size:1.3rem">You haven't listed a car yet</h2><p class="muted">Add photos, set your price and reach buyers directly. Packages from KSh ${FROM}.</p><a class="btn btn-primary" href="#new">Sell a car</a></div>
   <template data-pay-template><div class="pay-box">
-    <b>Pay KSh ${pay.amount.toLocaleString('en')} to publish</b>
+    <b data-pay-title>Pay to publish</b>
+    <label class="field" data-renew-pkg hidden><span>Choose a package</span><select name="package">${PACKAGES.map((p) => `<option value="${p.id}">${p.name}: ${kshs(p.price)}</option>`).join('')}</select></label>
     ${payHow}
     <form data-form="pay" class="pay-form" novalidate><label class="field"><span>M-Pesa code from your SMS</span><input name="mpesa_code" placeholder="e.g. TKL4XY7Q2B" maxlength="12" autocapitalize="characters" autocomplete="off" required></label><button class="btn btn-primary" type="submit">Submit code</button></form>
     <p class="error-msg" data-error hidden></p>
@@ -157,7 +178,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     </fieldset>
     <fieldset><legend>The car</legend>
       <div class="grid-2">
-        <label class="field"><span>Make <b class="req">*</b></span><input name="make" list="dl-makes" required placeholder="e.g. Toyota" autocomplete="off"></label>
+        <label class="field"><span>Make (brand) <b class="req">*</b></span><select name="make" required><option value="">Choose…</option>${opt(makes)}<option value="Other">Other make</option></select></label>
+        <label class="field" data-make-other hidden><span>Type the make <b class="req">*</b></span><input name="make_other" placeholder="e.g. Proton" autocomplete="off"></label>
         <label class="field"><span>Model <b class="req">*</b></span><input name="model" required placeholder="e.g. Harrier" autocomplete="off"></label>
         <label class="field"><span>Year <b class="req">*</b></span><select name="year" required><option value="">Choose…</option>${opt(years.map(String))}</select></label>
         <label class="field"><span>Price (KES) <b class="req">*</b></span><input name="price" inputmode="numeric" required placeholder="e.g. 2,450,000" autocomplete="off" data-money></label>
@@ -166,12 +188,21 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
         ${sel('fuel', Object.keys(FUELS), 'Fuel')}
         ${sel('transmission', ['Automatic', 'Manual'], 'Transmission')}
         ${sel('body', Object.keys(BODIES), 'Body type')}
-        <label class="field"><span>Engine size (cc)</span><input name="engine_cc" inputmode="numeric" placeholder="e.g. 2000" autocomplete="off"></label>
-        <label class="field"><span>Colour</span><input name="colour" placeholder="e.g. Pearl white" autocomplete="off"></label>
+        <label class="field"><span>Engine size</span><select name="engine_cc"><option value="">Choose…</option>${ENGINES.map((c) => `<option value="${c}">${c.toLocaleString('en')} cc (${(c / 1000).toFixed(1)}L)</option>`).join('')}<option value="">Electric / not sure</option></select></label>
+        ${sel('colour', COLOURS, 'Colour')}
         <label class="field"><span>Location <b class="req">*</b></span><input name="location" list="dl-towns" required placeholder="e.g. Nairobi" autocomplete="address-level2"></label>
       </div>
       <p class="hint" data-locked-hint hidden>Make, model and year can't be changed after payment.</p>
-      <label class="field" style="margin-top:14px"><span>Description</span><textarea name="description" rows="6" maxlength="4000" placeholder="Service history, features (sunroof, leather, reverse camera), number of owners, any faults, reason for selling…"></textarea></label>
+      <div class="field" style="margin-top:14px"><span class="field-label">Accident history <b class="req">*</b></span><div class="chips">${['Accident free', 'Has been in an accident'].map((a) => `<label class="chip"><input type="radio" name="accident" value="${a}" required>${a}</label>`).join('')}</div></div>
+      <label class="field" style="margin-top:14px"><span>Description</span><textarea name="description" rows="6" maxlength="4000" placeholder="Service history, number of owners, any faults, recent repairs, reason for selling…"></textarea></label>
+    </fieldset>
+    <fieldset><legend>Features & extras</legend>
+      <p class="hint" style="margin:0 0 10px">Tick everything the car has. Buyers filter and compare on these.</p>
+      <div class="chips extras-chips">${EXTRAS.map((x) => `<label class="chip"><input type="checkbox" name="extras" value="${esc(x)}">${esc(x)}</label>`).join('')}</div>
+    </fieldset>
+    <fieldset data-pkg-field><legend>Choose your package <b class="req">*</b></legend>
+      <div class="pkg-pick">${PACKAGES.map((p) => `<label class="pkg-option${p.tag === 'Sell your car faster' ? ' pkg-hot' : ''}"><input type="radio" name="package" value="${p.id}"${p.id === '1m' ? ' checked' : ''}><span class="pkg-name"><b>${p.name}</b>${p.tag ? `<small>${p.tag}</small>` : ''}<small class="muted">${p.blurb}</small></span><b class="num">${kshs(p.price)}</b></label>`).join('')}</div>
+      <p class="hint" style="margin:10px 0 0">You pay by M-Pesa after saving. Your package starts when your car goes live.</p>
     </fieldset>
     <fieldset><legend>Your details</legend>
       <div class="grid-2">
@@ -195,7 +226,6 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
       <p class="small" style="margin:4px 0 0"><button class="linkish" type="button" data-otp-back>← Edit details</button> · <button class="linkish" type="button" data-otp-resend>Resend code</button></p>
     </form>
   </div>
-  <datalist id="dl-makes">${makes.map((m) => `<option value="${esc(m)}">`).join('')}</datalist>
   <datalist id="dl-towns">${TOWNS.map((t) => `<option value="${esc(t)}">`).join('')}</datalist>
 </section>
 </div>${script}`;
@@ -206,7 +236,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
   add('/admin/', layout({ path: '/admin/', noindex: true, bar: 'none', title: `Admin | ${site.name}`, description: 'Marketplace admin.', body: `<div class="wrap account" data-page="admin">
 <div class="account-head"><div><h1 style="font-size:1.8rem;margin:0">Marketplace admin</h1><p class="muted small" style="margin:4px 0 0">Confirm M-Pesa payments (Paybill ${pay.paybill}, account ${pay.account}) before cars go live.</p></div></div>
 <p data-admin-msg class="muted"></p>
-<div class="chips admin-tabs" data-admin-tabs hidden>${[['pending_review', 'To confirm'], ['active', 'Live'], ['awaiting_payment', 'Unpaid'], ['rejected', 'Rejected'], ['sold', 'Sold'], ['all', 'All']].map(([v, t], i) => `<button type="button" class="chip${i ? '' : ' on'}" data-status="${v}">${t} <span class="count" data-count="${v}"></span></button>`).join('')}</div>
+<div class="chips admin-tabs" data-admin-tabs hidden>${[['pending_review', 'To confirm'], ['active', 'Live'], ['expired', 'Expired'], ['awaiting_payment', 'Unpaid'], ['rejected', 'Rejected'], ['sold', 'Sold'], ['all', 'All']].map(([v, t], i) => `<button type="button" class="chip${i ? '' : ' on'}" data-status="${v}">${t} <span class="count" data-count="${v}"></span></button>`).join('')}</div>
 <div data-admin-list class="my-list" style="margin-top:16px"></div>
 <section class="order-box" data-editors hidden style="margin-top:32px">
   <h2 style="font-size:1.25rem;margin:0">Editors</h2>
@@ -230,5 +260,5 @@ export const homeMarket = ({ I }) => `
   <div class="section-head"><div><h2>Latest cars for sale by owners</h2><p>Buy directly from the owner. WhatsApp or call the seller, no broker in between.</p></div><a class="link-arrow" href="/used-cars/">All cars for sale →</a></div>
   <div class="car-grid" data-market-grid></div>
 </div></section>
-<section class="block"><div class="wrap"><div class="cta-band sell-band"><div><span class="eyebrow" style="color:#ffe6d9">Sell with us faster</span><h2>Selling your car? List it until it sells for KSh ${PAYMENT.amount.toLocaleString('en')}</h2><p>No brokers. No commission. Everything at your fingertips. Set your own price and buyers WhatsApp or call you directly.</p></div>
+<section class="block"><div class="wrap"><div class="cta-band sell-band"><div><span class="eyebrow" style="color:#ffe6d9">Sell with us faster</span><h2>Selling your car? List it from KSh ${FROM}</h2><p>No brokers. No commission. Everything at your fingertips. Set your own price and buyers WhatsApp or call you directly.</p></div>
 <div class="btns"><a class="btn btn-light" href="/sell-your-car/">${I.car} Sell your car</a><a class="btn btn-dark" href="/used-cars/">Browse cars for sale</a></div></div></div></section>`;

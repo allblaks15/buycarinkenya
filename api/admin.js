@@ -4,19 +4,19 @@
 //   POST { action: 'approve' | 'reject' | 'unpublish', id, reason? }      admin or editor
 //   POST { action: 'delete', id } | { action: 'add_editor' | 'remove_editor', email }   admin only
 import { del } from '@vercel/blob';
-import { route, body, json, fail, sql, requireStaff, sendMail, normEmail, validEmail, listingTitle, listingUrl, STATUSES, SITE, PAYMENT, HttpError } from './_lib.js';
-
+import { route, body, json, fail, sql, requireStaff, sendMail, normEmail, validEmail, listingTitle, listingUrl, STATUSES, SITE, PAYMENT, pkgOf, statusOf, LIVE, HttpError } from './_lib.js';
 
 export const GET = route(async (req) => {
   const me = await requireStaff(req);
   const status = new URL(req.url).searchParams.get('status') || 'pending_review';
-  const rows = status === 'all'
-    ? await sql`SELECT * FROM listings ORDER BY updated_at DESC LIMIT 300`
-    : await sql`SELECT * FROM listings WHERE status = ${STATUSES.includes(status) ? status : 'pending_review'} ORDER BY updated_at DESC LIMIT 300`;
-  const [counts] = await sql`SELECT count(*) FILTER (WHERE status = 'pending_review')::int AS pending_review, count(*) FILTER (WHERE status = 'active')::int AS active,
-    count(*) FILTER (WHERE status = 'sold')::int AS sold, count(*) FILTER (WHERE status = 'awaiting_payment')::int AS awaiting_payment, count(*) FILTER (WHERE status = 'rejected')::int AS rejected FROM listings`;
+  const EXPIRED = `status = 'active' AND expires_at <= now()`;
+  const filter = status === 'all' ? 'TRUE' : status === 'active' ? LIVE : status === 'expired' ? EXPIRED : 'status = $1';
+  const rows = await sql.query(`SELECT * FROM listings WHERE ${filter} ORDER BY updated_at DESC LIMIT 300`, filter.includes('$1') ? [STATUSES.includes(status) ? status : 'pending_review'] : []);
+  const [counts] = await sql.query(`SELECT count(*) FILTER (WHERE status = 'pending_review')::int AS pending_review, count(*) FILTER (WHERE ${LIVE})::int AS active,
+    count(*) FILTER (WHERE ${EXPIRED})::int AS expired, count(*) FILTER (WHERE status = 'sold')::int AS sold, count(*) FILTER (WHERE status = 'awaiting_payment')::int AS awaiting_payment,
+    count(*) FILTER (WHERE status = 'rejected')::int AS rejected FROM listings`);
   const editors = me.role === 'admin' ? await sql`SELECT email, added_by, created_at FROM editors ORDER BY created_at` : undefined;
-  return json({ me, listings: rows.map((l) => ({ ...l, price: Number(l.price), title: listingTitle(l), url: `/used-cars/${l.slug}/` })), counts, editors });
+  return json({ me, listings: rows.map((l) => ({ ...l, status: statusOf(l), price: Number(l.price), title: listingTitle(l), url: `/used-cars/${l.slug}/`, package_name: pkgOf(l).name, package_price: pkgOf(l).price })), counts, editors });
 });
 
 const tell = (l, subject, text) => sendMail({ to: l.user_email, subject, text: `${text}\n\nManage your listings: ${SITE.url}/account/\n\n${SITE.name}` }).catch((e) => console.error('seller mail', e.message));
@@ -36,14 +36,20 @@ export const POST = route(async (req) => {
   if (!l) return fail(404, 'Listing not found.');
 
   if (b.action === 'approve') {
-    const [saved] = await sql`UPDATE listings SET status = 'active', approved_at = COALESCE(approved_at, now()), reject_reason = NULL, updated_at = now() WHERE id = ${l.id} RETURNING *`;
-    await tell(saved, `Your ${listingTitle(saved)} is now live`, `Good news! We confirmed your payment and your ${listingTitle(saved)} is now live:\n${listingUrl(saved)}\n\nBuyers will contact you directly on WhatsApp or by phone. It stays listed until you mark it as sold.`);
+    // The package clock starts when the listing goes live
+    const days = pkgOf(l).days;
+    const [saved] = await sql`UPDATE listings SET status = 'active', approved_at = now(), expires_at = ${days ? new Date(Date.now() + days * 864e5) : null},
+      reject_reason = NULL, updated_at = now() WHERE id = ${l.id} RETURNING *`;
+    const until = saved.expires_at
+      ? `It stays listed until ${new Date(saved.expires_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Africa/Nairobi' })} (${pkgOf(saved).name} package). You can renew it from your account.`
+      : 'It stays listed until you mark it as sold.';
+    await tell(saved, `Your ${listingTitle(saved)} is now live`, `Good news! We confirmed your payment and your ${listingTitle(saved)} is now live:\n${listingUrl(saved)}\n\nBuyers will contact you directly on WhatsApp or by phone. ${until}`);
     return json({ ok: true });
   }
   if (b.action === 'reject') {
-    const reason = String(b.reason || '').trim().slice(0, 300) || `We could not find your KSh ${PAYMENT.amount} payment.`;
+    const reason = String(b.reason || '').trim().slice(0, 300) || `We could not find your KSh ${pkgOf(l).price} payment.`;
     await sql`UPDATE listings SET status = 'rejected', reject_reason = ${reason}, updated_at = now() WHERE id = ${l.id}`;
-    await tell(l, `Action needed for your ${listingTitle(l)} listing`, `Your ${listingTitle(l)} listing is not live yet.\n\nReason: ${reason}\n\nPay KSh ${PAYMENT.amount} via M-Pesa Paybill ${PAYMENT.paybill}, account ${PAYMENT.account}, then enter the M-Pesa code on your account page.`);
+    await tell(l, `Action needed for your ${listingTitle(l)} listing`, `Your ${listingTitle(l)} listing is not live yet.\n\nReason: ${reason}\n\nPay KSh ${pkgOf(l).price} (${pkgOf(l).name} package) via M-Pesa Paybill ${PAYMENT.paybill}, account ${PAYMENT.account}, then enter the M-Pesa code on your account page.`);
     return json({ ok: true });
   }
   if (b.action === 'unpublish') {

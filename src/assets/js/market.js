@@ -5,7 +5,9 @@
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const kes = (n) => 'KES ' + Number(n).toLocaleString('en-KE');
   const num = (v) => String(v || '').replace(/[^\d]/g, '');
-  const STATUS = { awaiting_payment: 'Awaiting payment', pending_review: 'Confirming payment', active: 'Live', sold: 'Sold', rejected: 'Needs attention' };
+  const STATUS = { awaiting_payment: 'Awaiting payment', pending_review: 'Confirming payment', active: 'Live', expired: 'Expired', sold: 'Sold', rejected: 'Needs attention' };
+  const PKG = { '2w': { name: '2 weeks', price: 450 }, '1m': { name: '1 month', price: 950 }, unlimited: { name: 'Unlimited until sold', price: 1350 } };
+  const day = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
   async function api(path, data, opts = {}) {
     const res = await fetch(path, data === undefined ? { credentials: 'same-origin', ...opts } : { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data), ...opts });
@@ -22,7 +24,7 @@
   <div class="body">
     <span class="make">${esc(l.make)}${l.body ? ' · ' + esc(l.body) : ''}</span>
     <h3><a href="${esc(l.url)}">${esc(l.title)}</a></h3>
-    <div class="specs-mini">${[l.mileage != null && `${Number(l.mileage).toLocaleString('en-KE')} km`, l.fuel, l.transmission, l.condition].filter(Boolean).map((t) => `<span>${esc(t)}</span>`).join('')}</div>
+    <div class="specs-mini">${[l.mileage != null && `${Number(l.mileage).toLocaleString('en-KE')} km`, l.fuel, l.transmission, l.condition].filter(Boolean).map((t) => `<span>${esc(t)}</span>`).join('')}${l.accident === 'Accident free' ? '<span class="ok-chip">✓ Accident free</span>' : ''}</div>
     <div class="foot"><div class="price-from"><small>Price</small><b class="num">${kes(l.price)}</b></div><div class="flags">📍 ${esc(l.location)}</div></div>
   </div>
 </article>`;
@@ -45,10 +47,10 @@
     let page = 1; let timer;
     // Keep filters in the URL so results can be shared
     const params = new URLSearchParams(location.search);
-    for (const [k, v] of params) if (form.elements[k]) form.elements[k].value = v;
+    for (const [k, v] of params) { const el = form.elements[k]; if (el) { if (el.type === 'checkbox') el.checked = true; else el.value = v; } }
     const query = () => {
       const q = new URLSearchParams();
-      for (const el of form.elements) if (el.name && el.value) q.set(el.name, el.value);
+      for (const el of form.elements) if (el.name && el.value && (el.type !== 'checkbox' || el.checked)) q.set(el.name, el.value);
       return q;
     };
     async function load(reset) {
@@ -131,23 +133,28 @@
       if (l.status === 'active') acts.push(`<a class="btn btn-ghost" href="${esc(l.url)}" target="_blank">View listing</a>`, `<button class="btn btn-wa" type="button" data-act="share">Share on WhatsApp</button>`, `<button class="btn btn-dark" type="button" data-act="sold">Mark as sold</button>`);
       if (l.status === 'sold') acts.push(`<button class="btn btn-ghost" type="button" data-act="relist">Not sold? Relist</button>`);
       if (l.status !== 'sold') acts.push(`<a class="btn btn-ghost" href="#edit-${l.id}">Edit</a>`);
-      if (['awaiting_payment', 'rejected', 'sold'].includes(l.status)) acts.push(`<button class="btn btn-ghost" type="button" data-act="delete">Delete</button>`);
+      if (['awaiting_payment', 'rejected', 'sold', 'expired'].includes(l.status)) acts.push(`<button class="btn btn-ghost" type="button" data-act="delete">Delete</button>`);
       el.innerHTML = `<img src="${esc(l.photos[0]?.thumb || '/assets/img/placeholder-car.svg')}" alt="" width="150" height="100">
         <div><span class="status status-${l.status}">${STATUS[l.status]}</span><h3>${esc(l.title)}</h3>
-        <div class="meta"><span class="num">${kes(l.price)}</span><span>📍 ${esc(l.location)}</span>${l.status === 'active' || l.status === 'sold' ? `<span>${l.views} views</span>` : ''}</div></div>
+        <div class="meta"><span class="num">${kes(l.price)}</span><span>📍 ${esc(l.location)}</span><span>${esc(l.package_name)} · KSh ${l.package_price.toLocaleString('en')}</span>${l.status === 'active' ? `<span>${l.expires_at ? `Live until ${day(l.expires_at)}` : 'Live until sold'}</span>` : ''}${['active', 'sold', 'expired'].includes(l.status) ? `<span>${l.views} views</span>` : ''}</div></div>
         <div class="full">
           ${l.status === 'pending_review' ? `<p class="note small" style="margin:0">We're confirming your M-Pesa payment (code <b>${esc(l.mpesa_code)}</b>). This usually takes a few hours during business hours, and we'll email you when your car is live.</p>` : ''}
+          ${l.status === 'expired' ? `<p class="note small" style="margin:0"><b>Your package ended on ${day(l.expires_at)}.</b> Buyers can no longer see this car. Choose a package and pay again to renew it.</p>` : ''}
           ${l.status === 'rejected' && l.reject_reason ? `<p class="note small" style="margin:0"><b>Not live yet:</b> ${esc(l.reject_reason)}</p>` : ''}
           <div data-pay-slot></div>
           <div class="acts">${acts.join('')}</div><p class="error-msg" data-error hidden></p>
         </div>`;
-      if (l.status === 'awaiting_payment' || l.status === 'rejected') {
+      if (['awaiting_payment', 'rejected', 'expired'].includes(l.status)) {
         const pay = payTpl.content.cloneNode(true); $('[data-pay-slot]', el).append(pay);
-        const f = $('[data-form="pay"]', el);
-        if (l.mpesa_code) f.mpesa_code.value = l.mpesa_code;
+        const box = $('.pay-box', el); const f = $('[data-form="pay"]', el); const pick = $('[data-renew-pkg] select', el);
+        // Renewals (and unpaid listings) can switch package here
+        $('[data-renew-pkg]', el).hidden = false; pick.value = l.package;
+        const amount = () => { const p = PKG[pick.value]; $('[data-pay-title]', box).textContent = `${l.status === 'expired' ? 'Renew' : 'Pay'}: ${p.name} package, KSh ${p.price.toLocaleString('en')}`; $('[data-pay-amount]', box).textContent = `KSh ${p.price.toLocaleString('en')}`; };
+        pick.addEventListener('change', amount); amount();
+        if (l.mpesa_code && l.status !== 'expired') f.mpesa_code.value = l.mpesa_code;
         f.addEventListener('submit', async (e) => {
-          e.preventDefault(); const btn = $('button', f); busy(btn, true, 'Submitting…'); showErr($('.pay-box', el), '');
-          try { await api('/api/listings', { action: 'pay', id: l.id, mpesa_code: f.mpesa_code.value }); await loadMine(); } catch (err) { showErr($('.pay-box', el), err.message); busy(btn, false); }
+          e.preventDefault(); const btn = $('button', f); busy(btn, true, 'Submitting…'); showErr(box, '');
+          try { await api('/api/listings', { action: 'pay', id: l.id, package: pick.value, mpesa_code: f.mpesa_code.value }); await loadMine(); } catch (err) { showErr(box, err.message); busy(btn, false); }
         });
       }
       el.addEventListener('click', async (e) => {
@@ -203,28 +210,45 @@
       if (l) for (const k of ['make', 'model', 'year', 'price', 'mileage', 'fuel', 'transmission', 'body', 'engine_cc', 'colour', 'condition', 'location', 'description', 'seller_name']) {
         if (lf.elements[k] && l[k] != null) lf.elements[k].value = ['price', 'mileage'].includes(k) ? Number(l[k]).toLocaleString('en-KE') : l[k];
       }
+      // A make or colour not in our lists goes into "Other"
+      if (l && lf.make.value !== l.make) { lf.make.value = 'Other'; lf.make_other.value = l.make; }
+      if (l && l.colour && lf.colour.value !== l.colour) lf.colour.value = 'Other';
+      $$('input[name=extras]', lf).forEach((c) => { c.checked = !!l && (l.extras || []).includes(c.value); });
+      $$('input[name=accident]', lf).forEach((r) => { r.checked = !!l && l.accident === r.value; });
+      $$('input[name=package]', lf).forEach((r) => { r.checked = r.value === (l ? l.package : '1m'); });
+      // Package is picked when posting; after payment it is changed through renewal instead
+      $('[data-pkg-field]', lf).hidden = !!l && !['awaiting_payment', 'rejected'].includes(l.status);
+      showOther();
       lf.phone.value = l ? '0' + String(l.phone).slice(3) : store('bcik_phone');
       if (!l) { lf.seller_name.value = store('bcik_name'); lf.email.value = store('bcik_email'); }
       const locked = l && !['awaiting_payment', 'rejected'].includes(l.status);
-      for (const k of ['make', 'model', 'year']) lf.elements[k].disabled = !!locked;
+      for (const k of ['make', 'make_other', 'model', 'year']) lf.elements[k].disabled = !!locked;
       $('[data-locked-hint]', lf).hidden = !locked;
       $('[data-save]', lf).textContent = l ? 'Save changes' : user ? 'Save and continue to payment' : 'Continue: confirm my email';
       setAnon(); showErr(lf, ''); drawPhotos();
     }
+    const showOther = () => { $('[data-make-other]', lf).hidden = lf.make.value !== 'Other'; };
+    lf.make.addEventListener('change', showOther);
     function collect() {
-      const data = Object.fromEntries(new FormData(lf));
-      if (editing) Object.assign(data, { make: editing.make, model: editing.model, year: editing.year, ...Object.fromEntries(new FormData(lf)) });
+      const fd = new FormData(lf);
+      const data = Object.fromEntries(fd);
+      data.extras = fd.getAll('extras');
+      if (data.make === 'Other') data.make = String(data.make_other || '').trim();
+      delete data.make_other;
+      if (editing && lf.make.disabled) Object.assign(data, { make: editing.make, model: editing.model, year: editing.year });
       data.price = num(data.price); data.mileage = num(data.mileage); data.engine_cc = num(data.engine_cc);
       return data;
     }
     // Same rules as the server, checked before we email a code
     function check(d) {
       if (!photos.some((p) => !p.err)) return 'Add at least one photo of your car.';
-      if (!String(d.make || '').trim()) return 'Enter the make, e.g. Toyota.';
+      if (!String(d.make || '').trim()) return lf.make.value === 'Other' ? 'Type the make of your car.' : 'Choose the make, e.g. Toyota.';
       if (!String(d.model || '').trim()) return 'Enter the model, e.g. Harrier.';
       if (!d.year) return 'Choose the year.';
       if (!(+d.price >= 50000)) return 'Enter a price of at least KES 50,000.';
       if (!String(d.location || '').trim()) return 'Enter where the car is, e.g. Nairobi.';
+      if (!d.accident) return 'Say whether the car has been in an accident.';
+      if (!$('[data-pkg-field]', lf).hidden && !d.package) return 'Choose a package.';
       if (!/^(?:254|0)?[17]\d{8}$/.test(num(d.phone))) return 'Enter a valid Kenyan phone number, e.g. 0712 345 678.';
       if (!user && !/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(String(d.email || '').trim())) return 'Enter your email address. We send a code to confirm it.';
       return '';
@@ -304,22 +328,22 @@
     function row(l) {
       const el = document.createElement('article'); el.className = 'my-item admin-item';
       const acts = [];
-      if (l.status !== 'active') acts.push(`<button class="btn btn-primary" type="button" data-act="approve">${l.status === 'pending_review' ? 'Approve payment & publish' : 'Publish'}</button>`);
+      if (l.status !== 'active') acts.push(`<button class="btn btn-primary" type="button" data-act="approve">${l.status === 'pending_review' ? `Approve KSh ${Number(l.package_price).toLocaleString('en')} & publish` : 'Publish'}</button>`);
       if (l.status === 'pending_review') acts.push(`<button class="btn btn-ghost" type="button" data-act="reject">Reject payment</button>`);
       if (l.status === 'active') acts.push(`<a class="btn btn-ghost" href="${esc(l.url)}" target="_blank">View</a>`, `<button class="btn btn-ghost" type="button" data-act="unpublish">Unpublish</button>`);
       if (me.role === 'admin') acts.push(`<button class="btn btn-ghost" type="button" data-act="delete">Delete</button>`);
       el.innerHTML = `<img src="${esc(l.photos[0]?.thumb || '/assets/img/placeholder-car.svg')}" alt="" width="150" height="100">
         <div><span class="status status-${l.status}">${STATUS[l.status]}</span><h3>${esc(l.title)}</h3><div class="meta"><span class="num">${kes(l.price)}</span><span>📍 ${esc(l.location)}</span><span>${l.photos.length} photos</span></div></div>
         <div class="full"><dl>
-          <dt>M-Pesa code</dt><dd><b>${esc(l.mpesa_code || '–')}</b></dd><dt>Paid at</dt><dd>${fmt(l.paid_at)}</dd>
+          <dt>Package</dt><dd><b>${esc(l.package_name)}: KSh ${Number(l.package_price).toLocaleString('en')}</b>${l.expires_at ? ` · ends ${fmt(l.expires_at)}` : ''}</dd><dt>M-Pesa code</dt><dd><b>${esc(l.mpesa_code || '–')}</b></dd><dt>Paid at</dt><dd>${fmt(l.paid_at)}</dd>
           <dt>Seller</dt><dd>${esc(l.seller_name || '')} <a href="tel:+${esc(l.phone)}">+${esc(l.phone)}</a></dd><dt>Email</dt><dd><a href="mailto:${esc(l.user_email)}">${esc(l.user_email)}</a></dd>
-          <dt>Listed</dt><dd>${fmt(l.created_at)}</dd>${l.reject_reason ? `<dt>Reason</dt><dd>${esc(l.reject_reason)}</dd>` : ''}
+          <dt>Accident</dt><dd>${esc(l.accident || '–')}</dd>${l.extras?.length ? `<dt>Extras</dt><dd>${esc(l.extras.join(', '))}</dd>` : ''}<dt>Listed</dt><dd>${fmt(l.created_at)}</dd>${l.reject_reason ? `<dt>Reason</dt><dd>${esc(l.reject_reason)}</dd>` : ''}
         </dl>${l.description ? `<details><summary class="small">Description</summary><p class="small" style="white-space:pre-line">${esc(l.description)}</p></details>` : ''}
         <div class="acts">${acts.join('')}</div><p class="error-msg" data-error hidden></p></div>`;
       el.addEventListener('click', async (e) => {
         const act = e.target.closest('[data-act]')?.dataset.act; if (!act) return;
         let reason;
-        if (act === 'reject' || act === 'unpublish') { reason = prompt(act === 'reject' ? 'Reason (sent to the seller):' : 'Reason for unpublishing:', act === 'reject' ? 'We could not find your KSh 995 M-Pesa payment for this code.' : ''); if (reason === null) return; }
+        if (act === 'reject' || act === 'unpublish') { reason = prompt(act === 'reject' ? 'Reason (sent to the seller):' : 'Reason for unpublishing:', act === 'reject' ? `We could not find your KSh ${Number(l.package_price).toLocaleString('en')} M-Pesa payment for this code.` : ''); if (reason === null) return; }
         if (act === 'delete' && !confirm(`Permanently delete ${l.title} and its photos?`)) return;
         busy(e.target, true);
         try { await api('/api/admin', { action: act, id: l.id, reason }); await load(); } catch (err) { showErr(el, err.message); busy(e.target, false); }
