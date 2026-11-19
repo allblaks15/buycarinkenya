@@ -1,7 +1,7 @@
 {
   "buildCommand": "node src/build.js",
   "outputDirectory": "dist",
-  "installCommand": "",
+  "installCommand": "npm ci",
   "cleanUrls": false,
   "redirects": [
     {
@@ -11,6 +11,15 @@
       "permanent": true
     },
     { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/:path*/index.html", "destination": "/:path*/", "permanent": true }
+    { "source": "/:path*/index.html", "destination": "/:path*/", "permanent": true },
+    { "source": "/used-cars/:slug([a-z0-9-]+)", "destination": "/used-cars/:slug/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/used-cars/:slug([a-z0-9-]+)/", "destination": "/api/listing-page?slug=:slug" },
+    { "source": "/sitemap-listings.xml", "destination": "/api/sitemap-listings" }
+  ],
+  "headers": [
+    { "source": "/_shell/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }] },
+    { "source": "/(account|admin)/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }, { "key": "Cache-Control", "value": "no-store" }] }
   ]
 }

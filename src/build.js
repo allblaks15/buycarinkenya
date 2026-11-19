@@ -6,6 +6,7 @@ import { site } from './config.js';
 import { cars, slugify } from './data/cars.js';
 import { makeRenderCar } from './render-car.js';
 import { blogPosts, CLUSTERS } from './data/blog/index.js';
+import { marketPages, homeMarket } from './market-pages.js';
 import { readdir, rename } from 'node:fs/promises';
 
 const SRC = import.meta.dirname;
@@ -83,7 +84,7 @@ const bodyIcon = (b) => `<svg viewBox="0 0 64 30" fill="none" stroke="currentCol
 
 // ---------------------------------------------------------------- layout
 const sitemap = [];
-const navLinks = [['/cars/', 'Browse Cars'], ['/import-from/japan/', 'From Japan'], ['/import-from/uk/', 'From UK'], ['/import-from/south-africa/', 'From South Africa'], ['/how-to-import-a-car-to-kenya/', 'How It Works'], ['/blog/', 'Blog']];
+const navLinks = [['/used-cars/', 'Cars for Sale'], ['/sell-your-car/', 'Sell Your Car'], ['/cars/', 'Import a Car'], ['/how-to-import-a-car-to-kenya/', 'How Importing Works'], ['/blog/', 'Blog']];
 
 function layout({ path, title, description, body, jsonld = [], image, bar = 'global', noindex = false, priority = 0.6, preload, images = [] }) {
   if (!noindex) sitemap.push({ path, priority, images });
@@ -123,12 +124,12 @@ ${ld}
 <header class="site"><div class="wrap">
   <a class="logo" href="/" aria-label="${site.name} home">${I.logo}<span>${site.name}<small>Car Imports Kenya</small></span></a>
   <nav class="main" aria-label="Main">${navLinks.map(([h, t]) => `<a href="${h}"${cur(h)}>${t}</a>`).join('')}</nav>
-  <a class="btn btn-primary header-cta" href="/import-request/">Request a Car</a>
+  <a class="btn btn-primary header-cta" href="/sell-your-car/">Sell Your Car</a>
   <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer" data-open-drawer>${I.menu}</button>
 </div></header>
 <div class="drawer" id="drawer" aria-hidden="true"><div class="drawer-bg" data-close-drawer></div><nav class="drawer-panel" aria-label="Mobile">
   <button class="icon-btn drawer-close" type="button" aria-label="Close menu" data-close-drawer>${I.close}</button>
-  <a href="/">Home</a><a href="/cars/">Browse All Cars</a><a href="/import-request/">Request a Car Import</a><a href="/how-to-import-a-car-to-kenya/">How Importing Works</a><a href="/blog/">Blog & Price Guides</a>
+  <a href="/">Home</a><a href="/used-cars/">Cars for Sale</a><a href="/sell-your-car/">Sell Your Car</a><a href="/account/">My Account</a><div class="label">Import</div><a href="/cars/">Browse All Cars</a><a href="/import-request/">Request a Car Import</a><a href="/how-to-import-a-car-to-kenya/">How Importing Works</a><a href="/blog/">Blog & Price Guides</a>
   <div class="label">Import from</div>${Object.entries(ORIGINS).map(([n, o]) => `<a href="/import-from/${o.slug}/">${n}</a>`).join('')}
   <div class="label">Body type</div>${Object.entries(BODIES).map(([, b]) => `<a href="/body-type/${b.slug}/">${b.plural}</a>`).join('')}
   <div class="label">Help</div><a href="/contact/">Contact Us</a><a href="/about/">About Buy Car in Kenya</a>
@@ -144,7 +145,7 @@ ${body}
       <p>📞 <a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br>✉️ <a href="mailto:${site.email}">${site.email}</a><br>📍 ${site.address}<br>🕘 ${site.hours}</p></div>
     <div><h4>Popular imports</h4><ul>${cars.filter((c) => c.popular).slice(0, 8).map((c) => `<li><a href="/cars/${c.slug}/">${c.name}</a></li>`).join('')}</ul></div>
     <div><h4>Browse</h4><ul>${Object.values(BODIES).map((b) => `<li><a href="/body-type/${b.slug}/">${b.plural}</a></li>`).join('')}${Object.values(FUELS).map((f) => `<li><a href="/fuel/${f.slug}/">${f.slug[0].toUpperCase() + f.slug.slice(1)} cars</a></li>`).join('')}</ul></div>
-    <div><h4>Buy Car in Kenya</h4><ul><li><a href="/import-request/">Request a car</a></li><li><a href="/how-to-import-a-car-to-kenya/">How to import a car to Kenya</a></li><li><a href="/blog/">Blog & price guides</a></li>${Object.entries(ORIGINS).map(([n, o]) => `<li><a href="/import-from/${o.slug}/">Import from ${n}</a></li>`).join('')}<li><a href="/about/">About us</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/credits/">Image credits</a></li><li><a href="/sitemap/">Sitemap</a></li></ul></div>
+    <div><h4>Buy Car in Kenya</h4><ul><li><a href="/used-cars/">Cars for sale</a></li><li><a href="/sell-your-car/">Sell your car</a></li><li><a href="/account/">My account</a></li><li><a href="/import-request/">Request a car</a></li><li><a href="/how-to-import-a-car-to-kenya/">How to import a car to Kenya</a></li><li><a href="/blog/">Blog & price guides</a></li>${Object.entries(ORIGINS).map(([n, o]) => `<li><a href="/import-from/${o.slug}/">Import from ${n}</a></li>`).join('')}<li><a href="/about/">About us</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/credits/">Image credits</a></li><li><a href="/sitemap/">Sitemap</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>© ${YEAR} ${site.name}. All rights reserved.</span><span>Prices are indicative landed estimates and are confirmed in your written quote.</span></div>
 </div></footer>
@@ -276,6 +277,8 @@ const add = (path, html) => pages.push({ path, html });
   </div>
 </section>
 
+${homeMarket({ I })}
+
 <section class="block"><div class="wrap">
   <div class="section-head"><div><h2>Shop by body type</h2><p>From fuel-saving hatchbacks to 4x4 SUVs and double cabs.</p></div></div>
   <div class="tiles">${bodyCounts.map(([b, n]) => `<a class="tile" href="/body-type/${BODIES[b].slug}/">${bodyIcon(b)}<b>${BODIES[b].plural.split(' &')[0]}</b><span>${plural(n, 'model')}</span></a>`).join('')}</div>
@@ -320,7 +323,8 @@ ${ctaBand()}
 <section class="block"><div class="wrap">
   <div class="section-head"><div><h2>Buy Car in Kenya FAQs</h2></div></div>
   ${faqHtml(homeFaq)}
-</div></section>`;
+</div></section>
+<script src="/assets/js/market.js?v=${BUILD}" defer></script>`;
   add('/', layout({ path: '/', title: `${site.name} | Import Cars from Japan, UK & South Africa`, description: `${site.name}: import your next car from Japan, the UK or South Africa. ${cars.length}+ models, all-inclusive landed prices in KES, KEBS inspected.`, body, priority: 1.0, preload: heroImg,
     jsonld: [faqLd(homeFaq), { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, alternateName: ['BuyCarInKenya', 'buycarinkenya.co.ke'], description: `${site.name} imports cars to Kenya from Japan, the UK and South Africa with all-inclusive landed prices.`, inLanguage: 'en-KE', url: site.url, potentialAction: { '@type': 'SearchAction', target: abs('/cars/?q={search_term_string}'), 'query-input': 'required name=search_term_string' } }] }));
 }
@@ -636,7 +640,7 @@ simplePage('/privacy/', 'Privacy policy', `Privacy Policy | ${site.name}`, `How 
 }
 {
   const sec = (h, links) => `<h2>${h}</h2><ul class="sitemap-list">${links.map(([t, u]) => `<li><a href="${u}">${esc(t)}</a></li>`).join('')}</ul>`;
-  const html = sec('Main pages', [['Home', '/'], ['All cars', '/cars/'], ['Request a car import', '/import-request/'], ['How to import a car to Kenya', '/how-to-import-a-car-to-kenya/'], ['About', '/about/'], ['Contact', '/contact/']])
+  const html = sec('Main pages', [['Home', '/'], ['Cars for sale', '/used-cars/'], ['Sell your car', '/sell-your-car/'], ['All cars', '/cars/'], ['Request a car import', '/import-request/'], ['How to import a car to Kenya', '/how-to-import-a-car-to-kenya/'], ['About', '/about/'], ['Contact', '/contact/']])
     + sec('Blog & price guides', [['All guides', '/blog/'], ...posts.map((p) => [p.crumb, `/blog/${p.slug}/`])])
     + sec('Import from', Object.entries(ORIGINS).map(([n, o]) => [`Import cars from ${n}`, `/import-from/${o.slug}/`]))
     + sec('Body types', Object.values(BODIES).map((b) => [b.plural, `/body-type/${b.slug}/`]))
@@ -645,6 +649,8 @@ simplePage('/privacy/', 'Privacy policy', `Privacy Policy | ${site.name}`, `How 
   simplePage('/sitemap/', 'Sitemap', `Sitemap: All Cars & Pages | ${site.name}`, `Every page on ${site.name}: all ${cars.length} car models and their versions, makes, body types and import guides.`, html, 0.4);
 }
 add('/404.html', layout({ path: '/404.html', noindex: true, title: `Page not found | ${site.name}`, description: 'Page not found.', body: `<div class="wrap" style="padding:64px 16px;text-align:center"><h1>We couldn't find that page</h1><p class="muted">The car may have moved. Try browsing our catalogue or send us a request.</p><p><a class="btn btn-primary" href="/cars/">Browse cars</a> <a class="btn btn-ghost" href="/import-request/">Request a car</a></p></div>` }));
+
+marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd, MAKES, BODIES, FUELS, YEAR, BUILD });
 
 // ---------------------------------------------------------------- write
 await rm(OUT, { recursive: true, force: true });
@@ -665,7 +671,7 @@ await cp(join(SRC, 'static'), OUT, { recursive: true });
 const uniq = [...new Map(sitemap.map((s) => [s.path, s])).values()];
 const xmlEsc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 await writeFile(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${uniq.map((s) => `<url><loc>${abs(s.path)}</loc><lastmod>${today}</lastmod><priority>${s.priority.toFixed(1)}</priority>${(s.images || []).map((i) => `<image:image><image:loc>${xmlEsc(i.loc)}</image:loc><image:title>${xmlEsc(i.title)}</image:title><image:caption>${xmlEsc(i.caption)}</image:caption></image:image>`).join('')}</url>`).join('\n')}\n</urlset>\n`);
-await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /send-order.php\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /send-order.php\nDisallow: /account/\nDisallow: /admin/\nDisallow: /_shell/\n\nSitemap: ${abs('/sitemap.xml')}\nSitemap: ${abs('/sitemap-listings.xml')}\n`);
 await writeFile(join(OUT, 'site.webmanifest'), JSON.stringify({ name: site.name, short_name: 'Buy Car in Kenya', start_url: '/', display: 'standalone', background_color: '#faf8f4', theme_color: '#0e2a3a', icons: [{ src: '/assets/img/logo.png', sizes: '512x512', type: 'image/png' }] }));
 await writeFile(join(OUT, 'favicon.svg'), I.logo.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" '));
 const php = (await readFile(join(SRC, 'send-order.php'), 'utf8')).replace('{{TO}}', site.email).replace('{{FROM}}', site.mailFrom).replace(/{{NAME}}/g, site.name).replace('{{WA}}', site.whatsapp).replace('{{PHONE}}', site.phone);

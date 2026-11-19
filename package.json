@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Buy Car in Kenya - car import website for Kenya (static site generator)",
+  "description": "Buy Car in Kenya - car import website and used car marketplace for Kenya",
   "scripts": {
     "images": "python scripts/fetch_images.py",
     "build": "python scripts/watermark.py && node src/build.js",
     "serve": "node scripts/serve.js",
     "audit": "node scripts/seo-audit.js",
     "watermark": "python scripts/watermark.py"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.2.0",
+    "@vercel/blob": "2.8.2",
+    "nodemailer": "10.3.1"
+  },
+  "overrides": {
+    "zod": "4.6.6"
   }
 }
