@@ -83,15 +83,16 @@
     c.getContext('2d').drawImage(src, 0, 0, c.width, c.height);
     return new Promise((ok) => c.toBlob(ok, 'image/jpeg', quality));
   }
-  async function upload(file) {
+  // Photos are resized in the browser first; they are uploaded only once the seller's email is confirmed
+  const prepare = async (file) => { const [big, small] = await Promise.all([resize(file, 1600, 0.82), resize(file, 520, 0.75)]); return { big, small }; };
+  async function send(p) {
     const put = async (blob, kind) => {
       const r = await fetch(`/api/upload?kind=${kind}`, { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'image/jpeg' }, body: blob });
       const out = await r.json().catch(() => ({}));
-      if (!r.ok) throw new Error(out.error || 'Upload failed');
+      if (!r.ok) throw new Error(out.error || 'Photo upload failed. Please try again.');
       return out.url;
     };
-    const [big, small] = await Promise.all([resize(file, 1600, 0.82), resize(file, 520, 0.75)]);
-    const [url, thumb] = await Promise.all([put(big, 'main'), put(small, 'thumb')]);
+    const [url, thumb] = await Promise.all([put(p.big, 'main'), put(p.small, 'thumb')]);
     return { url, thumb };
   }
 
@@ -165,10 +166,13 @@
       $('[data-my-empty]', acct).hidden = mine.length > 0;
     }
 
-    // Listing form
+    // Listing form: car details first, then seller details; new sellers confirm their email with a code on submit
     const lf = $('[data-form="listing"]', acct); const photoBox = $('[data-photos]', lf); const photoInput = $('[data-photo-input]', lf);
-    let photos = []; let editing = null;
+    const otpBox = $('[data-otp-step]', acct); const otpForm = $('[data-form="otp"]', acct);
+    let photos = []; let editing = null; let draft = null;
     const MAX = 12;
+    const store = (k, v) => { try { if (v != null) localStorage.setItem(k, v); return localStorage.getItem(k) || ''; } catch { return ''; } };
+    const setAnon = () => { $$('[data-anon-only]', acct).forEach((el) => { el.hidden = !!user; }); };
     function drawPhotos() {
       photoBox.innerHTML = photos.map((p, i) => `<div class="photo-tile${p.busy ? ' busy' : ''}${p.err ? ' err' : ''}">
         <img src="${esc(p.preview || p.thumb)}" alt="Photo ${i + 1}">${i === 0 && !p.err ? '<span class="cover">Cover</span>' : ''}
@@ -185,51 +189,99 @@
       const added = files.map((f) => ({ busy: true, preview: URL.createObjectURL(f), file: f }));
       photos.push(...added); drawPhotos();
       for (const p of added) {
-        try { Object.assign(p, await upload(p.file)); } catch (err) { p.err = err.message; }
+        try { Object.assign(p, await prepare(p.file)); if (user) Object.assign(p, await send(p)); } catch (err) { p.err = err.message; }
         p.busy = false; drawPhotos();
       }
-      photos = photos.filter((p) => !p.err || p.busy); setTimeout(drawPhotos, 2500);
+      if (added.some((p) => p.err)) setTimeout(() => { photos = photos.filter((p) => !p.err); drawPhotos(); }, 2500);
     });
     $$('[data-money]', lf).forEach((i) => i.addEventListener('input', () => { const n = num(i.value); i.value = n ? Number(n).toLocaleString('en-KE') : ''; }));
 
     function fillForm(l) {
-      lf.reset(); editing = l; photos = l ? l.photos.map((p) => ({ ...p })) : [];
-      $('[data-form-title]', acct).textContent = l ? `Edit ${l.title}` : 'Sell a car';
+      lf.reset(); editing = l; draft = null; photos = l ? l.photos.map((p) => ({ ...p })) : [];
+      lf.hidden = false; otpBox.hidden = true;
+      $('[data-form-title]', acct).textContent = l ? `Edit ${l.title}` : 'Sell your car';
       if (l) for (const k of ['make', 'model', 'year', 'price', 'mileage', 'fuel', 'transmission', 'body', 'engine_cc', 'colour', 'condition', 'location', 'description', 'seller_name']) {
         if (lf.elements[k] && l[k] != null) lf.elements[k].value = ['price', 'mileage'].includes(k) ? Number(l[k]).toLocaleString('en-KE') : l[k];
       }
-      lf.phone.value = l ? '0' + String(l.phone).slice(3) : (localStorage.getItem('bcik_phone') || '');
-      if (!l) lf.seller_name.value = localStorage.getItem('bcik_name') || '';
+      lf.phone.value = l ? '0' + String(l.phone).slice(3) : store('bcik_phone');
+      if (!l) { lf.seller_name.value = store('bcik_name'); lf.email.value = store('bcik_email'); }
       const locked = l && !['awaiting_payment', 'rejected'].includes(l.status);
       for (const k of ['make', 'model', 'year']) lf.elements[k].disabled = !!locked;
       $('[data-locked-hint]', lf).hidden = !locked;
-      $('[data-save]', lf).textContent = l ? 'Save changes' : 'Save and continue to payment';
-      showErr(lf, ''); drawPhotos();
+      $('[data-save]', lf).textContent = l ? 'Save changes' : user ? 'Save and continue to payment' : 'Continue: confirm my email';
+      setAnon(); showErr(lf, ''); drawPhotos();
     }
-    lf.addEventListener('submit', async (e) => {
-      e.preventDefault(); showErr(lf, '');
-      if (photos.some((p) => p.busy)) return showErr(lf, 'Please wait for your photos to finish uploading.');
+    function collect() {
       const data = Object.fromEntries(new FormData(lf));
       if (editing) Object.assign(data, { make: editing.make, model: editing.model, year: editing.year, ...Object.fromEntries(new FormData(lf)) });
       data.price = num(data.price); data.mileage = num(data.mileage); data.engine_cc = num(data.engine_cc);
+      return data;
+    }
+    // Same rules as the server, checked before we email a code
+    function check(d) {
+      if (!photos.some((p) => !p.err)) return 'Add at least one photo of your car.';
+      if (!String(d.make || '').trim()) return 'Enter the make, e.g. Toyota.';
+      if (!String(d.model || '').trim()) return 'Enter the model, e.g. Harrier.';
+      if (!d.year) return 'Choose the year.';
+      if (!(+d.price >= 50000)) return 'Enter a price of at least KES 50,000.';
+      if (!String(d.location || '').trim()) return 'Enter where the car is, e.g. Nairobi.';
+      if (!/^(?:254|0)?[17]\d{8}$/.test(num(d.phone))) return 'Enter a valid Kenyan phone number, e.g. 0712 345 678.';
+      if (!user && !/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(String(d.email || '').trim())) return 'Enter your email address. We send a code to confirm it.';
+      return '';
+    }
+    async function save(data) {
+      for (const p of photos) if (!p.url && p.big) { p.busy = true; drawPhotos(); try { Object.assign(p, await send(p)); } finally { p.busy = false; drawPhotos(); } }
       data.photos = photos.filter((p) => p.url).map(({ url, thumb }) => ({ url, thumb }));
-      try { localStorage.setItem('bcik_phone', data.phone); localStorage.setItem('bcik_name', data.seller_name); } catch {}
-      const btn = $('[data-save]', lf); busy(btn, true, 'Saving…');
-      try {
-        await api('/api/listings', editing ? { action: 'update', id: editing.id, ...data } : { action: 'create', ...data });
-        location.hash = ''; await route();
-      } catch (err) { showErr(lf, err.message); } finally { busy(btn, false); }
+      await api('/api/listings', editing ? { action: 'update', id: editing.id, ...data } : { action: 'create', ...data });
+      draft = null;
+      if (location.hash) location.hash = ''; else await route();
+    }
+    async function requestCode(email) {
+      await api('/api/auth', { action: 'request', email });
+      $('[data-otp-email]', otpBox).textContent = email;
+      lf.hidden = true; otpBox.hidden = false; otpForm.reset(); showErr(otpForm, ''); window.scrollTo(0, 0); otpForm.code.focus();
+    }
+    lf.addEventListener('submit', async (e) => {
+      e.preventDefault(); showErr(lf, '');
+      if (photos.some((p) => p.busy)) return showErr(lf, 'Please wait for your photos to finish.');
+      const data = collect(); const problem = check(data);
+      if (problem) return showErr(lf, problem);
+      store('bcik_phone', data.phone); store('bcik_name', data.seller_name);
+      const btn = $('[data-save]', lf);
+      if (!user) {
+        draft = data; store('bcik_email', data.email.trim());
+        busy(btn, true, 'Sending code…');
+        try { await requestCode(data.email.trim()); } catch (err) { showErr(lf, err.message); } finally { busy(btn, false); }
+        return;
+      }
+      busy(btn, true, 'Saving…');
+      try { await save(data); } catch (err) { showErr(lf, err.message); } finally { busy(btn, false); }
     });
-    $$('[data-back]', acct).forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); location.hash = ''; }));
+    otpForm.code.addEventListener('input', () => { otpForm.code.value = num(otpForm.code.value).slice(0, 6); if (otpForm.code.value.length === 6) otpForm.requestSubmit(); });
+    otpForm.addEventListener('submit', async (e) => {
+      e.preventDefault(); if (!draft) return;
+      const btn = $('button[type=submit]', otpForm); showErr(otpForm, ''); busy(btn, true, 'Confirming…');
+      try { user = (await api('/api/auth', { action: 'verify', email: draft.email.trim(), code: otpForm.code.value })).user; } catch (err) { showErr(otpForm, err.message); busy(btn, false); return; }
+      setAnon(); busy(btn, false); busy(btn, true, 'Saving your listing…');
+      try { await save(draft); } catch (err) { otpBox.hidden = true; lf.hidden = false; showErr(lf, err.message); } finally { busy(btn, false); }
+    });
+    $('[data-otp-back]', acct).addEventListener('click', () => { otpBox.hidden = true; lf.hidden = false; });
+    $('[data-otp-resend]', acct).addEventListener('click', async (e) => { busy(e.target, true, 'Sending…'); try { await requestCode(draft.email.trim()); } catch (err) { showErr(otpForm, err.message); } finally { busy(e.target, false); } });
+    $('[data-signin-link]', acct).addEventListener('click', (e) => { e.preventDefault(); location.hash = ''; });
+    $$('[data-back]', acct).forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); if (user) location.hash = ''; else location.href = '/sell-your-car/'; }));
 
     async function route() {
       if (!user) {
         try { user = (await api('/api/auth')).user; } catch { user = null; }
       }
-      if (!user) { show('login'); emailForm.hidden = false; codeForm.hidden = true; return; }
+      setAnon();
+      const h = location.hash;
+      if (!user) {
+        if (h === '#new') { if (!draft) fillForm(null); show('form'); return; }
+        show('login'); emailForm.hidden = false; codeForm.hidden = true; return;
+      }
       $('[data-user-email]', acct).textContent = user.email;
       $('[data-admin-link]', acct).hidden = !user.role;
-      const h = location.hash;
       if (h === '#new') { fillForm(null); show('form'); return; }
       if (h.startsWith('#edit-')) {
         if (!mine.length) await loadMine().catch(() => {});

@@ -25,8 +25,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     const path = '/sell-your-car/';
     const cr = crumbs([['Home', '/'], ['Sell your car', path]]);
     const steps = [
-      ['Sign in with your email', 'No password. We email you a one-time code.'],
       ['Add your car', `Upload up to 12 photos, set your own price and add the details buyers ask about.`],
+      ['Confirm your email', 'Add your phone and email, then enter the 6-digit code we email you. No password.'],
       [`Pay KSh ${pay.amount} by M-Pesa`, `Paybill ${pay.paybill}, account ${pay.account}, then enter the M-Pesa code.`],
       ['Go live and get calls', 'Buyers WhatsApp or call you directly. No broker in the middle.'],
       ['Mark it as sold', 'One tap when the deal is done. That is it.'],
@@ -113,8 +113,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 <div data-view="loading"><p class="muted" style="padding:48px 0;text-align:center">Loading…</p></div>
 
 <section data-view="login" hidden class="auth-card">
-  <h1 style="font-size:1.8rem">Sell your car</h1>
-  <p class="muted">Sign in with your email. We'll send you a 6-digit code, with no password needed.</p>
+  <h1 style="font-size:1.8rem">Sign in</h1>
+  <p class="muted">Manage your cars for sale. Enter your email and we'll send you a 6-digit code, with no password needed.</p>
   <form data-form="email" novalidate>
     <label class="field"><span>Email address</span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required></label>
     <p class="error-msg" data-error hidden></p>
@@ -127,7 +127,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     <button class="btn btn-primary btn-block" type="submit">Sign in</button>
     <p class="small" style="margin-top:12px"><button class="linkish" type="button" data-change-email>Use a different email</button> · <button class="linkish" type="button" data-resend>Resend code</button></p>
   </form>
-  <p class="small muted" style="margin-top:20px">KSh ${pay.amount.toLocaleString('en')} per car, listed until sold. No brokers, no commission. <a href="/sell-your-car/">How it works</a></p>
+  <p class="small muted" style="margin-top:20px">New here? <a href="#new">Sell a car</a>: add your car first, then confirm your email. KSh ${pay.amount.toLocaleString('en')} per car, listed until sold. <a href="/sell-your-car/">How it works</a></p>
 </section>
 
 <section data-view="dashboard" hidden>
@@ -173,16 +173,28 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
       <p class="hint" data-locked-hint hidden>Make, model and year can't be changed after payment.</p>
       <label class="field" style="margin-top:14px"><span>Description</span><textarea name="description" rows="6" maxlength="4000" placeholder="Service history, features (sunroof, leather, reverse camera), number of owners, any faults, reason for selling…"></textarea></label>
     </fieldset>
-    <fieldset><legend>How buyers reach you</legend>
+    <fieldset><legend>Your details</legend>
       <div class="grid-2">
         <label class="field"><span>Your name</span><input name="seller_name" autocomplete="name" placeholder="e.g. John"></label>
         <label class="field"><span>WhatsApp / phone number <b class="req">*</b></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0712 345 678"></label>
+        <label class="field" data-anon-only><span>Email address <b class="req">*</b></span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com"></label>
       </div>
-      <p class="hint">Buyers WhatsApp or call this number directly. Shown only while your car is live.</p>
+      <p class="hint">Buyers WhatsApp or call your number directly, and it's shown only while your car is live. <span data-anon-only>We email you a 6-digit code to confirm it's you, and you use the same email to manage your listing later.</span></p>
     </fieldset>
     <p class="error-msg" data-error hidden></p>
     <div class="form-actions"><button class="btn btn-primary" type="submit" data-save>Save and continue</button><a class="btn btn-ghost" href="#" data-back>Cancel</a></div>
+    <p class="small muted" data-anon-only style="margin-top:12px">Already listed a car? <a href="#" data-signin-link>Sign in to manage it</a></p>
   </form>
+  <div class="auth-card otp-step" data-otp-step hidden>
+    <h2 style="font-size:1.4rem;margin:0 0 6px">Confirm your email</h2>
+    <p>We sent a 6-digit code to <b data-otp-email></b>. Enter it to save your listing. Check your spam folder if you can't see it.</p>
+    <form data-form="otp" novalidate>
+      <label class="field"><span>6-digit code</span><input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="6" placeholder="123456" required class="code-input"></label>
+      <p class="error-msg" data-error hidden></p>
+      <button class="btn btn-primary btn-block" type="submit">Confirm and save listing</button>
+      <p class="small" style="margin:4px 0 0"><button class="linkish" type="button" data-otp-back>← Edit details</button> · <button class="linkish" type="button" data-otp-resend>Resend code</button></p>
+    </form>
+  </div>
   <datalist id="dl-makes">${makes.map((m) => `<option value="${esc(m)}">`).join('')}</datalist>
   <datalist id="dl-towns">${TOWNS.map((t) => `<option value="${esc(t)}">`).join('')}</datalist>
 </section>
