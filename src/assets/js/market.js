@@ -149,7 +149,7 @@
         const box = $('.pay-box', el); const f = $('[data-form="pay"]', el); const pick = $('[data-renew-pkg] select', el);
         // Renewals (and unpaid listings) can switch package here
         $('[data-renew-pkg]', el).hidden = false; pick.value = l.package;
-        const amount = () => { const p = PKG[pick.value]; $('[data-pay-title]', box).textContent = `${l.status === 'expired' ? 'Renew' : 'Pay'}: ${p.name} package, KSh ${p.price.toLocaleString('en')}`; $('[data-pay-amount]', box).textContent = `KSh ${p.price.toLocaleString('en')}`; $('[data-pay-online]', box).textContent = `Pay KSh ${p.price.toLocaleString('en')} now with M-Pesa or card`; };
+        const amount = () => { const p = PKG[pick.value]; $('[data-pay-title]', box).textContent = `${l.status === 'expired' ? 'Renew' : 'Pay'}: ${p.name} package, KSh ${p.price.toLocaleString('en')}`; $('[data-pay-amount]', box).textContent = `KSh ${p.price.toLocaleString('en')}`; $('[data-pay-online]', box).textContent = `Pay KSh ${p.price.toLocaleString('en')} online with Paystack`; };
         pick.addEventListener('change', amount); amount();
         // Paystack checkout: we come back to /account/?reference=… when it is done
         $('[data-pay-online]', box).addEventListener('click', async (e) => {
