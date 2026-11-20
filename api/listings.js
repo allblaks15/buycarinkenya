@@ -20,6 +20,7 @@ export const GET = route(async (req) => {
   const where = [LIVE]; const args = [];
   const add = (clause, v) => { args.push(v); where.push(clause.replace('?', '$' + args.length)); };
   if (q.get('make')) add('make ILIKE ?', q.get('make'));
+  if (q.get('model')) add('model ILIKE ?', q.get('model'));
   if (q.get('body')) add('body = ?', q.get('body'));
   if (q.get('fuel')) add('fuel = ?', q.get('fuel'));
   if (q.get('accident_free')) add('accident = ?', 'Accident free');

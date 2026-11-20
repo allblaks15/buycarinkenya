@@ -650,7 +650,7 @@ simplePage('/privacy/', 'Privacy policy', `Privacy Policy | ${site.name}`, `How 
 }
 add('/404.html', layout({ path: '/404.html', noindex: true, title: `Page not found | ${site.name}`, description: 'Page not found.', body: `<div class="wrap" style="padding:64px 16px;text-align:center"><h1>We couldn't find that page</h1><p class="muted">The car may have moved. Try browsing our catalogue or send us a request.</p><p><a class="btn btn-primary" href="/cars/">Browse cars</a> <a class="btn btn-ghost" href="/import-request/">Request a car</a></p></div>` }));
 
-marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd, MAKES, BODIES, FUELS, YEAR, BUILD });
+marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd, MAKES, BODIES, FUELS, YEAR, BUILD, cars });
 
 // ---------------------------------------------------------------- write
 await rm(OUT, { recursive: true, force: true });

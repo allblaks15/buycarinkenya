@@ -13,9 +13,47 @@ const EXTRAS = ['Sunroof', 'Extra tyres', 'Spare wheel', 'Alloy rims', 'Leather 
   'Climate control', 'Tinted windows', 'Roof rails', 'Tow bar', 'Bull bar', 'Car tracker', 'Alarm', 'Dash cam', '4WD / AWD', 'Third row seats', 'New tyres', 'Full service history'];
 const TOWNS = ['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret', 'Thika', 'Machakos', 'Kiambu', 'Kitengela', 'Ruiru', 'Nyeri', 'Meru', 'Embu', 'Kericho', 'Kakamega', 'Kisii', 'Naivasha', 'Nanyuki', 'Malindi', 'Kitale', 'Bungoma', 'Garissa', 'Narok', 'Kajiado', 'Murang\'a', 'Kilifi', 'Voi', 'Isiolo', 'Homa Bay', 'Migori'];
 const EXTRA_MAKES = ['Isuzu', 'Mitsubishi', 'Suzuki', 'Peugeot', 'Jeep', 'Hyundai', 'Kia', 'Ford', 'Chevrolet', 'Renault', 'Daihatsu', 'Hino', 'FAW', 'Tata', 'Scania', 'Mahindra'];
+// Models sellers can pick, on top of every model in the import catalogue (older and commercial models common in Kenya)
+const EXTRA_MODELS = {
+  Toyota: ['Wish', 'Ist', 'Belta', 'Spacio', 'Ractis', 'Auris', 'Avensis', 'Caldina', 'Vanguard', 'Kluger', 'Mark II', 'Hilux Surf', 'Land Cruiser 100', 'Land Cruiser 80', 'Succeed', 'Lite Ace', 'Vitz RS', 'Runx', 'Allex', 'Corona', 'Duet', 'Platz', 'Sai', 'Harrier Hybrid', 'Prado TX', 'Prado TZ', 'Land Cruiser V8'],
+  Nissan: ['Tiida', 'Wingroad', 'Sunny', 'Bluebird Sylphy', 'Dualis', 'Murano', 'Hardbody', 'Caravan', 'Latio', 'Lafesta', 'Presage', 'Terrano', 'Datsun', 'Moco', 'Bluebird'],
+  Mazda: ['Verisa', 'Premacy', 'Biante', 'Tribute', 'Familia', 'MPV', 'Titan'],
+  Honda: ['Airwave', 'Stream', 'Crossroad', 'Edix', 'Fit Shuttle', 'HR-V', 'Pilot', 'Elysion'],
+  Subaru: ['Legacy', 'Legacy Wagon', 'Exiga', 'Trezia', 'Impreza WRX', 'Stella'],
+  Mitsubishi: ['Galant', 'Lancer', 'Colt', 'Canter', 'Pajero iO', 'Pajero Mini', 'Shogun', 'Fuso Fighter'],
+  Suzuki: ['Alto', 'Grand Vitara', 'Maruti', 'Ertiga', 'Celerio', 'Dzire', 'Vitara'],
+  Daihatsu: ['Mira', 'Move', 'Terios', 'Boon', 'Cast', 'Sirion', 'Delta'],
+  Isuzu: ['NPR', 'NQR', 'NKR', 'FRR', 'FSR', 'FVZ', 'FTR', 'Trooper', 'Bighorn', 'TFR (Pick-up)', 'KB'],
+  Ford: ['Escape', 'Explorer', 'EcoSport', 'Edge', 'Expedition', 'F-150'],
+  Volkswagen: ['Jetta', 'Crafter', 'Beetle', 'Scirocco', 'Sharan', 'Up'],
+  'Mercedes-Benz': ['ML-Class', 'GL-Class', 'Vito', 'Actros', 'Axor', 'Atego', 'C200', 'E200', 'E250', 'C180'],
+  BMW: ['3 Series Touring', '5 Series Touring', 'X5 M', 'M3', 'M5'],
+  Audi: ['A1', 'A4 Avant', 'A6 Avant', 'Q5 Sportback', 'RS Q8'],
+  'Land Rover': ['Freelander', 'Freelander 2', 'Discovery 3', 'Discovery 4', 'Range Rover'],
+  Volvo: ['XC70', 'V40', 'S80', 'FH', 'FM'],
+  Hyundai: ['ix35', 'Creta', 'Accent', 'Elantra', 'H-1', 'Grand i10', 'i10', 'Sonata', 'Palisade', 'Venue', 'County'],
+  Kia: ['Rio', 'Cerato', 'Carens', 'Seltos', 'Soul', 'Optima', 'K2700', 'Carnival'],
+  Lexus: ['GS', 'CT', 'HS'],
+  Porsche: ['Cayenne Coupe', 'Macan S'],
+  Jaguar: ['XJ', 'X-Type', 'S-Type'],
+  Mini: ['Paceman', 'Coupe'],
+  Peugeot: ['208', '301', '308', '2008', '3008', '5008', '508', '504', '405', '406', '407', 'Partner', 'Boxer', 'Landtrek'],
+  Jeep: ['Wrangler', 'Grand Cherokee', 'Cherokee', 'Compass', 'Renegade', 'Gladiator'],
+  Chevrolet: ['Captiva', 'Cruze', 'Trailblazer', 'Spark', 'Aveo', 'Optra', 'Tahoe'],
+  Renault: ['Duster', 'Kwid', 'Koleos', 'Captur', 'Kangoo'],
+  Hino: ['300 Series', '500 Series', '700 Series', 'Dutro', 'Ranger', 'Profia'],
+  FAW: ['J5', 'J6', 'Tiger V', 'Bus'],
+  Tata: ['Xenon', 'LPT 1618', 'Super Ace', 'Prima', 'Indica', 'Ultra'],
+  Scania: ['P-Series', 'G-Series', 'R-Series', 'Bus'],
+  Mahindra: ['Scorpio', 'XUV500', 'XUV700', 'Pik Up', 'Bolero', 'Thar'],
+  Tesla: ['Model S', 'Model X'],
+};
 
-export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd, MAKES, BODIES, FUELS, YEAR, BUILD }) {
+export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd, MAKES, BODIES, FUELS, YEAR, BUILD, cars }) {
   const makes = [...new Set([...MAKES, ...EXTRA_MAKES])].sort();
+  // Make -> sorted model list for the model dropdowns (catalogue models + EXTRA_MODELS)
+  const models = Object.fromEntries(makes.map((m) => [m, [...new Set([...cars.filter((c) => c.make === m).map((c) => c.model), ...(EXTRA_MODELS[m] || [])])].sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))]));
+  const modelData = `<script type="application/json" id="model-data">${JSON.stringify(models).replace(/</g, '\\u003c')}</script>`;
   const opt = (arr, sel) => arr.map((x) => `<option${x === sel ? ' selected' : ''}>${esc(x)}</option>`).join('');
   const script = `<script src="/assets/js/market.js?v=${BUILD}" defer></script>`;
   const pay = PAYMENT;
@@ -108,6 +146,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 <form class="market-filters" data-market-filters role="search">
   <label class="field"><span>Search</span><input name="q" type="search" placeholder="e.g. Harrier, Nairobi, 2018" autocomplete="off"></label>
   <label class="field"><span>Make</span><select name="make"><option value="">Any make</option>${opt(makes)}</select></label>
+  <label class="field"><span>Model</span><select name="model" disabled><option value="">Any model</option></select></label>
   <label class="field"><span>Body type</span><select name="body"><option value="">Any type</option>${opt(Object.keys(BODIES))}</select></label>
   <label class="field"><span>Fuel</span><select name="fuel"><option value="">Any fuel</option>${opt(Object.keys(FUELS))}</select></label>
   <label class="field"><span>Price</span><select name="price"><option value="">Any price</option>${prices.map(([a, b, t]) => `<option value="${a}-${b}">${t}</option>`).join('')}</select></label>
@@ -121,7 +160,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 </div>
 <section class="block"><div class="wrap"><div class="cta-band"><div><h2>Selling a car?</h2><p>List it from KSh ${FROM}. Buyers contact you directly.</p></div>
 <div class="btns"><a class="btn btn-light" href="/sell-your-car/">Sell with us</a></div></div></div></section>
-<div data-page="browse"></div>${script}`;
+<div data-page="browse"></div>${modelData}${script}`;
     add(path, layout({ path, title: `Cars for Sale in Kenya by Owners: No Brokers | ${site.name}`, description: 'Browse used cars for sale in Kenya directly from owners in Nairobi, Mombasa, Nakuru and beyond. See photos and prices, then WhatsApp or call the seller. No brokers.', body, priority: 0.9, jsonld: [cr.ld] }));
   }
 
@@ -190,7 +229,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
       <div class="grid-2">
         <label class="field"><span>Make (brand) <b class="req">*</b></span><select name="make" required><option value="">Choose…</option>${opt(makes)}<option value="Other">Other make</option></select></label>
         <label class="field" data-make-other hidden><span>Type the make <b class="req">*</b></span><input name="make_other" placeholder="e.g. Proton" autocomplete="off"></label>
-        <label class="field"><span>Model <b class="req">*</b></span><input name="model" required placeholder="e.g. Harrier" autocomplete="off"></label>
+        <label class="field"><span>Model <b class="req">*</b></span><select name="model" required disabled><option value="">Choose the make first</option></select></label>
+        <label class="field" data-model-other hidden><span>Type the model <b class="req">*</b></span><input name="model_other" placeholder="e.g. Harrier" autocomplete="off"></label>
         <label class="field"><span>Year <b class="req">*</b></span><select name="year" required><option value="">Choose…</option>${opt(years.map(String))}</select></label>
         <label class="field"><span>Price (KES) <b class="req">*</b></span><input name="price" inputmode="numeric" required placeholder="e.g. 2,450,000" autocomplete="off" data-money></label>
         <label class="field"><span>Mileage (km)</span><input name="mileage" inputmode="numeric" placeholder="e.g. 85,000" autocomplete="off" data-money></label>
@@ -236,6 +276,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
       <p class="small" style="margin:4px 0 0"><button class="linkish" type="button" data-otp-back>← Edit details</button> · <button class="linkish" type="button" data-otp-resend>Resend code</button></p>
     </form>
   </div>
+  ${modelData}
   <datalist id="dl-towns">${TOWNS.map((t) => `<option value="${esc(t)}">`).join('')}</datalist>
 </section>
 </div>${script}`;
