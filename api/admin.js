@@ -4,7 +4,7 @@
 //   POST { action: 'approve' | 'reject' | 'unpublish', id, reason? }      admin or editor
 //   POST { action: 'delete', id } | { action: 'add_editor' | 'remove_editor', email }   admin only
 import { del } from '@vercel/blob';
-import { route, body, json, fail, sql, requireStaff, sendMail, normEmail, validEmail, listingTitle, listingUrl, STATUSES, SITE, PAYMENT, pkgOf, statusOf, LIVE, HttpError } from './_lib.js';
+import { route, body, json, fail, sql, requireStaff, sendMail, normEmail, validEmail, listingTitle, listingUrl, STATUSES, SITE, PAYMENT, pkgOf, statusOf, LIVE, activate, HttpError } from './_lib.js';
 
 export const GET = route(async (req) => {
   const me = await requireStaff(req);
@@ -37,13 +37,7 @@ export const POST = route(async (req) => {
 
   if (b.action === 'approve') {
     // The package clock starts when the listing goes live
-    const days = pkgOf(l).days;
-    const [saved] = await sql`UPDATE listings SET status = 'active', approved_at = now(), expires_at = ${days ? new Date(Date.now() + days * 864e5) : null},
-      reject_reason = NULL, updated_at = now() WHERE id = ${l.id} RETURNING *`;
-    const until = saved.expires_at
-      ? `It stays listed until ${new Date(saved.expires_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Africa/Nairobi' })} (${pkgOf(saved).name} package). You can renew it from your account.`
-      : 'It stays listed until you mark it as sold.';
-    await tell(saved, `Your ${listingTitle(saved)} is now live`, `Good news! We confirmed your payment and your ${listingTitle(saved)} is now live:\n${listingUrl(saved)}\n\nBuyers will contact you directly on WhatsApp or by phone. ${until}`);
+    await activate(l);
     return json({ ok: true });
   }
   if (b.action === 'reject') {

@@ -28,8 +28,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     ['What happens when my package ends?', 'Your listing comes off the site automatically. You can renew it from your account at any time by choosing a package and paying again. The unlimited package never ends until you mark the car as sold.'],
     ['How do buyers contact me?', 'Buyers tap WhatsApp or Call on your listing and reach you directly. The WhatsApp message already includes a link to your car, so you know exactly which car they mean.'],
     ['Do I need a password?', 'No. Enter your email and we send you a 6-digit one-time code. Type it in and you are signed in.'],
-    ['How do I pay?', `Pay with M-Pesa: Lipa na M-Pesa → Paybill → Business number ${pay.paybill} → Account number ${pay.account} → the price of your package. Then enter the M-Pesa code from your confirmation SMS on your account page.`],
-    ['When does my car go live?', 'As soon as we confirm your M-Pesa payment, usually within a few hours during business hours. We email you when it is live.'],
+    ['How do I pay?', `Tap “Pay now” to pay online with M-Pesa or card through Paystack, and your car goes live as soon as the payment goes through. You can also pay with M-Pesa: Lipa na M-Pesa → Paybill → Business number ${pay.paybill} → Account number ${pay.account} → the price of your package. Then enter the M-Pesa code from your confirmation SMS on your account page.`],
+    ['When does my car go live?', 'Instantly when you pay online with Pay now. Paybill payments are checked by our team, usually within a few hours during business hours. We email you when it is live.'],
     ['Can I change the price or photos later?', 'Yes. Edit the price, photos and description at any time from your account. You set your own price.'],
     ['What happens when I sell the car?', 'Tap “Mark as sold” on your account page. The listing shows as sold and buyers stop contacting you.'],
     ['Do you charge commission or use brokers?', 'No. There are no brokers and no commission. You deal with the buyer directly and keep the full sale price.'],
@@ -42,7 +42,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     const steps = [
       ['Add your car', `Upload up to 12 photos, set your own price and add the details buyers ask about.`],
       ['Confirm your email', 'Add your phone and email, then enter the 6-digit code we email you. No password.'],
-      ['Choose a package and pay', `${pkgList}. Pay by M-Pesa Paybill ${pay.paybill}, account ${pay.account}.`],
+      ['Choose a package and pay', `${pkgList}. Pay online with M-Pesa or card and go live instantly.`],
       ['Go live and get calls', 'Buyers WhatsApp or call you directly. No broker in the middle.'],
       ['Mark it as sold', 'One tap when the deal is done. That is it.'],
     ];
@@ -82,8 +82,10 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
   </div>
   <div class="order-box pay-box">
     <h2 style="font-size:1.25rem;margin:0">How to pay</h2>
+    <p style="margin:0"><b>Fastest:</b> tap <b>Pay now</b> on your account page to pay with M-Pesa or card through Paystack. Your car goes live instantly.</p>
+    <p class="small muted" style="margin:0">Or pay via M-Pesa Paybill:</p>
     ${payHow}
-    <p class="small muted" style="margin:0">Then enter the M-Pesa code from your confirmation SMS on your account page. We confirm it and your car goes live.</p>
+    <p class="small muted" style="margin:0">Then enter the M-Pesa code from your confirmation SMS on your account page. Our team confirms it and your car goes live.</p>
   </div>
 </div></section>
 
@@ -155,13 +157,19 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     <div><h1 style="font-size:1.8rem;margin:0">My cars</h1><p class="muted small" style="margin:4px 0 0">Signed in as <b data-user-email></b> · <button class="linkish" type="button" data-logout>Sign out</button><span data-admin-link hidden> · <a href="/admin/">Admin dashboard</a></span></p></div>
     <a class="btn btn-primary" href="#new">${I.car} Sell a car</a>
   </div>
+  <p class="note pay-msg" data-pay-msg hidden></p>
   <div data-my-list class="my-list"></div>
   <div class="empty" data-my-empty hidden><h2 style="font-size:1.3rem">You haven't listed a car yet</h2><p class="muted">Add photos, set your price and reach buyers directly. Packages from KSh ${FROM}.</p><a class="btn btn-primary" href="#new">Sell a car</a></div>
   <template data-pay-template><div class="pay-box">
     <b data-pay-title>Pay to publish</b>
     <label class="field" data-renew-pkg hidden><span>Choose a package</span><select name="package">${PACKAGES.map((p) => `<option value="${p.id}">${p.name}: ${kshs(p.price)}</option>`).join('')}</select></label>
+    <button class="btn btn-wa btn-block" type="button" data-pay-online>Pay now with M-Pesa or card</button>
+    <p class="small muted" style="margin:0">Secure checkout by Paystack. Your car goes live as soon as the payment goes through.</p>
+    <details class="pay-manual"><summary class="small">Or pay via M-Pesa Paybill and enter the code</summary>
     ${payHow}
     <form data-form="pay" class="pay-form" novalidate><label class="field"><span>M-Pesa code from your SMS</span><input name="mpesa_code" placeholder="e.g. TKL4XY7Q2B" maxlength="12" autocapitalize="characters" autocomplete="off" required></label><button class="btn btn-primary" type="submit">Submit code</button></form>
+    <p class="small muted" style="margin:0">Paybill payments are checked by our team before your car goes live.</p>
+    </details>
     <p class="error-msg" data-error hidden></p>
   </div></template>
 </section>

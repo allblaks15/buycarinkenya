@@ -30,6 +30,8 @@ export const db = () => (ready ||= sql.transaction([
   sql`CREATE INDEX IF NOT EXISTS listings_status_idx ON listings (status, approved_at DESC)`,
   sql`CREATE INDEX IF NOT EXISTS listings_user_idx ON listings (user_email)`,
   sql`ALTER TABLE listings ADD COLUMN IF NOT EXISTS package text, ADD COLUMN IF NOT EXISTS expires_at timestamptz, ADD COLUMN IF NOT EXISTS accident text, ADD COLUMN IF NOT EXISTS extras jsonb NOT NULL DEFAULT '[]'`,
+  sql`CREATE TABLE IF NOT EXISTS payments (reference text PRIMARY KEY, listing_id int NOT NULL, user_email text NOT NULL, package text NOT NULL, amount int NOT NULL,
+    status text NOT NULL DEFAULT 'pending', created_at timestamptz NOT NULL DEFAULT now(), paid_at timestamptz)`,
   sql`CREATE TABLE IF NOT EXISTS editors (email text PRIMARY KEY, added_by text, created_at timestamptz NOT NULL DEFAULT now())`,
 ]).catch((e) => { ready = null; throw e; }));
 
@@ -165,5 +167,41 @@ export const publicListing = (l) => ({
   description: l.description, seller_name: l.seller_name, accident: l.accident, extras: l.extras || [], photos: l.photos, status: statusOf(l),
   phone: statusOf(l) === 'active' ? l.phone : null, posted: l.approved_at || l.created_at,
 });
+// Put a paid listing live for its package (used by admin approval and by Paystack payments)
+export async function activate(l, { pkg = l.package, ref = null } = {}) {
+  const p = PACKAGES[pkg] || PACKAGES.unlimited;
+  const [saved] = await sql`UPDATE listings SET status = 'active', package = ${pkg}, approved_at = now(), paid_at = COALESCE(${ref ? new Date() : null}, paid_at),
+    mpesa_code = COALESCE(${ref}, mpesa_code), expires_at = ${p.days ? new Date(Date.now() + p.days * 864e5) : null}, reject_reason = NULL, updated_at = now()
+    WHERE id = ${l.id} RETURNING *`;
+  const until = saved.expires_at
+    ? `It stays listed until ${new Date(saved.expires_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Africa/Nairobi' })} (${p.name} package). You can renew it from your account.`
+    : 'It stays listed until you mark it as sold.';
+  await sendMail({ to: saved.user_email, subject: `Your ${listingTitle(saved)} is now live`,
+    text: `Good news! We received your payment and your ${listingTitle(saved)} is now live:\n${listingUrl(saved)}\n\nBuyers will contact you directly on WhatsApp or by phone. ${until}\n\nManage your listings: ${SITE.url}/account/\n\n${SITE.name}` })
+    .catch((e) => console.error('seller mail', e.message));
+  return saved;
+}
+
+// ---------------------------------------------------------------- Paystack (online M-Pesa / card payments)
+export async function paystack(path, init = {}) {
+  if (!process.env.PAYSTACK_SECRET_KEY) throw new HttpError(503, 'Online payment is not set up yet. Please pay via M-Pesa Paybill.');
+  const r = await fetch(`https://api.paystack.co${path}`, { ...init, headers: { authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, 'content-type': 'application/json', ...init.headers } });
+  const out = await r.json().catch(() => ({}));
+  if (!r.ok || !out.status) { console.error('paystack', path, r.status, out.message); throw new HttpError(502, out.message || 'Payment service error. Please try again.'); }
+  return out.data;
+}
+// Apply a successful Paystack transaction exactly once (callback and webhook may both arrive)
+export async function settlePayment(tx) {
+  if (tx.status !== 'success' || tx.currency !== 'KES') return null;
+  const [pay] = await sql`UPDATE payments SET status = 'success', paid_at = now() WHERE reference = ${tx.reference} AND status <> 'success'
+    AND amount * 100 <= ${Number(tx.amount)} RETURNING *`;
+  if (!pay) return null;
+  const [l] = await sql`SELECT * FROM listings WHERE id = ${pay.listing_id}`;
+  if (!l) return null;
+  const saved = await activate(l, { pkg: pay.package, ref: pay.reference });
+  await notifyStaff(`Paid online: KSh ${pay.amount} for ${listingTitle(saved)}`, `Paystack payment ${pay.reference} succeeded. ${listingTitle(saved)} (${PACKAGES[pay.package].name} package) is now live automatically:\n${listingUrl(saved)}\n\nSeller: ${saved.seller_name || ''} ${saved.phone} <${saved.user_email}>`);
+  return saved;
+}
+
 export const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const kes = (n) => 'KES ' + Number(n).toLocaleString('en-KE');

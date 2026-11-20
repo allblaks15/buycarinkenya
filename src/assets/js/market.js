@@ -149,8 +149,13 @@
         const box = $('.pay-box', el); const f = $('[data-form="pay"]', el); const pick = $('[data-renew-pkg] select', el);
         // Renewals (and unpaid listings) can switch package here
         $('[data-renew-pkg]', el).hidden = false; pick.value = l.package;
-        const amount = () => { const p = PKG[pick.value]; $('[data-pay-title]', box).textContent = `${l.status === 'expired' ? 'Renew' : 'Pay'}: ${p.name} package, KSh ${p.price.toLocaleString('en')}`; $('[data-pay-amount]', box).textContent = `KSh ${p.price.toLocaleString('en')}`; };
+        const amount = () => { const p = PKG[pick.value]; $('[data-pay-title]', box).textContent = `${l.status === 'expired' ? 'Renew' : 'Pay'}: ${p.name} package, KSh ${p.price.toLocaleString('en')}`; $('[data-pay-amount]', box).textContent = `KSh ${p.price.toLocaleString('en')}`; $('[data-pay-online]', box).textContent = `Pay KSh ${p.price.toLocaleString('en')} now with M-Pesa or card`; };
         pick.addEventListener('change', amount); amount();
+        // Paystack checkout: we come back to /account/?reference=… when it is done
+        $('[data-pay-online]', box).addEventListener('click', async (e) => {
+          busy(e.target, true, 'Opening secure checkout…'); showErr(box, '');
+          try { location.href = (await api('/api/pay', { id: l.id, package: pick.value })).url; } catch (err) { showErr(box, err.message); busy(e.target, false); }
+        });
         if (l.mpesa_code && l.status !== 'expired') f.mpesa_code.value = l.mpesa_code;
         f.addEventListener('submit', async (e) => {
           e.preventDefault(); const btn = $('button', f); busy(btn, true, 'Submitting…'); showErr(box, '');
@@ -313,6 +318,16 @@
         if (l) { fillForm(l); show('form'); return; }
       }
       show('dashboard');
+      // Back from Paystack checkout
+      const ref = new URLSearchParams(location.search).get('reference') || new URLSearchParams(location.search).get('trxref');
+      if (ref) {
+        history.replaceState(null, '', location.pathname);
+        const box = $('[data-pay-msg]', acct); box.hidden = false; box.textContent = 'Checking your payment…';
+        try {
+          const r = await api(`/api/pay?reference=${encodeURIComponent(ref)}`);
+          box.innerHTML = r.paid ? `<b>Payment received, thank you!</b> Your ${esc(r.package)} package is active and your car is now live.` : 'We have not received your payment yet. If you completed it, refresh this page in a minute.';
+        } catch (err) { box.textContent = err.message; }
+      }
       try { await loadMine(); } catch (err) { if (err.status === 401) { user = null; return route(); } showErr($('[data-view="dashboard"]', acct), err.message); }
     }
     window.addEventListener('hashchange', route);
