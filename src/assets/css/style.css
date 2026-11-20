@@ -508,3 +508,5 @@ table.spec.post-table th[scope="row"] { font-weight: 600; }
 .pay-msg { margin: 0 0 14px; }
 .pay-label { font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
 .pay-alt { display: grid; gap: 8px; border-top: 1px solid rgba(16, 24, 32, .12); padding-top: 12px; margin-top: 4px; }
+.pay-step { display: grid; gap: 8px; }
+.pay-step .pay-steps { margin-bottom: 4px; }

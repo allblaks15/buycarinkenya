@@ -11,7 +11,57 @@ const ENGINES = [660, 1000, 1200, 1300, 1490, 1500, 1600, 1800, 2000, 2200, 2400
 const COLOURS = ['White', 'Pearl white', 'Black', 'Silver', 'Grey', 'Blue', 'Dark blue', 'Red', 'Maroon', 'Green', 'Brown', 'Beige', 'Gold', 'Orange', 'Yellow', 'Purple', 'Other'];
 const EXTRAS = ['Sunroof', 'Extra tyres', 'Spare wheel', 'Alloy rims', 'Leather seats', 'Electric seats', 'Reverse camera', 'Parking sensors', 'Navigation', 'Bluetooth / Android Auto', 'Push start / keyless', 'Cruise control',
   'Climate control', 'Tinted windows', 'Roof rails', 'Tow bar', 'Bull bar', 'Car tracker', 'Alarm', 'Dash cam', '4WD / AWD', 'Third row seats', 'New tyres', 'Full service history'];
-const TOWNS = ['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret', 'Thika', 'Machakos', 'Kiambu', 'Kitengela', 'Ruiru', 'Nyeri', 'Meru', 'Embu', 'Kericho', 'Kakamega', 'Kisii', 'Naivasha', 'Nanyuki', 'Malindi', 'Kitale', 'Bungoma', 'Garissa', 'Narok', 'Kajiado', 'Murang\'a', 'Kilifi', 'Voi', 'Isiolo', 'Homa Bay', 'Migori'];
+// County -> towns and constituencies suggested in the sell form (sellers can type any town). Keep counties in sync with api/_lib.js
+const PLACES = {
+  Nairobi: ['Westlands', 'Dagoretti North', 'Dagoretti South', "Lang'ata", 'Kibra', 'Roysambu', 'Kasarani', 'Ruaraka', 'Embakasi South', 'Embakasi North', 'Embakasi Central', 'Embakasi East', 'Embakasi West', 'Makadara', 'Kamukunji', 'Starehe', 'Mathare', 'Nairobi CBD', 'Karen'],
+  Mombasa: ['Mvita', 'Nyali', 'Kisauni', 'Changamwe', 'Jomvu', 'Likoni'],
+  Kwale: ['Ukunda', 'Diani', 'Kwale', 'Msambweni', 'Lunga Lunga', 'Kinango', 'Matuga'],
+  Kilifi: ['Kilifi', 'Malindi', 'Watamu', 'Mtwapa', 'Kaloleni', 'Rabai', 'Ganze', 'Magarini'],
+  'Tana River': ['Hola', 'Garsen', 'Bura'],
+  Lamu: ['Lamu', 'Mpeketoni'],
+  'Taita-Taveta': ['Voi', 'Wundanyi', 'Taveta', 'Mwatate'],
+  Garissa: ['Garissa', 'Dadaab'],
+  Wajir: ['Wajir'],
+  Mandera: ['Mandera'],
+  Marsabit: ['Marsabit', 'Moyale'],
+  Isiolo: ['Isiolo'],
+  Meru: ['Meru', 'Maua', 'Nkubu', 'Timau', 'Imenti North', 'Imenti South', 'Igembe'],
+  'Tharaka-Nithi': ['Chuka', 'Chogoria', 'Marimanti'],
+  Embu: ['Embu', 'Runyenjes', 'Siakago', 'Manyatta'],
+  Kitui: ['Kitui', 'Mwingi', 'Mutomo'],
+  Machakos: ['Machakos', 'Athi River', 'Mavoko', 'Syokimau', 'Mlolongo', 'Kangundo', 'Matungulu', 'Kathiani', 'Yatta', 'Masinga', 'Mwala'],
+  Makueni: ['Wote', 'Emali', 'Makindu', 'Mtito Andei', 'Kibwezi', 'Mbooni'],
+  Nyandarua: ['Ol Kalou', 'Engineer', 'Njabini', 'Ol Joro Orok'],
+  Nyeri: ['Nyeri', 'Karatina', 'Othaya', 'Mukurweini', 'Tetu', 'Kieni', 'Mathira'],
+  Kirinyaga: ['Kerugoya', 'Kutus', 'Sagana', "Wang'uru", 'Mwea', 'Kagio'],
+  "Murang'a": ["Murang'a", 'Kenol', 'Kangema', 'Maragua', 'Kigumo', 'Kandara', 'Kiharu', 'Gatanga'],
+  Kiambu: ['Thika', 'Ruiru', 'Juja', 'Kiambu', 'Ruaka', 'Kikuyu', 'Limuru', 'Githunguri', 'Gatundu', 'Kiambaa', 'Kabete', 'Lari', 'Kahawa Sukari', 'Banana'],
+  Turkana: ['Lodwar', 'Kakuma', 'Lokichogio'],
+  'West Pokot': ['Kapenguria', 'Makutano', 'Chepareria'],
+  Samburu: ['Maralal', 'Baragoi'],
+  'Trans Nzoia': ['Kitale', 'Endebess', 'Kiminini', 'Saboti', 'Cherangany'],
+  'Uasin Gishu': ['Eldoret', 'Turbo', 'Moiben', 'Soy', 'Kapseret', 'Kesses', 'Ainabkoi', 'Burnt Forest'],
+  'Elgeyo-Marakwet': ['Iten', 'Kapsowar', 'Chepkorio'],
+  Nandi: ['Kapsabet', 'Nandi Hills', 'Mosoriot'],
+  Baringo: ['Kabarnet', 'Eldama Ravine', 'Marigat', 'Mogotio'],
+  Laikipia: ['Nanyuki', 'Nyahururu', 'Rumuruti', 'Doldol'],
+  Nakuru: ['Nakuru Town East', 'Nakuru Town West', 'Naivasha', 'Gilgil', 'Molo', 'Njoro', 'Rongai', 'Subukia', 'Bahati', 'Kuresoi', 'Mai Mahiu'],
+  Narok: ['Narok', 'Kilgoris', 'Ololulunga', 'Nairegie Enkare'],
+  Kajiado: ['Kitengela', 'Ongata Rongai', 'Kajiado', 'Ngong', 'Kiserian', 'Isinya', 'Namanga', 'Loitokitok', 'Kimana'],
+  Kericho: ['Kericho', 'Litein', 'Londiani', 'Kipkelion', 'Ainamoi'],
+  Bomet: ['Bomet', 'Sotik', 'Mulot', 'Longisa'],
+  Kakamega: ['Kakamega', 'Mumias', 'Malava', 'Lurambi', 'Butere', 'Shinyalu', 'Lugari'],
+  Vihiga: ['Mbale', 'Luanda', 'Majengo', 'Hamisi', 'Emuhaya'],
+  Bungoma: ['Bungoma', 'Webuye', 'Kimilili', 'Chwele', 'Kanduyi'],
+  Busia: ['Busia', 'Malaba', 'Nambale', 'Funyula', 'Port Victoria'],
+  Siaya: ['Siaya', 'Bondo', 'Ugunja', 'Usenge', 'Yala', 'Rarieda'],
+  Kisumu: ['Kisumu Central', 'Kisumu East', 'Kisumu West', 'Nyando', 'Muhoroni', 'Nyakach', 'Seme', 'Ahero', 'Maseno'],
+  'Homa Bay': ['Homa Bay', 'Mbita', 'Oyugis', 'Kendu Bay', 'Ndhiwa', 'Rangwe'],
+  Migori: ['Migori', 'Awendo', 'Rongo', 'Isebania', 'Uriri', 'Kehancha'],
+  Kisii: ['Kisii', 'Ogembo', 'Suneka', 'Keumbu', 'Nyamache', 'Bobasi'],
+  Nyamira: ['Nyamira', 'Keroka', 'Nyansiongo', 'Borabu'],
+};
+const COUNTIES = Object.keys(PLACES).sort();
 const EXTRA_MAKES = ['Isuzu', 'Mitsubishi', 'Suzuki', 'Peugeot', 'Jeep', 'Hyundai', 'Kia', 'Ford', 'Chevrolet', 'Renault', 'Daihatsu', 'Hino', 'FAW', 'Tata', 'Scania', 'Mahindra'];
 // Models sellers can pick, on top of every model in the import catalogue (older and commercial models common in Kenya)
 const EXTRA_MODELS = {
@@ -79,9 +129,9 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     const cr = crumbs([['Home', '/'], ['Sell your car', path]]);
     const steps = [
       ['Add your car', `Upload up to 12 photos, set your own price and add the details buyers ask about.`],
-      ['Confirm your email', 'Add your phone and email, then enter the 6-digit code we email you. No password.'],
-      ['Choose a package and pay', `${pkgList}. Pay by M-Pesa Paybill ${pay.paybill}, account ${pay.account}, or online.`],
-      ['Go live and get calls', 'Buyers WhatsApp or call you directly. No broker in the middle.'],
+      ['Choose a package and pay', `${pkgList}. Pay by M-Pesa Paybill ${pay.paybill}, account ${pay.account}, and enter the M-Pesa code.`],
+      ['Confirm your email', 'We email you a 6-digit code. Enter it to save your listing. No password.'],
+      ['Go live and get calls', 'We confirm your payment and your car goes live. Buyers WhatsApp or call you directly.'],
       ['Mark it as sold', 'One tap when the deal is done. That is it.'],
     ];
     const body = `<section class="block dark sell-hero"><div class="wrap">${cr.html.replace('class="crumbs"', 'class="crumbs crumbs-light"')}
@@ -148,6 +198,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
   <label class="field"><span>Make</span><select name="make"><option value="">Any make</option>${opt(makes)}</select></label>
   <label class="field"><span>Model</span><select name="model" disabled><option value="">Any model</option></select></label>
   <label class="field"><span>Body type</span><select name="body"><option value="">Any type</option>${opt(Object.keys(BODIES))}</select></label>
+  <label class="field"><span>County</span><select name="county"><option value="">All Kenya</option>${opt(COUNTIES)}</select></label>
   <label class="field"><span>Fuel</span><select name="fuel"><option value="">Any fuel</option>${opt(Object.keys(FUELS))}</select></label>
   <label class="field"><span>Price</span><select name="price"><option value="">Any price</option>${prices.map(([a, b, t]) => `<option value="${a}-${b}">${t}</option>`).join('')}</select></label>
   <label class="field check-field"><input type="checkbox" name="accident_free" value="1"><span>Accident free only</span></label>
@@ -240,7 +291,9 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
         ${sel('body', Object.keys(BODIES), 'Body type')}
         <label class="field"><span>Engine size</span><select name="engine_cc"><option value="">Choose…</option>${ENGINES.map((c) => `<option value="${c}">${c.toLocaleString('en')} cc (${(c / 1000).toFixed(1)}L)</option>`).join('')}<option value="">Electric / not sure</option></select></label>
         ${sel('colour', COLOURS, 'Colour')}
-        <label class="field"><span>Location <b class="req">*</b></span><input name="location" list="dl-towns" required placeholder="e.g. Nairobi" autocomplete="address-level2"></label>
+        <label class="field"><span>County <b class="req">*</b></span><select name="county" required><option value="">Choose…</option>${opt(COUNTIES)}</select></label>
+        <label class="field"><span>Town or constituency <b class="req">*</b></span><input name="location" list="dl-towns" required placeholder="e.g. Westlands, Thika, Nakuru Town East" autocomplete="off"></label>
+        <label class="field"><span>Estate <span class="muted small">(optional)</span></span><input name="estate" placeholder="e.g. Kilimani, South B, Milimani" autocomplete="off"></label>
       </div>
       <p class="hint" data-locked-hint hidden>Make, model and year can't be changed after payment.</p>
       <div class="field" style="margin-top:14px"><span class="field-label">Accident history <b class="req">*</b></span><div class="chips">${['Accident free', 'Has been in an accident'].map((a) => `<label class="chip"><input type="radio" name="accident" value="${a}" required>${a}</label>`).join('')}</div></div>
@@ -266,6 +319,23 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     <div class="form-actions"><button class="btn btn-primary" type="submit" data-save>Save and continue</button><a class="btn btn-ghost" href="#" data-back>Cancel</a></div>
     <p class="small muted" data-anon-only style="margin-top:12px">Already listed a car? <a href="#" data-signin-link>Sign in to manage it</a></p>
   </form>
+  <div class="auth-card pay-step" data-pay-step hidden>
+    <h2 style="font-size:1.4rem;margin:0 0 6px">Pay for your listing</h2>
+    <p data-pay-summary style="margin:0 0 12px"></p>
+    <span class="pay-label">Pay with M-Pesa Paybill</span>
+    ${payHow}
+    <form data-form="paystep" novalidate style="margin-top:12px">
+      <label class="field"><span>M-Pesa code from your SMS</span><input name="mpesa_code" placeholder="e.g. TKL4XY7Q2B" maxlength="12" autocapitalize="characters" autocomplete="off" required class="code-input" style="letter-spacing:.15em;font-size:1.2rem"></label>
+      <p class="error-msg" data-error hidden></p>
+      <button class="btn btn-primary btn-block" type="submit" data-paystep-submit>I've paid: continue</button>
+      <p class="small" style="margin:4px 0 0"><button class="linkish" type="button" data-paystep-back>← Edit details</button></p>
+    </form>
+    <div class="pay-alt">
+      <span class="pay-label">Or pay online (M-Pesa or card)</span>
+      <button class="btn btn-ghost btn-block" type="button" data-paystep-online>Pay online with Paystack</button>
+      <p class="small muted" style="margin:0">We confirm your email first, then open Paystack's secure checkout.</p>
+    </div>
+  </div>
   <div class="auth-card otp-step" data-otp-step hidden>
     <h2 style="font-size:1.4rem;margin:0 0 6px">Confirm your email</h2>
     <p>We sent a 6-digit code to <b data-otp-email></b>. Enter it to save your listing. Check your spam folder if you can't see it.</p>
@@ -277,7 +347,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     </form>
   </div>
   ${modelData}
-  <datalist id="dl-towns">${TOWNS.map((t) => `<option value="${esc(t)}">`).join('')}</datalist>
+  <datalist id="dl-towns"></datalist>
+  <script type="application/json" id="place-data">${JSON.stringify(PLACES).replace(/</g, '\\u003c')}</script>
 </section>
 </div>${script}`;
     add(path, layout({ path, noindex: true, title: `Sell Your Car: My Account | ${site.name}`, description: 'Sign in to list your car for sale, manage your listings and mark cars as sold.', body, bar: 'none' }));

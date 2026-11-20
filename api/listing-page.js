@@ -24,6 +24,7 @@ export async function GET(req) {
   await sql`UPDATE listings SET views = views + 1 WHERE id = ${l.id}`.catch(() => {});
 
   const title = listingTitle(l);
+  const place = [l.estate, l.location, l.county && l.county + " County"].filter(Boolean).join(", ");
   const st = statusOf(l);
   const sold = st === 'sold';
   const ended = sold || st === 'expired'; // no longer contactable
@@ -33,7 +34,7 @@ export async function GET(req) {
   const photos = l.photos || [];
   const msg = `Hi, I saw your vehicle ${title} on ${SITE.domain}\n${pageUrl}\nIs it still available?`;
   const facts = [['Year', l.year], ['Mileage', l.mileage != null ? `${Number(l.mileage).toLocaleString('en-KE')} km` : null], ['Fuel', l.fuel], ['Transmission', l.transmission],
-    ['Engine', l.engine_cc ? `${Number(l.engine_cc).toLocaleString('en-KE')} cc` : null], ['Body type', l.body], ['Colour', l.colour], ['Condition', l.condition], ['Accident history', l.accident], ['Location', l.location]].filter(([, v]) => v);
+    ['Engine', l.engine_cc ? `${Number(l.engine_cc).toLocaleString('en-KE')} cc` : null], ['Body type', l.body], ['Colour', l.colour], ['Condition', l.condition], ['Accident history', l.accident], ['Location', place]].filter(([, v]) => v);
   const alt = (i) => `${title} for sale in ${l.location}, Kenya${i ? ` – photo ${i + 1}` : ''}`;
 
   const body = `<div class="wrap">
@@ -52,7 +53,7 @@ export async function GET(req) {
       <span class="make">${esc(l.make)}${l.body ? ` · ${esc(l.body)}` : ''}${l.condition ? ` · ${esc(l.condition)}` : ''}</span>
       <h1>${esc(title)}</h1>
       <p class="listing-price num">${kes(l.price)}</p>
-      <p class="muted" style="margin:0">📍 ${esc(l.location)} · Sold by ${esc(l.seller_name || 'the owner')}, not a broker</p>
+      <p class="muted" style="margin:0">📍 ${esc(place)} · Sold by ${esc(l.seller_name || 'the owner')}, not a broker</p>
     </div>
     <dl class="facts">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
     <div class="order-box">
@@ -74,7 +75,7 @@ export async function GET(req) {
     image: photos.map((p) => p.url), description: (l.description || `${title} for sale in ${l.location}, Kenya`).slice(0, 500),
     ...(l.mileage != null && { mileageFromOdometer: { '@type': 'QuantitativeValue', value: l.mileage, unitCode: 'KMT' } }),
     ...(l.fuel && { fuelType: l.fuel }), ...(l.transmission && { vehicleTransmission: l.transmission }), ...(l.colour && { color: l.colour }), ...(l.accident && { knownVehicleDamages: l.accident }), ...(l.body && { bodyType: l.body }),
-    offers: { '@type': 'Offer', price: Number(l.price), priceCurrency: 'KES', availability: sold ? 'https://schema.org/SoldOut' : ended ? 'https://schema.org/Discontinued' : 'https://schema.org/InStock', url: pageUrl, itemCondition: l.condition === 'Brand new' ? 'https://schema.org/NewCondition' : 'https://schema.org/UsedCondition', areaServed: { '@type': 'Place', name: `${l.location}, Kenya` } },
+    offers: { '@type': 'Offer', price: Number(l.price), priceCurrency: 'KES', availability: sold ? 'https://schema.org/SoldOut' : ended ? 'https://schema.org/Discontinued' : 'https://schema.org/InStock', url: pageUrl, itemCondition: l.condition === 'Brand new' ? 'https://schema.org/NewCondition' : 'https://schema.org/UsedCondition', areaServed: { '@type': 'Place', name: `${place}, Kenya` } },
   };
   const crumbsLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [['Home', '/'], ['Cars for sale', '/used-cars/'], [title, `/used-cars/${l.slug}/`]].map(([name, p], i) => ({ '@type': 'ListItem', position: i + 1, name, item: SITE.url + p })) };
   const ldTags = [ld, crumbsLd].map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`).join('');

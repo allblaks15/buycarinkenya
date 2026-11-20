@@ -36,7 +36,7 @@
     <span class="make">${esc(l.make)}${l.body ? ' · ' + esc(l.body) : ''}</span>
     <h3><a href="${esc(l.url)}">${esc(l.title)}</a></h3>
     <div class="specs-mini">${[l.mileage != null && `${Number(l.mileage).toLocaleString('en-KE')} km`, l.fuel, l.transmission, l.condition].filter(Boolean).map((t) => `<span>${esc(t)}</span>`).join('')}${l.accident === 'Accident free' ? '<span class="ok-chip">✓ Accident free</span>' : ''}</div>
-    <div class="foot"><div class="price-from"><small>Price</small><b class="num">${kes(l.price)}</b></div><div class="flags">📍 ${esc(l.location)}</div></div>
+    <div class="foot"><div class="price-from"><small>Price</small><b class="num">${kes(l.price)}</b></div><div class="flags">📍 ${esc([l.estate, l.location, l.county].filter(Boolean).filter((x, i, a) => a.indexOf(x) === i).join(", "))}</div></div>
   </div>
 </article>`;
 
@@ -148,7 +148,7 @@
       if (['awaiting_payment', 'rejected', 'sold', 'expired'].includes(l.status)) acts.push(`<button class="btn btn-ghost" type="button" data-act="delete">Delete</button>`);
       el.innerHTML = `<img src="${esc(l.photos[0]?.thumb || '/assets/img/placeholder-car.svg')}" alt="" width="150" height="100">
         <div><span class="status status-${l.status}">${STATUS[l.status]}</span><h3>${esc(l.title)}</h3>
-        <div class="meta"><span class="num">${kes(l.price)}</span><span>📍 ${esc(l.location)}</span><span>${esc(l.package_name)} · KSh ${l.package_price.toLocaleString('en')}</span>${l.status === 'active' ? `<span>${l.expires_at ? `Live until ${day(l.expires_at)}` : 'Live until sold'}</span>` : ''}${['active', 'sold', 'expired'].includes(l.status) ? `<span>${l.views} views</span>` : ''}</div></div>
+        <div class="meta"><span class="num">${kes(l.price)}</span><span>📍 ${esc([l.estate, l.location, l.county].filter(Boolean).filter((x, i, a) => a.indexOf(x) === i).join(", "))}</span><span>${esc(l.package_name)} · KSh ${l.package_price.toLocaleString('en')}</span>${l.status === 'active' ? `<span>${l.expires_at ? `Live until ${day(l.expires_at)}` : 'Live until sold'}</span>` : ''}${['active', 'sold', 'expired'].includes(l.status) ? `<span>${l.views} views</span>` : ''}</div></div>
         <div class="full">
           ${l.status === 'pending_review' ? `<p class="note small" style="margin:0">We're confirming your M-Pesa payment (code <b>${esc(l.mpesa_code)}</b>). This usually takes a few hours during business hours, and we'll email you when your car is live.</p>` : ''}
           ${l.status === 'expired' ? `<p class="note small" style="margin:0"><b>Your package ended on ${day(l.expires_at)}.</b> Buyers can no longer see this car. Choose a package and pay again to renew it.</p>` : ''}
@@ -193,6 +193,7 @@
     // Listing form: car details first, then seller details; new sellers confirm their email with a code on submit
     const lf = $('[data-form="listing"]', acct); const photoBox = $('[data-photos]', lf); const photoInput = $('[data-photo-input]', lf);
     const otpBox = $('[data-otp-step]', acct); const otpForm = $('[data-form="otp"]', acct);
+    const payStep = $('[data-pay-step]', acct); const payForm = $('[data-form="paystep"]', acct);
     let photos = []; let editing = null; let draft = null;
     const MAX = 12;
     const store = (k, v) => { try { if (v != null) localStorage.setItem(k, v); return localStorage.getItem(k) || ''; } catch { return ''; } };
@@ -222,9 +223,9 @@
 
     function fillForm(l) {
       lf.reset(); editing = l; draft = null; photos = l ? l.photos.map((p) => ({ ...p })) : [];
-      lf.hidden = false; otpBox.hidden = true;
+      lf.hidden = false; otpBox.hidden = true; payStep.hidden = true;
       $('[data-form-title]', acct).textContent = l ? `Edit ${l.title}` : 'Sell your car';
-      if (l) for (const k of ['make', 'model', 'year', 'price', 'mileage', 'fuel', 'transmission', 'body', 'engine_cc', 'colour', 'condition', 'location', 'description', 'seller_name']) {
+      if (l) for (const k of ['make', 'model', 'year', 'price', 'mileage', 'fuel', 'transmission', 'body', 'engine_cc', 'colour', 'condition', 'county', 'location', 'estate', 'description', 'seller_name']) {
         if (lf.elements[k] && l[k] != null) lf.elements[k].value = ['price', 'mileage'].includes(k) ? Number(l[k]).toLocaleString('en-KE') : l[k];
       }
       // A make or colour not in our lists goes into "Other"
@@ -236,18 +237,22 @@
       $$('input[name=package]', lf).forEach((r) => { r.checked = r.value === (l ? l.package : '1m'); });
       // Package is picked when posting; after payment it is changed through renewal instead
       $('[data-pkg-field]', lf).hidden = !!l && !['awaiting_payment', 'rejected'].includes(l.status);
-      showOther();
+      showOther(); fillTowns();
       lf.phone.value = l ? '0' + String(l.phone).slice(3) : store('bcik_phone');
       if (!l) { lf.seller_name.value = store('bcik_name'); lf.email.value = store('bcik_email'); }
       const locked = l && !['awaiting_payment', 'rejected'].includes(l.status);
       for (const k of ['make', 'make_other', 'model', 'model_other', 'year']) lf.elements[k].disabled = !!locked || (k === 'model' && !lf.make.value);
       $('[data-locked-hint]', lf).hidden = !locked;
-      $('[data-save]', lf).textContent = l ? 'Save changes' : user ? 'Save and continue to payment' : 'Continue: confirm my email';
+      $('[data-save]', lf).textContent = l ? 'Save changes' : 'Continue to payment';
       setAnon(); showErr(lf, ''); drawPhotos();
     }
     const showOther = () => { $('[data-make-other]', lf).hidden = lf.make.value !== 'Other'; $('[data-model-other]', lf).hidden = lf.model.value !== 'Other'; };
     lf.make.addEventListener('change', () => { fillModels(lf.model, lf.make.value); showOther(); });
     lf.model.addEventListener('change', showOther);
+    // Town / constituency suggestions follow the county (#place-data is generated at build time)
+    const PLACES = (() => { try { return JSON.parse($('#place-data').textContent); } catch { return {}; } })();
+    const fillTowns = () => { $('#dl-towns').innerHTML = (PLACES[lf.county.value] || Object.values(PLACES).flat()).map((t) => `<option value="${esc(t)}">`).join(''); };
+    lf.county.addEventListener('change', fillTowns);
     function collect() {
       const fd = new FormData(lf);
       const data = Object.fromEntries(fd);
@@ -266,7 +271,8 @@
       if (!String(d.model || '').trim()) return lf.model.value === 'Other' ? 'Type the model of your car.' : 'Choose the model.';
       if (!d.year) return 'Choose the year.';
       if (!(+d.price >= 50000)) return 'Enter a price of at least KES 50,000.';
-      if (!String(d.location || '').trim()) return 'Enter where the car is, e.g. Nairobi.';
+      if (!d.county) return 'Choose the county where the car is.';
+      if (!String(d.location || '').trim()) return 'Enter the town or constituency, e.g. Westlands.';
       if (!d.accident) return 'Say whether the car has been in an accident.';
       if (!$('[data-pkg-field]', lf).hidden && !d.package) return 'Choose a package.';
       if (!/^(?:254|0)?[17]\d{8}$/.test(num(d.phone))) return 'Enter a valid Kenyan phone number, e.g. 0712 345 678.';
@@ -275,15 +281,36 @@
     }
     async function save(data) {
       for (const p of photos) if (!p.url && p.big) { p.busy = true; drawPhotos(); try { Object.assign(p, await send(p)); } finally { p.busy = false; drawPhotos(); } }
-      data.photos = photos.filter((p) => p.url).map(({ url, thumb }) => ({ url, thumb }));
-      await api('/api/listings', editing ? { action: 'update', id: editing.id, ...data } : { action: 'create', ...data });
+      const { payOnline, ...payload } = data;
+      payload.photos = photos.filter((p) => p.url).map(({ url, thumb }) => ({ url, thumb }));
+      const r = await api('/api/listings', editing ? { action: 'update', id: editing.id, ...payload } : { action: 'create', ...payload });
       draft = null;
+      // Chose Paystack on the pay step: the car is saved, now open checkout
+      if (payOnline && r.listing) { location.href = (await api('/api/pay', { id: r.listing.id, package: r.listing.package })).url; return; }
       if (location.hash) location.hash = ''; else await route();
     }
+    const panel = (name) => { lf.hidden = name !== 'form'; payStep.hidden = name !== 'pay'; otpBox.hidden = name !== 'otp'; window.scrollTo(0, 0); };
     async function requestCode(email) {
       await api('/api/auth', { action: 'request', email });
       $('[data-otp-email]', otpBox).textContent = email;
-      lf.hidden = true; otpBox.hidden = false; otpForm.reset(); showErr(otpForm, ''); window.scrollTo(0, 0); otpForm.code.focus();
+      panel('otp'); otpForm.reset(); showErr(otpForm, ''); otpForm.code.focus();
+    }
+    // New cars: details -> payment -> (new sellers) email code -> saved
+    function showPay() {
+      const p = PKG[draft.package];
+      $('[data-pay-summary]', payStep).innerHTML = `<b>${esc(p.name)} package</b> for your ${esc(`${draft.year} ${draft.make} ${draft.model}`)}: <b>KSh ${p.price.toLocaleString('en')}</b>`;
+      $('[data-pay-amount]', payStep).textContent = `KSh ${p.price.toLocaleString('en')}`;
+      $('[data-paystep-online]', payStep).textContent = `Pay KSh ${p.price.toLocaleString('en')} online with Paystack`;
+      payForm.reset(); showErr(payForm, ''); panel('pay');
+    }
+    async function proceed(btn) {
+      if (!user) {
+        busy(btn, true, 'Sending email code…');
+        try { await requestCode(draft.email.trim()); } catch (err) { showErr(payForm, err.message); } finally { busy(btn, false); }
+        return;
+      }
+      busy(btn, true, 'Saving your listing…');
+      try { await save(draft); } catch (err) { showErr(payForm, err.message); } finally { busy(btn, false); }
     }
     lf.addEventListener('submit', async (e) => {
       e.preventDefault(); showErr(lf, '');
@@ -291,25 +318,31 @@
       const data = collect(); const problem = check(data);
       if (problem) return showErr(lf, problem);
       store('bcik_phone', data.phone); store('bcik_name', data.seller_name);
-      const btn = $('[data-save]', lf);
-      if (!user) {
-        draft = data; store('bcik_email', data.email.trim());
-        busy(btn, true, 'Sending code…');
-        try { await requestCode(data.email.trim()); } catch (err) { showErr(lf, err.message); } finally { busy(btn, false); }
-        return;
-      }
-      busy(btn, true, 'Saving…');
+      if (!editing) { draft = data; if (!user) store('bcik_email', data.email.trim()); showPay(); return; }
+      const btn = $('[data-save]', lf); busy(btn, true, 'Saving…');
       try { await save(data); } catch (err) { showErr(lf, err.message); } finally { busy(btn, false); }
     });
+    payForm.addEventListener('submit', (e) => {
+      e.preventDefault(); showErr(payForm, '');
+      const code = payForm.mpesa_code.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      if (!/^[A-Z0-9]{10}$/.test(code)) return showErr(payForm, 'Enter the 10-character M-Pesa code from your confirmation SMS, e.g. TKL4XY7Q2B.');
+      draft.mpesa_code = code; delete draft.payOnline;
+      proceed($('[data-paystep-submit]', payForm));
+    });
+    $('[data-paystep-online]', payStep).addEventListener('click', (e) => { showErr(payForm, ''); delete draft.mpesa_code; draft.payOnline = true; proceed(e.target); });
+    $('[data-paystep-back]', payStep).addEventListener('click', () => panel('form'));
     otpForm.code.addEventListener('input', () => { otpForm.code.value = num(otpForm.code.value).slice(0, 6); if (otpForm.code.value.length === 6) otpForm.requestSubmit(); });
     otpForm.addEventListener('submit', async (e) => {
       e.preventDefault(); if (!draft) return;
       const btn = $('button[type=submit]', otpForm); showErr(otpForm, ''); busy(btn, true, 'Confirming…');
       try { user = (await api('/api/auth', { action: 'verify', email: draft.email.trim(), code: otpForm.code.value })).user; } catch (err) { showErr(otpForm, err.message); busy(btn, false); return; }
       setAnon(); busy(btn, false); busy(btn, true, 'Saving your listing…');
-      try { await save(draft); } catch (err) { otpBox.hidden = true; lf.hidden = false; showErr(lf, err.message); } finally { busy(btn, false); }
+      try { await save(draft); } catch (err) {
+        // e.g. an M-Pesa code already used: back to the payment step, otherwise back to the details
+        if (/M-Pesa/.test(err.message)) { showPay(); showErr(payForm, err.message); } else { panel('form'); showErr(lf, err.message); }
+      } finally { busy(btn, false); }
     });
-    $('[data-otp-back]', acct).addEventListener('click', () => { otpBox.hidden = true; lf.hidden = false; });
+    $('[data-otp-back]', acct).addEventListener('click', () => panel(draft && !editing ? 'pay' : 'form'));
     $('[data-otp-resend]', acct).addEventListener('click', async (e) => { busy(e.target, true, 'Sending…'); try { await requestCode(draft.email.trim()); } catch (err) { showErr(otpForm, err.message); } finally { busy(e.target, false); } });
     $('[data-signin-link]', acct).addEventListener('click', (e) => { e.preventDefault(); location.hash = ''; });
     $$('[data-back]', acct).forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); if (user) location.hash = ''; else location.href = '/sell-your-car/'; }));
@@ -363,7 +396,7 @@
       if (l.status === 'active') acts.push(`<a class="btn btn-ghost" href="${esc(l.url)}" target="_blank">View</a>`, `<button class="btn btn-ghost" type="button" data-act="unpublish">Unpublish</button>`);
       if (me.role === 'admin') acts.push(`<button class="btn btn-ghost" type="button" data-act="delete">Delete</button>`);
       el.innerHTML = `<img src="${esc(l.photos[0]?.thumb || '/assets/img/placeholder-car.svg')}" alt="" width="150" height="100">
-        <div><span class="status status-${l.status}">${STATUS[l.status]}</span><h3>${esc(l.title)}</h3><div class="meta"><span class="num">${kes(l.price)}</span><span>📍 ${esc(l.location)}</span><span>${l.photos.length} photos</span></div></div>
+        <div><span class="status status-${l.status}">${STATUS[l.status]}</span><h3>${esc(l.title)}</h3><div class="meta"><span class="num">${kes(l.price)}</span><span>📍 ${esc([l.estate, l.location, l.county].filter(Boolean).filter((x, i, a) => a.indexOf(x) === i).join(", "))}</span><span>${l.photos.length} photos</span></div></div>
         <div class="full"><dl>
           <dt>Package</dt><dd><b>${esc(l.package_name)}: KSh ${Number(l.package_price).toLocaleString('en')}</b>${l.expires_at ? ` · ends ${fmt(l.expires_at)}` : ''}</dd><dt>M-Pesa code</dt><dd><b>${esc(l.mpesa_code || '–')}</b></dd><dt>Paid at</dt><dd>${fmt(l.paid_at)}</dd>
           <dt>Seller</dt><dd>${esc(l.seller_name || '')} <a href="tel:+${esc(l.phone)}">+${esc(l.phone)}</a></dd><dt>Email</dt><dd><a href="mailto:${esc(l.user_email)}">${esc(l.user_email)}</a></dd>

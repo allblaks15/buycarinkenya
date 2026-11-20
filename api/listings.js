@@ -23,10 +23,11 @@ export const GET = route(async (req) => {
   if (q.get('model')) add('model ILIKE ?', q.get('model'));
   if (q.get('body')) add('body = ?', q.get('body'));
   if (q.get('fuel')) add('fuel = ?', q.get('fuel'));
+  if (q.get('county')) add('county = ?', q.get('county'));
   if (q.get('accident_free')) add('accident = ?', 'Accident free');
   if (q.get('min')) add('price >= ?', Number(q.get('min')) || 0);
   if (q.get('max')) add('price <= ?', Number(q.get('max')) || 1e12);
-  if (q.get('q')) add(`(make || ' ' || model || ' ' || year || ' ' || location) ILIKE ?`, `%${q.get('q').slice(0, 60).replace(/[%_\\]/g, '\\$&')}%`);
+  if (q.get('q')) add(`(make || ' ' || model || ' ' || year || ' ' || location || ' ' || coalesce(county, '') || ' ' || coalesce(estate, '')) ILIKE ?`, `%${q.get('q').slice(0, 60).replace(/[%_\\]/g, '\\$&')}%`);
   const order = { price_asc: 'price ASC', price_desc: 'price DESC', year: 'year DESC' }[q.get('sort')] || 'approved_at DESC';
   const page = Math.max(1, Math.min(100, Number(q.get('page')) || 1));
   const limit = Math.min(PAGE, Number(q.get('limit')) || PAGE);
@@ -40,6 +41,19 @@ async function own(id, email) {
   if (!l || l.user_email !== email) throw new HttpError(404, 'Listing not found.');
   return l;
 }
+// A 10-character M-Pesa code not already used by another listing
+async function checkCode(raw, id = 0) {
+  const code = String(raw || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (!/^[A-Z0-9]{10}$/.test(code)) throw new HttpError(400, 'Enter the 10-character M-Pesa code from your confirmation SMS, e.g. TKL4XY7Q2B.');
+  const [dupe] = await sql`SELECT id FROM listings WHERE mpesa_code = ${code} AND id <> ${id}`;
+  if (dupe) throw new HttpError(400, 'That M-Pesa code has already been used for another listing.');
+  return code;
+}
+const paidNotice = (l, code) => {
+  const p = pkgOf(l);
+  return notifyStaff(`New payment to confirm: KSh ${p.price} for ${listingTitle(l)} (${code})`,
+    `A seller says they paid KSh ${p.price} (${p.name} package) to Paybill ${PAYMENT.paybill}, account ${PAYMENT.account}.\n\nM-Pesa code: ${code}\nCar: ${listingTitle(l)}, ${kes(l.price)}, ${[l.estate, l.location, l.county].filter(Boolean).join(', ')}\nSeller: ${l.seller_name || ''} ${l.phone} <${l.user_email}>\n\nApprove or reject it: https://buycarinkenya.co.ke/admin/`);
+};
 const unpaid = (l) => ['awaiting_payment', 'rejected', 'expired'].includes(statusOf(l));
 
 export const POST = route(async (req) => {
@@ -51,11 +65,16 @@ export const POST = route(async (req) => {
     if (n >= 5) return fail(429, 'You have 5 unpaid listings. Pay for or delete one before adding another.');
     const pkg = pickPackage(b.package);
     const l = cleanListing(b);
-    const [row] = await sql`INSERT INTO listings (user_email, make, model, year, price, mileage, fuel, transmission, body, engine_cc, colour, condition, location, description, seller_name, phone, photos, accident, extras, package)
-      VALUES (${u.email}, ${l.make}, ${l.model}, ${l.year}, ${l.price}, ${l.mileage}, ${l.fuel}, ${l.transmission}, ${l.body}, ${l.engine_cc}, ${l.colour}, ${l.condition}, ${l.location}, ${l.description}, ${l.seller_name}, ${l.phone}, ${JSON.stringify(l.photos)}, ${l.accident}, ${JSON.stringify(l.extras)}, ${pkg})
+    // Sellers normally pay by Paybill before saving; the code goes straight to review
+    const code = b.mpesa_code ? await checkCode(b.mpesa_code) : null;
+    const [row] = await sql`INSERT INTO listings (user_email, make, model, year, price, mileage, fuel, transmission, body, engine_cc, colour, condition, location, county, estate, description, seller_name, phone, photos, accident, extras, package,
+        mpesa_code, status, paid_at)
+      VALUES (${u.email}, ${l.make}, ${l.model}, ${l.year}, ${l.price}, ${l.mileage}, ${l.fuel}, ${l.transmission}, ${l.body}, ${l.engine_cc}, ${l.colour}, ${l.condition}, ${l.location}, ${l.county}, ${l.estate}, ${l.description}, ${l.seller_name}, ${l.phone}, ${JSON.stringify(l.photos)}, ${l.accident}, ${JSON.stringify(l.extras)}, ${pkg},
+        ${code}, ${code ? 'pending_review' : 'awaiting_payment'}, ${code ? new Date() : null})
       RETURNING id`;
     const slug = `${slugify(`${l.year} ${l.make} ${l.model} ${l.location}`)}-${row.id}`;
     const [saved] = await sql`UPDATE listings SET slug = ${slug} WHERE id = ${row.id} RETURNING *`;
+    if (code) await paidNotice(saved, code);
     return json({ listing: mine(saved) });
   }
 
@@ -69,7 +88,7 @@ export const POST = route(async (req) => {
     const removed = l.photos.filter((p) => !n.photos.some((q) => q.url === p.url));
     const [saved] = await sql`UPDATE listings SET make = ${n.make}, model = ${n.model}, year = ${n.year}, price = ${n.price}, mileage = ${n.mileage}, fuel = ${n.fuel},
       transmission = ${n.transmission}, body = ${n.body}, engine_cc = ${n.engine_cc}, colour = ${n.colour}, condition = ${n.condition}, location = ${n.location},
-      description = ${n.description}, seller_name = ${n.seller_name}, phone = ${n.phone}, photos = ${JSON.stringify(n.photos)}, accident = ${n.accident},
+      county = ${n.county}, estate = ${n.estate}, description = ${n.description}, seller_name = ${n.seller_name}, phone = ${n.phone}, photos = ${JSON.stringify(n.photos)}, accident = ${n.accident},
       extras = ${JSON.stringify(n.extras)}, package = ${pkg}, updated_at = now()
       WHERE id = ${l.id} RETURNING *`;
     if (removed.length) await del(removed.flatMap((p) => [p.url, p.thumb])).catch((e) => console.error('blob del', e.message));
@@ -80,15 +99,10 @@ export const POST = route(async (req) => {
     // First payment, a retry after rejection, or a renewal once the package has run out
     if (!unpaid(l)) return fail(400, 'This listing does not need a payment.');
     const pkg = b.package ? pickPackage(b.package) : (l.package || 'unlimited');
-    const code = String(b.mpesa_code || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
-    if (!/^[A-Z0-9]{10}$/.test(code)) return fail(400, 'Enter the 10-character M-Pesa code from your confirmation SMS, e.g. TKL4XY7Q2B.');
+    const code = await checkCode(b.mpesa_code, l.id);
     if (statusOf(l) === 'expired' && code === l.mpesa_code) return fail(400, 'Enter the M-Pesa code for your new payment.');
-    const [dupe] = await sql`SELECT id FROM listings WHERE mpesa_code = ${code} AND id <> ${l.id}`;
-    if (dupe) return fail(400, 'That M-Pesa code has already been used for another listing.');
     const [saved] = await sql`UPDATE listings SET mpesa_code = ${code}, package = ${pkg}, status = 'pending_review', paid_at = now(), reject_reason = NULL, updated_at = now() WHERE id = ${l.id} RETURNING *`;
-    const p = PACKAGES[pkg];
-    await notifyStaff(`New payment to confirm: KSh ${p.price} for ${listingTitle(saved)} (${code})`,
-      `A seller says they paid KSh ${p.price} (${p.name} package) to Paybill ${PAYMENT.paybill}, account ${PAYMENT.account}.\n\nM-Pesa code: ${code}\nCar: ${listingTitle(saved)}, ${kes(saved.price)}\nSeller: ${saved.seller_name || ''} ${saved.phone} <${saved.user_email}>\n\nApprove or reject it: https://buycarinkenya.co.ke/admin/`);
+    await paidNotice(saved, code);
     return json({ listing: mine(saved) });
   }
 
