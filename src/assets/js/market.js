@@ -35,7 +35,7 @@
   <div class="body">
     <span class="make">${esc(l.make)}${l.body ? ' · ' + esc(l.body) : ''}</span>
     <h3><a href="${esc(l.url)}">${esc(l.title)}</a></h3>
-    <div class="specs-mini">${[l.mileage != null && `${Number(l.mileage).toLocaleString('en-KE')} km`, l.fuel, l.transmission, l.condition].filter(Boolean).map((t) => `<span>${esc(t)}</span>`).join('')}${l.accident === 'Accident free' ? '<span class="ok-chip">✓ Accident free</span>' : ''}</div>
+    <div class="specs-mini">${[l.mileage != null && `${Number(l.mileage).toLocaleString('en-KE')} km`, l.fuel, l.transmission, l.condition].filter(Boolean).map((t) => `<span>${esc(t)}</span>`).join('')}${l.accident === 'Accident free' ? '<span class="ok-chip">✓ Accident free</span>' : ''}${l.seller_type === 'Dealer' ? '<span>Dealer</span>' : ''}</div>
     <div class="foot"><div class="price-from"><small>Price</small><b class="num">${kes(l.price)}</b></div><div class="flags">📍 ${esc([l.estate, l.location, l.county].filter(Boolean).filter((x, i, a) => a.indexOf(x) === i).join(", "))}</div></div>
   </div>
 </article>`;
@@ -234,10 +234,11 @@
       if (l && l.colour && lf.colour.value !== l.colour) lf.colour.value = 'Other';
       $$('input[name=extras]', lf).forEach((c) => { c.checked = !!l && (l.extras || []).includes(c.value); });
       $$('input[name=accident]', lf).forEach((r) => { r.checked = !!l && l.accident === r.value; });
+      $$('input[name=seller_type]', lf).forEach((r) => { r.checked = r.value === ((l && l.seller_type) || store('bcik_seller_type') || 'Private seller'); });
       $$('input[name=package]', lf).forEach((r) => { r.checked = r.value === (l ? l.package : '1m'); });
       // Package is picked when posting; after payment it is changed through renewal instead
       $('[data-pkg-field]', lf).hidden = !!l && !['awaiting_payment', 'rejected'].includes(l.status);
-      showOther(); fillTowns();
+      showOther(); fillTowns(l ? l.location : '');
       lf.phone.value = l ? '0' + String(l.phone).slice(3) : store('bcik_phone');
       if (!l) { lf.seller_name.value = store('bcik_name'); lf.email.value = store('bcik_email'); }
       const locked = l && !['awaiting_payment', 'rejected'].includes(l.status);
@@ -246,20 +247,29 @@
       $('[data-save]', lf).textContent = l ? 'Save changes' : 'Continue to payment';
       setAnon(); showErr(lf, ''); drawPhotos();
     }
-    const showOther = () => { $('[data-make-other]', lf).hidden = lf.make.value !== 'Other'; $('[data-model-other]', lf).hidden = lf.model.value !== 'Other'; };
+    const showOther = () => { $('[data-make-other]', lf).hidden = lf.make.value !== 'Other'; $('[data-model-other]', lf).hidden = lf.model.value !== 'Other'; $('[data-town-other]', lf).hidden = lf.location.value !== 'Other'; };
     lf.make.addEventListener('change', () => { fillModels(lf.model, lf.make.value); showOther(); });
     lf.model.addEventListener('change', showOther);
     // Town / constituency suggestions follow the county (#place-data is generated at build time)
     const PLACES = (() => { try { return JSON.parse($('#place-data').textContent); } catch { return {}; } })();
-    const fillTowns = () => { $('#dl-towns').innerHTML = (PLACES[lf.county.value] || Object.values(PLACES).flat()).map((t) => `<option value="${esc(t)}">`).join(''); };
-    lf.county.addEventListener('change', fillTowns);
+    // Real dropdown (datalist suggestions don't show on most phones); "Other town" for anything unlisted
+    const fillTowns = (current = '') => {
+      const county = lf.county.value; const list = PLACES[county] || [];
+      lf.location.innerHTML = `<option value="">${county ? 'Choose…' : 'Choose the county first'}</option>` + list.map((t) => `<option>${esc(t)}</option>`).join('') + (county ? '<option value="Other">Other town</option>' : '');
+      lf.location.disabled = !county;
+      if (current) { lf.location.value = list.includes(current) ? current : 'Other'; if (lf.location.value === 'Other') lf.location_other.value = current; }
+      showOther();
+    };
+    lf.county.addEventListener('change', () => fillTowns());
+    lf.location.addEventListener('change', showOther);
     function collect() {
       const fd = new FormData(lf);
       const data = Object.fromEntries(fd);
       data.extras = fd.getAll('extras');
       if (data.make === 'Other') data.make = String(data.make_other || '').trim();
       if (data.model === 'Other') data.model = String(data.model_other || '').trim();
-      delete data.make_other; delete data.model_other;
+      if (data.location === 'Other') data.location = String(data.location_other || '').trim();
+      delete data.make_other; delete data.model_other; delete data.location_other;
       if (editing && lf.make.disabled) Object.assign(data, { make: editing.make, model: editing.model, year: editing.year });
       data.price = num(data.price); data.mileage = num(data.mileage); data.engine_cc = num(data.engine_cc);
       return data;
@@ -272,7 +282,7 @@
       if (!d.year) return 'Choose the year.';
       if (!(+d.price >= 50000)) return 'Enter a price of at least KES 50,000.';
       if (!d.county) return 'Choose the county where the car is.';
-      if (!String(d.location || '').trim()) return 'Enter the town or constituency, e.g. Westlands.';
+      if (!String(d.location || '').trim()) return lf.location.value === 'Other' ? 'Type the town where the car is.' : 'Choose the town or constituency.';
       if (!d.accident) return 'Say whether the car has been in an accident.';
       if (!$('[data-pkg-field]', lf).hidden && !d.package) return 'Choose a package.';
       if (!/^(?:254|0)?[17]\d{8}$/.test(num(d.phone))) return 'Enter a valid Kenyan phone number, e.g. 0712 345 678.';
@@ -317,7 +327,7 @@
       if (photos.some((p) => p.busy)) return showErr(lf, 'Please wait for your photos to finish.');
       const data = collect(); const problem = check(data);
       if (problem) return showErr(lf, problem);
-      store('bcik_phone', data.phone); store('bcik_name', data.seller_name);
+      store('bcik_phone', data.phone); store('bcik_name', data.seller_name); store('bcik_seller_type', data.seller_type);
       if (!editing) { draft = data; if (!user) store('bcik_email', data.email.trim()); showPay(); return; }
       const btn = $('[data-save]', lf); busy(btn, true, 'Saving…');
       try { await save(data); } catch (err) { showErr(lf, err.message); } finally { busy(btn, false); }
@@ -399,7 +409,7 @@
         <div><span class="status status-${l.status}">${STATUS[l.status]}</span><h3>${esc(l.title)}</h3><div class="meta"><span class="num">${kes(l.price)}</span><span>📍 ${esc([l.estate, l.location, l.county].filter(Boolean).filter((x, i, a) => a.indexOf(x) === i).join(", "))}</span><span>${l.photos.length} photos</span></div></div>
         <div class="full"><dl>
           <dt>Package</dt><dd><b>${esc(l.package_name)}: KSh ${Number(l.package_price).toLocaleString('en')}</b>${l.expires_at ? ` · ends ${fmt(l.expires_at)}` : ''}</dd><dt>M-Pesa code</dt><dd><b>${esc(l.mpesa_code || '–')}</b></dd><dt>Paid at</dt><dd>${fmt(l.paid_at)}</dd>
-          <dt>Seller</dt><dd>${esc(l.seller_name || '')} <a href="tel:+${esc(l.phone)}">+${esc(l.phone)}</a></dd><dt>Email</dt><dd><a href="mailto:${esc(l.user_email)}">${esc(l.user_email)}</a></dd>
+          <dt>Seller</dt><dd>${esc(l.seller_type || 'Private seller')}: ${esc(l.seller_name || '')} <a href="tel:+${esc(l.phone)}">+${esc(l.phone)}</a></dd><dt>Email</dt><dd><a href="mailto:${esc(l.user_email)}">${esc(l.user_email)}</a></dd>
           <dt>Accident</dt><dd>${esc(l.accident || '–')}</dd>${l.extras?.length ? `<dt>Extras</dt><dd>${esc(l.extras.join(', '))}</dd>` : ''}<dt>Listed</dt><dd>${fmt(l.created_at)}</dd>${l.reject_reason ? `<dt>Reason</dt><dd>${esc(l.reject_reason)}</dd>` : ''}
         </dl>${l.description ? `<details><summary class="small">Description</summary><p class="small" style="white-space:pre-line">${esc(l.description)}</p></details>` : ''}
         <div class="acts">${acts.join('')}</div><p class="error-msg" data-error hidden></p></div>`;

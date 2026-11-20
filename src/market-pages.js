@@ -13,8 +13,8 @@ const EXTRAS = ['Sunroof', 'Extra tyres', 'Spare wheel', 'Alloy rims', 'Leather 
   'Climate control', 'Tinted windows', 'Roof rails', 'Tow bar', 'Bull bar', 'Car tracker', 'Alarm', 'Dash cam', '4WD / AWD', 'Third row seats', 'New tyres', 'Full service history'];
 // County -> towns and constituencies suggested in the sell form (sellers can type any town). Keep counties in sync with api/_lib.js
 const PLACES = {
-  Nairobi: ['Westlands', 'Dagoretti North', 'Dagoretti South', "Lang'ata", 'Kibra', 'Roysambu', 'Kasarani', 'Ruaraka', 'Embakasi South', 'Embakasi North', 'Embakasi Central', 'Embakasi East', 'Embakasi West', 'Makadara', 'Kamukunji', 'Starehe', 'Mathare', 'Nairobi CBD', 'Karen'],
-  Mombasa: ['Mvita', 'Nyali', 'Kisauni', 'Changamwe', 'Jomvu', 'Likoni'],
+  Nairobi: ['Nairobi CBD', 'Westlands', 'Kilimani', 'Kileleshwa', 'Lavington', 'Parklands', 'Karen', "Lang'ata", 'South B', 'South C', 'Kasarani', 'Roysambu', 'Embakasi', 'Utawala', 'Donholm', 'Buruburu', 'Kahawa', 'Ruaraka', 'Dagoretti North', 'Dagoretti South', 'Kibra', 'Embakasi South', 'Embakasi North', 'Embakasi Central', 'Embakasi East', 'Embakasi West', 'Makadara', 'Kamukunji', 'Starehe', 'Mathare'],
+  Mombasa: ['Mombasa Island', 'Mvita', 'Nyali', 'Bamburi', 'Mtwapa Road', 'Kisauni', 'Shanzu', 'Changamwe', 'Mikindani', 'Jomvu', 'Likoni', 'Tudor'],
   Kwale: ['Ukunda', 'Diani', 'Kwale', 'Msambweni', 'Lunga Lunga', 'Kinango', 'Matuga'],
   Kilifi: ['Kilifi', 'Malindi', 'Watamu', 'Mtwapa', 'Kaloleni', 'Rabai', 'Ganze', 'Magarini'],
   'Tana River': ['Hola', 'Garsen', 'Bura'],
@@ -29,25 +29,25 @@ const PLACES = {
   'Tharaka-Nithi': ['Chuka', 'Chogoria', 'Marimanti'],
   Embu: ['Embu', 'Runyenjes', 'Siakago', 'Manyatta'],
   Kitui: ['Kitui', 'Mwingi', 'Mutomo'],
-  Machakos: ['Machakos', 'Athi River', 'Mavoko', 'Syokimau', 'Mlolongo', 'Kangundo', 'Matungulu', 'Kathiani', 'Yatta', 'Masinga', 'Mwala'],
+  Machakos: ['Machakos Town', 'Athi River', 'Syokimau', 'Mlolongo', 'Kitengela Road', 'Mavoko', 'Kangundo', 'Matungulu', 'Kathiani', 'Yatta', 'Masinga', 'Mwala'],
   Makueni: ['Wote', 'Emali', 'Makindu', 'Mtito Andei', 'Kibwezi', 'Mbooni'],
   Nyandarua: ['Ol Kalou', 'Engineer', 'Njabini', 'Ol Joro Orok'],
   Nyeri: ['Nyeri', 'Karatina', 'Othaya', 'Mukurweini', 'Tetu', 'Kieni', 'Mathira'],
   Kirinyaga: ['Kerugoya', 'Kutus', 'Sagana', "Wang'uru", 'Mwea', 'Kagio'],
   "Murang'a": ["Murang'a", 'Kenol', 'Kangema', 'Maragua', 'Kigumo', 'Kandara', 'Kiharu', 'Gatanga'],
-  Kiambu: ['Thika', 'Ruiru', 'Juja', 'Kiambu', 'Ruaka', 'Kikuyu', 'Limuru', 'Githunguri', 'Gatundu', 'Kiambaa', 'Kabete', 'Lari', 'Kahawa Sukari', 'Banana'],
+  Kiambu: ['Thika', 'Ruiru', 'Juja', 'Kiambu Town', 'Ruaka', 'Kikuyu', 'Limuru', 'Kahawa Sukari', 'Kahawa Wendani', 'Githurai', 'Banana', 'Wangige', 'Kabete', 'Githunguri', 'Gatundu', 'Kiambaa', 'Lari', 'Tatu City'],
   Turkana: ['Lodwar', 'Kakuma', 'Lokichogio'],
   'West Pokot': ['Kapenguria', 'Makutano', 'Chepareria'],
   Samburu: ['Maralal', 'Baragoi'],
   'Trans Nzoia': ['Kitale', 'Endebess', 'Kiminini', 'Saboti', 'Cherangany'],
-  'Uasin Gishu': ['Eldoret', 'Turbo', 'Moiben', 'Soy', 'Kapseret', 'Kesses', 'Ainabkoi', 'Burnt Forest'],
+  'Uasin Gishu': ['Eldoret Town', 'Turbo', 'Moiben', 'Soy', 'Kapseret', 'Kesses', 'Ainabkoi', 'Burnt Forest'],
   'Elgeyo-Marakwet': ['Iten', 'Kapsowar', 'Chepkorio'],
   Nandi: ['Kapsabet', 'Nandi Hills', 'Mosoriot'],
   Baringo: ['Kabarnet', 'Eldama Ravine', 'Marigat', 'Mogotio'],
   Laikipia: ['Nanyuki', 'Nyahururu', 'Rumuruti', 'Doldol'],
-  Nakuru: ['Nakuru Town East', 'Nakuru Town West', 'Naivasha', 'Gilgil', 'Molo', 'Njoro', 'Rongai', 'Subukia', 'Bahati', 'Kuresoi', 'Mai Mahiu'],
+  Nakuru: ['Nakuru Town', 'Nakuru Town East', 'Nakuru Town West', 'Naivasha', 'Gilgil', 'Molo', 'Njoro', 'Rongai', 'Subukia', 'Bahati', 'Kuresoi', 'Mai Mahiu'],
   Narok: ['Narok', 'Kilgoris', 'Ololulunga', 'Nairegie Enkare'],
-  Kajiado: ['Kitengela', 'Ongata Rongai', 'Kajiado', 'Ngong', 'Kiserian', 'Isinya', 'Namanga', 'Loitokitok', 'Kimana'],
+  Kajiado: ['Kitengela', 'Ongata Rongai', 'Ngong', 'Kiserian Town', 'Kajiado Town', 'Isinya Town', 'Kiserian', 'Isinya', 'Namanga', 'Loitokitok', 'Kimana'],
   Kericho: ['Kericho', 'Litein', 'Londiani', 'Kipkelion', 'Ainamoi'],
   Bomet: ['Bomet', 'Sotik', 'Mulot', 'Longisa'],
   Kakamega: ['Kakamega', 'Mumias', 'Malava', 'Lurambi', 'Butere', 'Shinyalu', 'Lugari'],
@@ -55,7 +55,7 @@ const PLACES = {
   Bungoma: ['Bungoma', 'Webuye', 'Kimilili', 'Chwele', 'Kanduyi'],
   Busia: ['Busia', 'Malaba', 'Nambale', 'Funyula', 'Port Victoria'],
   Siaya: ['Siaya', 'Bondo', 'Ugunja', 'Usenge', 'Yala', 'Rarieda'],
-  Kisumu: ['Kisumu Central', 'Kisumu East', 'Kisumu West', 'Nyando', 'Muhoroni', 'Nyakach', 'Seme', 'Ahero', 'Maseno'],
+  Kisumu: ['Kisumu City', 'Kisumu Central', 'Kisumu East', 'Kisumu West', 'Nyando', 'Muhoroni', 'Nyakach', 'Seme', 'Ahero', 'Maseno'],
   'Homa Bay': ['Homa Bay', 'Mbita', 'Oyugis', 'Kendu Bay', 'Ndhiwa', 'Rangwe'],
   Migori: ['Migori', 'Awendo', 'Rongo', 'Isebania', 'Uriri', 'Kehancha'],
   Kisii: ['Kisii', 'Ogembo', 'Suneka', 'Keumbu', 'Nyamache', 'Bobasi'],
@@ -120,7 +120,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     ['When does my car go live?', 'As soon as we confirm your M-Pesa code, usually within a few hours during business hours. Online Paystack payments go live instantly. We email you when it is live.'],
     ['Can I change the price or photos later?', 'Yes. Edit the price, photos and description at any time from your account. You set your own price.'],
     ['What happens when I sell the car?', 'Tap “Mark as sold” on your account page. The listing shows as sold and buyers stop contacting you.'],
-    ['Do you charge commission or use brokers?', 'No. There are no brokers and no commission. You deal with the buyer directly and keep the full sale price.'],
+    ['Do you charge commission or use brokers?', 'No. There is no commission and no middleman. You deal with the buyer directly and keep the full sale price.'],
+    ['Can car dealers list cars?', 'Yes. Dealers and private sellers both list on Buy Car in Kenya. Choose “Dealer” when you add a car, and each car is listed separately with its own package. Sign in with the same email to manage all your cars.'],
   ];
 
   // ---------------------------------------------------------------- Sell your car (landing)
@@ -139,13 +140,13 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     <div>
       <span class="eyebrow">Sell with us faster</span>
       <h1>Sell your car in Kenya, fast and direct</h1>
-      <p class="lede">No brokers. No commission. Everything at your fingertips. List your car from <b>KSh ${FROM}</b>: 2 weeks, 1 month or unlimited until sold. Buyers contact you directly on WhatsApp or by phone.</p>
+      <p class="lede">For private sellers and dealers. No middleman. No commission. Everything at your fingertips. List your car from <b>KSh ${FROM}</b>: 2 weeks, 1 month or unlimited until sold. Buyers contact you directly on WhatsApp or by phone.</p>
       <div class="btns"><a class="btn btn-primary" href="/account/#new">${I.car} Start selling</a><a class="btn btn-light" href="/used-cars/">See cars for sale</a></div>
     </div>
     <div class="price-card">
       <span class="eyebrow" style="color:var(--accent)">Seller packages</span>
       <ul class="pkg-rows">${PACKAGES.map((p) => `<li${p.tag === 'Sell your car faster' ? ' class="hot"' : ''}><span><b>${p.name}</b>${p.tag ? `<small>${p.tag}</small>` : ''}</span><b class="num">${kshs(p.price)}</b></li>`).join('')}</ul>
-      <ul class="feature-list">${['Up to 12 photos', 'Set your own price', 'Buyers WhatsApp or call you directly', 'No brokers, no commission'].map((t) => `<li>${I.check}<span>${t}</span></li>`).join('')}</ul>
+      <ul class="feature-list">${['Private sellers and dealers', 'Up to 12 photos', 'Set your own price', 'Buyers WhatsApp or call you directly'].map((t) => `<li>${I.check}<span>${t}</span></li>`).join('')}</ul>
       <a class="btn btn-primary btn-block" href="/account/#new">List my car</a>
     </div>
   </div>
@@ -183,7 +184,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 
 <section class="block"><div class="wrap"><div class="cta-band"><div><h2>Ready to sell your car?</h2><p>No brokers, no commission. Packages from KSh ${FROM}.</p></div>
 <div class="btns"><a class="btn btn-light" href="/account/#new">Start selling</a></div></div></div></section>`;
-    add(path, layout({ path, title: `Sell Your Car in Kenya: No Brokers, No Commission | ${site.name}`, description: `Sell your car in Kenya directly to buyers. List it from KSh ${FROM} for 2 weeks, 1 month or until sold. Set your own price and get WhatsApp calls. No brokers.`, body, priority: 0.9, jsonld: [cr.ld, faqLd(sellFaq)] }));
+    add(path, layout({ path, title: `Sell Your Car in Kenya Fast | ${site.name}`, description: `Sell your car in Kenya directly to buyers. List it from KSh ${FROM} for 2 weeks, 1 month or until sold. Set your own price and get WhatsApp calls. No brokers.`, body, priority: 0.9, jsonld: [cr.ld, faqLd(sellFaq)] }));
   }
 
   // ---------------------------------------------------------------- Cars for sale (browse)
@@ -192,12 +193,13 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     const cr = crumbs([['Home', '/'], ['Cars for sale', path]]);
     const prices = [[0, 500000, 'Under KES 500K'], [500000, 1000000, 'KES 500K – 1M'], [1000000, 2000000, 'KES 1M – 2M'], [2000000, 3500000, 'KES 2M – 3.5M'], [3500000, 6000000, 'KES 3.5M – 6M'], [6000000, 0, 'Above KES 6M']];
     const body = `<div class="wrap">${cr.html}
-<header class="page-head"><h1>Cars for sale in Kenya</h1><p>Buy directly from owners across Kenya. Every car is listed by its owner, so you call or WhatsApp the seller yourself. No brokers, no commission.</p></header>
+<header class="page-head"><h1>Cars for sale in Kenya</h1><p>Browse cars listed by private sellers and dealers across Kenya. See photos, mileage, accident history and the price, then call or WhatsApp the seller yourself. No middleman, no commission.</p></header>
 <form class="market-filters" data-market-filters role="search">
   <label class="field"><span>Search</span><input name="q" type="search" placeholder="e.g. Harrier, Nairobi, 2018" autocomplete="off"></label>
   <label class="field"><span>Make</span><select name="make"><option value="">Any make</option>${opt(makes)}</select></label>
   <label class="field"><span>Model</span><select name="model" disabled><option value="">Any model</option></select></label>
   <label class="field"><span>Body type</span><select name="body"><option value="">Any type</option>${opt(Object.keys(BODIES))}</select></label>
+  <label class="field"><span>Seller</span><select name="seller_type"><option value="">Private & dealers</option><option>Private seller</option><option>Dealer</option></select></label>
   <label class="field"><span>County</span><select name="county"><option value="">All Kenya</option>${opt(COUNTIES)}</select></label>
   <label class="field"><span>Fuel</span><select name="fuel"><option value="">Any fuel</option>${opt(Object.keys(FUELS))}</select></label>
   <label class="field"><span>Price</span><select name="price"><option value="">Any price</option>${prices.map(([a, b, t]) => `<option value="${a}-${b}">${t}</option>`).join('')}</select></label>
@@ -212,7 +214,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 <section class="block"><div class="wrap"><div class="cta-band"><div><h2>Selling a car?</h2><p>List it from KSh ${FROM}. Buyers contact you directly.</p></div>
 <div class="btns"><a class="btn btn-light" href="/sell-your-car/">Sell with us</a></div></div></div></section>
 <div data-page="browse"></div>${modelData}${script}`;
-    add(path, layout({ path, title: `Cars for Sale in Kenya by Owners: No Brokers | ${site.name}`, description: 'Browse used cars for sale in Kenya directly from owners in Nairobi, Mombasa, Nakuru and beyond. See photos and prices, then WhatsApp or call the seller. No brokers.', body, priority: 0.9, jsonld: [cr.ld] }));
+    add(path, layout({ path, title: `Cars for Sale in Kenya: Sellers & Dealers | ${site.name}`, description: 'Browse cars for sale in Kenya from private sellers and dealers in Nairobi, Mombasa, Nakuru and beyond. See photos and prices, then WhatsApp the seller.', body, priority: 0.9, jsonld: [cr.ld] }));
   }
 
   // ---------------------------------------------------------------- Seller account (sign in + dashboard + listing form)
@@ -292,7 +294,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
         <label class="field"><span>Engine size</span><select name="engine_cc"><option value="">Choose…</option>${ENGINES.map((c) => `<option value="${c}">${c.toLocaleString('en')} cc (${(c / 1000).toFixed(1)}L)</option>`).join('')}<option value="">Electric / not sure</option></select></label>
         ${sel('colour', COLOURS, 'Colour')}
         <label class="field"><span>County <b class="req">*</b></span><select name="county" required><option value="">Choose…</option>${opt(COUNTIES)}</select></label>
-        <label class="field"><span>Town or constituency <b class="req">*</b></span><input name="location" list="dl-towns" required placeholder="e.g. Westlands, Thika, Nakuru Town East" autocomplete="off"></label>
+        <label class="field"><span>Town or constituency <b class="req">*</b></span><select name="location" required disabled><option value="">Choose the county first</option></select></label>
+        <label class="field" data-town-other hidden><span>Type the town <b class="req">*</b></span><input name="location_other" placeholder="e.g. Kikuyu" autocomplete="off"></label>
         <label class="field"><span>Estate <span class="muted small">(optional)</span></span><input name="estate" placeholder="e.g. Kilimani, South B, Milimani" autocomplete="off"></label>
       </div>
       <p class="hint" data-locked-hint hidden>Make, model and year can't be changed after payment.</p>
@@ -309,7 +312,8 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     </fieldset>
     <fieldset><legend>Your details</legend>
       <div class="grid-2">
-        <label class="field"><span>Your name</span><input name="seller_name" autocomplete="name" placeholder="e.g. John"></label>
+        <div class="field" style="grid-column:1/-1"><span class="field-label">I am a <b class="req">*</b></span><div class="chips">${['Private seller', 'Dealer'].map((t, i) => `<label class="chip"><input type="radio" name="seller_type" value="${t}"${i ? '' : ' checked'}>${t}</label>`).join('')}</div></div>
+        <label class="field"><span>Your name or dealership</span><input name="seller_name" autocomplete="name" placeholder="e.g. John or Jabali Motors"></label>
         <label class="field"><span>WhatsApp / phone number <b class="req">*</b></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0712 345 678"></label>
         <label class="field" data-anon-only><span>Email address <b class="req">*</b></span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com"></label>
       </div>
@@ -347,7 +351,6 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
     </form>
   </div>
   ${modelData}
-  <datalist id="dl-towns"></datalist>
   <script type="application/json" id="place-data">${JSON.stringify(PLACES).replace(/</g, '\\u003c')}</script>
 </section>
 </div>${script}`;
@@ -379,7 +382,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 // Home page block: latest cars from owners (filled in by market.js; hidden when there are none)
 export const homeMarket = ({ I }) => `
 <section class="block" data-page="home-latest" hidden><div class="wrap">
-  <div class="section-head"><div><h2>Latest cars for sale by owners</h2><p>Buy directly from the owner. WhatsApp or call the seller, no broker in between.</p></div><a class="link-arrow" href="/used-cars/">All cars for sale →</a></div>
+  <div class="section-head"><div><h2>Latest cars for sale in Kenya</h2><p>Listed by private sellers and dealers across Kenya. WhatsApp or call the seller directly.</p></div><a class="link-arrow" href="/used-cars/">All cars for sale →</a></div>
   <div class="car-grid" data-market-grid></div>
 </div></section>
 <section class="block"><div class="wrap"><div class="cta-band sell-band"><div><span class="eyebrow" style="color:#ffe6d9">Sell with us faster</span><h2>Selling your car? List it from KSh ${FROM}</h2><p>No brokers. No commission. Everything at your fingertips. Set your own price and buyers WhatsApp or call you directly.</p></div>

@@ -29,7 +29,7 @@ export const db = () => (ready ||= sql.transaction([
     paid_at timestamptz, approved_at timestamptz, sold_at timestamptz)`,
   sql`CREATE INDEX IF NOT EXISTS listings_status_idx ON listings (status, approved_at DESC)`,
   sql`CREATE INDEX IF NOT EXISTS listings_user_idx ON listings (user_email)`,
-  sql`ALTER TABLE listings ADD COLUMN IF NOT EXISTS county text, ADD COLUMN IF NOT EXISTS estate text`,
+  sql`ALTER TABLE listings ADD COLUMN IF NOT EXISTS county text, ADD COLUMN IF NOT EXISTS estate text, ADD COLUMN IF NOT EXISTS seller_type text`,
   sql`ALTER TABLE listings ADD COLUMN IF NOT EXISTS package text, ADD COLUMN IF NOT EXISTS expires_at timestamptz, ADD COLUMN IF NOT EXISTS accident text, ADD COLUMN IF NOT EXISTS extras jsonb NOT NULL DEFAULT '[]'`,
   sql`CREATE TABLE IF NOT EXISTS payments (reference text PRIMARY KEY, listing_id int NOT NULL, user_email text NOT NULL, package text NOT NULL, amount int NOT NULL,
     status text NOT NULL DEFAULT 'pending', created_at timestamptz NOT NULL DEFAULT now(), paid_at timestamptz)`,
@@ -136,6 +136,7 @@ export const OPTIONS = {
   body: ['SUV', 'Sedan', 'Hatchback', 'Station Wagon', 'MPV', 'Pickup', 'Van', 'Truck', 'Bus', 'Sports Car'],
   condition: ['Locally used', 'Foreign used', 'Brand new'],
   accident: ['Accident free', 'Has been in an accident'],
+  seller_type: ['Private seller', 'Dealer'],
   county: ['Baringo', 'Bomet', 'Bungoma', 'Busia', 'Elgeyo-Marakwet', 'Embu', 'Garissa', 'Homa Bay', 'Isiolo', 'Kajiado', 'Kakamega', 'Kericho', 'Kiambu', 'Kilifi', 'Kirinyaga', 'Kisii', 'Kisumu', 'Kitui',
     'Kwale', 'Laikipia', 'Lamu', 'Machakos', 'Makueni', 'Mandera', 'Marsabit', 'Meru', 'Migori', 'Mombasa', "Murang'a", 'Nairobi', 'Nakuru', 'Nandi', 'Narok', 'Nyamira', 'Nyandarua', 'Nyeri', 'Samburu',
     'Siaya', 'Taita-Taveta', 'Tana River', 'Tharaka-Nithi', 'Trans Nzoia', 'Turkana', 'Uasin Gishu', 'Vihiga', 'Wajir', 'West Pokot'],
@@ -153,7 +154,7 @@ export function cleanListing(input) {
     fuel: oneOf(input.fuel, OPTIONS.fuel), transmission: oneOf(input.transmission, OPTIONS.transmission), body: oneOf(input.body, OPTIONS.body),
     engine_cc: input.engine_cc === '' || input.engine_cc == null ? null : int(input.engine_cc, 50, 10000),
     colour: txt(input.colour, 30) || null, condition: oneOf(input.condition, OPTIONS.condition), location: txt(input.location, 60), county: oneOf(input.county, OPTIONS.county), estate: txt(input.estate, 60) || null,
-    description: String(input.description ?? '').trim().slice(0, 4000), seller_name: txt(input.seller_name, 60) || null, phone: normPhone(input.phone),
+    description: String(input.description ?? '').trim().slice(0, 4000), seller_name: txt(input.seller_name, 60) || null, seller_type: oneOf(input.seller_type, OPTIONS.seller_type) || 'Private seller', phone: normPhone(input.phone),
     accident: oneOf(input.accident, OPTIONS.accident),
     extras: Array.isArray(input.extras) ? [...new Set(input.extras.filter((x) => OPTIONS.extras.includes(x)))] : [],
     photos: Array.isArray(input.photos) ? input.photos.filter((p) => p && blobHost(p.url) && blobHost(p.thumb)).slice(0, MAX_PHOTOS).map((p) => ({ url: p.url, thumb: p.thumb })) : [],
@@ -168,7 +169,7 @@ export function cleanListing(input) {
 export const publicListing = (l) => ({
   id: l.id, slug: l.slug, url: `/used-cars/${l.slug}/`, title: listingTitle(l), make: l.make, model: l.model, year: l.year, price: Number(l.price), mileage: l.mileage,
   fuel: l.fuel, transmission: l.transmission, body: l.body, engine_cc: l.engine_cc, colour: l.colour, condition: l.condition, location: l.location, county: l.county, estate: l.estate,
-  description: l.description, seller_name: l.seller_name, accident: l.accident, extras: l.extras || [], photos: l.photos, status: statusOf(l),
+  description: l.description, seller_name: l.seller_name, seller_type: l.seller_type || 'Private seller', accident: l.accident, extras: l.extras || [], photos: l.photos, status: statusOf(l),
   phone: statusOf(l) === 'active' ? l.phone : null, posted: l.approved_at || l.created_at,
 });
 // Put a paid listing live for its package (used by admin approval and by Paystack payments)

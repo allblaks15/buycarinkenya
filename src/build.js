@@ -89,7 +89,9 @@ const navLinks = [['/used-cars/', 'Cars for Sale'], ['/sell-your-car/', 'Sell Yo
 function layout({ path, title, description, body, jsonld = [], image, bar = 'global', noindex = false, priority = 0.6, preload, images = [] }) {
   if (!noindex) sitemap.push({ path, priority, images });
   const ogImg = abs(image || mainImg('toyota-land-cruiser-prado'));
-  const org = { '@context': 'https://schema.org', '@type': 'AutoDealer', '@id': abs('/#dealer'), name: site.name, url: site.url, logo: abs('/assets/img/logo.png'), image: ogImg, telephone: site.phone, email: site.email, priceRange: 'KES 1M – 30M',
+  const org = { '@context': 'https://schema.org', '@type': 'AutoDealer', '@id': abs('/#dealer'), name: site.name, url: site.url, slogan: site.tagline,
+    description: `${site.name} helps you buy, sell or import a car in Kenya: a marketplace where private sellers and dealers list cars for sale across Kenya, and car imports from Japan, the UK and South Africa.`,
+    knowsAbout: ['Buying a used car in Kenya', 'Selling a car in Kenya', 'Importing a car to Kenya'], logo: abs('/assets/img/logo.png'), image: ogImg, telephone: site.phone, email: site.email, priceRange: 'KES 1M – 30M',
     address: { '@type': 'PostalAddress', addressLocality: 'Nairobi', addressCountry: 'KE' }, areaServed: { '@type': 'Country', name: 'Kenya' }, openingHours: 'Mo-Sa 08:00-18:00', sameAs: Object.values(site.social).filter(Boolean) };
   const ld = [org, ...jsonld].map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`).join('\n');
   const cur = (p) => (path === p || (p !== '/' && path.startsWith(p)) ? ' aria-current="page"' : '');
@@ -120,9 +122,9 @@ ${ld}
 </head>
 <body class="has-bar bar-${bar}">
 <a class="skip" href="#main">Skip to content</a>
-<div class="topbar"><div class="wrap"><span>Trusted car imports to Kenya <span class="hide-sm">· Japan · UK · South Africa</span></span><span><a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a></span></div></div>
+<div class="topbar"><div class="wrap"><span>Buy, sell or import a car in Kenya <span class="hide-sm">· Private sellers & dealers · Imports from Japan, UK & SA</span></span><span><a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a></span></div></div>
 <header class="site"><div class="wrap">
-  <a class="logo" href="/" aria-label="${site.name} home">${I.logo}<span>${site.name}<small>Car Imports Kenya</small></span></a>
+  <a class="logo" href="/" aria-label="${site.name} home">${I.logo}<span>${site.name}<small>Buy · Sell · Import</small></span></a>
   <nav class="main" aria-label="Main">${navLinks.map(([h, t]) => `<a href="${h}"${cur(h)}>${t}</a>`).join('')}</nav>
   <a class="btn btn-primary header-cta" href="/sell-your-car/">Sell Your Car</a>
   <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer" data-open-drawer>${I.menu}</button>
@@ -140,8 +142,8 @@ ${body}
 </main>
 <footer class="site"><div class="wrap">
   <div class="foot-grid">
-    <div class="foot-brand"><a class="logo" href="/">${I.logo}<span>${site.name}<small>Car Imports Kenya</small></span></a>
-      <p>We import quality used and new cars from Japan, the United Kingdom and South Africa for customers across Kenya. You pick the model and exact spec, and we handle sourcing, inspection, shipping, KRA clearing and registration.</p>
+    <div class="foot-brand"><a class="logo" href="/">${I.logo}<span>${site.name}<small>Buy · Sell · Import</small></span></a>
+      <p>Buy, sell or import a car in Kenya, all in one place. Browse <a href="/used-cars/">cars for sale</a> from private sellers and dealers across Kenya, <a href="/sell-your-car/">list your car</a> with no commission, or <a href="/cars/">import</a> the exact car you want from Japan, the United Kingdom or South Africa with sourcing, inspection, shipping, KRA clearing and registration handled for you.</p>
       <p>📞 <a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a><br>✉️ <a href="mailto:${site.email}">${site.email}</a><br>📍 ${site.address}<br>🕘 ${site.hours}</p></div>
     <div><h4>Popular imports</h4><ul>${cars.filter((c) => c.popular).slice(0, 8).map((c) => `<li><a href="/cars/${c.slug}/">${c.name}</a></li>`).join('')}</ul></div>
     <div><h4>Browse</h4><ul>${Object.values(BODIES).map((b) => `<li><a href="/body-type/${b.slug}/">${b.plural}</a></li>`).join('')}${Object.values(FUELS).map((f) => `<li><a href="/fuel/${f.slug}/">${f.slug[0].toUpperCase() + f.slug.slice(1)} cars</a></li>`).join('')}</ul></div>
@@ -255,14 +257,18 @@ const add = (path, html) => pages.push({ path, html });
   const popular = cars.filter((c) => c.popular);
   const bodyCounts = Object.keys(BODIES).map((b) => [b, cars.filter((c) => c.body === b).length]);
   const heroImg = mainImg('toyota-land-cruiser-prado');
-  const homeFaq = [[`How do I buy a car in Kenya with ${site.name}?`, `Choose a model on ${site.name}, pick the exact version and send your order on WhatsApp or through the order form. We confirm an all-inclusive landed price in KES, source and inspect the car in Japan, the UK or South Africa, ship it to Mombasa, clear it with KRA and register it with NTSA before handing you the keys.`], ...generalFaq];
+  const homeFaq = [[`How do I buy a car in Kenya with ${site.name}?`, `Choose a model on ${site.name}, pick the exact version and send your order on WhatsApp or through the order form. We confirm an all-inclusive landed price in KES, source and inspect the car in Japan, the UK or South Africa, ship it to Mombasa, clear it with KRA and register it with NTSA before handing you the keys.`],
+    [`Can I sell my car on ${site.name}?`, `Yes. Add your car with photos and your own price, choose a package (2 weeks KSh 450, 1 month KSh 950 or unlimited until sold KSh 1,350) and pay by M-Pesa. Buyers WhatsApp or call you directly. There are no brokers and no commission. <a href="/sell-your-car/">Sell your car</a>.`],
+    [`Can I buy a used car in Kenya on ${site.name} without importing?`, `Yes. <a href="/used-cars/">Cars for sale</a> lists cars from private sellers and dealers across Kenya with photos, mileage, accident history and price. Contact the seller directly, view the car and run an NTSA search before you pay.`],
+    ...generalFaq];
   const body = `
 <section class="hero">
   <img class="hero-img" src="${heroImg}" alt="Buy Car in Kenya: Toyota Land Cruiser Prado imported from Japan" title="Buy Car in Kenya – import cars from Japan, UK & South Africa" width="1200" height="800" fetchpriority="high">
   <div class="wrap">
-    <span class="eyebrow">Japan · United Kingdom · South Africa</span>
-    <h1>Buy Car in Kenya: import your next car the easy way</h1>
-    <p class="lede">Want to buy a car in Kenya without the guesswork? Pick a model, choose the exact version and order in minutes on WhatsApp. We source, inspect, ship to Mombasa, clear KRA and hand you the keys, with the landed price agreed upfront.</p>
+    <span class="eyebrow">Buy · Sell · Import</span>
+    <h1>Buy Car in Kenya: buy, sell or import your next car</h1>
+    <p class="lede">Want to buy a car in Kenya without the guesswork? Kenya's car marketplace: browse cars from private sellers and dealers across Kenya, list your own car for sale, or import the exact car you want from Japan, the UK or South Africa with the landed price agreed upfront.</p>
+    <div class="hero-actions"><a class="btn btn-light" href="/used-cars/">Buy a car</a><a class="btn btn-primary" href="/sell-your-car/">Sell your car</a><a class="btn btn-ghost-light" href="/cars/">Import a car</a></div>
     <form class="search-card" action="/cars/" method="get" role="search">
       <div class="search-row">
         <div><label for="s-make">Make</label><select id="s-make" name="make"><option value="">Any make</option>${MAKES.map((m) => `<option>${m}</option>`).join('')}</select></div>
@@ -312,8 +318,10 @@ ${homeMarket({ I })}
 </div></section>
 
 <section class="block"><div class="wrap"><div class="prose">
-  <h2>Buy a car in Kenya with confidence</h2>
-  <p><strong>Buy Car in Kenya</strong> helps you buy the exact car you want, imported directly from Japan, the United Kingdom or South Africa. Instead of settling for whatever is on a local yard, you choose the make, model, version, year, colour and mileage, and we source a car that matches.</p>
+  <h2>Buy, sell or import a car in Kenya</h2>
+  <p><strong>Buy Car in Kenya</strong> is more than a car importer. It is a marketplace where private sellers and dealers list cars and buyers <a href="/used-cars/">browse cars for sale across Kenya</a>. You can <a href="/sell-your-car/">sell your car</a> to serious buyers with no commission, or <a href="/cars/">import a car</a> from Japan, the United Kingdom or South Africa.</p>
+  <p><b>Buying locally?</b> Every car for sale is listed by a private seller or dealer with photos, mileage, accident history and the asking price, and you WhatsApp or call the seller directly. <b>Selling?</b> List your car from KSh 450, set your own price and get calls from buyers across Kenya.</p>
+  <p><b>Importing?</b> Choose the make, model, version, year, colour and mileage, and we source a car that matches.</p>
   <p>Every quote is an all-inclusive landed price in Kenya shillings, covering the car, shipping to Mombasa, KRA duty, clearing and NTSA registration. All cars are right-hand drive, meet the KEBS 8-year rule (${MIN_YEAR} or newer) and pass a pre-shipment inspection before they leave the export country.</p>
   <p>Whether you want to buy a fuel-saving hatchback in Nairobi, a family SUV in Mombasa or a double cab in Nakuru, Eldoret or Kisumu, browse <a href="/cars/">all ${cars.length} models</a>, read our <a href="/how-to-import-a-car-to-kenya/">car import guide</a> or <a href="/import-request/">request any car</a>.</p>
 </div></div></section>
@@ -325,8 +333,8 @@ ${ctaBand()}
   ${faqHtml(homeFaq)}
 </div></section>
 <script src="/assets/js/market.js?v=${BUILD}" defer></script>`;
-  add('/', layout({ path: '/', title: `${site.name} | Import Cars from Japan, UK & South Africa`, description: `${site.name}: import your next car from Japan, the UK or South Africa. ${cars.length}+ models, all-inclusive landed prices in KES, KEBS inspected.`, body, priority: 1.0, preload: heroImg,
-    jsonld: [faqLd(homeFaq), { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, alternateName: ['BuyCarInKenya', 'buycarinkenya.co.ke'], description: `${site.name} imports cars to Kenya from Japan, the UK and South Africa with all-inclusive landed prices.`, inLanguage: 'en-KE', url: site.url, potentialAction: { '@type': 'SearchAction', target: abs('/cars/?q={search_term_string}'), 'query-input': 'required name=search_term_string' } }] }));
+  add('/', layout({ path: '/', title: `${site.name} | Buy, Sell or Import a Car in Kenya`, description: `${site.name} is Kenya's car marketplace: browse cars from private sellers and dealers, list your car for sale, or import from Japan, the UK or South Africa.`, body, priority: 1.0, preload: heroImg,
+    jsonld: [faqLd(homeFaq), { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, alternateName: ['BuyCarInKenya', 'buycarinkenya.co.ke'], description: `Buy, sell or import a car in Kenya: a marketplace for private sellers and dealers across Kenya, plus car imports from Japan, the UK and South Africa.`, inLanguage: 'en-KE', url: site.url, potentialAction: { '@type': 'SearchAction', target: abs('/cars/?q={search_term_string}'), 'query-input': 'required name=search_term_string' } }] }));
 }
 
 // ALL CARS (filterable)
@@ -369,7 +377,7 @@ function listingPage({ path, h1, intro, list, crumbsArr, title, description, ext
 
 listingPage({
   path: '/cars/', h1: 'Cars to import to Kenya', crumbsArr: [['Home', '/'], ['All cars', '/cars/']],
-  intro: `<p>Browse ${cars.length} of the most popular models Kenyans import from Japan, the UK and South Africa. Filter by make, body type, fuel and budget, then open any car to compare versions and order the exact spec.</p>`,
+  intro: `<p>Browse ${cars.length} of the most popular models Kenyans import from Japan, the UK and South Africa. Filter by make, body type, fuel and budget, then open any car to compare versions and order the exact spec. Want a car in Kenya today? See <a href="/used-cars/">cars for sale</a> from private sellers and dealers, or <a href="/sell-your-car/">sell your car</a> with us.</p>`,
   list: [...cars].sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0)),
   title: `Cars for Import to Kenya: ${cars.length}+ Models, Prices & Specs | ${site.name}`,
   description: `Compare ${cars.length}+ cars you can import to Kenya: Toyota, Nissan, Mazda, Honda, Subaru, Mercedes, Land Rover and more. Filter by body type, fuel and budget. Landed prices in KES.`,
@@ -619,13 +627,13 @@ function simplePage(path, h1, title, description, html, priority = 0.5, noindex 
   const cr = crumbs([['Home', '/'], [h1, path]]);
   add(path, layout({ path, title, description, noindex, priority, jsonld: [cr.ld], body: `<div class="wrap">${cr.html}<header class="page-head"><h1>${h1}</h1></header><div class="prose" style="padding-bottom:48px">${html}</div></div>` }));
 }
-simplePage('/about/', `About ${site.name}`, `About ${site.name}: Trusted Car Importers in Kenya`, `${site.name} helps Kenyans import quality cars from Japan, the UK and South Africa with transparent pricing and WhatsApp support.`,
-  `<p>${site.name} is a Kenyan car import company based in ${site.address}. We help individuals, families and businesses import quality vehicles from <a href="/import-from/japan/">Japan</a>, the <a href="/import-from/uk/">United Kingdom</a> and <a href="/import-from/south-africa/">South Africa</a>.</p>
+simplePage('/about/', `About ${site.name}`, `About ${site.name}: Buy, Sell or Import a Car in Kenya`, `${site.name} is a car marketplace for private sellers and dealers across Kenya, with car imports from Japan, the UK and South Africa.`,
+  `<p>${site.name} is a Kenyan car company based in ${site.address}. We run a marketplace where private sellers and dealers list cars and buyers <a href="/used-cars/">browse cars for sale</a> across Kenya. You can <a href="/sell-your-car/">sell your car</a> with no commission, and import quality vehicles from <a href="/import-from/japan/">Japan</a>, the <a href="/import-from/uk/">United Kingdom</a> and <a href="/import-from/south-africa/">South Africa</a>.</p>
   <p>Our approach is simple: you choose the exact car and spec, we give you an honest all-inclusive price, and we keep you updated until the keys are in your hand.</p>
-  <h2>What we do</h2><ul><li>Source cars from auctions and trusted dealers</li><li>Verify condition with auction sheets, photos and inspection reports</li><li>Arrange shipping and insurance to Mombasa</li><li>Handle KEBS inspection, KRA duty, clearing and NTSA registration</li><li>Deliver to you anywhere in Kenya</li></ul>
+  <h2>What we do</h2><ul><li>Run a marketplace where private sellers and dealers list cars and buyers contact them directly</li><li>Help sellers and dealers reach buyers across Kenya from KSh 450, with no commission</li><li>Source import cars from auctions and trusted dealers</li><li>Verify condition with auction sheets, photos and inspection reports</li><li>Arrange shipping and insurance to Mombasa</li><li>Handle KEBS inspection, KRA duty, clearing and NTSA registration</li><li>Deliver to you anywhere in Kenya</li></ul>
   <p><a class="btn btn-primary" href="/import-request/">Request a car</a></p>`);
-simplePage('/contact/', 'Contact us', `Contact ${site.name}: Car Imports Kenya`, `Contact ${site.name} on WhatsApp, phone or email to import your next car from Japan, the UK or South Africa.`,
-  `<p>The fastest way to reach us is WhatsApp. Our team replies during business hours (${site.hours}).</p>
+simplePage('/contact/', 'Contact us', `Contact ${site.name}: Buy, Sell or Import a Car`, `Contact ${site.name} on WhatsApp, phone or email to buy, sell or import a car in Kenya.`,
+  `<p>Whether you want to buy, sell or import a car, the fastest way to reach us is WhatsApp. Our team replies during business hours (${site.hours}).</p>
   <p><a class="btn btn-wa" href="${waLink(`Hi, I am interested in importing a car with ${site.name}.`)}" target="_blank" rel="noopener">${I.wa} WhatsApp ${site.phone}</a></p>
   <table class="spec kv" style="background:#fff;border:1px solid var(--line);border-radius:12px"><tbody><tr><th>Phone</th><td><a href="tel:${site.phone.replace(/\s/g, '')}">${site.phone}</a></td></tr><tr><th>Email</th><td><a href="mailto:${site.email}">${site.email}</a></td></tr><tr><th>Location</th><td>${site.address}</td></tr><tr><th>Hours</th><td>${site.hours}</td></tr></tbody></table>
   <p style="margin-top:20px">Know what you want? <a href="/import-request/">Send an import request</a> and get a free quote.</p>`);

@@ -34,7 +34,7 @@ export async function GET(req) {
   const photos = l.photos || [];
   const msg = `Hi, I saw your vehicle ${title} on ${SITE.domain}\n${pageUrl}\nIs it still available?`;
   const facts = [['Year', l.year], ['Mileage', l.mileage != null ? `${Number(l.mileage).toLocaleString('en-KE')} km` : null], ['Fuel', l.fuel], ['Transmission', l.transmission],
-    ['Engine', l.engine_cc ? `${Number(l.engine_cc).toLocaleString('en-KE')} cc` : null], ['Body type', l.body], ['Colour', l.colour], ['Condition', l.condition], ['Accident history', l.accident], ['Location', place]].filter(([, v]) => v);
+    ['Engine', l.engine_cc ? `${Number(l.engine_cc).toLocaleString('en-KE')} cc` : null], ['Body type', l.body], ['Colour', l.colour], ['Condition', l.condition], ['Accident history', l.accident], ['Seller', l.seller_type || 'Private seller'], ['Location', place]].filter(([, v]) => v);
   const alt = (i) => `${title} for sale in ${l.location}, Kenya${i ? ` – photo ${i + 1}` : ''}`;
 
   const body = `<div class="wrap">
@@ -53,14 +53,14 @@ export async function GET(req) {
       <span class="make">${esc(l.make)}${l.body ? ` · ${esc(l.body)}` : ''}${l.condition ? ` · ${esc(l.condition)}` : ''}</span>
       <h1>${esc(title)}</h1>
       <p class="listing-price num">${kes(l.price)}</p>
-      <p class="muted" style="margin:0">📍 ${esc(place)} · Sold by ${esc(l.seller_name || 'the owner')}, not a broker</p>
+      <p class="muted" style="margin:0">📍 ${esc(place)} · ${l.seller_type === 'Dealer' ? `Dealer: ${esc(l.seller_name || 'car dealer')}` : `Private seller${l.seller_name ? `: ${esc(l.seller_name)}` : ''}`}</p>
     </div>
     <dl class="facts">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
     <div class="order-box">
       ${ended ? `<h2 style="font-size:1.15rem;margin:0">${sold ? 'This car has been sold' : 'This listing has ended'}</h2><p class="muted" style="margin:0">${sold ? 'The seller marked it as sold.' : 'The seller\'s listing period has ended.'} Browse other cars for sale or sell yours with us.</p>
       <a class="btn btn-primary btn-block" href="/used-cars/">See cars for sale</a>`
     : `<h2 style="font-size:1.15rem;margin:0">Contact the seller</h2>
-      <p class="muted small" style="margin:0">Deal directly with the owner. No broker, no commission.</p>
+      <p class="muted small" style="margin:0">${l.seller_type === 'Dealer' ? 'Deal directly with the dealer.' : 'Deal directly with the owner.'} No middleman, no commission.</p>
       <a class="btn btn-wa btn-block" href="https://wa.me/${l.phone}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener nofollow">${waIcon} WhatsApp seller</a>
       <a class="btn btn-ghost btn-block" href="tel:+${l.phone}" rel="nofollow">${phoneIcon} Call +${l.phone.replace(/^(\d{3})(\d{3})(\d{3})(\d{3})$/, '$1 $2 $3 $4')}</a>
       <div class="note small"><b>Stay safe:</b> view the car in person, check the logbook matches the seller's ID and run an NTSA search before paying any money.</div>`}
@@ -81,7 +81,7 @@ export async function GET(req) {
   const ldTags = [ld, crumbsLd].map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`).join('');
 
   const t = `${sold ? 'SOLD: ' : ended ? 'ENDED: ' : ''}${title} for sale in ${l.location} – ${kes(l.price)} | ${SITE.name}`;
-  const d = `${title} for sale in ${l.location}, Kenya at ${kes(l.price)}.${l.mileage != null ? ` ${Number(l.mileage).toLocaleString('en-KE')} km.` : ''}${l.fuel ? ` ${l.fuel}` : ''}${l.transmission ? `, ${l.transmission.toLowerCase()}` : ''}. Contact the owner directly on WhatsApp or phone. No brokers.`;
+  const d = `${title} for sale in ${l.location}, Kenya at ${kes(l.price)}.${l.mileage != null ? ` ${Number(l.mileage).toLocaleString('en-KE')} km.` : ''}${l.fuel ? ` ${l.fuel}` : ''}${l.transmission ? `, ${l.transmission.toLowerCase()}` : ''}. Contact the seller directly on WhatsApp or phone.`;
   let page;
   try { page = await getShell(url.origin); } catch (e) { console.error(e); return html('<h1>Temporarily unavailable</h1>', 503, 'no-store'); }
   page = page.replaceAll('%%TITLE%%', esc(t)).replaceAll('%%DESC%%', esc(d.slice(0, 300))).replaceAll('%%SLUG%%', l.slug)

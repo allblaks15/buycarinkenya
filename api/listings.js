@@ -24,6 +24,7 @@ export const GET = route(async (req) => {
   if (q.get('body')) add('body = ?', q.get('body'));
   if (q.get('fuel')) add('fuel = ?', q.get('fuel'));
   if (q.get('county')) add('county = ?', q.get('county'));
+  if (q.get('seller_type')) add(`coalesce(seller_type, 'Private seller') = ?`, q.get('seller_type'));
   if (q.get('accident_free')) add('accident = ?', 'Accident free');
   if (q.get('min')) add('price >= ?', Number(q.get('min')) || 0);
   if (q.get('max')) add('price <= ?', Number(q.get('max')) || 1e12);
@@ -67,9 +68,9 @@ export const POST = route(async (req) => {
     const l = cleanListing(b);
     // Sellers normally pay by Paybill before saving; the code goes straight to review
     const code = b.mpesa_code ? await checkCode(b.mpesa_code) : null;
-    const [row] = await sql`INSERT INTO listings (user_email, make, model, year, price, mileage, fuel, transmission, body, engine_cc, colour, condition, location, county, estate, description, seller_name, phone, photos, accident, extras, package,
+    const [row] = await sql`INSERT INTO listings (user_email, make, model, year, price, mileage, fuel, transmission, body, engine_cc, colour, condition, location, county, estate, description, seller_name, seller_type, phone, photos, accident, extras, package,
         mpesa_code, status, paid_at)
-      VALUES (${u.email}, ${l.make}, ${l.model}, ${l.year}, ${l.price}, ${l.mileage}, ${l.fuel}, ${l.transmission}, ${l.body}, ${l.engine_cc}, ${l.colour}, ${l.condition}, ${l.location}, ${l.county}, ${l.estate}, ${l.description}, ${l.seller_name}, ${l.phone}, ${JSON.stringify(l.photos)}, ${l.accident}, ${JSON.stringify(l.extras)}, ${pkg},
+      VALUES (${u.email}, ${l.make}, ${l.model}, ${l.year}, ${l.price}, ${l.mileage}, ${l.fuel}, ${l.transmission}, ${l.body}, ${l.engine_cc}, ${l.colour}, ${l.condition}, ${l.location}, ${l.county}, ${l.estate}, ${l.description}, ${l.seller_name}, ${l.seller_type}, ${l.phone}, ${JSON.stringify(l.photos)}, ${l.accident}, ${JSON.stringify(l.extras)}, ${pkg},
         ${code}, ${code ? 'pending_review' : 'awaiting_payment'}, ${code ? new Date() : null})
       RETURNING id`;
     const slug = `${slugify(`${l.year} ${l.make} ${l.model} ${l.location}`)}-${row.id}`;
@@ -88,7 +89,7 @@ export const POST = route(async (req) => {
     const removed = l.photos.filter((p) => !n.photos.some((q) => q.url === p.url));
     const [saved] = await sql`UPDATE listings SET make = ${n.make}, model = ${n.model}, year = ${n.year}, price = ${n.price}, mileage = ${n.mileage}, fuel = ${n.fuel},
       transmission = ${n.transmission}, body = ${n.body}, engine_cc = ${n.engine_cc}, colour = ${n.colour}, condition = ${n.condition}, location = ${n.location},
-      county = ${n.county}, estate = ${n.estate}, description = ${n.description}, seller_name = ${n.seller_name}, phone = ${n.phone}, photos = ${JSON.stringify(n.photos)}, accident = ${n.accident},
+      county = ${n.county}, estate = ${n.estate}, description = ${n.description}, seller_name = ${n.seller_name}, seller_type = ${n.seller_type}, phone = ${n.phone}, photos = ${JSON.stringify(n.photos)}, accident = ${n.accident},
       extras = ${JSON.stringify(n.extras)}, package = ${pkg}, updated_at = now()
       WHERE id = ${l.id} RETURNING *`;
     if (removed.length) await del(removed.flatMap((p) => [p.url, p.thumb])).catch((e) => console.error('blob del', e.message));

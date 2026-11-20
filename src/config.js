@@ -23,5 +23,5 @@ export const site = {
   googleVerification: '',
   // Bing Webmaster Tools (optional)
   bingVerification: '',
-  tagline: 'Car Imports from Japan, UK & South Africa to Kenya',
+  tagline: 'Buy, sell or import a car in Kenya',
 };
