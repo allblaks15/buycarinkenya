@@ -88,7 +88,7 @@ export function makeRenderCar(h) {
       <a class="btn btn-ghost btn-block" href="/import-request/?car=${c.slug}" data-request-link>Request a different year / spec</a>
       <p class="disclaimer">Indicative price for a ${MIN_YEAR}+ unit, including shipping, KRA taxes, clearing and registration. Final price is confirmed in your free written quote.</p>
     </div>
-    <div class="sell-promo"><b>Buy, sell or import.</b> See <a href="/used-cars/?make=${encodeURIComponent(c.make)}&amp;model=${encodeURIComponent(c.model)}">${esc(c.name)} for sale in Kenya</a> from private sellers and dealers, or <a href="/sell-your-car/">sell your ${esc(c.model)}</a> with no commission.</div>
+    <div class="sell-promo"><b>Buy, sell or import.</b> See <a href="/used-cars/${c.slug}/">${esc(c.name)} for sale in Kenya</a> from private sellers and dealers, or <a href="/sell-your-car/">sell your ${esc(c.model)}</a> with no commission.</div>
   </aside>
   <div class="d-info">
     <section>
@@ -108,7 +108,7 @@ export function makeRenderCar(h) {
       <p>Under the KEBS 8-year rule you can import ${esc(c.name)} units first registered in <b>${MIN_YEAR} or later</b>. ${v ? `The ${esc(v.name)} lands at about <b>${range(...v.price)}</b>.` : `Landed prices range from about <b>${M(c.priceFrom)}</b> for the ${esc(cheapest.name)} to <b>${M(c.priceTo)}</b> for the top-spec models.`} Your final price depends on year, mileage, auction grade and exchange rate, and we confirm it in writing before you commit.</p>
       <h3>What's included in our landed price?</h3>
       <ul><li>Vehicle purchase price in ${listJoin(c.origin)}</li><li>Pre-shipment roadworthiness inspection</li><li>Shipping and marine insurance to Mombasa</li><li>KRA import duty, excise duty, VAT, IDF and RDL</li><li>Port charges, clearing and agency fees</li><li>NTSA registration and Kenyan number plates</li></ul>
-      <p>Prefer to buy locally? Browse <a href="/used-cars/?make=${encodeURIComponent(c.make)}&amp;model=${encodeURIComponent(c.model)}">${esc(c.name)} cars for sale in Kenya</a> from private sellers and dealers, or <a href="/sell-your-car/">sell your car</a> on ${site.name}.</p>
+      <p>Prefer to buy locally? Browse <a href="/used-cars/${c.slug}/">${esc(c.name)} cars for sale in Kenya</a> from private sellers and dealers, or <a href="/sell-your-car/">sell your car</a> on ${site.name}.</p>
       <p>See also: <a href="/make/${slugify(c.make)}/">all ${esc(c.make)} models</a> · <a href="/body-type/${BODIES[c.body].slug}/">all ${esc(BODIES[c.body].plural.toLowerCase())}</a>${v ? ` · <a href="${base}">${esc(c.name)} overview</a>` : ''}</p>
     </section>
     <section style="margin-top:32px"><h2>${esc(full)} FAQs</h2>${faqHtml(faq)}</section>

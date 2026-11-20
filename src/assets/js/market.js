@@ -47,6 +47,18 @@
     $$('.thumbs button').forEach((x) => x.setAttribute('aria-current', x === b));
   }));
 
+  // ---------- landing pages: live listings for a fixed filter ----------
+  $$('[data-market-block]').forEach(async (box) => {
+    const count = $('[data-mb-count]', box.closest('section'));
+    const q = new URLSearchParams(box.dataset.query); q.set('limit', box.dataset.limit || 12);
+    try {
+      const r = await api(`/api/listings?${q}`);
+      $('[data-market-grid]', box).innerHTML = r.listings.map(card).join('');
+      count.textContent = r.total ? `${r.total.toLocaleString('en-KE')} car${r.total === 1 ? '' : 's'} for sale right now` : 'No cars listed here yet.';
+      $('[data-mb-empty]', box).hidden = r.total > 0;
+    } catch { count.textContent = ''; $('[data-mb-empty]', box).hidden = false; }
+  });
+
   // ---------- home: latest owner listings ----------
   const home = $('[data-page="home-latest"]');
   if (home) api('/api/listings?limit=6').then((r) => { if (r.listings.length) { $('[data-market-grid]', home).innerHTML = r.listings.map(card).join(''); home.hidden = false; } }).catch(() => {});
@@ -63,13 +75,15 @@
     const query = () => {
       const q = new URLSearchParams();
       for (const el of form.elements) if (el.name && el.value && (el.type !== 'checkbox' || el.checked)) q.set(el.name, el.value);
+      // Filters from landing-page links that have no control on this form (budget, town, groups of makes or body types)
+      for (const k of ['min', 'max', 'town', 'transmission', 'makes', 'bodies', 'extra']) if (params.get(k) && !q.has('price')) q.set(k, params.get(k));
       return q;
     };
     async function load(reset) {
       if (reset) page = 1;
       const q = query(); history.replaceState(null, '', q.toString() ? `?${q}` : location.pathname);
-      const [min, max] = (q.get('price') || '').split('-'); q.delete('price');
-      if (min) q.set('min', min); if (max && max !== '0') q.set('max', max);
+      const [min, max] = (q.get('price') || '').split('-');
+      if (q.has('price')) { q.delete('price'); q.delete('min'); q.delete('max'); if (min) q.set('min', min); if (max && max !== '0') q.set('max', max); }
       q.set('page', page);
       try {
         const r = await api(`/api/listings?${q}`);

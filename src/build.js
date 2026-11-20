@@ -7,6 +7,7 @@ import { cars, slugify } from './data/cars.js';
 import { makeRenderCar } from './render-car.js';
 import { blogPosts, CLUSTERS } from './data/blog/index.js';
 import { marketPages, homeMarket } from './market-pages.js';
+import { seoPages, seoLinks } from './seo-pages.js';
 import { readdir, rename } from 'node:fs/promises';
 
 const SRC = import.meta.dirname;
@@ -327,6 +328,14 @@ ${homeMarket({ I })}
 </div></div></section>
 
 ${ctaBand()}
+
+<section class="block alt"><div class="wrap">
+  <div class="section-head"><div><h2>Find cars for sale in Kenya</h2><p>By budget, type and town, from private sellers and dealers.</p></div><a class="link-arrow" href="/used-cars/">All cars for sale →</a></div>
+  <h3>By budget</h3><ul class="chips link-chips">${seoLinks.budgets.map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t)}</a></li>`).join('')}</ul>
+  <h3 style="margin-top:18px">By type</h3><ul class="chips link-chips">${seoLinks.types.map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t)}</a></li>`).join('')}</ul>
+  <h3 style="margin-top:18px">By town</h3><ul class="chips link-chips">${seoLinks.towns.map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t)}</a></li>`).join('')}</ul>
+  <h3 style="margin-top:18px">Guides</h3><ul class="chips link-chips">${seoLinks.guides.map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t)}</a></li>`).join('')}</ul>
+</div></section>
 
 <section class="block"><div class="wrap">
   <div class="section-head"><div><h2>Buy Car in Kenya FAQs</h2></div></div>
@@ -649,6 +658,8 @@ simplePage('/privacy/', 'Privacy policy', `Privacy Policy | ${site.name}`, `How 
 {
   const sec = (h, links) => `<h2>${h}</h2><ul class="sitemap-list">${links.map(([t, u]) => `<li><a href="${u}">${esc(t)}</a></li>`).join('')}</ul>`;
   const html = sec('Main pages', [['Home', '/'], ['Cars for sale', '/used-cars/'], ['Sell your car', '/sell-your-car/'], ['All cars', '/cars/'], ['Request a car import', '/import-request/'], ['How to import a car to Kenya', '/how-to-import-a-car-to-kenya/'], ['About', '/about/'], ['Contact', '/contact/']])
+    + sec('Cars for sale by budget', seoLinks.budgets) + sec('Cars for sale by type', seoLinks.types) + sec('Cars for sale by town', seoLinks.towns) + sec('Buying & selling guides', seoLinks.guides)
+    + sec('Cars for sale by model', cars.map((c) => [`${c.name} for sale in Kenya`, `/used-cars/${c.slug}/`]))
     + sec('Blog & price guides', [['All guides', '/blog/'], ...posts.map((p) => [p.crumb, `/blog/${p.slug}/`])])
     + sec('Import from', Object.entries(ORIGINS).map(([n, o]) => [`Import cars from ${n}`, `/import-from/${o.slug}/`]))
     + sec('Body types', Object.values(BODIES).map((b) => [b.plural, `/body-type/${b.slug}/`]))
@@ -659,6 +670,7 @@ simplePage('/privacy/', 'Privacy policy', `Privacy Policy | ${site.name}`, `How 
 add('/404.html', layout({ path: '/404.html', noindex: true, title: `Page not found | ${site.name}`, description: 'Page not found.', body: `<div class="wrap" style="padding:64px 16px;text-align:center"><h1>We couldn't find that page</h1><p class="muted">The car may have moved. Try browsing our catalogue or send us a request.</p><p><a class="btn btn-primary" href="/cars/">Browse cars</a> <a class="btn btn-ghost" href="/import-request/">Request a car</a></p></div>` }));
 
 marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd, MAKES, BODIES, FUELS, YEAR, BUILD, cars });
+seoPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd, grid, cars, BODIES, M, slugify, BUILD });
 
 // ---------------------------------------------------------------- write
 await rm(OUT, { recursive: true, force: true });

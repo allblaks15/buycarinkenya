@@ -1,3 +1,4 @@
+import { seoLinks } from './seo-pages.js';
 // Marketplace pages: owners sell their own cars. Data comes from /api/* at runtime (see api/).
 export const PAYMENT = { paybill: '880100', account: '747328' };
 // Keep in sync with PACKAGES in api/_lib.js
@@ -178,13 +179,18 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 </div></section>
 
 <section class="block"><div class="wrap">
+  <div class="section-head"><div><h2>Selling guides</h2></div></div>
+  <ul class="chips link-chips"><li><a class="chip" href="/sell-your-car/how-to-sell-a-car-in-kenya/">How to sell a car in Kenya</a></li><li><a class="chip" href="/sell-your-car/car-valuation-kenya/">How much is my car worth?</a></li>${seoLinks.towns.slice(0, 6).map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t.replace('Cars for sale in', 'Sell my car in'))}</a></li>`).join('')}</ul>
+</div></section>
+
+<section class="block"><div class="wrap">
   <div class="section-head"><div><h2>Selling FAQs</h2></div></div>
   ${faqHtml(sellFaq)}
 </div></section>
 
 <section class="block"><div class="wrap"><div class="cta-band"><div><h2>Ready to sell your car?</h2><p>No brokers, no commission. Packages from KSh ${FROM}.</p></div>
 <div class="btns"><a class="btn btn-light" href="/account/#new">Start selling</a></div></div></div></section>`;
-    add(path, layout({ path, title: `Sell Your Car in Kenya Fast | ${site.name}`, description: `Sell your car in Kenya directly to buyers. List it from KSh ${FROM} for 2 weeks, 1 month or until sold. Set your own price and get WhatsApp calls. No brokers.`, body, priority: 0.9, jsonld: [cr.ld, faqLd(sellFaq)] }));
+    add(path, layout({ path, title: `Sell My Car in Kenya Fast: List From KSh 450 | ${site.name}`, description: `Sell your car in Kenya directly to buyers. List it from KSh ${FROM} for 2 weeks, 1 month or until sold. Set your own price and get WhatsApp calls. No brokers.`, body, priority: 0.9, jsonld: [cr.ld, faqLd(sellFaq)] }));
   }
 
   // ---------------------------------------------------------------- Cars for sale (browse)
@@ -210,6 +216,7 @@ export function marketPages({ layout, add, site, esc, I, crumbs, faqHtml, faqLd,
 <div class="car-grid" data-market-grid></div>
 <div class="empty" data-market-empty hidden><h2 style="font-size:1.3rem">No cars match yet</h2><p class="muted">Try a different search, or be the first to list one.</p><a class="btn btn-primary" href="/sell-your-car/">Sell your car</a></div>
 <p style="text-align:center;margin:24px 0 8px"><button class="btn btn-ghost" type="button" data-market-more hidden>Load more cars</button></p>
+<section class="block"><h2>Cars for sale by budget</h2><ul class="chips link-chips">${seoLinks.budgets.map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t)}</a></li>`).join('')}</ul><h2 style="margin-top:24px">By type</h2><ul class="chips link-chips">${seoLinks.types.map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t)}</a></li>`).join('')}</ul><h2 style="margin-top:24px">By town</h2><ul class="chips link-chips">${seoLinks.towns.map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t)}</a></li>`).join('')}</ul><h2 style="margin-top:24px">Buying & selling guides</h2><ul class="chips link-chips">${seoLinks.guides.map(([t, u]) => `<li><a class="chip" href="${u}">${esc(t)}</a></li>`).join('')}</ul></section>
 </div>
 <section class="block"><div class="wrap"><div class="cta-band"><div><h2>Selling a car?</h2><p>List it from KSh ${FROM}. Buyers contact you directly.</p></div>
 <div class="btns"><a class="btn btn-light" href="/sell-your-car/">Sell with us</a></div></div></div></section>

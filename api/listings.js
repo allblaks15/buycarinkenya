@@ -24,6 +24,11 @@ export const GET = route(async (req) => {
   if (q.get('body')) add('body = ?', q.get('body'));
   if (q.get('fuel')) add('fuel = ?', q.get('fuel'));
   if (q.get('county')) add('county = ?', q.get('county'));
+  if (q.get('town')) add('location ILIKE ?', `%${q.get('town').slice(0, 40).replace(/[%_\\]/g, '')}%`);
+  if (q.get('transmission')) add('transmission = ?', q.get('transmission'));
+  if (q.get('makes')) add('make = ANY(?)', q.get('makes').split(',').slice(0, 10));
+  if (q.get('bodies')) add('body = ANY(?)', q.get('bodies').split(',').slice(0, 10));
+  if (q.get('extra')) add('extras @> ?::jsonb', JSON.stringify([q.get('extra')]));
   if (q.get('seller_type')) add(`coalesce(seller_type, 'Private seller') = ?`, q.get('seller_type'));
   if (q.get('accident_free')) add('accident = ?', 'Accident free');
   if (q.get('min')) add('price >= ?', Number(q.get('min')) || 0);
